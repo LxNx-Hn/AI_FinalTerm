@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.pt
+*.pth
+*.pkl
+results/videos/
+results/models/
+unity_demo/
+Library/
+Temp/
+Obj/
+Builds/
+Logs/
+UserSettings/
