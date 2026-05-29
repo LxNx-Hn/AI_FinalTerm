@@ -46,7 +46,7 @@
 4. **컷씬 후 위치 보정 여부**: 강제로 위로 1칸 올라가는 `MovePlayerOneCellForIntro` 코루틴 존재.
 5. **플레이어 이동 규칙**: GridMover 기준 상하좌우 방향.
 6. **이동 성공 시 facing 변경 여부**: 변경됨.
-7. **이동 실패 시 facing 유지 여부**: **[확인 완료 - 프롬프트 기준 적용]** 유니티 원본은 이동 실패 시에도 시선이 변경되지만, RL 에이전트의 안정적 조작 기준을 정의한 **"이동 실패 시 position/facing 유지"** 명시적 룰에 맞춰 적용함.
+7. **이동 실패 시 facing 유지 여부**: **[수정됨]** 초기 프롬프트에는 이동 실패 시 facing 유지라고 되어 있었지만, Unity 원본 코드 분석 결과 벽/장애물/arena 끝 때문에 이동에 실패해도 입력 방향으로 플레이어 facing은 변경되는 것으로 확인되어 **Unity 원본 기준으로 수정(이동 실패 시에도 입력 방향으로 facing 갱신)**했습니다.
 8. **이동+공격 동시 입력 가능 여부**: `Update` 문에서 키보드 이동 입력과 마우스 클릭 공격이 동시에 감지됨.
 9. **이동+공격 동시 입력 시 처리 순서**: **[확인 필요]** Unity 자체 Script Execution Order에 의존적이나, 논리적 자연스러움을 위해 본 환경에서는 `이동 처리 -> 공격 처리` 순으로 고정하여 구현함.
 10. **PlayerCombat 공격 범위**: 전방 방향 기준 깊이 1~2칸, 폭 -1~1칸 (총 6칸).
@@ -60,3 +60,12 @@
 18. **패턴모드 진입 시 Renderer OFF 여부**: 확정됨 (`SetBossVisible(false)` 다수 포진).
 19. **보스 visible state와 hurtbox/damage state 차이**: `SetBossVisible`은 렌더러만 끄며 `BossHealth` 콜라이더는 비활성화하지 않으므로, 투명 상태에서도 여전히 피격 판정은 유지됨.
 20. **warning tile / damage tile / hit 판정 timing**: 장판이 먼저 깔리고 설정된 시간 뒤 정확하게 데미지가 적용됨.
+
+---
+
+## 3. Unity Trace Replay 가이드
+훈련 완료 후 생성된 `dqn_best_action_trace.json` 파일을 통해 Unity에서 에이전트의 움직임을 직접 시연할 수 있습니다.
+
+1. `code_blue_boss_dqn_clean/unity_demo/CODE-BLUE-RL-Demo` 폴더 내에 Unity 원본을 복사합니다.
+2. `results/logs/dqn_best_action_trace.json` 파일을 `unity_demo/CODE-BLUE-RL-Demo/Assets/StreamingAssets/` 로 복사합니다.
+3. Unity Scene에서 `RLTraceReplayer` 스크립트를 빈 GameObject에 부착 후, 시연을 진행합니다.

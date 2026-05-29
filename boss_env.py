@@ -98,12 +98,11 @@ class BossEnv:
         if movement_input != "NONE":
             dir_vec = get_movement_vector(movement_input)
             new_cell = add(self.player_cell, dir_vec)
+            self.player_facing = dir_vec  # Always update facing
             if is_valid_cell(new_cell[0], new_cell[1]):
                 self.player_cell = new_cell
-                self.player_facing = dir_vec
             else:
                 off_map = True
-                # Rules specify facing shouldn't change if move fails.
                 
         # Player Attack
         if attack_pressed and self.attack_cooldown <= 0:
