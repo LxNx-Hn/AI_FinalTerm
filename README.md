@@ -4,7 +4,7 @@
 
 ## 1. 이전 실험 결과와 재구현 사유
 
-### 1.1 이전 모델 성능 (Tabular Q-learning 30k)
+### 1.1 이전 모델 성능 (Tabular Q-learning 30k) [Legacy]
 - **Random baseline**: 
   - boss_kill_rate: 0.0
   - death_rate: 1.0
@@ -17,22 +17,21 @@
   - damage_during_dash_count: 272
   - no_hit_damage_during_dash_count: 272
   - risky_trade_count: 97
-- **해석**: 전통적인 Tabular Q-learning은 인위적인 Dash Attack 보너스 없이도 돌진 중 무피격 타격이라는 부분적인 공략 전략을 스스로 깨우쳤습니다. 하지만 상태 공간이 매우 큰 복잡한 보스전 환경상 Full Clear에 도달하기에는 일반화(Generalization) 능력이 부족하다는 한계를 명확히 보여주었습니다.
+- **해석**: 전통적인 Tabular Q-learning은 상태 공간 일반화 부족으로 Full Clear에 실패.
 
-### 1.2 이전 모델 성능 (DQN 10k) - *Pre-clean reconstruction result*
+### 1.2 이전 모델 성능 (DQN 10k) - *Discarded Legacy Result*
 - **결과**:
-  - boss_kill_rate: 0.97
-  - best_clear_time_seconds: 36.0
-  - avg_clear_time_seconds: 38.90
-  - avg_boss_damage: 59.91 / 60
-  - death_rate: 0.03
-  - damage_avoidance_rate: 0.39
-- **해석**: Deep Q-Network(DQN)는 딥러닝을 통한 상태 일반화를 통해 Tabular Q-learning과 동일한 훈련 조건(Natural Discovery) 하에서 압도적으로 높은 성능을 달성할 수 있음을 증명했습니다. 
-- **재구현 사유 (중요)**: 위 DQN 10k 결과는 보스 패턴과 추적 로직이 Unity 원본과 미세하게 달랐던(단순화되었던) 이전 환경 기준의 결과입니다. 즉, "에이전트가 예상보다 너무 쉽게 피하는 꼼수"가 섞여 있었습니다. 이 문제를 완전히 바로잡기 위해 가장 엄밀한 룰에 기반한 이 프로젝트가 다시 작성되었습니다.
+  - boss_kill_rate: 1.0 (100%)
+  - best_clear_time_seconds: 29.6
+  - avg_clear_time_seconds: 29.6
+  - avg_boss_damage: 60.0 / 60
+  - death_rate: 0.0
+- **해석 (중요)**: 위 100% 성공 결과는 보스의 무작위 패턴(Phase 2, Phase 3, Fake Dash 등)이 비활성화된 채 "결정론적인 걷고 할퀴기" 패턴만을 100번 반복한 평타 전용(basic_rep only) 환경에서의 결과입니다. 보스 패턴 커버리지가 불완전(incomplete boss pattern coverage)했으므로 **최종 결과에서 폐기(discarded)합니다.** 메인 결과로 사용하지 않습니다.
 
-### 1.3 클린 재구현의 핵심 목적
-- Unity 원본 게임의 코드(`C:\Users\KiKi\CODE-BLUE`)는 일체 수정 없이 **절대적인 기준점(Ground Truth)**으로 사용.
-- Python `boss_env.py`를 대대적으로 개편하여 **Unity 보스의 집요한 추적(매 칸 플레이어 좌표를 다시 찍으며 따라오는 while-loop 로직)**과 **이동+공격 동시 처리** 등 100% 동일한 규칙을 반영.
+### 1.3 클린 재구현 목적 및 진짜 일반화 평가 (Full-Pattern Randomized Environment)
+- Unity 원본 게임의 코드(`ElevatorBossController.cs`)는 체력(70%, 40%, 10%)에 따라 복잡한 무작위 패턴(Hollow Corner, N/Z Stroke, Sweep, Mark Dash 등)을 구사합니다.
+- 이를 파이썬 `boss_env.py`에 100% 동일하게 이식(`boss_director.py` 도입)하고 매 에피소드마다 시드를 변경하며 Full-Pattern 진짜 일반화 평가를 메인으로 수행합니다.
+- (진행 중) Random.Range / Random.value 분기를 포함한 최종 메인 평가를 준비하고 있습니다.
 
 ---
 

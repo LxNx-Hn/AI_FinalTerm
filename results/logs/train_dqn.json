@@ -1,0 +1,6 @@
+{
+  "method": "DQN",
+  "episodes": 5000,
+  "seed": 42,
+  "curriculum_used": false
+}

@@ -1,0 +1,12 @@
+phase,hp_condition,routine_name,order,fixed_or_random,candidate_patterns,random_function,random_range,exclusions,repeat_count,transition_condition,next_phase_or_routine,source_file,source_method,notes
+All,None,BasicAttackLoop,1,fixed,NormalScratch/EnhancedScratch,None,None,None,3 or 5,Reps completed or HP<=0,EvaluatePhase,ElevatorBossController.cs,BasicAttackLoop,Phase1/2=5 reps Phase3+=3 reps
+All,None,EvaluatePhase,2,fixed,None,None,None,None,1,HP checks,PatternEntryDash,ElevatorBossController.cs,EvaluatePhase,Triggers phase transitions flags
+All,None,PatternEntryDash,3,fixed,ForwardStripe3,None,None,None,1,Duration Exceeded,Phase Cycle,ElevatorBossController.cs,PatternEntryDash,Always happens before Phase Cycle
+Phase1,100-70%,Phase1FirstFixed,4,fixed,Diag_TR_BL_3;Diag_TL_BR_3;Additional1A;Additional1B,Random.Range,0 to 2,None,1,Duration Exceeded,LandingSlam,ElevatorBossController.cs,Phase1FirstFixed,Only on first Phase 1 entry
+Phase1,100-70%,RunTwoAdditionalPatterns,4,random,1A;1B;NStroke;ZStroke,Random.Range,0 to 4(Count),Previous selected,2,Duration Exceeded,LandingSlam,ElevatorBossController.cs,RunTwoAdditionalPatterns,Picks 2 unique patterns
+Phase2,70-40%,Phase2FirstFixed,4,fixed,Phase2SweepOnly;AdditionalPhase2Plus(1B/N/Z),Random.Range,0 to 3,None,1,Duration Exceeded,LandingSlam,ElevatorBossController.cs,Phase2FirstFixed,Only on first Phase 2 entry
+Phase2,70-40%,RunTwoAdditionalPatterns,4,random,Sweep;AdditionalPhase2Plus,Random.Range,0 to 2(Count),Previous selected,2,Duration Exceeded,LandingSlam,ElevatorBossController.cs,RunTwoAdditionalPatterns,Shuffles order of both
+Phase3,40-10%,Phase3FirstFixed,4,fixed,MarkDash4;Sweep or Add2Plus,Random.value,0.0 to 1.0,None,1,Duration Exceeded,LandingSlam,ElevatorBossController.cs,Phase3FirstFixed,Only on first Phase 3 entry
+Phase3,40-10%,RunTwoAdditionalPatterns,4,random,Sweep;AdditionalPhase2Plus;MarkDash4,Random.Range,0 to 3(Count),Previous selected,2,Duration Exceeded,LandingSlam,ElevatorBossController.cs,RunTwoAdditionalPatterns,Picks 2 unique patterns
+Final,<10%,FinalPhaseRoutine,4,fixed,HollowCorner5x5(4 times);Stripe3Dash,None,None,None,1,Duration Exceeded,Return to Phase 3 Loop,ElevatorBossController.cs,RunFinalPhaseCycleAfterEntryDash,Forces phase to 3 afterwards
+All,None,LandingSlam,5,fixed,NormalScratch3 or HollowCorner5x5,None,None,None,1,Duration Exceeded,BasicAttackLoop,ElevatorBossController.cs,LandingSlam,Uses HollowCorner only if Phase>=3

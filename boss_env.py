@@ -23,7 +23,8 @@ class Event:
         commit_end: Optional[Tuple[int, int]] = None,
         dash_path_cells: Optional[List[Tuple[int, int]]] = None,
         boss_dash_active: bool = False,
-        hide_boss_visible: bool = False
+        hide_boss_visible: bool = False,
+        hide_after: bool = False
     ):
         self.pattern_id = pattern_id
         self.kind = kind # "warning", "damage", "move", "gap"
@@ -37,6 +38,8 @@ class Event:
         self.dash_path_cells = dash_path_cells or []
         self.boss_dash_active = boss_dash_active
         self.hide_boss_visible = hide_boss_visible
+        self.hide_after = hide_after
+        self.damaged_player = False
 
 class BossEnv:
     def __init__(self, seed: Optional[int] = None):
@@ -62,7 +65,10 @@ class BossEnv:
         
         self.events: List[Event] = []
         self.current_event: Optional[Event] = None
-        self.pattern_tokens: List[str] = ["basic_rep"]
+        self.pattern_tokens: List[str] = ["boss_loop"]
+        
+        from boss_director import BossDirector
+        self.director = BossDirector(self)
         
         self.metrics = {
             "boss_damage_dealt": 0,
@@ -128,9 +134,10 @@ class BossEnv:
                 in_next_damage_risk = self.player_cell in self.current_event.future_damage_cells
             elif self.current_event.kind == "damage":
                 in_damage_tile = self.player_cell in self.current_event.damage_cells
-                if in_damage_tile:
+                if in_damage_tile and not self.current_event.damaged_player:
                     self.player_hp -= 1
                     hit_player = True
+                    self.current_event.damaged_player = True
         
         # Tick time
         self.step_count += 1
@@ -140,6 +147,17 @@ class BossEnv:
         if self.current_event:
             self.current_event.remaining -= 1
             if self.current_event.remaining <= 0:
+                ev = self.current_event
+                if ev.commit_end is not None:
+                    self.boss_logic_cell = ev.commit_end
+                    self.boss_hurtbox_cells = [self.boss_logic_cell]
+                    
+                if ev.hide_after:
+                    self.boss_visible_flag = False
+                    self.boss_visible_cell = None
+                elif ev.commit_end is not None:
+                    self.boss_visible_cell = self.boss_logic_cell
+                    
                 self.current_event = None
                 
         # Evaluate Phase
@@ -185,53 +203,72 @@ class BossEnv:
     def _start_current_event(self):
         if not self.current_event and self.events:
             self.current_event = self.events.pop(0)
-            # Update boss visual and hurtbox state
-            ev = self.current_event
-            if ev.kind == "move" and ev.commit_start is not None:
-                self.boss_logic_cell = ev.commit_start
-                self.boss_visible_cell = self.boss_logic_cell
-                self.boss_hurtbox_cells = [self.boss_logic_cell]
             
+        ev = self.current_event
+        if not ev:
+            return
+            
+        if ev.kind == "warning":
             if ev.hide_boss_visible:
+                self.boss_visible_flag = False
+                self.boss_visible_cell = None
+                
+        elif ev.kind == "damage":
+            if ev.commit_end is not None:
+                self.boss_logic_cell = ev.commit_end
+                
+            if ev.boss_dash_active and ev.dash_path_cells:
+                self.boss_hurtbox_cells = list(ev.dash_path_cells)
+            else:
+                self.boss_hurtbox_cells = [self.boss_logic_cell]
+                
+            if ev.hide_boss_visible or ev.hide_after:
                 self.boss_visible_flag = False
                 self.boss_visible_cell = None
             else:
                 self.boss_visible_flag = True
                 self.boss_visible_cell = self.boss_logic_cell
-                
-            if ev.boss_dash_active and ev.dash_path_cells:
-                self.boss_hurtbox_cells = ev.dash_path_cells
-            elif not ev.boss_dash_active:
-                self.boss_hurtbox_cells = [self.boss_logic_cell]
 
     def _expand_token(self, token: str):
-        if token == "basic_rep":
-            self.pattern_tokens.insert(0, "basic_rep_step")
-        elif token == "basic_rep_step":
-            if manhattan(self.player_cell, self.boss_logic_cell) > 1:
-                delta = (self.player_cell[0] - self.boss_logic_cell[0], self.player_cell[1] - self.boss_logic_cell[1])
-                direction = normalize_dir(delta)
-                self.boss_facing = direction
-                self.boss_logic_cell = clamp_cell(add(self.boss_logic_cell, self.boss_facing))
-                self.events.append(Event(
-                    pattern_id=PATTERN_IDS["BOSS_MOVE"],
-                    kind="move",
-                    duration=config.BOSS_MOVE_ONE_CELL_STEPS,
-                    commit_start=self.boss_logic_cell
-                ))
-                self.pattern_tokens.insert(0, "basic_rep_step")
-            else:
-                delta = (self.player_cell[0] - self.boss_logic_cell[0], self.player_cell[1] - self.boss_logic_cell[1])
-                if delta != (0, 0):
-                    self.boss_facing = normalize_dir(delta)
-                cells = normal_scratch_directional(self.boss_logic_cell, self.boss_facing)
-                self._add_cast(cells, config.NORMAL_SCRATCH_WARNING_SECONDS, config.NORMAL_SCRATCH_DAMAGE_SECONDS, PATTERN_IDS["BASIC_SCRATCH"])
-                self.events.append(Event(PATTERN_IDS["GAP"], "gap", config.seconds_to_steps(config.NORMAL_SCRATCH_RECOVERY_SECONDS)))
-        elif token == "pattern_entry":
-            pass # TODO: Implement Full Boss Flow
+        self.director.expand_token(token)
+
+    def _create_gap_event(self, duration_sec):
+        return Event(PATTERN_IDS["GAP"], "gap", config.seconds_to_steps(duration_sec))
+
+    def get_warning_cells(self):
+        if self.current_event and self.current_event.kind == "warning":
+            return self.current_event.warning_cells
+        return []
+
+    def get_damage_cells(self):
+        if self.current_event and self.current_event.kind == "damage":
+            return self.current_event.damage_cells
+        return []
+        
+    def is_boss_visible(self):
+        return self.boss_visible_flag
 
     def _add_cast(self, cells, warning_sec, damage_sec, pattern_id, hide_boss=False):
         w_steps = config.seconds_to_steps(warning_sec)
         d_steps = config.seconds_to_steps(damage_sec)
         self.events.append(Event(pattern_id, "warning", w_steps, warning_cells=cells, future_damage_cells=cells, hide_boss_visible=hide_boss))
         self.events.append(Event(pattern_id, "damage", d_steps, damage_cells=cells, hide_boss_visible=hide_boss))
+
+    def _add_dash_cast(self, cells, warning_sec, damage_sec, pattern_id, explicit_start, explicit_end, hide_after=True):
+        w_steps = config.seconds_to_steps(warning_sec)
+        d_steps = config.seconds_to_steps(damage_sec)
+        
+        # During warning, boss stays wherever it was
+        self.events.append(Event(pattern_id, "warning", w_steps, warning_cells=cells, future_damage_cells=cells, hide_boss_visible=False))
+        
+        # During damage, boss teleports to explicit_start and its hurtbox spans the dash path cells
+        # At the end of damage, boss teleports to explicit_end and hides if hide_after=True
+        self.events.append(Event(
+            pattern_id, "damage", d_steps, damage_cells=cells, 
+            hide_boss_visible=False,
+            commit_start=explicit_start,
+            commit_end=explicit_end,
+            boss_dash_active=True,
+            dash_path_cells=cells,
+            hide_after=hide_after
+        ))

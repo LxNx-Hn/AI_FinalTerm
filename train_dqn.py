@@ -2,17 +2,23 @@ import argparse
 import os
 import json
 import torch
+import config
 from boss_env import BossEnv
 from state_encoder import encode_state_dqn
 from dqn_agent import DQNAgent
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--episodes", type=int, default=10000)
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--curriculum", action="store_true")
-    parser.add_argument("--device", type=str, default="auto")
+    parser.add_argument("--episodes", type=int, default=10000, help="Number of episodes to train")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed")
+    parser.add_argument("--curriculum", action="store_true", help="Use curriculum learning")
+    parser.add_argument("--randomized-patterns", action="store_true", help="Use full randomized boss patterns")
+    parser.add_argument("--device", type=str, default="auto", help="Device to run on (cpu, cuda, auto)")
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
+
+    config.SEED = args.seed
+    config.RANDOMIZE_BOSS_PATTERNS = args.randomized_patterns
 
     if args.device == "auto":
         device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -30,6 +36,11 @@ def main():
     epsilon_decay = (0.03)**(1.0/decay_steps)
     
     agent = DQNAgent(state_dim=state_dim, action_size=10, device=device, epsilon_decay=epsilon_decay)
+
+    if args.resume and os.path.exists("results/models/dqn_best.pth"):
+        print("Resuming from dqn_best.pth...")
+        agent.load("results/models/dqn_best.pth")
+        agent.epsilon = 0.05  # Reduced epsilon for resumed training
 
     os.makedirs("results/models", exist_ok=True)
     os.makedirs("results/logs", exist_ok=True)

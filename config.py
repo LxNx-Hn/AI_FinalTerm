@@ -12,6 +12,9 @@ BOSS_START_CELL = (0, 1)
 BOSS_START_FACING = (0, -1) # DOWN
 BOSS_MAX_HP = 60
 
+# Random Boss Patterns
+RANDOMIZE_BOSS_PATTERNS = False
+
 # Timings (converted to steps assuming some ticks per second)
 TICKS_PER_SECOND = 60 # Unity usually runs at 60fps, we define our MDP step rate. 
 # We'll run the MDP at 10 ticks per second (0.1s per step) to keep state space manageable, or 30?
@@ -34,7 +37,8 @@ BOSS_MOVE_ONE_CELL_STEPS = seconds_to_steps(BOSS_MOVE_ONE_CELL_SECONDS)
 NORMAL_SCRATCH_WARNING_SECONDS = 0.5
 NORMAL_SCRATCH_DAMAGE_SECONDS = 0.15
 NORMAL_SCRATCH_RECOVERY_SECONDS = 0.5
-
+PATTERN_ENTRY_WARNING_SECONDS = 0.70
+PATTERN_ENTRY_DAMAGE_SECONDS = 0.15
 PATTERN_STEP_GAP_SECONDS = 0.5
 
 # Boss Phases

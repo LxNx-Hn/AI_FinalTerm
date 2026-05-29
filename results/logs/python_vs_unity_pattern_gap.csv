@@ -1,0 +1,8 @@
+unity_pattern_id,unity_method_name,python_file,python_class_or_function,implemented,mismatch_type,unity_value,python_value,severity,fix_required,notes
+PATTERN_ENTRY_DASH,PatternEntryDash,boss_director.py,expand_token,full,none,Moves boss from Start to End,Moves boss from Start to End,fixed,no,Fixed in Python
+HOLLOW_CORNER,LandingSlam,boss_director.py,expand_token,full,none,Phase 3 or Final only,Phase 3 or Final only,fixed,no,Fixed in Python
+ADDITIONAL_1A,Additional1A,boss_director.py,expand_token,full,none,Up/Right/Down/Left Circle,Up/Right/Down/Left Circle,fixed,no,Fixed in Python
+PHASE1_FIRST_FIXED,Phase1FirstFixed,boss_director.py,expand_token,full,none,Diag_TR_BL -> Diag_TL_BR -> Add1,Diag_TR_BL -> Diag_TL_BR -> Add1,fixed,no,Fixed in Python
+PHASE2_FIRST_FIXED,Phase2FirstFixed,boss_director.py,expand_token,full,none,Sweep -> Phase2Plus(1B/N/Z),Sweep -> Phase2Plus(1B/N/Z),fixed,no,Fixed in Python
+MARK_DASH,MarkDash,boss_director.py,expand_token,full,none,Hides boss properly,Hides boss properly,fixed,no,Fixed in Python
+NORMAL_SCRATCH,NormalScratchDirectional,boss_patterns.py,normal_scratch_directional,full,none,3 cells straight,3 cells straight,fixed,no,Fixed in Python
