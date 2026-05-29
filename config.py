@@ -4,6 +4,10 @@
 ARENA_X_MIN, ARENA_X_MAX = -3, 3
 ARENA_Y_MIN, ARENA_Y_MAX = -4, 4
 
+# Boss Pattern Cast Bounds (Inside of Arena)
+PATTERN_X_MIN, PATTERN_X_MAX = -3, 3
+PATTERN_Y_MIN, PATTERN_Y_MAX = -3, 3
+
 PLAYER_START_CELL = (0, -3)
 PLAYER_START_FACING = (0, 1) # UP
 PLAYER_MAX_HP = 3
@@ -13,6 +17,8 @@ BOSS_START_FACING = (0, -1) # DOWN
 BOSS_MAX_HP = 60
 
 # Random Boss Patterns
+# If False, BossDirector will use a fixed seed per episode to generate deterministic pattern sequences.
+# If True, BossDirector will use varying seeds across episodes for generalized evaluation.
 RANDOMIZE_BOSS_PATTERNS = False
 
 # Timings (converted to steps assuming some ticks per second)

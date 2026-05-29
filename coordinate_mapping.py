@@ -1,5 +1,5 @@
 # coordinate_mapping.py
-from config import ARENA_X_MIN, ARENA_X_MAX, ARENA_Y_MIN, ARENA_Y_MAX
+from config import ARENA_X_MIN, ARENA_X_MAX, ARENA_Y_MIN, ARENA_Y_MAX, PATTERN_X_MIN, PATTERN_X_MAX, PATTERN_Y_MIN, PATTERN_Y_MAX
 
 def is_valid_cell(x: int, y: int) -> bool:
     return ARENA_X_MIN <= x <= ARENA_X_MAX and ARENA_Y_MIN <= y <= ARENA_Y_MAX

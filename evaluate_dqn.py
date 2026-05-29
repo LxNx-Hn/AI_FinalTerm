@@ -20,7 +20,10 @@ def main():
 
     import config
     config.SEED = args.seed
-    config.RANDOMIZE_BOSS_PATTERNS = args.randomize_boss_patterns or args.randomized_patterns
+    config.RANDOMIZE_BOSS_PATTERNS = getattr(args, 'randomize_boss_patterns', False) or getattr(args, 'randomized_patterns', False)
+    
+    if config.RANDOMIZE_BOSS_PATTERNS:
+        args.randomize_episode_seed = True
 
     if args.device == "auto":
         device = "cuda" if torch.cuda.is_available() else "cpu"

@@ -43,10 +43,14 @@ class Event:
 
 class BossEnv:
     def __init__(self, seed: Optional[int] = None):
-        self.rng = random.Random(config.SEED if seed is None else seed)
+        self.initial_seed = config.SEED if seed is None else seed
+        self.rng = random.Random(self.initial_seed)
         self.reset()
 
     def reset(self):
+        if not config.RANDOMIZE_BOSS_PATTERNS:
+            self.rng.seed(self.initial_seed)
+        
         self.step_count = 0
         self.player_cell = config.PLAYER_START_CELL
         self.player_facing = config.PLAYER_START_FACING
@@ -92,6 +96,15 @@ class BossEnv:
     def step(self, action_index: int):
         self._ensure_event()
         self._start_current_event()
+        
+        if self.current_event and self.current_event.kind == "damage" and self.current_event.boss_dash_active and self.current_event.commit_start and self.current_event.commit_end:
+            ev = self.current_event
+            dur = max(1, ev.duration)
+            progress = (dur - ev.remaining + 1) / dur
+            sx, sy = ev.commit_start
+            ex, ey = ev.commit_end
+            self.boss_logic_cell = (round(sx + (ex - sx) * progress), round(sy + (ey - sy) * progress))
+            self.boss_hurtbox_cells = [self.boss_logic_cell]
         
         boss_hp_before = self.boss_hp
         movement_input, attack_pressed = decode_action(action_index)
@@ -217,10 +230,9 @@ class BossEnv:
             if ev.commit_end is not None:
                 self.boss_logic_cell = ev.commit_end
                 
-            if ev.boss_dash_active and ev.dash_path_cells:
-                self.boss_hurtbox_cells = list(ev.dash_path_cells)
-            else:
-                self.boss_hurtbox_cells = [self.boss_logic_cell]
+            if ev.boss_dash_active and ev.commit_start is not None:
+                self.boss_logic_cell = ev.commit_start
+            self.boss_hurtbox_cells = [self.boss_logic_cell]
                 
             if ev.hide_boss_visible or ev.hide_after:
                 self.boss_visible_flag = False
@@ -228,6 +240,13 @@ class BossEnv:
             else:
                 self.boss_visible_flag = True
                 self.boss_visible_cell = self.boss_logic_cell
+
+        elif ev.kind == "move":
+            if ev.commit_end is not None:
+                self.boss_logic_cell = ev.commit_end
+            self.boss_hurtbox_cells = [self.boss_logic_cell]
+            self.boss_visible_flag = True
+            self.boss_visible_cell = self.boss_logic_cell
 
     def _expand_token(self, token: str):
         self.director.expand_token(token)

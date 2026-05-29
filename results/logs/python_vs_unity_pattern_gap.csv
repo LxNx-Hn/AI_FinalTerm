@@ -1,8 +1,11 @@
-unity_pattern_id,unity_method_name,python_file,python_class_or_function,implemented,mismatch_type,unity_value,python_value,severity,fix_required,notes
-PATTERN_ENTRY_DASH,PatternEntryDash,boss_director.py,expand_token,full,none,Moves boss from Start to End,Moves boss from Start to End,fixed,no,Fixed in Python
-HOLLOW_CORNER,LandingSlam,boss_director.py,expand_token,full,none,Phase 3 or Final only,Phase 3 or Final only,fixed,no,Fixed in Python
-ADDITIONAL_1A,Additional1A,boss_director.py,expand_token,full,none,Up/Right/Down/Left Circle,Up/Right/Down/Left Circle,fixed,no,Fixed in Python
-PHASE1_FIRST_FIXED,Phase1FirstFixed,boss_director.py,expand_token,full,none,Diag_TR_BL -> Diag_TL_BR -> Add1,Diag_TR_BL -> Diag_TL_BR -> Add1,fixed,no,Fixed in Python
-PHASE2_FIRST_FIXED,Phase2FirstFixed,boss_director.py,expand_token,full,none,Sweep -> Phase2Plus(1B/N/Z),Sweep -> Phase2Plus(1B/N/Z),fixed,no,Fixed in Python
-MARK_DASH,MarkDash,boss_director.py,expand_token,full,none,Hides boss properly,Hides boss properly,fixed,no,Fixed in Python
-NORMAL_SCRATCH,NormalScratchDirectional,boss_patterns.py,normal_scratch_directional,full,none,3 cells straight,3 cells straight,fixed,no,Fixed in Python
+unity_pattern_id,unity_method_name,python_file,python_class_or_function,status,severity,unity_source,python_source,verified_by_test,test_file,notes
+PATTERN_ENTRY_DASH,PatternEntryDash,boss_director.py,expand_token,resolved,blocking,BossPatternCaster.ForwardStripe3FromCell,forward_stripe3_from_cell,yes,test_pattern_entry_dash_path.py,Dash interpolation implemented
+HOLLOW_CORNER,LandingSlam,boss_director.py,expand_token,resolved,blocking,LandingSlamCoroutine,hollow_corner_5x5,yes,test_hollow_corner_pattern.py,Fixed to appear only in Phase 3+
+ADDITIONAL_1A,Additional1A,boss_director.py,expand_token,resolved,major,RunAdditionalByIndex(0),left_edge2 etc,yes,test_additional_1a_geometry.py,Fixed circle sequence
+PHASE1_FIRST_FIXED,Phase1FirstFixed,boss_director.py,expand_token,resolved,blocking,Phase1FirstFixed,phase1_first_fixed,yes,test_phase1_first_fixed_sequence.py,Sequence corrected
+PHASE2_FIRST_FIXED,Phase2FirstFixed,boss_director.py,expand_token,resolved,major,Phase2FirstFixed,phase2_first_fixed,yes,test_phase2_sequence.py,Candidate pool corrected
+MARK_DASH,MarkDash,boss_director.py,expand_token,resolved,major,RunAdditionalByIndex(5),mark_horizontal5,yes,test_mark_dash_visibility_hurtbox.py,Visibility synced
+NORMAL_SCRATCH,NormalScratchDirectional,boss_patterns.py,normal_scratch_directional,resolved,major,NormalScratchDirectional,normal_scratch_directional,yes,test_normal_scratch_range.py,Range set to 0~2
+DASH_HURTBOX,CastDashPattern,boss_env.py,_start_current_event,resolved,blocking,ElevatorBossController.DashBossAlongArenaLine,boss_logic_cell interpolation,yes,test_dash_hurtbox_current_cell_vs_full_path.py,Hurtbox limited to 1 cell progressing per tick
+ARENA_BOUNDS,BossPatternCaster.Inside,boss_patterns.py,directional_edge_cell,resolved,blocking,"x=-3~3, y=-3~3",PATTERN_BOUNDS,yes,test_movement_bounds_vs_pattern_bounds.py,Bounds separated from movement
+RANDOM_FLAG,ElevatorBossController,boss_director.py,reset,resolved,major,Random.Range / Random.value,rng.seed() logic,yes,test_randomized_patterns_flag_reaches_director.py,"Deterministic if False, varying if True"

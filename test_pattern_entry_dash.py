@@ -19,5 +19,5 @@ def test_pattern_entry_dash():
     assert first_event.pattern_id == boss_patterns.PATTERN_IDS["PATTERN_ENTRY_DASH"]
     assert first_event.kind == "warning"
     
-    # Left edge cells: x=-3 to -2, y=-4 to 4. Total 18 cells.
-    assert len(first_event.warning_cells) == 18
+    # Left edge cells: x=-3 to -2, y=-3 to 3 (PATTERN_Y_MIN to MAX). Total 14 cells.
+    assert len(first_event.warning_cells) == 14

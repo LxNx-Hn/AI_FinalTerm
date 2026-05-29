@@ -1,4 +1,4 @@
-﻿
+
 import pytest
 from boss_env import BossEnv, Event
 from boss_patterns import PATTERN_IDS
@@ -23,14 +23,15 @@ def test_boss_movement_during_dash():
     env.events.extend([ev_warn, ev_dmg])
     
     env.step(0) # Trigger Warning
-    assert env.boss_logic_cell == (0, 1) # warning �� boss_logic_cell
+    assert env.boss_logic_cell == (0, 1) # warning  boss_logic_cell
     
     env.step(0)
-    env.step(0) # Trigger Damage
+    env.step(0) # Trigger Damage tick 1 (remaining = 2 -> 1, progress = 0.5)
+    assert env.boss_logic_cell == (0, 2)
     
-    # damage/dash active �� boss_logic_cell ��ȭ
+    env.step(0) # Trigger Damage tick 2 (remaining = 1 -> 0, progress = 1.0)
     assert env.boss_logic_cell == end_cell
-    assert env.boss_hurtbox_cells == path
+    assert env.boss_hurtbox_cells == [end_cell]
     
     env.step(0)
     env.step(0) # End Damage

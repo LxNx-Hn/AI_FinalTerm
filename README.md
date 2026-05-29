@@ -1,6 +1,6 @@
 # CODE-BLUE Boss Speedrun RL (Clean Reconstruction)
 
-이 프로젝트는 `CODE-BLUE` 게임의 Boss01_Elevator 전투를 완벽하게 재현한 Python RL 환경을 기반으로 강화학습 에이전트를 훈련하는 프로젝트입니다. 이전 실험의 한계를 분석하고 극복하기 위해 원본 Unity 규칙을 한 치의 오차 없이 재현한 "클린 재구현" 버전입니다.
+이 프로젝트는 `CODE-BLUE` 게임의 Boss01_Elevator 전투를 한 Python RL 환경을 기반으로 강화학습 에이전트를 훈련하는 프로젝트입니다. 이전 실험의 한계를 분석하고 극복하기 위해 원본 Unity 규칙을 한 "클린 재구현" 버전입니다.
 
 ## 1. 이전 실험 결과와 재구현 사유
 
@@ -30,7 +30,7 @@
 
 ### 1.3 클린 재구현 목적 및 진짜 일반화 평가 (Full-Pattern Randomized Environment)
 - Unity 원본 게임의 코드(`ElevatorBossController.cs`)는 체력(70%, 40%, 10%)에 따라 복잡한 무작위 패턴(Hollow Corner, N/Z Stroke, Sweep, Mark Dash 등)을 구사합니다.
-- 이를 파이썬 `boss_env.py`에 100% 동일하게 이식(`boss_director.py` 도입)하고 매 에피소드마다 시드를 변경하며 Full-Pattern 진짜 일반화 평가를 메인으로 수행합니다.
+- 이를 파이썬 `boss_env.py`에 (`boss_director.py` 도입)하고 매 에피소드마다 시드를 변경하며 Full-Pattern 진짜 일반화 평가를 메인으로 수행합니다.
 - (진행 중) Random.Range / Random.value 분기를 포함한 최종 메인 평가를 준비하고 있습니다.
 
 ---
