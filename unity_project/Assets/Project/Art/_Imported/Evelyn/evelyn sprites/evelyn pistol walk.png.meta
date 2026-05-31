@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 8b72e817b59f1674ab8fc412a04ef402
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2722050795664957642
+    second: evelyn pistol walk_0
+  - first:
+      213: -2176781677618928534
+    second: evelyn pistol walk_1
+  - first:
+      213: -6566263313975933218
+    second: evelyn pistol walk_2
+  - first:
+      213: -3183289476125009207
+    second: evelyn pistol walk_3
+  - first:
+      213: 7573573608765505960
+    second: evelyn pistol walk_4
+  - first:
+      213: 4722410141367567956
+    second: evelyn pistol walk_5
+  - first:
+      213: -7371703390916419782
+    second: evelyn pistol walk_6
+  - first:
+      213: -674459136329792734
+    second: evelyn pistol walk_7
+  - first:
+      213: 2929033324626397620
+    second: evelyn pistol walk_8
+  - first:
+      213: -4577048721465581569
+    second: evelyn pistol walk_9
+  - first:
+      213: -7311447568188202084
+    second: evelyn pistol walk_10
+  - first:
+      213: -8099053337287701849
+    second: evelyn pistol walk_11
+  - first:
+      213: 4403161922581975280
+    second: evelyn pistol walk_12
+  - first:
+      213: 2202543168545814085
+    second: evelyn pistol walk_13
+  - first:
+      213: 8914672081058420621
+    second: evelyn pistol walk_14
+  - first:
+      213: 1671140829238966069
+    second: evelyn pistol walk_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: evelyn pistol walk_0
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 4008
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac0ed20d6caa6c520800000000000000
+      internalID: 2722050795664957642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_1
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 4008
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64e1f7e8948ac1e0800000000000000
+      internalID: -2176781677618928534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_2
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 4008
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed609c43e42ffd4a0800000000000000
+      internalID: -6566263313975933218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_3
+      rect:
+        serializedVersion: 2
+        x: 4065
+        y: 4008
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca5456561fa2d3d0800000000000000
+      internalID: -3183289476125009207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_4
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 2811
+        width: 496
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a1cdb6121dba1960800000000000000
+      internalID: 7573573608765505960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_5
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 2811
+        width: 496
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4568aefc00f598140800000000000000
+      internalID: 4722410141367567956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_6
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 2811
+        width: 496
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3f52eaa2d272b990800000000000000
+      internalID: -7371703390916419782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_7
+      rect:
+        serializedVersion: 2
+        x: 4065
+        y: 2811
+        width: 496
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 223cb8b2df6d3a6f0800000000000000
+      internalID: -674459136329792734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_8
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1576
+        width: 420
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b943a14a4406a820800000000000000
+      internalID: 2929033324626397620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_9
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 1557
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fff5365207e0b70c0800000000000000
+      internalID: -4577048721465581569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_10
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 1576
+        width: 420
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c93af38ac25888a90800000000000000
+      internalID: -7311447568188202084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_11
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 1557
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aa460e76e16a9f80800000000000000
+      internalID: -8099053337287701849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_12
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 360
+        width: 420
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0560c807c2b1d30800000000000000
+      internalID: 4403161922581975280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_13
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 341
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 546f2ab9751019e10800000000000000
+      internalID: 2202543168545814085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_14
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 360
+        width: 420
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d875498960747bb70800000000000000
+      internalID: 8914672081058420621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol walk_15
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 341
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 537b078eab5113710800000000000000
+      internalID: 1671140829238966069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      evelyn pistol walk_0: 2722050795664957642
+      evelyn pistol walk_1: -2176781677618928534
+      evelyn pistol walk_10: -7311447568188202084
+      evelyn pistol walk_11: -8099053337287701849
+      evelyn pistol walk_12: 4403161922581975280
+      evelyn pistol walk_13: 2202543168545814085
+      evelyn pistol walk_14: 8914672081058420621
+      evelyn pistol walk_15: 1671140829238966069
+      evelyn pistol walk_2: -6566263313975933218
+      evelyn pistol walk_3: -3183289476125009207
+      evelyn pistol walk_4: 7573573608765505960
+      evelyn pistol walk_5: 4722410141367567956
+      evelyn pistol walk_6: -7371703390916419782
+      evelyn pistol walk_7: -674459136329792734
+      evelyn pistol walk_8: 2929033324626397620
+      evelyn pistol walk_9: -4577048721465581569
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

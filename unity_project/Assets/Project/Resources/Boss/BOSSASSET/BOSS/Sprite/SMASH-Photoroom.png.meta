@@ -1,0 +1,410 @@
+fileFormatVersion: 2
+guid: af22af66482a4ad42990571eb1bf29a7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4675542768215269525
+    second: SMASH-Photoroom_0
+  - first:
+      213: 3824458730670067982
+    second: SMASH-Photoroom_1
+  - first:
+      213: -8909148302168201433
+    second: SMASH-Photoroom_2
+  - first:
+      213: 1517771278603226583
+    second: SMASH-Photoroom_3
+  - first:
+      213: 6356150706437251868
+    second: SMASH-Photoroom_4
+  - first:
+      213: -1715530923123572368
+    second: SMASH-Photoroom_5
+  - first:
+      213: 7759317956821233651
+    second: SMASH-Photoroom_6
+  - first:
+      213: -704583296310694709
+    second: SMASH-Photoroom_7
+  - first:
+      213: 909946425826553719
+    second: SMASH-Photoroom_8
+  - first:
+      213: 8960646513407732616
+    second: SMASH-Photoroom_9
+  - first:
+      213: -4550978464322282010
+    second: SMASH-Photoroom_10
+  - first:
+      213: 4113114699976846071
+    second: SMASH-Photoroom_11
+  - first:
+      213: -5755467171373003249
+    second: SMASH-Photoroom_12
+  - first:
+      213: 75551474609478871
+    second: SMASH-Photoroom_13
+  - first:
+      213: 826211866124353702
+    second: SMASH-Photoroom_14
+  - first:
+      213: -5371235306046911999
+    second: SMASH-Photoroom_15
+  - first:
+      213: -3821397742579858035
+    second: SMASH-Photoroom_16
+  - first:
+      213: -3347186486398072855
+    second: SMASH-Photoroom_17
+  - first:
+      213: -5761674381202848654
+    second: SMASH-Photoroom_18
+  - first:
+      213: -1309964531580396414
+    second: SMASH-Photoroom_19
+  - first:
+      213: 1500183291151393738
+    second: SMASH-Photoroom_20
+  - first:
+      213: 57855152525543176
+    second: SMASH-Photoroom_21
+  - first:
+      213: -4363430244592738131
+    second: SMASH-Photoroom_22
+  - first:
+      213: 4833645747987271573
+    second: SMASH-Photoroom_23
+  - first:
+      213: 8583133991460220810
+    second: SMASH-Photoroom_24
+  - first:
+      213: -2131812320266969980
+    second: SMASH-Photoroom_25
+  - first:
+      213: -156271395175061662
+    second: SMASH-Photoroom_26
+  - first:
+      213: -7847541924579607266
+    second: SMASH-Photoroom_27
+  - first:
+      213: -7266928391751477536
+    second: SMASH-Photoroom_28
+  - first:
+      213: -6756600336884095309
+    second: SMASH-Photoroom_29
+  - first:
+      213: -7967715889111943188
+    second: SMASH-Photoroom_30
+  - first:
+      213: -3797667422517894854
+    second: SMASH-Photoroom_31
+  - first:
+      213: -4546169240389142180
+    second: SMASH-Photoroom_32
+  - first:
+      213: -6809155110138469946
+    second: SMASH-Photoroom_33
+  - first:
+      213: -7874528575056950826
+    second: SMASH-Photoroom_34
+  - first:
+      213: 3595269352229796591
+    second: SMASH-Photoroom_35
+  - first:
+      213: -2472404898077565296
+    second: SMASH-Photoroom_36
+  - first:
+      213: 6402918606820415049
+    second: SMASH-Photoroom_37
+  - first:
+      213: -3602176418302786508
+    second: SMASH-Photoroom_38
+  - first:
+      213: 9106772206918718161
+    second: SMASH-Photoroom_39
+  - first:
+      213: -1586974252810794204
+    second: SMASH-Photoroom_40
+  - first:
+      213: -7842931629479773789
+    second: SMASH-Photoroom_41
+  - first:
+      213: -271837679565505407
+    second: SMASH-Photoroom_42
+  - first:
+      213: -6259947593753853441
+    second: SMASH-Photoroom_43
+  - first:
+      213: -842259805052298671
+    second: SMASH-Photoroom_44
+  - first:
+      213: -7406955197841415160
+    second: SMASH-Photoroom_45
+  - first:
+      213: -2872408586627363473
+    second: SMASH-Photoroom_46
+  - first:
+      213: 1766535253729942579
+    second: SMASH-Photoroom_47
+  - first:
+      213: -5764712969137027394
+    second: SMASH-Photoroom_48
+  - first:
+      213: 7669314863357112055
+    second: SMASH-Photoroom_49
+  - first:
+      213: -8711168931738894176
+    second: SMASH-Photoroom_50
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SMASH-Photoroom_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 400
+        height: 400
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6fd168df922d1fb0800000000000000
+      internalID: -4675542768215269525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SMASH-Photoroom_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 400
+        height: 400
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e011bb3e3f4331530800000000000000
+      internalID: 3824458730670067982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SMASH-Photoroom_2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 400
+        height: 400
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7276df562d85c5480800000000000000
+      internalID: -8909148302168201433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SMASH-Photoroom_3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 400
+        height: 400
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dd8f67bfe4301510800000000000000
+      internalID: 1517771278603226583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SMASH-Photoroom_4
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 400
+        height: 400
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c136a042465953850800000000000000
+      internalID: 6356150706437251868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SMASH-Photoroom_5
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 400
+        height: 400
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cea2190dd4eabc14dbe29304e0b33175
+      internalID: -1715530923123572368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 22699a99899ae9b4dbb59350afb348e8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":400.0,"y":400.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      SMASH-Photoroom_0: -4675542768215269525
+      SMASH-Photoroom_1: 3824458730670067982
+      SMASH-Photoroom_2: -8909148302168201433
+      SMASH-Photoroom_3: 1517771278603226583
+      SMASH-Photoroom_4: 6356150706437251868
+      SMASH-Photoroom_5: -1715530923123572368
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

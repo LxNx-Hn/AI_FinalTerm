@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: 1c48df3b94f6cb948a76f13cbd60c82d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 521474540064746378
+    second: banshee - attack (no hitbox)_0
+  - first:
+      213: 5800755339709535113
+    second: banshee - attack (no hitbox)_1
+  - first:
+      213: 8538829635701684216
+    second: banshee - attack (no hitbox)_2
+  - first:
+      213: 5351213256047543717
+    second: banshee - attack (no hitbox)_3
+  - first:
+      213: -5270468344992362279
+    second: banshee - attack (no hitbox)_4
+  - first:
+      213: 7781364130553282616
+    second: banshee - attack (no hitbox)_5
+  - first:
+      213: -8553720754941022765
+    second: banshee - attack (no hitbox)_6
+  - first:
+      213: 5423076504277568764
+    second: banshee - attack (no hitbox)_7
+  - first:
+      213: 7772735079523162660
+    second: banshee - attack (no hitbox)_8
+  - first:
+      213: -7606032786776378100
+    second: banshee - attack (no hitbox)_9
+  - first:
+      213: -4472296640684577487
+    second: banshee - attack (no hitbox)_10
+  - first:
+      213: 6022757967793046787
+    second: banshee - attack (no hitbox)_11
+  - first:
+      213: 1165062104644790626
+    second: banshee - attack (no hitbox)_12
+  - first:
+      213: -6582374387002936720
+    second: banshee - attack (no hitbox)_13
+  - first:
+      213: 5114441115797377593
+    second: banshee - attack (no hitbox)_14
+  - first:
+      213: 5763871073948105462
+    second: banshee - attack (no hitbox)_15
+  - first:
+      213: -3301485650517626674
+    second: banshee - attack (no hitbox)_16
+  - first:
+      213: -1169763098120118349
+    second: banshee - attack (no hitbox)_17
+  - first:
+      213: -1850563804978853307
+    second: banshee - attack (no hitbox)_18
+  - first:
+      213: 3679325930747611584
+    second: banshee - attack (no hitbox)_19
+  - first:
+      213: -7580259467024462549
+    second: banshee - attack (no hitbox)_20
+  - first:
+      213: -5051338856319046820
+    second: banshee - attack (no hitbox)_21
+  - first:
+      213: 2967244152386984319
+    second: banshee - attack (no hitbox)_22
+  - first:
+      213: 1842317580427700662
+    second: banshee - attack (no hitbox)_23
+  - first:
+      213: -3025917333559071253
+    second: banshee - attack (no hitbox)_24
+  - first:
+      213: 2160491922592030476
+    second: banshee - attack (no hitbox)_25
+  - first:
+      213: -5286546741183160298
+    second: banshee - attack (no hitbox)_26
+  - first:
+      213: 5718259196196440690
+    second: banshee - attack (no hitbox)_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 505
+        width: 62
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8b28ffc456ac3700800000000000000
+      internalID: 521474540064746378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_1
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 505
+        width: 56
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 983565c6f3c608050800000000000000
+      internalID: 5800755339709535113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_2
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 505
+        width: 56
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f7b3912054008670800000000000000
+      internalID: 8538829635701684216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_3
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 505
+        width: 62
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a5431cba14534a40800000000000000
+      internalID: 5351213256047543717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_4
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 505
+        width: 62
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d01ac0e6f88bd6b0800000000000000
+      internalID: -5270468344992362279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_5
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 505
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83048950375fcfb60800000000000000
+      internalID: 7781364130553282616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_6
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 345
+        width: 62
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ddaaddfa441b4980800000000000000
+      internalID: -8553720754941022765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_7
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 345
+        width: 64
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfc4b331953a24b40800000000000000
+      internalID: 5423076504277568764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_8
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 345
+        width: 64
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42a12348f5d4edb60800000000000000
+      internalID: 7772735079523162660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_9
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 367
+        width: 80
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05383a9a71f17690800000000000000
+      internalID: -7606032786776378100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_10
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 369
+        width: 80
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13da2d986e53fe1c0800000000000000
+      internalID: -4472296640684577487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_11
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 345
+        width: 66
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30545763672259350800000000000000
+      internalID: 6022757967793046787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_12
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 345
+        width: 46
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2692f98bfc12b2010800000000000000
+      internalID: 1165062104644790626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_13
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 345
+        width: 46
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0727f04be55b6a4a0800000000000000
+      internalID: -6582374387002936720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_14
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 185
+        width: 62
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93251cbe8152af640800000000000000
+      internalID: 5114441115797377593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_15
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 185
+        width: 64
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa73d514326dff40800000000000000
+      internalID: 5763871073948105462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_16
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 185
+        width: 64
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec0f8d9fa44ce22d0800000000000000
+      internalID: -3301485650517626674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_17
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 207
+        width: 80
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf9031f8aa24cfe0800000000000000
+      internalID: -1169763098120118349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_18
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 209
+        width: 80
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54a4a0a260a7156e0800000000000000
+      internalID: -1850563804978853307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_19
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 185
+        width: 66
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c9481ba0779f0330800000000000000
+      internalID: 3679325930747611584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_20
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 185
+        width: 46
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d07ba3d228dc690800000000000000
+      internalID: -7580259467024462549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_21
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 185
+        width: 46
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5ba9f4c21a06e9b0800000000000000
+      internalID: -5051338856319046820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_22
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 25
+        width: 62
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7991e0e5d4cd2920800000000000000
+      internalID: 2967244152386984319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_23
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 25
+        width: 62
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b9a9d0141a319910800000000000000
+      internalID: 1842317580427700662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_24
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 25
+        width: 62
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beda3859738c106d0800000000000000
+      internalID: -3025917333559071253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_25
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 25
+        width: 54
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0fd232f4fb9bfd10800000000000000
+      internalID: 2160491922592030476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_26
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 25
+        width: 54
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 610674b8fb962a6b0800000000000000
+      internalID: -5286546741183160298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - attack (no hitbox)_27
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 25
+        width: 58
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a46ea31765b5f40800000000000000
+      internalID: 5718259196196440690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      banshee - attack (no hitbox)_0: 521474540064746378
+      banshee - attack (no hitbox)_1: 5800755339709535113
+      banshee - attack (no hitbox)_10: -4472296640684577487
+      banshee - attack (no hitbox)_11: 6022757967793046787
+      banshee - attack (no hitbox)_12: 1165062104644790626
+      banshee - attack (no hitbox)_13: -6582374387002936720
+      banshee - attack (no hitbox)_14: 5114441115797377593
+      banshee - attack (no hitbox)_15: 5763871073948105462
+      banshee - attack (no hitbox)_16: -3301485650517626674
+      banshee - attack (no hitbox)_17: -1169763098120118349
+      banshee - attack (no hitbox)_18: -1850563804978853307
+      banshee - attack (no hitbox)_19: 3679325930747611584
+      banshee - attack (no hitbox)_2: 8538829635701684216
+      banshee - attack (no hitbox)_20: -7580259467024462549
+      banshee - attack (no hitbox)_21: -5051338856319046820
+      banshee - attack (no hitbox)_22: 2967244152386984319
+      banshee - attack (no hitbox)_23: 1842317580427700662
+      banshee - attack (no hitbox)_24: -3025917333559071253
+      banshee - attack (no hitbox)_25: 2160491922592030476
+      banshee - attack (no hitbox)_26: -5286546741183160298
+      banshee - attack (no hitbox)_27: 5718259196196440690
+      banshee - attack (no hitbox)_3: 5351213256047543717
+      banshee - attack (no hitbox)_4: -5270468344992362279
+      banshee - attack (no hitbox)_5: 7781364130553282616
+      banshee - attack (no hitbox)_6: -8553720754941022765
+      banshee - attack (no hitbox)_7: 5423076504277568764
+      banshee - attack (no hitbox)_8: 7772735079523162660
+      banshee - attack (no hitbox)_9: -7606032786776378100
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

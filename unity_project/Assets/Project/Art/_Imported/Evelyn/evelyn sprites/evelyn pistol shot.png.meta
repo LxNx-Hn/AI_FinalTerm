@@ -1,0 +1,2925 @@
+fileFormatVersion: 2
+guid: 2eb24766dcaacfb418209431ea154752
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3109895957735392337
+    second: evelyn pistol shot_0
+  - first:
+      213: -9117610862128568761
+    second: evelyn pistol shot_1
+  - first:
+      213: -2885491590112747246
+    second: evelyn pistol shot_2
+  - first:
+      213: -7356517499978303967
+    second: evelyn pistol shot_3
+  - first:
+      213: 892789126007174864
+    second: evelyn pistol shot_4
+  - first:
+      213: -986878368975976319
+    second: evelyn pistol shot_5
+  - first:
+      213: 52999984254016920
+    second: evelyn pistol shot_6
+  - first:
+      213: -5522642649745872074
+    second: evelyn pistol shot_7
+  - first:
+      213: 4883477120962099785
+    second: evelyn pistol shot_8
+  - first:
+      213: -4779394268802003211
+    second: evelyn pistol shot_9
+  - first:
+      213: -1070992076354415922
+    second: evelyn pistol shot_10
+  - first:
+      213: 9026180798312848896
+    second: evelyn pistol shot_11
+  - first:
+      213: -144917456771701466
+    second: evelyn pistol shot_12
+  - first:
+      213: -4904096346807536810
+    second: evelyn pistol shot_13
+  - first:
+      213: -3363803356611712948
+    second: evelyn pistol shot_14
+  - first:
+      213: 5006798846953482822
+    second: evelyn pistol shot_15
+  - first:
+      213: -3034833860925859241
+    second: evelyn pistol shot_16
+  - first:
+      213: -2782864665886804653
+    second: evelyn pistol shot_17
+  - first:
+      213: -3021515514067778244
+    second: evelyn pistol shot_18
+  - first:
+      213: -6380735108447273988
+    second: evelyn pistol shot_19
+  - first:
+      213: -2865523529343681188
+    second: evelyn pistol shot_20
+  - first:
+      213: -3515034081503417291
+    second: evelyn pistol shot_21
+  - first:
+      213: 2685172865283339180
+    second: evelyn pistol shot_22
+  - first:
+      213: 2495634920714711880
+    second: evelyn pistol shot_23
+  - first:
+      213: 5851938737292470698
+    second: evelyn pistol shot_24
+  - first:
+      213: -4028958811703052387
+    second: evelyn pistol shot_25
+  - first:
+      213: 8672554233199542237
+    second: evelyn pistol shot_26
+  - first:
+      213: 5902482793191215375
+    second: evelyn pistol shot_27
+  - first:
+      213: 4646543256539389476
+    second: evelyn pistol shot_28
+  - first:
+      213: -3758603497116842012
+    second: evelyn pistol shot_29
+  - first:
+      213: -297798605929723311
+    second: evelyn pistol shot_30
+  - first:
+      213: 8175619866081368516
+    second: evelyn pistol shot_31
+  - first:
+      213: -857283795734525725
+    second: evelyn pistol shot_32
+  - first:
+      213: -5765095543918909827
+    second: evelyn pistol shot_33
+  - first:
+      213: 5119844454650589950
+    second: evelyn pistol shot_34
+  - first:
+      213: 2612529856193709130
+    second: evelyn pistol shot_35
+  - first:
+      213: -555031464695609699
+    second: evelyn pistol shot_36
+  - first:
+      213: -1037641769543950853
+    second: evelyn pistol shot_37
+  - first:
+      213: -7803924610034608636
+    second: evelyn pistol shot_38
+  - first:
+      213: -2081998874503699044
+    second: evelyn pistol shot_39
+  - first:
+      213: -4264991737450487695
+    second: evelyn pistol shot_40
+  - first:
+      213: -8416122687118597699
+    second: evelyn pistol shot_41
+  - first:
+      213: 5447498805525592850
+    second: evelyn pistol shot_42
+  - first:
+      213: 5384212458508922093
+    second: evelyn pistol shot_43
+  - first:
+      213: -6696887936750017539
+    second: evelyn pistol shot_44
+  - first:
+      213: -6745790073639864974
+    second: evelyn pistol shot_45
+  - first:
+      213: 8398026087028730561
+    second: evelyn pistol shot_46
+  - first:
+      213: -8561194971319855080
+    second: evelyn pistol shot_47
+  - first:
+      213: -6888621381183092296
+    second: evelyn pistol shot_48
+  - first:
+      213: 6527561119802363881
+    second: evelyn pistol shot_49
+  - first:
+      213: -8749620332327393354
+    second: evelyn pistol shot_50
+  - first:
+      213: 3358752006999777494
+    second: evelyn pistol shot_51
+  - first:
+      213: -2089062881466647748
+    second: evelyn pistol shot_52
+  - first:
+      213: 9149947790447503579
+    second: evelyn pistol shot_53
+  - first:
+      213: -5763050970484237350
+    second: evelyn pistol shot_54
+  - first:
+      213: -5755139514312984245
+    second: evelyn pistol shot_55
+  - first:
+      213: 2096638856358627764
+    second: evelyn pistol shot_56
+  - first:
+      213: 4108775008768507730
+    second: evelyn pistol shot_57
+  - first:
+      213: 4044615940208934882
+    second: evelyn pistol shot_58
+  - first:
+      213: 8461881296979487839
+    second: evelyn pistol shot_59
+  - first:
+      213: -4592125686006665778
+    second: evelyn pistol shot_60
+  - first:
+      213: 857075204344628761
+    second: evelyn pistol shot_61
+  - first:
+      213: 1735824979352277565
+    second: evelyn pistol shot_62
+  - first:
+      213: -3023434401682793782
+    second: evelyn pistol shot_63
+  - first:
+      213: -1833330243240181180
+    second: evelyn pistol shot_64
+  - first:
+      213: -1426890724880765026
+    second: evelyn pistol shot_65
+  - first:
+      213: -1014989009909537283
+    second: evelyn pistol shot_66
+  - first:
+      213: 4307855922775052244
+    second: evelyn pistol shot_67
+  - first:
+      213: 5402343081807308322
+    second: evelyn pistol shot_68
+  - first:
+      213: -8658640527797251872
+    second: evelyn pistol shot_69
+  - first:
+      213: 1283297108878937225
+    second: evelyn pistol shot_70
+  - first:
+      213: -8099987977030322251
+    second: evelyn pistol shot_71
+  - first:
+      213: 3704781638784014426
+    second: evelyn pistol shot_72
+  - first:
+      213: 2975819314826813474
+    second: evelyn pistol shot_73
+  - first:
+      213: 8723765683438714172
+    second: evelyn pistol shot_74
+  - first:
+      213: 6904074068911975759
+    second: evelyn pistol shot_75
+  - first:
+      213: -7764982445059677060
+    second: evelyn pistol shot_76
+  - first:
+      213: -4990914464081575392
+    second: evelyn pistol shot_77
+  - first:
+      213: 8994385113028671549
+    second: evelyn pistol shot_78
+  - first:
+      213: 1463460739155088102
+    second: evelyn pistol shot_79
+  - first:
+      213: 4048258150332844368
+    second: evelyn pistol shot_80
+  - first:
+      213: 189267303665835327
+    second: evelyn pistol shot_81
+  - first:
+      213: -2215317091223412505
+    second: evelyn pistol shot_82
+  - first:
+      213: 3438803866399565905
+    second: evelyn pistol shot_83
+  - first:
+      213: 5027582619337370005
+    second: evelyn pistol shot_84
+  - first:
+      213: -8247362889060151623
+    second: evelyn pistol shot_85
+  - first:
+      213: 7596096513334417733
+    second: evelyn pistol shot_86
+  - first:
+      213: -7367116007906119782
+    second: evelyn pistol shot_87
+  - first:
+      213: 6624567101301739700
+    second: evelyn pistol shot_88
+  - first:
+      213: -6819956293195169432
+    second: evelyn pistol shot_89
+  - first:
+      213: 8188529772728890157
+    second: evelyn pistol shot_90
+  - first:
+      213: -3515408481533152038
+    second: evelyn pistol shot_91
+  - first:
+      213: -4264322832018740110
+    second: evelyn pistol shot_92
+  - first:
+      213: -8757677194221721625
+    second: evelyn pistol shot_93
+  - first:
+      213: -3251141234228615708
+    second: evelyn pistol shot_94
+  - first:
+      213: -5730347817849987169
+    second: evelyn pistol shot_95
+  - first:
+      213: 1162051868877251559
+    second: evelyn pistol shot_96
+  - first:
+      213: 3536417648347542620
+    second: evelyn pistol shot_97
+  - first:
+      213: -7629170729643720507
+    second: evelyn pistol shot_98
+  - first:
+      213: -2922449941351835992
+    second: evelyn pistol shot_99
+  - first:
+      213: 1522852634051738394
+    second: evelyn pistol shot_100
+  - first:
+      213: 7785410892090885568
+    second: evelyn pistol shot_101
+  - first:
+      213: 4984296282554512097
+    second: evelyn pistol shot_102
+  - first:
+      213: 287572796308767234
+    second: evelyn pistol shot_103
+  - first:
+      213: -7417384711531393640
+    second: evelyn pistol shot_104
+  - first:
+      213: 8513928433049468197
+    second: evelyn pistol shot_105
+  - first:
+      213: 8943063290439620260
+    second: evelyn pistol shot_106
+  - first:
+      213: 8477804746104847416
+    second: evelyn pistol shot_107
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: evelyn pistol shot_0
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 4008
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 154cd3985e1982b20800000000000000
+      internalID: 3109895957735392337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_1
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 4426
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74665926a3db77180800000000000000
+      internalID: -9117610862128568761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_2
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 4008
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 211e3f0dfaca4f7d0800000000000000
+      internalID: -2885491590112747246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_3
+      rect:
+        serializedVersion: 2
+        x: 2298
+        y: 4426
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12639dd6f4668e990800000000000000
+      internalID: -7356517499978303967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_4
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 4008
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d63dfadaf2d36c00800000000000000
+      internalID: 892789126007174864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_5
+      rect:
+        serializedVersion: 2
+        x: 3514
+        y: 4426
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1888ba42a57ed42f0800000000000000
+      internalID: -986878368975976319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_6
+      rect:
+        serializedVersion: 2
+        x: 4065
+        y: 4008
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89ddf82743b4cb000800000000000000
+      internalID: 52999984254016920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_7
+      rect:
+        serializedVersion: 2
+        x: 4730
+        y: 4426
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63ba97035c1ab53b0800000000000000
+      internalID: -5522642649745872074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_8
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 4236
+        width: 78
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94a71b7519895c340800000000000000
+      internalID: 4883477120962099785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_9
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 4369
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fec48e1c3e2cadb0800000000000000
+      internalID: -4779394268802003211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_10
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 4236
+        width: 78
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec213a381621321f0800000000000000
+      internalID: -1070992076354415922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_11
+      rect:
+        serializedVersion: 2
+        x: 2279
+        y: 4369
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00e93e10d9f634d70800000000000000
+      internalID: 9026180798312848896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_12
+      rect:
+        serializedVersion: 2
+        x: 3400
+        y: 4236
+        width: 78
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 625ae5347562dfdf0800000000000000
+      internalID: -144917456771701466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_13
+      rect:
+        serializedVersion: 2
+        x: 3495
+        y: 4369
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 653fe380b5621fbb0800000000000000
+      internalID: -4904096346807536810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_14
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 4236
+        width: 78
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4864ea5bae5151d0800000000000000
+      internalID: -3363803356611712948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_15
+      rect:
+        serializedVersion: 2
+        x: 4711
+        y: 4369
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64a6f7e2609bb7540800000000000000
+      internalID: 5006798846953482822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_16
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 4293
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75adf27ceaa12e5d0800000000000000
+      internalID: -3034833860925859241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_17
+      rect:
+        serializedVersion: 2
+        x: 2298
+        y: 4293
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 355b4d3a4574169d0800000000000000
+      internalID: -2782864665886804653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_18
+      rect:
+        serializedVersion: 2
+        x: 3514
+        y: 4293
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3588ac06ab6116d0800000000000000
+      internalID: -3021515514067778244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_19
+      rect:
+        serializedVersion: 2
+        x: 4730
+        y: 4293
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfbf227b9331377a0800000000000000
+      internalID: -6380735108447273988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_20
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 4236
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5d32f1488d9b38d0800000000000000
+      internalID: -2865523529343681188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_21
+      rect:
+        serializedVersion: 2
+        x: 2355
+        y: 4236
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53ce8965027183fc0800000000000000
+      internalID: -3515034081503417291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_22
+      rect:
+        serializedVersion: 2
+        x: 3571
+        y: 4236
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca33bbb8e76a34520800000000000000
+      internalID: 2685172865283339180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_23
+      rect:
+        serializedVersion: 2
+        x: 4787
+        y: 4236
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 843b24aecb642a220800000000000000
+      internalID: 2495634920714711880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_24
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa96aa3d643463150800000000000000
+      internalID: 5851938737292470698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_25
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9772cd9e434618c0800000000000000
+      internalID: -4028958811703052387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_26
+      rect:
+        serializedVersion: 2
+        x: 2222
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddf3b2d302a1b5870800000000000000
+      internalID: 8672554233199542237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_27
+      rect:
+        serializedVersion: 2
+        x: 2298
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f019405e3d4d9e150800000000000000
+      internalID: 5902482793191215375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_28
+      rect:
+        serializedVersion: 2
+        x: 3438
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42e548f2976db7040800000000000000
+      internalID: 4646543256539389476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_29
+      rect:
+        serializedVersion: 2
+        x: 3514
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e74fc68802c6dbc0800000000000000
+      internalID: -3758603497116842012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_30
+      rect:
+        serializedVersion: 2
+        x: 4654
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15ac3f6eeb10edbf0800000000000000
+      internalID: -297798605929723311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_31
+      rect:
+        serializedVersion: 2
+        x: 4730
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c91860b3f2a57170800000000000000
+      internalID: 8175619866081368516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_32
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 2811
+        width: 553
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e88b8b0ee05a14f0800000000000000
+      internalID: -857283795734525725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_33
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 3400
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d76a688c5244effa0800000000000000
+      internalID: -5765095543918909827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_34
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 2811
+        width: 553
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef2b3b8c7675d0740800000000000000
+      internalID: 5119844454650589950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_35
+      rect:
+        serializedVersion: 2
+        x: 2222
+        y: 3400
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a44478bff02914420800000000000000
+      internalID: 2612529856193709130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_36
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 2811
+        width: 553
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9647a3d2d12c48f0800000000000000
+      internalID: -555031464695609699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_37
+      rect:
+        serializedVersion: 2
+        x: 3438
+        y: 3400
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfd993aee4e8991f0800000000000000
+      internalID: -1037641769543950853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_38
+      rect:
+        serializedVersion: 2
+        x: 4065
+        y: 2811
+        width: 553
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40655f40ae3e2b390800000000000000
+      internalID: -7803924610034608636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_39
+      rect:
+        serializedVersion: 2
+        x: 4654
+        y: 3400
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c95a176fd014b13e0800000000000000
+      internalID: -2081998874503699044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_40
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 3343
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 170a9479c94bfc4c0800000000000000
+      internalID: -4264991737450487695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_41
+      rect:
+        serializedVersion: 2
+        x: 2203
+        y: 3343
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db1a030b10de33b80800000000000000
+      internalID: -8416122687118597699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_42
+      rect:
+        serializedVersion: 2
+        x: 3419
+        y: 3343
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21bb7b13d47699b40800000000000000
+      internalID: 5447498805525592850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_43
+      rect:
+        serializedVersion: 2
+        x: 4635
+        y: 3343
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dec28a844b098ba40800000000000000
+      internalID: 5384212458508922093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_44
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 3267
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df3aa6537efdf03a0800000000000000
+      internalID: -6696887936750017539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_45
+      rect:
+        serializedVersion: 2
+        x: 2222
+        y: 3267
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 275f6533ba32262a0800000000000000
+      internalID: -6745790073639864974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_46
+      rect:
+        serializedVersion: 2
+        x: 3438
+        y: 3267
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1caafc34b38cb8470800000000000000
+      internalID: 8398026087028730561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_47
+      rect:
+        serializedVersion: 2
+        x: 4654
+        y: 3267
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8189e916886803980800000000000000
+      internalID: -8561194971319855080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_48
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 3210
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b9cb6ee953b660a0800000000000000
+      internalID: -6888621381183092296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_49
+      rect:
+        serializedVersion: 2
+        x: 2279
+        y: 3210
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ef8873014e869a50800000000000000
+      internalID: 6527561119802363881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_50
+      rect:
+        serializedVersion: 2
+        x: 3495
+        y: 3210
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b7271c4aaa139680800000000000000
+      internalID: -8749620332327393354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_51
+      rect:
+        serializedVersion: 2
+        x: 4711
+        y: 3210
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d02ad9a72fac9e20800000000000000
+      internalID: 3358752006999777494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_52
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 3172
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3bf9bca0682203e0800000000000000
+      internalID: -2089062881466647748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_53
+      rect:
+        serializedVersion: 2
+        x: 2222
+        y: 3172
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd86ef279052bfe70800000000000000
+      internalID: 9149947790447503579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_54
+      rect:
+        serializedVersion: 2
+        x: 3438
+        y: 3172
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adb11d12da78500b0800000000000000
+      internalID: -5763050970484237350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_55
+      rect:
+        serializedVersion: 2
+        x: 4654
+        y: 3172
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b497f809a13a120b0800000000000000
+      internalID: -5755139514312984245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_56
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1500
+        width: 420
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b9898f6ee1c81d10800000000000000
+      internalID: 2096638856358627764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_57
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 1500
+        width: 420
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f36abe91d450930800000000000000
+      internalID: 4108775008768507730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_58
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 1500
+        width: 420
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ef3901b4cc512830800000000000000
+      internalID: 4044615940208934882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_59
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 1500
+        width: 420
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5cebf5e434ae6570800000000000000
+      internalID: 8461881296979487839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_60
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecd20a9c40e7540c0800000000000000
+      internalID: -4592125686006665778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_61
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 916c1cc7b51f4eb00800000000000000
+      internalID: 857075204344628761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_62
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 1462
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32da863f93e61810800000000000000
+      internalID: 1735824979352277565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_63
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aca50063e6a9a06d0800000000000000
+      internalID: -3023434401682793782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_64
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44240bf6bd3be86e0800000000000000
+      internalID: -1833330243240181180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_65
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9fae2a127aa23ce0800000000000000
+      internalID: -1426890724880765026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_66
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 1462
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df5aa658fd80ae1f0800000000000000
+      internalID: -1014989009909537283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_67
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dfc194432498cb30800000000000000
+      internalID: 4307855922775052244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_68
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 226e9e9f86af8fa40800000000000000
+      internalID: 5402343081807308322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_69
+      rect:
+        serializedVersion: 2
+        x: 2925
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e018deb05456d780800000000000000
+      internalID: -8658640527797251872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_70
+      rect:
+        serializedVersion: 2
+        x: 3001
+        y: 1462
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98cc30cdbef2fc110800000000000000
+      internalID: 1283297108878937225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_71
+      rect:
+        serializedVersion: 2
+        x: 3058
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b73c28b9df079f80800000000000000
+      internalID: -8099987977030322251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_72
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a585c1e85470a6330800000000000000
+      internalID: 3704781638784014426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_73
+      rect:
+        serializedVersion: 2
+        x: 4141
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 220aff776eb3c4920800000000000000
+      internalID: 2975819314826813474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_74
+      rect:
+        serializedVersion: 2
+        x: 4217
+        y: 1462
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3d7b192baa011970800000000000000
+      internalID: 8723765683438714172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_75
+      rect:
+        serializedVersion: 2
+        x: 4274
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4deb7c49c230df50800000000000000
+      internalID: 6904074068911975759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_76
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c74e21b5b9d3d3490800000000000000
+      internalID: -7764982445059677060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_77
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0220f08ecb5bcbab0800000000000000
+      internalID: -4990914464081575392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_78
+      rect:
+        serializedVersion: 2
+        x: 2868
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d38b2232b9972dc70800000000000000
+      internalID: 8994385113028671549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_79
+      rect:
+        serializedVersion: 2
+        x: 4084
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2d11cd9c14f4410800000000000000
+      internalID: 1463460739155088102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_80
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 1101
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0594ba1d65d4e2830800000000000000
+      internalID: 4048258150332844368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_81
+      rect:
+        serializedVersion: 2
+        x: 2013
+        y: 1101
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d19922c9960a200800000000000000
+      internalID: 189267303665835327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_82
+      rect:
+        serializedVersion: 2
+        x: 3229
+        y: 1101
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e0e6c0c7dc9141e0800000000000000
+      internalID: -2215317091223412505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_83
+      rect:
+        serializedVersion: 2
+        x: 4445
+        y: 1101
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1586cfc95e519bf20800000000000000
+      internalID: 3438803866399565905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_84
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 599288841cf85c540800000000000000
+      internalID: 5027582619337370005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_85
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9be84d7162b7b8d80800000000000000
+      internalID: -8247362889060151623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_86
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54991e47881ca6960800000000000000
+      internalID: 7596096513334417733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_87
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9f69a1060fb2c990800000000000000
+      internalID: -7367116007906119782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_88
+      rect:
+        serializedVersion: 2
+        x: 1823
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b054df1ea03feb50800000000000000
+      internalID: 6624567101301739700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_89
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 861896092e5aa51a0800000000000000
+      internalID: -6819956293195169432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_90
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d233730917083a170800000000000000
+      internalID: 8188529772728890157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_91
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad432d98c92c63fc0800000000000000
+      internalID: -3515408481533152038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_92
+      rect:
+        serializedVersion: 2
+        x: 3039
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27c6fe54af412d4c0800000000000000
+      internalID: -4264322832018740110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_93
+      rect:
+        serializedVersion: 2
+        x: 3096
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e7efd4fdfa767680800000000000000
+      internalID: -8757677194221721625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_94
+      rect:
+        serializedVersion: 2
+        x: 3172
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e5ad23d540a1e2d0800000000000000
+      internalID: -3251141234228615708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_95
+      rect:
+        serializedVersion: 2
+        x: 3267
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9fdd953507b970b0800000000000000
+      internalID: -5730347817849987169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_96
+      rect:
+        serializedVersion: 2
+        x: 4255
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e3e1079400702010800000000000000
+      internalID: 1162051868877251559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_97
+      rect:
+        serializedVersion: 2
+        x: 4312
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c547d2b4d11e31130800000000000000
+      internalID: 3536417648347542620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_98
+      rect:
+        serializedVersion: 2
+        x: 4388
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c047c874adbf1690800000000000000
+      internalID: -7629170729643720507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_99
+      rect:
+        serializedVersion: 2
+        x: 4483
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a6dcdb134f5177d0800000000000000
+      internalID: -2922449941351835992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_100
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 360
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1bfbe9f662422510800000000000000
+      internalID: 1522852634051738394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_101
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 968
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c5c88d15f55b0c60800000000000000
+      internalID: 7785410892090885568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_102
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 341
+        width: 420
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e236f0af07cb2540800000000000000
+      internalID: 4984296282554512097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_103
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 968
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 202cc034fe9adf300800000000000000
+      internalID: 287572796308767234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_104
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 360
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89d02c267e7201990800000000000000
+      internalID: -7417384711531393640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_105
+      rect:
+        serializedVersion: 2
+        x: 3267
+        y: 968
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52df2071dcc872670800000000000000
+      internalID: 8513928433049468197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_106
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 341
+        width: 420
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a65d762ea42c1c70800000000000000
+      internalID: 8943063290439620260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn pistol shot_107
+      rect:
+        serializedVersion: 2
+        x: 4483
+        y: 968
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83c33becf7637a570800000000000000
+      internalID: 8477804746104847416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      evelyn pistol shot_0: 3109895957735392337
+      evelyn pistol shot_1: -9117610862128568761
+      evelyn pistol shot_10: -1070992076354415922
+      evelyn pistol shot_100: 1522852634051738394
+      evelyn pistol shot_101: 7785410892090885568
+      evelyn pistol shot_102: 4984296282554512097
+      evelyn pistol shot_103: 287572796308767234
+      evelyn pistol shot_104: -7417384711531393640
+      evelyn pistol shot_105: 8513928433049468197
+      evelyn pistol shot_106: 8943063290439620260
+      evelyn pistol shot_107: 8477804746104847416
+      evelyn pistol shot_11: 9026180798312848896
+      evelyn pistol shot_12: -144917456771701466
+      evelyn pistol shot_13: -4904096346807536810
+      evelyn pistol shot_14: -3363803356611712948
+      evelyn pistol shot_15: 5006798846953482822
+      evelyn pistol shot_16: -3034833860925859241
+      evelyn pistol shot_17: -2782864665886804653
+      evelyn pistol shot_18: -3021515514067778244
+      evelyn pistol shot_19: -6380735108447273988
+      evelyn pistol shot_2: -2885491590112747246
+      evelyn pistol shot_20: -2865523529343681188
+      evelyn pistol shot_21: -3515034081503417291
+      evelyn pistol shot_22: 2685172865283339180
+      evelyn pistol shot_23: 2495634920714711880
+      evelyn pistol shot_24: 5851938737292470698
+      evelyn pistol shot_25: -4028958811703052387
+      evelyn pistol shot_26: 8672554233199542237
+      evelyn pistol shot_27: 5902482793191215375
+      evelyn pistol shot_28: 4646543256539389476
+      evelyn pistol shot_29: -3758603497116842012
+      evelyn pistol shot_3: -7356517499978303967
+      evelyn pistol shot_30: -297798605929723311
+      evelyn pistol shot_31: 8175619866081368516
+      evelyn pistol shot_32: -857283795734525725
+      evelyn pistol shot_33: -5765095543918909827
+      evelyn pistol shot_34: 5119844454650589950
+      evelyn pistol shot_35: 2612529856193709130
+      evelyn pistol shot_36: -555031464695609699
+      evelyn pistol shot_37: -1037641769543950853
+      evelyn pistol shot_38: -7803924610034608636
+      evelyn pistol shot_39: -2081998874503699044
+      evelyn pistol shot_4: 892789126007174864
+      evelyn pistol shot_40: -4264991737450487695
+      evelyn pistol shot_41: -8416122687118597699
+      evelyn pistol shot_42: 5447498805525592850
+      evelyn pistol shot_43: 5384212458508922093
+      evelyn pistol shot_44: -6696887936750017539
+      evelyn pistol shot_45: -6745790073639864974
+      evelyn pistol shot_46: 8398026087028730561
+      evelyn pistol shot_47: -8561194971319855080
+      evelyn pistol shot_48: -6888621381183092296
+      evelyn pistol shot_49: 6527561119802363881
+      evelyn pistol shot_5: -986878368975976319
+      evelyn pistol shot_50: -8749620332327393354
+      evelyn pistol shot_51: 3358752006999777494
+      evelyn pistol shot_52: -2089062881466647748
+      evelyn pistol shot_53: 9149947790447503579
+      evelyn pistol shot_54: -5763050970484237350
+      evelyn pistol shot_55: -5755139514312984245
+      evelyn pistol shot_56: 2096638856358627764
+      evelyn pistol shot_57: 4108775008768507730
+      evelyn pistol shot_58: 4044615940208934882
+      evelyn pistol shot_59: 8461881296979487839
+      evelyn pistol shot_6: 52999984254016920
+      evelyn pistol shot_60: -4592125686006665778
+      evelyn pistol shot_61: 857075204344628761
+      evelyn pistol shot_62: 1735824979352277565
+      evelyn pistol shot_63: -3023434401682793782
+      evelyn pistol shot_64: -1833330243240181180
+      evelyn pistol shot_65: -1426890724880765026
+      evelyn pistol shot_66: -1014989009909537283
+      evelyn pistol shot_67: 4307855922775052244
+      evelyn pistol shot_68: 5402343081807308322
+      evelyn pistol shot_69: -8658640527797251872
+      evelyn pistol shot_7: -5522642649745872074
+      evelyn pistol shot_70: 1283297108878937225
+      evelyn pistol shot_71: -8099987977030322251
+      evelyn pistol shot_72: 3704781638784014426
+      evelyn pistol shot_73: 2975819314826813474
+      evelyn pistol shot_74: 8723765683438714172
+      evelyn pistol shot_75: 6904074068911975759
+      evelyn pistol shot_76: -7764982445059677060
+      evelyn pistol shot_77: -4990914464081575392
+      evelyn pistol shot_78: 8994385113028671549
+      evelyn pistol shot_79: 1463460739155088102
+      evelyn pistol shot_8: 4883477120962099785
+      evelyn pistol shot_80: 4048258150332844368
+      evelyn pistol shot_81: 189267303665835327
+      evelyn pistol shot_82: -2215317091223412505
+      evelyn pistol shot_83: 3438803866399565905
+      evelyn pistol shot_84: 5027582619337370005
+      evelyn pistol shot_85: -8247362889060151623
+      evelyn pistol shot_86: 7596096513334417733
+      evelyn pistol shot_87: -7367116007906119782
+      evelyn pistol shot_88: 6624567101301739700
+      evelyn pistol shot_89: -6819956293195169432
+      evelyn pistol shot_9: -4779394268802003211
+      evelyn pistol shot_90: 8188529772728890157
+      evelyn pistol shot_91: -3515408481533152038
+      evelyn pistol shot_92: -4264322832018740110
+      evelyn pistol shot_93: -8757677194221721625
+      evelyn pistol shot_94: -3251141234228615708
+      evelyn pistol shot_95: -5730347817849987169
+      evelyn pistol shot_96: 1162051868877251559
+      evelyn pistol shot_97: 3536417648347542620
+      evelyn pistol shot_98: -7629170729643720507
+      evelyn pistol shot_99: -2922449941351835992
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

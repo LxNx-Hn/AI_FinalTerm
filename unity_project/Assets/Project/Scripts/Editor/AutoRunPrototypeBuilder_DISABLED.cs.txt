@@ -1,0 +1,38 @@
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+
+/// <summary>
+/// Watches for a trigger file. When found, runs BuildAll then self-deletes the trigger.
+/// To use: create the file "Temp/RunBoxPrototype.trigger" from outside Unity.
+/// Unity detects the .cs changes, recompiles, and InitializeOnLoad fires the build automatically.
+/// </summary>
+[InitializeOnLoad]
+public static class AutoRunPrototypeBuilder
+{
+    static readonly string TriggerPath = Path.Combine(
+        Path.GetDirectoryName(Application.dataPath),
+        "Temp", "RunBoxPrototype.trigger");
+
+    static AutoRunPrototypeBuilder()
+    {
+        EditorApplication.delayCall += CheckTrigger;
+    }
+
+    static void CheckTrigger()
+    {
+        if (!File.Exists(TriggerPath))
+            return;
+
+        try
+        {
+            File.Delete(TriggerPath);
+            Debug.Log("[AutoRun] Trigger detected — running BoxPrototypeBuilder.BuildAll()");
+            BoxPrototypeBuilder.BuildAll();
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"[AutoRun] Failed: {ex.Message}");
+        }
+    }
+}

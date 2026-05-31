@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 40abed17552982943a49ee831d1b7acd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5145992516062242901
+    second: banshee - move_0
+  - first:
+      213: 4019581181537652434
+    second: banshee - move_1
+  - first:
+      213: 2222082125058949461
+    second: banshee - move_2
+  - first:
+      213: 6548820404984246816
+    second: banshee - move_3
+  - first:
+      213: 4699370849266364107
+    second: banshee - move_4
+  - first:
+      213: -6904455275836111768
+    second: banshee - move_5
+  - first:
+      213: -5219960064432737432
+    second: banshee - move_6
+  - first:
+      213: -6468019898626755260
+    second: banshee - move_7
+  - first:
+      213: 2844495356994164676
+    second: banshee - move_8
+  - first:
+      213: 2003382564509027789
+    second: banshee - move_9
+  - first:
+      213: -4271703897004249635
+    second: banshee - move_10
+  - first:
+      213: -2001325938323879298
+    second: banshee - move_11
+  - first:
+      213: -1741151527062830736
+    second: banshee - move_12
+  - first:
+      213: 5065757197144053556
+    second: banshee - move_13
+  - first:
+      213: 3917978469348609374
+    second: banshee - move_14
+  - first:
+      213: 6907532566433641638
+    second: banshee - move_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: banshee - move_0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 505
+        width: 58
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba79a4f3213c598b0800000000000000
+      internalID: -5145992516062242901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_1
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 505
+        width: 58
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2de8567b9cb68c730800000000000000
+      internalID: 4019581181537652434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_2
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 505
+        width: 58
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55142ed6beb66de10800000000000000
+      internalID: 2222082125058949461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_3
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 505
+        width: 58
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0227ae0167512ea50800000000000000
+      internalID: 6548820404984246816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_4
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 345
+        width: 48
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcee85a93e4873140800000000000000
+      internalID: 4699370849266364107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_5
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 345
+        width: 50
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 864873c02827e20a0800000000000000
+      internalID: -6904455275836111768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_6
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 345
+        width: 50
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 863f2c95af9fe87b0800000000000000
+      internalID: -5219960064432737432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_7
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 345
+        width: 48
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 445b136db2afc36a0800000000000000
+      internalID: -6468019898626755260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_8
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 185
+        width: 48
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c792e6d47da97720800000000000000
+      internalID: 2844495356994164676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_9
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 185
+        width: 50
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcd85caf3d17dcb10800000000000000
+      internalID: 2003382564509027789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_10
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 185
+        width: 50
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddde86920fbd7b4c0800000000000000
+      internalID: -4271703897004249635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_11
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 185
+        width: 48
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7a0e6e99acd934e0800000000000000
+      internalID: -2001325938323879298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_12
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 25
+        width: 50
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0718a4149ef26d7e0800000000000000
+      internalID: -1741151527062830736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_13
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 25
+        width: 50
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 437562ec45f2d4640800000000000000
+      internalID: 5065757197144053556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_14
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 25
+        width: 54
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5d0727d8a47f5630800000000000000
+      internalID: 3917978469348609374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - move_15
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 25
+        width: 54
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a438b0854c7cdf50800000000000000
+      internalID: 6907532566433641638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      banshee - move_0: -5145992516062242901
+      banshee - move_1: 4019581181537652434
+      banshee - move_10: -4271703897004249635
+      banshee - move_11: -2001325938323879298
+      banshee - move_12: -1741151527062830736
+      banshee - move_13: 5065757197144053556
+      banshee - move_14: 3917978469348609374
+      banshee - move_15: 6907532566433641638
+      banshee - move_2: 2222082125058949461
+      banshee - move_3: 6548820404984246816
+      banshee - move_4: 4699370849266364107
+      banshee - move_5: -6904455275836111768
+      banshee - move_6: -5219960064432737432
+      banshee - move_7: -6468019898626755260
+      banshee - move_8: 2844495356994164676
+      banshee - move_9: 2003382564509027789
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

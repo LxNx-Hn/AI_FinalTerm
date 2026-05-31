@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d0fcf0c002ae37341857ad9129859c71
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371138
+  packageName: Heart System
+  packageVersion: 1.0
+  assetPath: Assets/HeartSystem/Prefabs/HeartContainer.prefab
+  uploadId: 892582

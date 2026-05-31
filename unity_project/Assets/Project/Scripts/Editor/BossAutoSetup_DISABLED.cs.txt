@@ -1,0 +1,13 @@
+using UnityEditor;
+
+/// <summary>
+/// Boss setup is manual-only. Automatic execution was interrupting Play mode
+/// during domain reloads and looked like an editor crash.
+/// </summary>
+[InitializeOnLoad]
+public static class BossAutoSetup
+{
+    static BossAutoSetup()
+    {
+    }
+}

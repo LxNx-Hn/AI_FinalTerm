@@ -1,0 +1,1530 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using TMPro;
+using UnityEditor;
+using UnityEditor.Animations;
+using UnityEditor.Events;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
+
+public static class Stage01ParkingToHospitalBuilder
+{
+    private const string ScenePath = "Assets/Project/Scenes/Stage01_ParkingToHospital.unity";
+    private const string TransitionScenePath = "Assets/Project/Scenes/Hospital.unity";
+    private const string EntryScenePath = "Assets/Project/Scenes/Entry.unity";
+    private const string PlayerPrefabPath = "Assets/Project/Prefabs/Player/Player.prefab";
+    private const string EnemyBasePrefabPath = "Assets/Project/Prefabs/Enemy/SmallEnemy.prefab";
+    private const string GridPrefabPath = "Assets/Project/Prefabs/System/Gridmanager.prefab";
+    private const string GameStatePrefabPath = "Assets/Project/Prefabs/System/GameState.prefab";
+    private const string HealItemPrefabPath = "Assets/Project/Prefabs/Item/HealItem.prefab";
+    private const string AttackBuffItemPrefabPath = "Assets/Project/Prefabs/Item/AttackBuffItem.prefab";
+    private const string SpeedBuffItemPrefabPath = "Assets/Project/Prefabs/Item/SpeedBuffItem.prefab";
+
+    private const string ArtRoot = "Assets/Project/Art/Stage01_Parking";
+    private const string PrefabRoot = "Assets/Project/Prefabs/Stage01";
+    private const string AnimationRoot = "Assets/Project/Animations/Stage01";
+    private const string AudioRoot = "Assets/Project/Audio/SFX/Footsteps";
+    private const string GeneratedWalkSidePath = "Assets/Project/Art/Stage01_Parking/Player/PlayerWalkSideGenerated.png";
+    private const string GeneratedAttackSidePath = "Assets/Project/Art/Stage01_Parking/Player/PlayerAttackSideGenerated.png";
+    private const string GeneratedHurtSidePath = "Assets/Project/Art/Stage01_Parking/Player/PlayerHurtSideGenerated.png";
+    private const string GeneratedDeadPath = "Assets/Project/Art/Stage01_Parking/Player/PlayerDeadGenerated.png";
+    private const string GeneratedWalkAllPath = "Assets/Project/Art/Stage01_Parking/Player/PlayerWalkAxeAllGenerated.png";
+    private const string GeneratedAttackAllPath = "Assets/Project/Art/Stage01_Parking/Player/PlayerAttackAxeAllGenerated.png";
+    private const string GeneratedHurtAllPath = "Assets/Project/Art/Stage01_Parking/Player/PlayerHurtAxeAllGenerated.png";
+    private const string Stage01AttackDownPath = "Assets/Project/Art/Stage01_Parking/Player/Stage01_Runtime/PlayerAttackDownStage01.png";
+    private const string Stage01AttackUpPath = "Assets/Project/Art/Stage01_Parking/Player/Stage01_Runtime/PlayerAttackUpStage01.png";
+    private const string Stage01AttackSidePath = "Assets/Project/Art/Stage01_Parking/Player/Stage01_Runtime/PlayerAttackSideStage01.png";
+    private const string Stage01DeadPath = "Assets/Project/Art/Stage01_Parking/Player/Stage01_Runtime/PlayerDeadStage01.png";
+    private const string DeathScareImagePath = "Assets/Project/Art/Stage01_Parking/UI/DeathScare.png";
+
+    private const int MapWidth = 64;
+    private const int MapHeight = 48;
+    private const int BackgroundMinX = 0;
+    private const int BackgroundMaxX = 63;
+    private const int BackgroundMinY = 0;
+    private const int BackgroundMaxY = 47;
+    private const float FullMapBackgroundPpu = 22.625f;
+
+    private static readonly string DesktopRoot =
+        Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+    private static readonly string SourceRoot =
+        Path.Combine(DesktopRoot, "code_blue_merged_assets");
+
+    [MenuItem("Project Tools/Build Stage01 Parking To Hospital")]
+    public static void BuildStage()
+    {
+        EnsureDirectories();
+        CopyAndImportStageAssets();
+        ConfigureGeneratedStageAssets();
+        RefreshHealItemPrefabVisual();
+        BuildEnemyPrefabs();
+        BuildObstaclePrefabs();
+        BuildStageScene();
+        UpdateEntryScene();
+        UpdateBuildSettings();
+        EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+        AlignSceneViewToMainCamera();
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        Debug.Log("[Stage01ParkingToHospitalBuilder] Build complete.");
+    }
+
+    private static void EnsureDirectories()
+    {
+        foreach (string dir in new[]
+        {
+            ArtRoot,
+            $"{ArtRoot}/Backgrounds",
+            $"{ArtRoot}/Tiles",
+            $"{ArtRoot}/Cars",
+            $"{ArtRoot}/Props",
+            $"{ArtRoot}/Decals",
+            $"{ArtRoot}/Enemies",
+            $"{ArtRoot}/Player",
+            $"{ArtRoot}/UI",
+            "Assets/Project/Art/Sprites/Items",
+            PrefabRoot,
+            $"{PrefabRoot}/Enemies",
+            $"{PrefabRoot}/Obstacles",
+            $"{PrefabRoot}/Decals",
+            AnimationRoot,
+            AudioRoot,
+        })
+        {
+            Directory.CreateDirectory(ToAbsoluteAssetPath(dir));
+        }
+    }
+
+    private static void CopyAndImportStageAssets()
+    {
+        CopySprite("background/ChatGPT Image 2026년 5월 10일 오후 07_23_17.png", $"{ArtRoot}/Backgrounds/ParkingBackground_Bright.png", FullMapBackgroundPpu, SpriteAlignment.Center);
+        CopySprite("background/code_blue_parking_background_blood_glass_no_cars_1024x768.png", $"{ArtRoot}/Backgrounds/ParkingBackground_BloodGlass.png", 32f, SpriteAlignment.Center);
+        CopySprite("background/code_blue_parking_original_slightly_darker.png", $"{ArtRoot}/Backgrounds/ParkingBackground_Dark.png", 32f, SpriteAlignment.Center);
+
+        CopySprite("tiles_32x32/asphalt_01.png", $"{ArtRoot}/Tiles/Asphalt01.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/asphalt_02.png", $"{ArtRoot}/Tiles/Asphalt02.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/asphalt_03.png", $"{ArtRoot}/Tiles/Asphalt03.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/asphalt_04.png", $"{ArtRoot}/Tiles/Asphalt04.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/asphalt_05.png", $"{ArtRoot}/Tiles/Asphalt05.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/asphalt_06.png", $"{ArtRoot}/Tiles/Asphalt06.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/asphalt_crack_01.png", $"{ArtRoot}/Tiles/AsphaltCrack01.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/asphalt_crack_04.png", $"{ArtRoot}/Tiles/AsphaltCrack04.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/parking_line_vertical.png", $"{ArtRoot}/Tiles/ParkingLineVertical.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/parking_line_horizontal.png", $"{ArtRoot}/Tiles/ParkingLineHorizontal.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/parking_line_worn_vertical.png", $"{ArtRoot}/Tiles/ParkingLineWornVertical.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/parking_line_worn_horizontal.png", $"{ArtRoot}/Tiles/ParkingLineWornHorizontal.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/road_center_line_vertical.png", $"{ArtRoot}/Tiles/RoadCenterLineVertical.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/road_center_line_worn_vertical.png", $"{ArtRoot}/Tiles/RoadCenterLineWornVertical.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/road_center_line_horizontal.png", $"{ArtRoot}/Tiles/RoadCenterLineHorizontal.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/curb_bottom.png", $"{ArtRoot}/Tiles/CurbBottom.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/curb_top.png", $"{ArtRoot}/Tiles/CurbTop.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/curb_left.png", $"{ArtRoot}/Tiles/CurbLeft.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/curb_right.png", $"{ArtRoot}/Tiles/CurbRight.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/sidewalk_plain.png", $"{ArtRoot}/Tiles/SidewalkPlain.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/hospital_wall_tile.png", $"{ArtRoot}/Tiles/HospitalWallTile.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/hospital_wall_cracked.png", $"{ArtRoot}/Tiles/HospitalWallCracked.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/entrance_dark_tile.png", $"{ArtRoot}/Tiles/HospitalEntranceTile.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/drain_grate.png", $"{ArtRoot}/Tiles/DrainGrate.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/water_puddle.png", $"{ArtRoot}/Tiles/WaterPuddle.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/oil_stain.png", $"{ArtRoot}/Tiles/OilStain.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/blood_decal_01.png", $"{ArtRoot}/Decals/BloodTile01.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/blood_decal_03.png", $"{ArtRoot}/Decals/BloodTile03.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/glass_shards_01.png", $"{ArtRoot}/Decals/GlassTile01.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/glass_shards_03.png", $"{ArtRoot}/Decals/GlassTile03.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/eye_floor_decal_transparent.png", $"{ArtRoot}/Decals/EyeTile.png", 32f, SpriteAlignment.Center);
+        CopySprite("tiles_32x32/dropped_shoe_transparent.png", $"{ArtRoot}/Decals/ShoeTile.png", 32f, SpriteAlignment.Center);
+
+        CopySprite("cars/normal_car_horizontal_01_96x64.png", $"{ArtRoot}/Cars/NormalCar_H_01.png", 32f, SpriteAlignment.Center);
+        CopySprite("cars/normal_car_horizontal_04_96x64.png", $"{ArtRoot}/Cars/NormalCar_H_04.png", 32f, SpriteAlignment.Center);
+        CopySprite("cars/normal_car_horizontal_06_96x64.png", $"{ArtRoot}/Cars/NormalCar_H_06.png", 32f, SpriteAlignment.Center);
+        CopySprite("cars/normal_car_vertical_01_64x96.png", $"{ArtRoot}/Cars/NormalCar_V_01.png", 32f, SpriteAlignment.Center);
+        CopySprite("cars/normal_car_vertical_03_64x96.png", $"{ArtRoot}/Cars/NormalCar_V_03.png", 32f, SpriteAlignment.Center);
+        CopySprite("cars/normal_car_vertical_05_64x96.png", $"{ArtRoot}/Cars/NormalCar_V_05.png", 32f, SpriteAlignment.Center);
+        CopySprite("cars/wrecked_car_45deg_left_03_128x128.png", $"{ArtRoot}/Cars/WreckedCar_Left_03.png", 32f, SpriteAlignment.Center);
+        CopySprite("cars/wrecked_car_45deg_right_02_128x128.png", $"{ArtRoot}/Cars/WreckedCar_Right_02.png", 32f, SpriteAlignment.Center);
+        CopySprite("cars/wrecked_car_45deg_right_05_128x128.png", $"{ArtRoot}/Cars/WreckedCar_Right_05.png", 32f, SpriteAlignment.Center);
+
+        CopySprite("props/fallen_streetlight_diag_a_128x128.png", $"{ArtRoot}/Props/FallenStreetLight_A.png", 32f, SpriteAlignment.Center);
+        CopySprite("props/fallen_streetlight_diag_b_128x128.png", $"{ArtRoot}/Props/FallenStreetLight_B.png", 32f, SpriteAlignment.Center);
+        CopySprite("props/broken_streetlight_standing_64x128.png", $"{ArtRoot}/Props/BrokenStreetLight_Standing.png", 32f, SpriteAlignment.Center);
+        CopySprite("props/broken_hospital_sign_96x64.png", $"{ArtRoot}/Props/BrokenHospitalSign.png", 32f, SpriteAlignment.Center);
+        CopySprite("props/parking_barricade_broken_96x64.png", $"{ArtRoot}/Props/ParkingBarricadeBroken.png", 32f, SpriteAlignment.Center);
+        CopySprite("props/traffic_cone_broken_32x32.png", $"{ArtRoot}/Props/TrafficConeBroken.png", 32f, SpriteAlignment.Center);
+        CopySprite("props/blood_puddle_64x64.png", $"{ArtRoot}/Decals/BloodPuddle.png", 32f, SpriteAlignment.Center);
+        CopySprite("props/glass_debris_64x64.png", $"{ArtRoot}/Decals/GlassDebris.png", 32f, SpriteAlignment.Center);
+
+        CopySprite("route_objects/route_tire_pile_96x64.png", $"{ArtRoot}/Props/TirePile.png", 32f, SpriteAlignment.Center);
+        CopySprite("route_objects/route_broken_hospital_bed_128x96.png", $"{ArtRoot}/Props/BrokenHospitalBed.png", 32f, SpriteAlignment.Center);
+        CopySprite("route_objects/route_large_wrecked_car_block_160x128.png", $"{ArtRoot}/Props/LargeWreckedCar.png", 32f, SpriteAlignment.Center);
+        CopySprite("route_objects/route_long_barricade_128x64_rotminus20.png", $"{ArtRoot}/Props/LongBarricade_Angled.png", 32f, SpriteAlignment.Center);
+        CopySprite("route_objects/route_short_barricade_96x64_rotplus18.png", $"{ArtRoot}/Props/ShortBarricade_Angled.png", 32f, SpriteAlignment.Center);
+        CopySprite("route_objects/route_cone_row_128x48.png", $"{ArtRoot}/Props/ConeRow.png", 32f, SpriteAlignment.Center);
+        CopySprite("route_objects/route_broken_fence_panel_128x96_rotplus35.png", $"{ArtRoot}/Props/BrokenFencePanel.png", 32f, SpriteAlignment.Center);
+        CopySprite("route_objects/route_fallen_hospital_sign_96x64.png", $"{ArtRoot}/Props/FallenHospitalSign.png", 32f, SpriteAlignment.Center);
+        CopySprite("route_objects/route_eye_floor_decal_64x64.png", $"{ArtRoot}/Decals/EyeDecal.png", 32f, SpriteAlignment.Center);
+        CopySprite("route_objects/route_dropped_shoe_64x64.png", $"{ArtRoot}/Decals/DroppedShoe.png", 32f, SpriteAlignment.Center);
+
+        CopyHorizontalSpriteSheet("player/evelyn sprites/idle.png", $"{ArtRoot}/Player/PlayerIdleDown.png", 2, 640f, SpriteAlignment.BottomCenter);
+        CopyHorizontalSpriteSheet("player/evelyn sprites/idle 2.png", $"{ArtRoot}/Player/PlayerIdleSide.png", 2, 640f, SpriteAlignment.BottomCenter);
+        CopyHorizontalSpriteSheet("player/evelyn sprites/idle 3.png", $"{ArtRoot}/Player/PlayerIdleUp.png", 2, 640f, SpriteAlignment.BottomCenter);
+        CopyHorizontalSpriteSheet("player/evelyn sprites/evelyn walk.png", $"{ArtRoot}/Player/PlayerWalkDown.png", 4, 640f, SpriteAlignment.BottomCenter);
+        CopyHorizontalSpriteSheet("player/evelyn sprites/evelyn walk 2.png", $"{ArtRoot}/Player/PlayerWalkUp.png", 4, 640f, SpriteAlignment.BottomCenter);
+        CopyHorizontalSpriteSheet("player/evelyn sprites/evelyn walk 3.png", $"{ArtRoot}/Player/PlayerWalkRight.png", 4, 640f, SpriteAlignment.BottomCenter);
+        CopyHorizontalSpriteSheet("player/evelyn sprites/evelyn walk 4.png", $"{ArtRoot}/Player/PlayerWalkLeft.png", 4, 640f, SpriteAlignment.BottomCenter);
+        CopyGridSpriteSheet("player/evelyn sprites/evelyn axe attack.png", $"{ArtRoot}/Player/PlayerAttackAll.png", 8, 4, 640f, SpriteAlignment.BottomCenter);
+        CopyGridSpriteSheet("player/evelyn sprites/evelyn hurt.png", $"{ArtRoot}/Player/PlayerHurtAll.png", 2, 4, 640f, SpriteAlignment.BottomCenter);
+
+        CopyEnemySheet("잡몹1.png", $"{ArtRoot}/Enemies/ParkingEnemy_01.png");
+        CopyEnemySheet("잡몹2.png", $"{ArtRoot}/Enemies/ParkingEnemy_02.png");
+        CopyEnemySheet("잡몹3.png", $"{ArtRoot}/Enemies/ParkingEnemy_03.png");
+        CopyEnemySheet("잡몹4.png", $"{ArtRoot}/Enemies/ParkingEnemy_04.png");
+
+        CopyAudio("캐릭터 발소리.wav", $"{AudioRoot}/Stage01_Footstep.wav");
+    }
+
+    private static void ConfigureGeneratedStageAssets()
+    {
+        ConfigureExistingSpriteSheet(GeneratedWalkAllPath, 4, 4, 640f, SpriteAlignment.BottomCenter);
+        ConfigureExistingSpriteSheet(GeneratedHurtAllPath, 2, 4, 640f, SpriteAlignment.BottomCenter);
+        ConfigureExistingSpriteSheet(GeneratedWalkSidePath, 4, 1, 640f, SpriteAlignment.BottomCenter);
+        ConfigureExistingSpriteSheet(GeneratedAttackSidePath, 8, 1, 640f, SpriteAlignment.BottomCenter);
+        ConfigureExistingSpriteSheet(GeneratedHurtSidePath, 2, 1, 640f, SpriteAlignment.BottomCenter);
+        ConfigureExistingSpriteSheet(Stage01AttackDownPath, 7, 1, 270f, SpriteAlignment.BottomCenter);
+        ConfigureExistingSpriteSheet(Stage01AttackUpPath, 7, 1, 270f, SpriteAlignment.BottomCenter);
+        ConfigureExistingSpriteSheet(Stage01AttackSidePath, 6, 1, 270f, SpriteAlignment.BottomCenter);
+        ConfigureExistingSpriteSheet(Stage01DeadPath, 9, 1, 270f, SpriteAlignment.BottomCenter);
+        ConfigureExistingSingleSprite(DeathScareImagePath, 100f, SpriteAlignment.Center);
+    }
+
+    private static void ConfigureExistingSpriteSheet(string assetPath, int columns, int rows, float ppu, SpriteAlignment alignment)
+    {
+        string absolutePath = ToAbsoluteAssetPath(assetPath);
+        if (!File.Exists(absolutePath))
+        {
+            return;
+        }
+
+        AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
+        TextureImporter importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+        if (importer == null)
+        {
+            return;
+        }
+
+        Texture2D temp = LoadTextureFromFile(absolutePath);
+        int frameWidth = temp.width / columns;
+        int frameHeight = temp.height / rows;
+        int textureHeight = temp.height;
+
+        importer.textureType = TextureImporterType.Sprite;
+        importer.spriteImportMode = SpriteImportMode.Multiple;
+        importer.spritePixelsPerUnit = ppu;
+        importer.filterMode = FilterMode.Point;
+        importer.textureCompression = TextureImporterCompression.Uncompressed;
+        importer.alphaIsTransparency = true;
+
+        var sprites = new List<SpriteMetaData>();
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < columns; col++)
+            {
+                sprites.Add(new SpriteMetaData
+                {
+                    alignment = (int)alignment,
+                    pivot = alignment == SpriteAlignment.BottomCenter ? new Vector2(0.5f, 0f) : new Vector2(0.5f, 0.5f),
+                    name = $"{Path.GetFileNameWithoutExtension(assetPath)}_r{row + 1:D2}_c{col + 1:D2}",
+                    rect = new Rect(col * frameWidth, textureHeight - ((row + 1) * frameHeight), frameWidth, frameHeight)
+                });
+            }
+        }
+
+        importer.spritesheet = sprites.ToArray();
+        importer.SaveAndReimport();
+        UnityEngine.Object.DestroyImmediate(temp);
+    }
+
+    private static void ConfigureExistingSingleSprite(string assetPath, float ppu, SpriteAlignment alignment)
+    {
+        string absolutePath = ToAbsoluteAssetPath(assetPath);
+        if (!File.Exists(absolutePath))
+        {
+            return;
+        }
+
+        AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
+        TextureImporter importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+        if (importer == null)
+        {
+            return;
+        }
+
+        importer.textureType = TextureImporterType.Sprite;
+        importer.spriteImportMode = SpriteImportMode.Single;
+        importer.spritePixelsPerUnit = ppu;
+        importer.filterMode = FilterMode.Bilinear;
+        importer.textureCompression = TextureImporterCompression.Uncompressed;
+        importer.alphaIsTransparency = false;
+
+        var settings = new TextureImporterSettings();
+        importer.ReadTextureSettings(settings);
+        settings.spriteAlignment = (int)alignment;
+        settings.spritePivot = new Vector2(0.5f, 0.5f);
+        importer.SetTextureSettings(settings);
+        importer.SaveAndReimport();
+    }
+
+    private static void BuildEnemyPrefabs()
+    {
+        BuildEnemyVariant("ParkingEnemy01", $"{ArtRoot}/Enemies/ParkingEnemy_01.png");
+        BuildEnemyVariant("ParkingEnemy02", $"{ArtRoot}/Enemies/ParkingEnemy_02.png");
+        BuildEnemyVariant("ParkingEnemy03", $"{ArtRoot}/Enemies/ParkingEnemy_03.png");
+        BuildEnemyVariant("ParkingEnemy04", $"{ArtRoot}/Enemies/ParkingEnemy_04.png");
+    }
+
+    private static void BuildObstaclePrefabs()
+    {
+        BuildSpriteObstaclePrefab("NormalCar_H_01", $"{ArtRoot}/Cars/NormalCar_H_01.png", new Vector2(2.8f, 1.8f), Vector2.zero, 3, 2, false);
+        BuildSpriteObstaclePrefab("NormalCar_V_01", $"{ArtRoot}/Cars/NormalCar_V_01.png", new Vector2(1.8f, 2.8f), Vector2.zero, 2, 3, false);
+        BuildSpriteObstaclePrefab("WreckedCar_Right_02", $"{ArtRoot}/Cars/WreckedCar_Right_02.png", Vector2.zero, Vector2.zero, 4, 4, true);
+        BuildSpriteObstaclePrefab("WreckedCar_Left_03", $"{ArtRoot}/Cars/WreckedCar_Left_03.png", Vector2.zero, Vector2.zero, 4, 4, true);
+        BuildSpriteObstaclePrefab("LargeWreckedCar", $"{ArtRoot}/Props/LargeWreckedCar.png", new Vector2(4.8f, 3.6f), Vector2.zero, 5, 4, false);
+        BuildSpriteObstaclePrefab("LongBarricade_Angled", $"{ArtRoot}/Props/LongBarricade_Angled.png", new Vector2(3.8f, 1.7f), Vector2.zero, 4, 2, false);
+        BuildSpriteObstaclePrefab("ShortBarricade_Angled", $"{ArtRoot}/Props/ShortBarricade_Angled.png", new Vector2(2.6f, 1.7f), Vector2.zero, 3, 2, false);
+        BuildSpriteObstaclePrefab("ParkingBarricadeBroken", $"{ArtRoot}/Props/ParkingBarricadeBroken.png", new Vector2(2.6f, 1.5f), Vector2.zero, 3, 2, false);
+        BuildSpriteObstaclePrefab("TirePile", $"{ArtRoot}/Props/TirePile.png", new Vector2(2.3f, 1.6f), Vector2.zero, 3, 2, false);
+        BuildSpriteObstaclePrefab("BrokenStreetLight_Standing", $"{ArtRoot}/Props/BrokenStreetLight_Standing.png", new Vector2(1f, 2f), new Vector2(0f, 0.5f), 1, 2, false);
+        BuildSpriteObstaclePrefab("BrokenHospitalBed", $"{ArtRoot}/Props/BrokenHospitalBed.png", new Vector2(3.5f, 2.2f), Vector2.zero, 4, 3, false);
+        BuildSpriteObstaclePrefab("BrokenFencePanel", $"{ArtRoot}/Props/BrokenFencePanel.png", new Vector2(3.7f, 3.4f), Vector2.zero, 4, 3, false);
+        BuildSpriteObstaclePrefab("BrokenHospitalSign", $"{ArtRoot}/Props/BrokenHospitalSign.png", new Vector2(2.3f, 1.7f), Vector2.zero, 2, 2, false);
+        BuildSpriteObstaclePrefab("FallenHospitalSign", $"{ArtRoot}/Props/FallenHospitalSign.png", new Vector2(2.8f, 1.8f), Vector2.zero, 3, 2, false);
+        BuildSpriteObstaclePrefab("TrafficConeBroken", $"{ArtRoot}/Props/TrafficConeBroken.png", new Vector2(0.7f, 0.7f), Vector2.zero, 1, 1, false);
+        BuildDecalPrefab("BloodPuddle", $"{ArtRoot}/Decals/BloodPuddle.png");
+        BuildHospitalEntranceTriggerPrefab();
+    }
+
+    private static void BuildStageScene()
+    {
+        var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+        GameObject systemRoot = CreateRoot("00_System");
+        GameObject floorRoot = CreateRoot("01_Floor");
+        GameObject backgroundRoot = CreateRoot("02_Background");
+        GameObject obstacleRoot = CreateRoot("03_Obstacles");
+        GameObject decalRoot = CreateRoot("04_Decals");
+        GameObject itemRoot = CreateRoot("05_Items");
+        GameObject enemyRoot = CreateRoot("06_Enemies");
+        GameObject triggerRoot = CreateRoot("07_Triggers");
+        GameObject uiRoot = CreateRoot("08_UI");
+        GameObject cameraRoot = CreateRoot("09_Camera");
+
+        PlacePrefab(GridPrefabPath, Vector3.zero, systemRoot.transform, "GridManager");
+        PlacePrefab(GameStatePrefabPath, Vector3.zero, systemRoot.transform, "GameState");
+
+        GameObject player = PlacePrefab(PlayerPrefabPath, new Vector3(52f, 5f, 0f), null, "Player");
+        ConfigurePlayerSceneInstance(player);
+
+        Camera cam = EnsureCamera(cameraRoot.transform);
+        CameraFollow cameraFollow = EnsureComponent<CameraFollow>(cam.gameObject);
+        cameraFollow.target = player.transform;
+        cameraFollow.smoothSpeed = 8f;
+        cameraFollow.offset = new Vector3(0f, 1.2f, -10f);
+        cameraFollow.useClamp = true;
+        cameraFollow.clampToCameraView = true;
+        cameraFollow.minPosition = new Vector2(0.5f, 0.5f);
+        cameraFollow.maxPosition = new Vector2(MapWidth - 0.5f, MapHeight - 0.5f);
+
+        CreateGroundTiles(floorRoot.transform);
+        CreateBackground(backgroundRoot.transform);
+        CreateBoundaryTiles(obstacleRoot.transform);
+        CreateHospitalFront(obstacleRoot.transform);
+        CreateObstacleSet(obstacleRoot.transform);
+        CreateDecalSet(decalRoot.transform);
+        CreateItemSet(itemRoot.transform);
+        CreateEnemySet(enemyRoot.transform, triggerRoot.transform);
+        CreateHospitalTrigger(triggerRoot.transform, uiRoot.transform, player);
+
+        EditorSceneManager.SaveScene(scene, ScenePath);
+    }
+
+    private static void UpdateEntryScene()
+    {
+        if (!File.Exists(ToAbsoluteAssetPath(EntryScenePath)))
+        {
+            return;
+        }
+
+        var scene = EditorSceneManager.OpenScene(EntryScenePath, OpenSceneMode.Single);
+        EntryUI entryUI = UnityEngine.Object.FindObjectOfType<EntryUI>();
+        Button startButton = GameObject.Find("StartButton")?.GetComponent<Button>();
+        if (entryUI != null && startButton != null)
+        {
+            startButton.onClick = new Button.ButtonClickedEvent();
+            UnityEventTools.AddPersistentListener(startButton.onClick, entryUI.OnStartClicked);
+            EditorSceneManager.SaveScene(scene);
+        }
+    }
+
+    private static void UpdateBuildSettings()
+    {
+        List<EditorBuildSettingsScene> scenes = EditorBuildSettings.scenes.ToList();
+        string[] desiredOrder =
+        {
+            EntryScenePath,
+            ScenePath,
+            "Assets/Project/Scenes/Hospital.unity",
+            "Assets/Project/Scenes/Boss01_Elevator.unity",
+            "Assets/Project/Scenes/RooftopEndingWalk.unity",
+            "Assets/Project/Scenes/EndingCredits.unity",
+            "Assets/Project/Scenes/Stage01_ParkingLobby.unity",
+            "Assets/Project/Scenes/Boss02_Rooftop.unity",
+        };
+
+        var map = scenes.ToDictionary(s => s.path, s => s);
+        var rebuilt = new List<EditorBuildSettingsScene>();
+        foreach (string path in desiredOrder)
+        {
+            bool enabled = path != "Assets/Project/Scenes/Boss02_Rooftop.unity";
+            rebuilt.Add(map.ContainsKey(path) ? new EditorBuildSettingsScene(path, enabled) : new EditorBuildSettingsScene(path, enabled));
+        }
+
+        EditorBuildSettings.scenes = rebuilt.ToArray();
+    }
+
+    private static void ConfigurePlayerSceneInstance(GameObject player)
+    {
+        WireAttackHitbox(player);
+
+        SpriteRenderer spriteRenderer = EnsureComponent<SpriteRenderer>(player);
+        spriteRenderer.sortingLayerName = "Characters";
+        spriteRenderer.sortingOrder = 0;
+        spriteRenderer.color = Color.white;
+
+        AudioSource audioSource = EnsureComponent<AudioSource>(player);
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 0f;
+
+        OneStepOnDirectionKey footsteps = EnsureComponent<OneStepOnDirectionKey>(player);
+        var serialized = new SerializedObject(footsteps);
+        AudioClip clip = AssetDatabase.LoadAssetAtPath<AudioClip>($"{AudioRoot}/Stage01_Footstep.wav");
+        SerializedProperty clips = serialized.FindProperty("footstepClips");
+        clips.arraySize = clip != null ? 1 : 0;
+        if (clip != null)
+        {
+            clips.GetArrayElementAtIndex(0).objectReferenceValue = clip;
+        }
+
+        serialized.FindProperty("minimumInterval").floatValue = 0.05f;
+        serialized.FindProperty("holdIntervalMultiplierMin").floatValue = 2.2f;
+        serialized.FindProperty("holdIntervalMultiplierMax").floatValue = 4f;
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+
+        PlayerVisualAnimator2D visuals = EnsureComponent<PlayerVisualAnimator2D>(player);
+        bool generatedWalkAllExists = File.Exists(ToAbsoluteAssetPath(GeneratedWalkAllPath));
+        bool generatedHurtAllExists = File.Exists(ToAbsoluteAssetPath(GeneratedHurtAllPath));
+
+        visuals.walkDown = LoadOrderedSprites($"{ArtRoot}/Player/PlayerWalkDown.png");
+        visuals.walkUp = LoadOrderedSprites($"{ArtRoot}/Player/PlayerWalkUp.png");
+        visuals.walkRight = generatedWalkAllExists
+            ? LoadGridRowSprites(GeneratedWalkAllPath, 0)
+            : LoadOrderedSprites($"{ArtRoot}/Player/PlayerWalkRight.png");
+        visuals.walkLeft = null;
+
+        visuals.idleDown = CreateIdlePairFromWalk(visuals.walkDown);
+        visuals.idleUp = CreateIdlePairFromWalk(visuals.walkUp);
+        visuals.idleSide = CreateIdlePairFromWalk(visuals.walkRight);
+
+        visuals.attackDown = LoadOrderedSprites(Stage01AttackDownPath);
+        visuals.attackUp = LoadOrderedSprites(Stage01AttackUpPath);
+        visuals.attackRight = LoadOrderedSprites(Stage01AttackSidePath);
+        visuals.attackLeft = null;
+
+        visuals.hurtDown = LoadGridRowSprites($"{ArtRoot}/Player/PlayerHurtAll.png", 0);
+        visuals.hurtRight = generatedHurtAllExists
+            ? LoadGridRowSprites(GeneratedHurtAllPath, 1)
+            : LoadGridRowSprites($"{ArtRoot}/Player/PlayerHurtAll.png", 1);
+        visuals.hurtUp = LoadGridRowSprites($"{ArtRoot}/Player/PlayerHurtAll.png", 2);
+        visuals.hurtLeft = null;
+
+        visuals.deadSequence = LoadOrderedSprites(Stage01DeadPath);
+
+        if (visuals.idleDown != null && visuals.idleDown.Length > 0)
+        {
+            spriteRenderer.sprite = visuals.idleDown[0];
+        }
+    }
+
+    private static void CreateGroundTiles(Transform parent)
+    {
+        _ = parent;
+    }
+
+    private static void CreateBackground(Transform parent)
+    {
+        GameObject go = new GameObject("ParkingBackground");
+        go.transform.SetParent(parent, false);
+        go.transform.position = new Vector3(31.5f, 23.5f, 0f);
+        SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Backgrounds/ParkingBackground_Bright.png");
+        sr.sortingLayerName = "Background";
+        sr.sortingOrder = -2;
+    }
+
+    private static void CreateBoundaryTiles(Transform parent)
+    {
+        for (int x = 0; x < MapWidth; x++)
+        {
+            CreateInvisibleBlocker($"Boundary_Bottom_{x}", new Vector3(x, 0f, 0f), parent, 1, 1, new Vector2(1f, 1f), Vector2.zero);
+            CreateInvisibleBlocker($"Boundary_Top_{x}", new Vector3(x, MapHeight - 1f, 0f), parent, 1, 1, new Vector2(1f, 1f), Vector2.zero);
+        }
+
+        for (int y = 1; y < MapHeight - 1; y++)
+        {
+            CreateInvisibleBlocker($"Boundary_Left_{y}", new Vector3(0f, y, 0f), parent, 1, 1, new Vector2(1f, 1f), Vector2.zero);
+            CreateInvisibleBlocker($"Boundary_Right_{y}", new Vector3(MapWidth - 1f, y, 0f), parent, 1, 1, new Vector2(1f, 1f), Vector2.zero);
+        }
+
+        Sprite longBarricade = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/LongBarricade_Angled.png");
+        Sprite shortBarricade = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/ShortBarricade_Angled.png");
+        Sprite brokenFence = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/BrokenFencePanel.png");
+        Sprite tire = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/TirePile.png");
+        Sprite coneRow = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/ConeRow.png");
+        Sprite wreck = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/WreckedCar_Right_05.png");
+
+        foreach (float x in new[] { 6f, 14f, 22f, 40f, 48f, 56f })
+        {
+            CreateDecorSprite($"BoundaryBottom_Barricade_{x}", longBarricade, new Vector3(x, 1.25f, 0f), parent, "Props", 1, Vector3.one);
+        }
+
+        foreach (float y in new[] { 7f, 15f, 23f, 31f, 39f })
+        {
+            CreateDecorSprite($"BoundaryLeft_Fence_{y}", brokenFence, new Vector3(1.25f, y, 0f), parent, "Props", 1, Vector3.one);
+            CreateDecorSprite($"BoundaryRight_Barricade_{y}", shortBarricade, new Vector3(MapWidth - 1.5f, y, 0f), parent, "Props", 1, Vector3.one);
+        }
+
+        CreateDecorSprite("BoundaryBottomLeft_TirePile", tire, new Vector3(4f, 3f, 0f), parent, "Props", 1, Vector3.one);
+        CreateDecorSprite("BoundaryBottomRight_ConeRow", coneRow, new Vector3(58f, 3f, 0f), parent, "Props", 1, Vector3.one);
+        CreateDecorSprite("BoundaryRight_Wreck", wreck, new Vector3(60f, 43f, 0f), parent, "Props", 1, Vector3.one);
+    }
+
+    private static void CreateHospitalFront(Transform parent)
+    {
+        for (int x = 1; x < MapWidth - 1; x++)
+        {
+            if (x >= 28 && x <= 35)
+            {
+                continue;
+            }
+
+            CreateInvisibleBlocker($"HospitalFront_{x}", new Vector3(x, 46f, 0f), parent, 1, 2, new Vector2(1f, 2f), Vector2.zero);
+        }
+
+        for (int x = 0; x <= 23; x++)
+        {
+            CreateInvisibleBlocker($"HospitalWallBand_Left_{x}", new Vector3(x, 43.5f, 0f), parent, 1, 5, new Vector2(1f, 5f), Vector2.zero);
+        }
+
+        for (int x = 40; x < MapWidth; x++)
+        {
+            CreateInvisibleBlocker($"HospitalWallBand_Right_{x}", new Vector3(x, 43.5f, 0f), parent, 1, 5, new Vector2(1f, 5f), Vector2.zero);
+        }
+    }
+
+    private static void CreateObstacleSet(Transform parent)
+    {
+        Sprite carV01 = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/NormalCar_V_01.png");
+        Sprite carV03 = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/NormalCar_V_03.png");
+        Sprite carV05 = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/NormalCar_V_05.png");
+        Sprite carH01 = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/NormalCar_H_01.png");
+        Sprite carH04 = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/NormalCar_H_04.png");
+        Sprite carH06 = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/NormalCar_H_06.png");
+        Sprite wreckL = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/WreckedCar_Left_03.png");
+        Sprite wreckR = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/WreckedCar_Right_02.png");
+        Sprite wreckR2 = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Cars/WreckedCar_Right_05.png");
+        Sprite largeWreck = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/LargeWreckedCar.png");
+        Sprite tire = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/TirePile.png");
+        Sprite longBarricade = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/LongBarricade_Angled.png");
+        Sprite shortBarricade = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/ShortBarricade_Angled.png");
+        Sprite brokenBarricade = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/ParkingBarricadeBroken.png");
+        Sprite coneRow = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/ConeRow.png");
+        Sprite brokenFence = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/BrokenFencePanel.png");
+        Sprite lightStanding = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/BrokenStreetLight_Standing.png");
+        Sprite lightFallenA = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/FallenStreetLight_A.png");
+        Sprite lightFallenB = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/FallenStreetLight_B.png");
+        Sprite bed = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/BrokenHospitalBed.png");
+        Sprite sign = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/BrokenHospitalSign.png");
+        Sprite fallenSign = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/FallenHospitalSign.png");
+        Sprite cone = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Props/TrafficConeBroken.png");
+
+        CreateBlockedSprite("LeftLight_Upper", lightStanding, new Vector3(6f, 28f, 0f), parent, 1, 2, new Vector2(1f, 2f), new Vector2(0f, 0.5f), false);
+        CreateBlockedSprite("LeftLight_Mid", lightStanding, new Vector3(19f, 23f, 0f), parent, 1, 2, new Vector2(1f, 2f), new Vector2(0f, 0.5f), false);
+        CreateBlockedSprite("LeftLight_Lower", lightStanding, new Vector3(19f, 9f, 0f), parent, 1, 2, new Vector2(1f, 2f), new Vector2(0f, 0.5f), false);
+        CreateBlockedSprite("RightLight_Upper", lightStanding, new Vector3(57f, 27f, 0f), parent, 1, 2, new Vector2(1f, 2f), new Vector2(0f, 0.5f), false);
+        CreateBlockedSprite("RightLight_Lower", lightStanding, new Vector3(43f, 9f, 0f), parent, 1, 2, new Vector2(1f, 2f), new Vector2(0f, 0.5f), false);
+
+        CreateBlockedSprite("FallenLight_BottomCenter", lightFallenA, new Vector3(31f, 6f, 0f), parent, 4, 2, new Vector2(4f, 1.1f), Vector2.zero, true);
+        CreateBlockedSprite("FallenLight_BottomRight", lightFallenB, new Vector3(36f, 6f, 0f), parent, 4, 2, new Vector2(4f, 1.1f), Vector2.zero, true);
+
+        CreateBlockedSprite("Start_WreckedCar_A", wreckR2, new Vector3(49f, 10f, 0f), parent, 4, 4, new Vector2(3.2f, 3.2f), Vector2.zero, true);
+        CreateBlockedSprite("Start_Barricade_A", longBarricade, new Vector3(45f, 12f, 0f), parent, 4, 2, new Vector2(3.8f, 1.7f), Vector2.zero, false);
+        CreateBlockedSprite("Start_TirePile_A", tire, new Vector3(56f, 6f, 0f), parent, 3, 2, new Vector2(2.3f, 1.6f), Vector2.zero, false);
+        CreateBlockedSprite("Start_Cone_A", cone, new Vector3(54f, 4f, 0f), parent, 1, 1, new Vector2(0.7f, 0.7f), Vector2.zero, false);
+        CreateBlockedSprite("Start_WreckedCar_B", wreckR, new Vector3(56f, 14f, 0f), parent, 4, 4, new Vector2(3.2f, 3.2f), Vector2.zero, true);
+
+        CreateBlockedSprite("LeftLot_WreckedCar", wreckL, new Vector3(12f, 34f, 0f), parent, 4, 4, new Vector2(3.2f, 3.2f), Vector2.zero, true);
+        CreateBlockedSprite("LeftLot_NormalCar", carH04, new Vector3(10f, 12f, 0f), parent, 3, 2, new Vector2(2.8f, 1.8f), Vector2.zero, false);
+        CreateBlockedSprite("LeftLot_BloodyBed", bed, new Vector3(12f, 29f, 0f), parent, 4, 3, new Vector2(3.5f, 2.2f), Vector2.zero, false);
+
+        CreateBlockedSprite("RoadBlock_WreckA", wreckR, new Vector3(29f, 21f, 0f), parent, 4, 4, new Vector2(3.2f, 3.2f), Vector2.zero, true);
+        CreateBlockedSprite("RoadBlock_WreckB", largeWreck, new Vector3(36f, 18f, 0f), parent, 5, 4, new Vector2(4.8f, 3.6f), Vector2.zero, false);
+        CreateBlockedSprite("RoadBlock_Fence", brokenFence, new Vector3(24f, 17f, 0f), parent, 4, 3, new Vector2(3.7f, 3.4f), Vector2.zero, false);
+        CreateBlockedSprite("RoadBlock_Sign", fallenSign, new Vector3(35f, 26f, 0f), parent, 3, 2, new Vector2(2.8f, 1.8f), Vector2.zero, false);
+        CreateBlockedSprite("RoadBlock_Barricade_B", shortBarricade, new Vector3(20f, 20f, 0f), parent, 3, 2, new Vector2(2.6f, 1.7f), Vector2.zero, false);
+
+        CreateBlockedSprite("UpperRight_Car", carH06, new Vector3(48f, 20f, 0f), parent, 3, 2, new Vector2(2.8f, 1.8f), Vector2.zero, false);
+        CreateBlockedSprite("UpperRight_Bed", bed, new Vector3(46f, 24f, 0f), parent, 4, 3, new Vector2(3.5f, 2.2f), Vector2.zero, false);
+        CreateBlockedSprite("UpperRight_Sign", sign, new Vector3(41f, 31f, 0f), parent, 2, 2, new Vector2(2.3f, 1.7f), Vector2.zero, false);
+        CreateBlockedSprite("UpperRight_Barricade", shortBarricade, new Vector3(45f, 29f, 0f), parent, 3, 2, new Vector2(2.6f, 1.7f), Vector2.zero, false);
+
+        CreateBlockedSprite("HospitalApproach_Barricade", brokenBarricade, new Vector3(28f, 35f, 0f), parent, 3, 2, new Vector2(2.6f, 1.5f), Vector2.zero, false);
+        CreateBlockedSprite("HospitalApproach_CarH", carH01, new Vector3(22f, 37f, 0f), parent, 3, 2, new Vector2(2.8f, 1.8f), Vector2.zero, false);
+        CreateBlockedSprite("HospitalApproach_CarV", carV01, new Vector3(41f, 37f, 0f), parent, 2, 3, new Vector2(1.8f, 2.8f), Vector2.zero, false);
+        CreateBlockedSprite("HospitalApproach_TirePile", tire, new Vector3(25f, 40f, 0f), parent, 3, 2, new Vector2(2.3f, 1.6f), Vector2.zero, false);
+        CreateBlockedSprite("HospitalApproach_LongBarricade", longBarricade, new Vector3(35f, 39f, 0f), parent, 4, 2, new Vector2(3.8f, 1.7f), Vector2.zero, false);
+        CreateBlockedSprite("HospitalApproach_ConeRow", coneRow, new Vector3(31f, 33f, 0f), parent, 4, 2, new Vector2(3.8f, 1.2f), Vector2.zero, false);
+        CreateBlockedSprite("HospitalApproach_WreckedCar", wreckL, new Vector3(38f, 34f, 0f), parent, 4, 4, new Vector2(3.2f, 3.2f), Vector2.zero, true);
+        CreateBlockedSprite("HospitalApproach_Barricade_Left", shortBarricade, new Vector3(24f, 34f, 0f), parent, 3, 2, new Vector2(2.6f, 1.7f), Vector2.zero, false);
+        CreateBlockedSprite("HospitalApproach_Barricade_Right", shortBarricade, new Vector3(39f, 33f, 0f), parent, 3, 2, new Vector2(2.6f, 1.7f), Vector2.zero, false);
+
+        CreateBlockedSprite("Entrance_Cone_Left", cone, new Vector3(25f, 39f, 0f), parent, 1, 1, new Vector2(0.7f, 0.7f), Vector2.zero, false);
+        CreateBlockedSprite("Entrance_Cone_Right", cone, new Vector3(50f, 39f, 0f), parent, 1, 1, new Vector2(0.7f, 0.7f), Vector2.zero, false);
+    }
+
+    private static void CreateDecalSet(Transform parent)
+    {
+        CreateDecorSprite("Decal_Blood_01", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodPuddle.png"), new Vector3(56f, 6f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_02", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile01.png"), new Vector3(52f, 11f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Glass_01", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/GlassDebris.png"), new Vector3(47f, 6f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Glass_02", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/GlassTile01.png"), new Vector3(49f, 18f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Eye_01", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/EyeDecal.png"), new Vector3(39f, 14f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Shoe_01", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/DroppedShoe.png"), new Vector3(35f, 17f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_03", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile03.png"), new Vector3(31f, 23f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_04", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodPuddle.png"), new Vector3(27f, 29f, 0f), parent, "Props", -3, Vector3.one * 0.9f);
+        CreateDecorSprite("Decal_Glass_03", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/GlassTile03.png"), new Vector3(24f, 25f, 0f), parent, "Props", -3, Vector3.one * 1.1f);
+        CreateDecorSprite("Decal_Eye_02", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/EyeTile.png"), new Vector3(19f, 22f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Shoe_02", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/ShoeTile.png"), new Vector3(16f, 18f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_05", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile01.png"), new Vector3(13f, 14f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Glass_04", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/GlassTile01.png"), new Vector3(8f, 21f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_06", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodPuddle.png"), new Vector3(29f, 38f, 0f), parent, "Props", -3, Vector3.one * 1.2f);
+        CreateDecorSprite("Decal_Glass_05", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/GlassDebris.png"), new Vector3(34f, 40f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Eye_03", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/EyeDecal.png"), new Vector3(38f, 42f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Shoe_03", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/DroppedShoe.png"), new Vector3(26f, 43f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_07", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile03.png"), new Vector3(44f, 12f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_08", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodPuddle.png"), new Vector3(41f, 18f, 0f), parent, "Props", -3, Vector3.one * 0.9f);
+        CreateDecorSprite("Decal_Blood_09", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile01.png"), new Vector3(34f, 25f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_10", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile03.png"), new Vector3(22f, 28f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_11", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodPuddle.png"), new Vector3(31f, 34f, 0f), parent, "Props", -3, Vector3.one * 0.95f);
+        CreateDecorSprite("Decal_Blood_12", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile01.png"), new Vector3(28f, 40f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_13", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile03.png"), new Vector3(31f, 42f, 0f), parent, "Props", -3, Vector3.one * 1.1f);
+        CreateDecorSprite("Decal_Blood_14", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodPuddle.png"), new Vector3(35f, 43f, 0f), parent, "Props", -3, Vector3.one * 1.1f);
+        CreateDecorSprite("Decal_Blood_15", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile01.png"), new Vector3(30f, 45f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Eye_04", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/EyeDecal.png"), new Vector3(38f, 6f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Eye_05", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/EyeTile.png"), new Vector3(15f, 31f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_16", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodPuddle.png"), new Vector3(9f, 31f, 0f), parent, "Props", -3, Vector3.one * 1.2f);
+        CreateDecorSprite("Decal_Blood_17", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile03.png"), new Vector3(49f, 30f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Blood_18", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/BloodTile01.png"), new Vector3(41f, 15f, 0f), parent, "Props", -3, Vector3.one * 1.1f);
+        CreateDecorSprite("Decal_Glass_06", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/GlassDebris.png"), new Vector3(13f, 34f, 0f), parent, "Props", -3, Vector3.one);
+        CreateDecorSprite("Decal_Glass_07", AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Decals/GlassTile03.png"), new Vector3(52f, 15f, 0f), parent, "Props", -3, Vector3.one);
+    }
+
+    private static void CreateEnemySet(Transform parent, Transform triggerRoot)
+    {
+        GameObject e1 = PlaceEnemy(parent, "ParkingEnemy01", "ParkingEnemy_01", new Vector3(47f, 8f, 0f));
+        GameObject e2 = PlaceEnemy(parent, "ParkingEnemy02", "ParkingEnemy_02", new Vector3(42f, 13f, 0f));
+        GameObject e3 = PlaceEnemy(parent, "ParkingEnemy03", "ParkingEnemy_03", new Vector3(12f, 13f, 0f));
+        GameObject e4 = PlaceEnemy(parent, "ParkingEnemy04", "ParkingEnemy_04", new Vector3(15f, 26f, 0f));
+        GameObject e5 = PlaceEnemy(parent, "ParkingEnemy01", "ParkingEnemy_05", new Vector3(26f, 16f, 0f));
+        GameObject e6 = PlaceEnemy(parent, "ParkingEnemy02", "ParkingEnemy_06", new Vector3(37f, 16f, 0f));
+        GameObject e7 = PlaceEnemy(parent, "ParkingEnemy03", "ParkingEnemy_07", new Vector3(44f, 23f, 0f));
+        GameObject e8 = PlaceEnemy(parent, "ParkingEnemy04", "ParkingEnemy_08", new Vector3(23f, 35f, 0f));
+        GameObject e9 = PlaceEnemy(parent, "ParkingEnemy01", "ParkingEnemy_09", new Vector3(36f, 36f, 0f));
+        GameObject e10 = PlaceEnemy(parent, "ParkingEnemy02", "ParkingEnemy_10", new Vector3(31f, 40f, 0f));
+        GameObject e11 = PlaceEnemy(parent, "ParkingEnemy03", "ParkingEnemy_11", new Vector3(54f, 18f, 0f));
+        GameObject e12 = PlaceEnemy(parent, "ParkingEnemy04", "ParkingEnemy_12", new Vector3(8f, 24f, 0f));
+        GameObject e13 = PlaceEnemy(parent, "ParkingEnemy01", "ParkingEnemy_13", new Vector3(27f, 38f, 0f));
+
+        CreateEnemyActivateTrigger(triggerRoot, new Vector3(46f, 10f, 0f), "Trigger_StartGauntlet", new Vector2Int(14, 12), e1, e2, e11);
+        CreateEnemyActivateTrigger(triggerRoot, new Vector3(14f, 20f, 0f), "Trigger_LeftLot", new Vector2Int(16, 14), e3, e4, e12);
+        CreateEnemyActivateTrigger(triggerRoot, new Vector3(31f, 18f, 0f), "Trigger_MidRoad", new Vector2Int(18, 12), e5, e6, e7);
+        CreateEnemyActivateTrigger(triggerRoot, new Vector3(31f, 37f, 0f), "Trigger_HospitalApproach", new Vector2Int(20, 12), e8, e9, e10, e13);
+    }
+
+    private static void CreateItemSet(Transform parent)
+    {
+        PlaceStageItem(HealItemPrefabPath, "Item_Heal_StartRoute", new Vector3(50f, 8f, 0f), parent);
+        PlaceStageItem(SpeedBuffItemPrefabPath, "Item_Speed_CenterBypass", new Vector3(24f, 19f, 0f), parent);
+        PlaceStageItem(AttackBuffItemPrefabPath, "Item_Attack_HospitalApproach", new Vector3(34f, 31f, 0f), parent);
+        PlaceStageItem(HealItemPrefabPath, "Item_Heal_BeforeEntrance", new Vector3(29f, 39f, 0f), parent);
+    }
+
+    private static GameObject PlaceStageItem(string prefabPath, string name, Vector3 position, Transform parent)
+    {
+        GameObject item = PlacePrefab(prefabPath, position, parent, name);
+
+        GridOccupant occupant = EnsureComponent<GridOccupant>(item);
+        occupant.blocksMovement = false;
+
+        SpriteRenderer renderer = item.GetComponent<SpriteRenderer>();
+        if (renderer != null)
+        {
+            renderer.sortingLayerName = "Items";
+            renderer.sortingOrder = 0;
+        }
+
+        return item;
+    }
+
+    private static void CreateHospitalTrigger(Transform triggerRoot, Transform uiRoot, GameObject player)
+    {
+        Canvas canvas = CreateCanvas(uiRoot);
+        TextMeshProUGUI prompt = CreatePrompt(canvas.transform);
+        CreateHealthUi(canvas.transform, player);
+        CreateBuffTimerUi(canvas.transform, player);
+        CreateGameOverUi(canvas.transform);
+
+        GameObject trigger = new GameObject("HospitalEntranceTrigger");
+        trigger.transform.SetParent(triggerRoot, false);
+        trigger.transform.position = new Vector3(31.5f, 41.5f, 0f);
+        HospitalEntranceTrigger entrance = trigger.AddComponent<HospitalEntranceTrigger>();
+        entrance.size = new Vector2Int(6, 3);
+        entrance.nextSceneName = "Hospital";
+        entrance.promptText = prompt;
+        entrance.promptMessage = "Press E to Enter Hospital";
+    }
+
+    private static void BuildEnemyVariant(string variantName, string sheetPath)
+    {
+        string prefabPath = $"{PrefabRoot}/Enemies/{variantName}.prefab";
+        string clipPath = $"{AnimationRoot}/{variantName}_Walk.anim";
+        string controllerPath = $"{AnimationRoot}/{variantName}.controller";
+
+        if (!AssetDatabase.CopyAsset(EnemyBasePrefabPath, prefabPath))
+        {
+            // Prefab already exists.
+        }
+
+        Sprite[] sprites = LoadEnemyFrames(sheetPath);
+        if (sprites.Length == 0)
+        {
+            throw new InvalidOperationException($"Enemy frames missing for {sheetPath}");
+        }
+
+        AnimationClip clip = BuildLoopingSpriteClip(clipPath, sprites, 8f);
+        AnimatorController controller = BuildController(controllerPath, clip);
+
+        using var scope = new PrefabUtility.EditPrefabContentsScope(prefabPath);
+        GameObject root = scope.prefabContentsRoot;
+        root.name = variantName;
+        SpriteRenderer sr = EnsureComponent<SpriteRenderer>(root);
+        sr.sprite = sprites[0];
+        sr.sortingLayerName = "Enemies";
+        sr.color = Color.white;
+
+        Animator animator = EnsureComponent<Animator>(root);
+        animator.runtimeAnimatorController = controller;
+
+        BoxCollider2D collider = EnsureComponent<BoxCollider2D>(root);
+        collider.size = new Vector2(1f, 1f);
+        collider.offset = new Vector2(0f, 0.5f);
+
+        root.transform.localScale = new Vector3(1.08f, 1.5f, 1f);
+
+        EnemyAI ai = root.GetComponent<EnemyAI>();
+        if (ai != null)
+        {
+            ai.startActive = false;
+            ai.detectRange = 18;
+            ai.wakeRange = 24;
+            ai.wakeOnProximity = true;
+            ai.moveInterval = 0.24f;
+        }
+    }
+
+    private static Sprite[] LoadEnemyFrames(string assetPath)
+    {
+        return AssetDatabase.LoadAllAssetsAtPath(assetPath)
+            .OfType<Sprite>()
+            .OrderBy(sprite => sprite.name, StringComparer.Ordinal)
+            .ToArray();
+    }
+
+    private static Sprite[] LoadOrderedSprites(string assetPath)
+    {
+        return AssetDatabase.LoadAllAssetsAtPath(assetPath)
+            .OfType<Sprite>()
+            .OrderBy(sprite => sprite.name, StringComparer.Ordinal)
+            .ToArray();
+    }
+
+    private static Sprite[] CreateIdlePairFromWalk(Sprite[] walkSprites)
+    {
+        if (walkSprites == null || walkSprites.Length == 0)
+        {
+            return Array.Empty<Sprite>();
+        }
+
+        Sprite idle = walkSprites[0];
+        return new[] { idle, idle };
+    }
+
+    private static Sprite[] LoadGridRowSprites(string assetPath, int row)
+    {
+        return AssetDatabase.LoadAllAssetsAtPath(assetPath)
+            .OfType<Sprite>()
+            .Where(sprite => sprite.name.Contains($"_r{row + 1:D2}_", StringComparison.Ordinal))
+            .OrderBy(sprite => sprite.name, StringComparer.Ordinal)
+            .ToArray();
+    }
+
+    private static AnimationClip BuildLoopingSpriteClip(string assetPath, Sprite[] sprites, float framesPerSecond)
+    {
+        AnimationClip clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(assetPath);
+        if (clip == null)
+        {
+            clip = new AnimationClip();
+            AssetDatabase.CreateAsset(clip, assetPath);
+        }
+
+        clip.frameRate = framesPerSecond;
+        var binding = new EditorCurveBinding
+        {
+            type = typeof(SpriteRenderer),
+            path = string.Empty,
+            propertyName = "m_Sprite"
+        };
+
+        ObjectReferenceKeyframe[] keys = new ObjectReferenceKeyframe[sprites.Length];
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            keys[i] = new ObjectReferenceKeyframe
+            {
+                time = i / framesPerSecond,
+                value = sprites[i]
+            };
+        }
+
+        AnimationUtility.SetObjectReferenceCurve(clip, binding, keys);
+        var settings = AnimationUtility.GetAnimationClipSettings(clip);
+        settings.loopTime = true;
+        AnimationUtility.SetAnimationClipSettings(clip, settings);
+        EditorUtility.SetDirty(clip);
+        return clip;
+    }
+
+    private static AnimatorController BuildController(string assetPath, Motion defaultMotion)
+    {
+        AnimatorController controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(assetPath);
+        if (controller == null)
+        {
+            controller = AnimatorController.CreateAnimatorControllerAtPath(assetPath);
+        }
+
+        AnimatorStateMachine stateMachine = controller.layers[0].stateMachine;
+        AnimatorState state = stateMachine.states.Length > 0 ? stateMachine.states[0].state : null;
+        if (state == null)
+        {
+            state = stateMachine.AddState("Walk");
+        }
+
+        state.motion = defaultMotion;
+        stateMachine.defaultState = state;
+        EditorUtility.SetDirty(controller);
+        return controller;
+    }
+
+    private static void BuildSpriteObstaclePrefab(string prefabName, string spritePath, Vector2 colliderSize, Vector2 colliderOffset, int blockedWidth, int blockedHeight, bool polygonCollider)
+    {
+        string prefabPath = $"{PrefabRoot}/Obstacles/{prefabName}.prefab";
+        Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
+        if (sprite == null)
+        {
+            throw new InvalidOperationException($"Missing obstacle sprite: {spritePath}");
+        }
+
+        GameObject temp = new GameObject(prefabName);
+        temp.layer = LayerMask.NameToLayer("Wall");
+        SpriteRenderer sr = temp.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.sortingLayerName = "Props";
+        sr.sortingOrder = 0;
+
+        if (polygonCollider)
+        {
+            temp.AddComponent<PolygonCollider2D>();
+        }
+        else
+        {
+            BoxCollider2D collider = temp.AddComponent<BoxCollider2D>();
+            collider.size = colliderSize;
+            collider.offset = colliderOffset;
+        }
+
+        GridBlockedArea blockedArea = temp.AddComponent<GridBlockedArea>();
+        blockedArea.width = blockedWidth;
+        blockedArea.height = blockedHeight;
+
+        PrefabUtility.SaveAsPrefabAsset(temp, prefabPath);
+        UnityEngine.Object.DestroyImmediate(temp);
+    }
+
+    private static void BuildDecalPrefab(string prefabName, string spritePath)
+    {
+        string prefabPath = $"{PrefabRoot}/Decals/{prefabName}.prefab";
+        Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
+        if (sprite == null)
+        {
+            throw new InvalidOperationException($"Missing decal sprite: {spritePath}");
+        }
+
+        GameObject temp = new GameObject(prefabName);
+        SpriteRenderer sr = temp.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.sortingLayerName = "Props";
+        sr.sortingOrder = -2;
+        PrefabUtility.SaveAsPrefabAsset(temp, prefabPath);
+        UnityEngine.Object.DestroyImmediate(temp);
+    }
+
+    private static void BuildHospitalEntranceTriggerPrefab()
+    {
+        string prefabPath = $"{PrefabRoot}/Obstacles/HospitalEntranceTrigger.prefab";
+        GameObject temp = new GameObject("HospitalEntranceTrigger");
+        HospitalEntranceTrigger trigger = temp.AddComponent<HospitalEntranceTrigger>();
+        trigger.size = new Vector2Int(6, 3);
+        trigger.nextSceneName = "Hospital";
+        PrefabUtility.SaveAsPrefabAsset(temp, prefabPath);
+        UnityEngine.Object.DestroyImmediate(temp);
+    }
+
+    private static void RefreshHealItemPrefabVisual()
+    {
+        const string potionSpritePath = "Assets/Project/Art/Sprites/Items/Potion.png";
+        Sprite potionSprite = AssetDatabase.LoadAssetAtPath<Sprite>(potionSpritePath);
+        if (potionSprite == null)
+        {
+            return;
+        }
+
+        using var scope = new PrefabUtility.EditPrefabContentsScope("Assets/Project/Prefabs/Item/HealItem.prefab");
+        SpriteRenderer renderer = scope.prefabContentsRoot.GetComponent<SpriteRenderer>();
+        if (renderer == null)
+        {
+            renderer = scope.prefabContentsRoot.AddComponent<SpriteRenderer>();
+        }
+
+        renderer.sprite = potionSprite;
+        renderer.sortingLayerName = "Items";
+        renderer.sortingOrder = 0;
+        renderer.color = Color.white;
+    }
+
+    private static void CopySprite(string sourceRelativePath, string destinationAssetPath, float ppu, SpriteAlignment alignment)
+    {
+        CopyFileFromDesktop(sourceRelativePath, destinationAssetPath);
+        TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(destinationAssetPath);
+        importer.textureType = TextureImporterType.Sprite;
+        importer.spriteImportMode = SpriteImportMode.Single;
+        importer.spritePixelsPerUnit = ppu;
+        importer.filterMode = FilterMode.Point;
+        importer.textureCompression = TextureImporterCompression.Uncompressed;
+        importer.alphaIsTransparency = true;
+
+        var settings = new TextureImporterSettings();
+        importer.ReadTextureSettings(settings);
+        settings.spriteAlignment = (int)alignment;
+        settings.spritePivot = alignment == SpriteAlignment.BottomCenter ? new Vector2(0.5f, 0f) : new Vector2(0.5f, 0.5f);
+        importer.SetTextureSettings(settings);
+        importer.SaveAndReimport();
+    }
+
+    private static void CopyHorizontalSpriteSheet(string sourceRelativePath, string destinationAssetPath, int columns, float ppu, SpriteAlignment alignment)
+    {
+        CopyFileFromDesktop(sourceRelativePath, destinationAssetPath);
+        TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(destinationAssetPath);
+        Texture2D temp = LoadTextureFromFile(Path.Combine(SourceRoot, sourceRelativePath));
+        int frameWidth = temp.width / columns;
+        int frameHeight = temp.height;
+
+        importer.textureType = TextureImporterType.Sprite;
+        importer.spriteImportMode = SpriteImportMode.Multiple;
+        importer.spritePixelsPerUnit = ppu;
+        importer.filterMode = FilterMode.Point;
+        importer.textureCompression = TextureImporterCompression.Uncompressed;
+        importer.alphaIsTransparency = true;
+        importer.spritesheet = Enumerable.Range(0, columns)
+            .Select(index => new SpriteMetaData
+            {
+                alignment = (int)alignment,
+                pivot = alignment == SpriteAlignment.BottomCenter ? new Vector2(0.5f, 0f) : new Vector2(0.5f, 0.5f),
+                name = $"{Path.GetFileNameWithoutExtension(destinationAssetPath)}_{index + 1:D2}",
+                rect = new Rect(index * frameWidth, 0f, frameWidth, frameHeight)
+            })
+            .ToArray();
+        importer.SaveAndReimport();
+        UnityEngine.Object.DestroyImmediate(temp);
+    }
+
+    private static void CopyGridSpriteSheet(string sourceRelativePath, string destinationAssetPath, int columns, int rows, float ppu, SpriteAlignment alignment)
+    {
+        CopyFileFromDesktop(sourceRelativePath, destinationAssetPath);
+        TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(destinationAssetPath);
+        Texture2D temp = LoadTextureFromFile(Path.Combine(SourceRoot, sourceRelativePath));
+        int frameWidth = temp.width / columns;
+        int frameHeight = temp.height / rows;
+        int textureHeight = temp.height;
+
+        importer.textureType = TextureImporterType.Sprite;
+        importer.spriteImportMode = SpriteImportMode.Multiple;
+        importer.spritePixelsPerUnit = ppu;
+        importer.filterMode = FilterMode.Point;
+        importer.textureCompression = TextureImporterCompression.Uncompressed;
+        importer.alphaIsTransparency = true;
+
+        var sprites = new List<SpriteMetaData>();
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < columns; col++)
+            {
+                sprites.Add(new SpriteMetaData
+                {
+                    alignment = (int)alignment,
+                    pivot = alignment == SpriteAlignment.BottomCenter ? new Vector2(0.5f, 0f) : new Vector2(0.5f, 0.5f),
+                    name = $"{Path.GetFileNameWithoutExtension(destinationAssetPath)}_r{row + 1:D2}_c{col + 1:D2}",
+                    rect = new Rect(col * frameWidth, textureHeight - ((row + 1) * frameHeight), frameWidth, frameHeight)
+                });
+            }
+        }
+
+        importer.spritesheet = sprites.ToArray();
+        importer.SaveAndReimport();
+        UnityEngine.Object.DestroyImmediate(temp);
+    }
+
+    private static Texture2D LoadTextureFromFile(string path)
+    {
+        byte[] bytes = File.ReadAllBytes(path);
+        Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+        texture.LoadImage(bytes);
+        return texture;
+    }
+
+    private static void CopyEnemySheet(string sourceFileName, string destinationAssetPath)
+    {
+        string sourceAbsolute = Path.Combine(SourceRoot, sourceFileName);
+        Texture2D sourceTexture = LoadTextureFromFile(sourceAbsolute);
+        Texture2D processedTexture = RemoveNearWhiteBackground(sourceTexture, 0.9f);
+        SaveTextureToAssetPath(processedTexture, destinationAssetPath);
+        UnityEngine.Object.DestroyImmediate(sourceTexture);
+        UnityEngine.Object.DestroyImmediate(processedTexture);
+        TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(destinationAssetPath);
+        importer.textureType = TextureImporterType.Sprite;
+        importer.spriteImportMode = SpriteImportMode.Multiple;
+        importer.spritePixelsPerUnit = 512f;
+        importer.filterMode = FilterMode.Point;
+        importer.textureCompression = TextureImporterCompression.Uncompressed;
+        importer.alphaIsTransparency = true;
+        importer.spritesheet = Enumerable.Range(0, 4)
+            .Select(index => new SpriteMetaData
+            {
+                alignment = (int)SpriteAlignment.BottomCenter,
+                pivot = new Vector2(0.5f, 0f),
+                name = $"{Path.GetFileNameWithoutExtension(destinationAssetPath)}_{index + 1:D2}",
+                rect = new Rect(index * 512f, 0f, 512f, 768f)
+            })
+            .ToArray();
+        importer.SaveAndReimport();
+    }
+
+    private static Texture2D RemoveNearWhiteBackground(Texture2D source, float threshold)
+    {
+        Texture2D result = new Texture2D(source.width, source.height, TextureFormat.RGBA32, false);
+        Color[] pixels = source.GetPixels();
+
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            Color pixel = pixels[i];
+            bool nearWhite = pixel.r >= threshold && pixel.g >= threshold && pixel.b >= threshold;
+            if (nearWhite)
+            {
+                pixel.a = 0f;
+            }
+
+            pixels[i] = pixel;
+        }
+
+        result.SetPixels(pixels);
+        result.Apply();
+        return result;
+    }
+
+    private static void SaveTextureToAssetPath(Texture2D texture, string destinationAssetPath)
+    {
+        string destinationAbsolute = ToAbsoluteAssetPath(destinationAssetPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(destinationAbsolute) ?? throw new InvalidOperationException("Missing destination directory"));
+        File.WriteAllBytes(destinationAbsolute, texture.EncodeToPNG());
+        AssetDatabase.ImportAsset(destinationAssetPath, ImportAssetOptions.ForceUpdate);
+    }
+
+    private static void CopyAudio(string sourceFileName, string destinationAssetPath)
+    {
+        CopyFileFromDesktop(sourceFileName, destinationAssetPath);
+        AudioImporter importer = (AudioImporter)AssetImporter.GetAtPath(destinationAssetPath);
+        importer.forceToMono = false;
+        importer.loadInBackground = false;
+        importer.SaveAndReimport();
+    }
+
+    private static void CopyFileFromDesktop(string sourceRelativePath, string destinationAssetPath)
+    {
+        string sourceAbsolute = Path.Combine(SourceRoot, sourceRelativePath);
+        string destinationAbsolute = ToAbsoluteAssetPath(destinationAssetPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(destinationAbsolute) ?? throw new InvalidOperationException("Missing destination directory"));
+        File.Copy(sourceAbsolute, destinationAbsolute, true);
+        AssetDatabase.ImportAsset(destinationAssetPath, ImportAssetOptions.ForceUpdate);
+    }
+
+    private static string ToAbsoluteAssetPath(string assetPath)
+    {
+        if (!assetPath.StartsWith("Assets/", StringComparison.Ordinal))
+        {
+            throw new ArgumentException($"Expected project asset path, got: {assetPath}");
+        }
+
+        return Path.Combine(Application.dataPath, assetPath.Substring("Assets/".Length));
+    }
+
+    private static GameObject CreateRoot(string name)
+    {
+        return new GameObject(name);
+    }
+
+    private static GameObject PlacePrefab(string assetPath, Vector3 position, Transform parent, string name)
+    {
+        GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
+        if (prefab == null)
+        {
+            throw new InvalidOperationException($"Missing prefab: {assetPath}");
+        }
+
+        GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+        instance.name = name;
+        instance.transform.position = position;
+        if (parent != null)
+        {
+            instance.transform.SetParent(parent, true);
+        }
+
+        return instance;
+    }
+
+    private static GameObject PlaceEnemy(Transform parent, string prefabName, string instanceName, Vector3 position)
+    {
+        GameObject enemy = PlacePrefab($"{PrefabRoot}/Enemies/{prefabName}.prefab", position, parent, instanceName);
+        EnemyAI ai = enemy.GetComponent<EnemyAI>();
+        if (ai != null)
+        {
+            ai.startActive = false;
+            ai.detectRange = 18;
+            ai.wakeRange = 24;
+            ai.wakeOnProximity = true;
+            ai.moveInterval = 0.24f;
+        }
+
+        return enemy;
+    }
+
+    private static T EnsureComponent<T>(GameObject go) where T : Component
+    {
+        T component = go.GetComponent<T>();
+        if (component == null)
+        {
+            component = go.AddComponent<T>();
+        }
+
+        return component;
+    }
+
+    private static Camera EnsureCamera(Transform parent)
+    {
+        GameObject cameraObject = new GameObject("Main Camera");
+        if (parent != null)
+        {
+            cameraObject.transform.SetParent(parent, false);
+        }
+
+        cameraObject.tag = "MainCamera";
+        cameraObject.transform.position = new Vector3(MapWidth * 0.5f, MapHeight * 0.5f, -10f);
+        Camera camera = cameraObject.AddComponent<Camera>();
+        camera.orthographic = true;
+        camera.orthographicSize = 5f;
+        camera.clearFlags = CameraClearFlags.SolidColor;
+        camera.backgroundColor = new Color(0.18f, 0.18f, 0.2f, 1f);
+        cameraObject.AddComponent<AudioListener>();
+        return camera;
+    }
+
+    private static void AlignSceneViewToMainCamera()
+    {
+        Camera mainCamera = Camera.main;
+        SceneView sceneView = SceneView.lastActiveSceneView;
+        if (mainCamera == null || sceneView == null)
+        {
+            return;
+        }
+
+        Vector3 pivot = mainCamera.transform.position;
+        pivot.z = 0f;
+        sceneView.LookAt(pivot, Quaternion.identity, mainCamera.orthographicSize, true, true);
+        sceneView.orthographic = true;
+        sceneView.Repaint();
+    }
+
+    private static void CreateBlockedSprite(string name, Sprite sprite, Vector3 position, Transform parent,
+        int blockedWidth, int blockedHeight, Vector2 colliderSize, Vector2 colliderOffset, bool polygonCollider)
+    {
+        GameObject go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.position = position;
+        go.layer = LayerMask.NameToLayer("Wall");
+
+        SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.sortingLayerName = "Props";
+        sr.sortingOrder = 0;
+
+        if (polygonCollider)
+        {
+            go.AddComponent<PolygonCollider2D>();
+        }
+        else
+        {
+            BoxCollider2D collider = go.AddComponent<BoxCollider2D>();
+            collider.size = colliderSize;
+            collider.offset = colliderOffset;
+        }
+
+        GridBlockedArea blockedArea = go.AddComponent<GridBlockedArea>();
+        blockedArea.width = blockedWidth;
+        blockedArea.height = blockedHeight;
+    }
+
+    private static void CreateInvisibleBlocker(string name, Vector3 position, Transform parent,
+        int blockedWidth, int blockedHeight, Vector2 colliderSize, Vector2 colliderOffset)
+    {
+        GameObject go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.position = position;
+        go.layer = LayerMask.NameToLayer("Wall");
+
+        BoxCollider2D collider = go.AddComponent<BoxCollider2D>();
+        collider.size = colliderSize;
+        collider.offset = colliderOffset;
+
+        GridBlockedArea blockedArea = go.AddComponent<GridBlockedArea>();
+        blockedArea.width = blockedWidth;
+        blockedArea.height = blockedHeight;
+    }
+
+    private static void CreateDecorSprite(string name, Sprite sprite, Vector3 position, Transform parent,
+        string sortingLayerName, int sortingOrder, Vector3 scale)
+    {
+        if (sprite == null)
+        {
+            return;
+        }
+
+        GameObject go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.position = position;
+        go.transform.localScale = scale;
+        SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.sortingLayerName = sortingLayerName;
+        sr.sortingOrder = sortingOrder;
+    }
+
+    private static void CreateFloorSprite(string name, Sprite sprite, Vector3 position, Transform parent, int sortingOrder)
+    {
+        if (sprite == null)
+        {
+            return;
+        }
+
+        CreateDecorSprite(name, sprite, position, parent, "Floor", sortingOrder, Vector3.one);
+    }
+
+    private static void CreateEnemyActivateTrigger(Transform parent, Vector3 position, string name, Vector2Int size, params GameObject[] enemies)
+    {
+        GameObject go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.position = position;
+        EnemyActivateTrigger trigger = go.AddComponent<EnemyActivateTrigger>();
+        var serialized = new SerializedObject(trigger);
+        serialized.FindProperty("size").vector2IntValue = size;
+        serialized.FindProperty("triggerOnce").boolValue = true;
+
+        SerializedProperty list = serialized.FindProperty("enemies");
+        list.arraySize = enemies.Length;
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            list.GetArrayElementAtIndex(i).objectReferenceValue = enemies[i].GetComponent<EnemyAI>();
+        }
+
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+    }
+
+    private static Canvas CreateCanvas(Transform parent)
+    {
+        GameObject canvasGo = new GameObject("Canvas");
+        canvasGo.transform.SetParent(parent, false);
+        Canvas canvas = canvasGo.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvasGo.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        canvasGo.AddComponent<GraphicRaycaster>();
+
+        if (UnityEngine.Object.FindObjectOfType<UnityEngine.EventSystems.EventSystem>() == null)
+        {
+            new GameObject("EventSystem",
+                typeof(UnityEngine.EventSystems.EventSystem),
+                typeof(InputSystemUIInputModule));
+        }
+
+        return canvas;
+    }
+
+    private static void CreateHealthUi(Transform parent, GameObject player)
+    {
+        GameObject hpGo = new GameObject("HpTextUI");
+        hpGo.transform.SetParent(parent, false);
+
+        RectTransform rect = hpGo.AddComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0f, 1f);
+        rect.anchorMax = new Vector2(0f, 1f);
+        rect.pivot = new Vector2(0f, 1f);
+        rect.anchoredPosition = new Vector2(16f, -12f);
+        rect.sizeDelta = new Vector2(140f, 28f);
+
+        TextMeshProUGUI text = hpGo.AddComponent<TextMeshProUGUI>();
+        text.alignment = TextAlignmentOptions.Left;
+        text.fontSize = 20f;
+        text.color = Color.white;
+        text.text = "HP 3/3";
+
+        HpTextUI hpUi = hpGo.AddComponent<HpTextUI>();
+        var serialized = new SerializedObject(hpUi);
+        serialized.FindProperty("hpText").objectReferenceValue = text;
+        serialized.FindProperty("playerHealth").objectReferenceValue = player.GetComponent<PlayerHealth>();
+        serialized.FindProperty("useSimpleText").boolValue = true;
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+    }
+
+    private static void CreateBuffTimerUi(Transform parent, GameObject player)
+    {
+        GameObject buffGo = new GameObject("BuffTimerUI");
+        buffGo.transform.SetParent(parent, false);
+        RectTransform rect = buffGo.AddComponent<RectTransform>();
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.one;
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+
+        BuffTimerUI ui = buffGo.AddComponent<BuffTimerUI>();
+        var serialized = new SerializedObject(ui);
+        serialized.FindProperty("iconSize").floatValue = 24f;
+        serialized.FindProperty("barWidth").floatValue = 78f;
+        serialized.FindProperty("barHeight").floatValue = 10f;
+        serialized.FindProperty("spacing").floatValue = 4f;
+        serialized.FindProperty("marginRight").floatValue = 14f;
+        serialized.FindProperty("marginTop").floatValue = 12f;
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+    }
+
+    private static void CreateGameOverUi(Transform parent)
+    {
+        Sprite deathScareSprite = AssetDatabase.LoadAssetAtPath<Sprite>(DeathScareImagePath);
+
+        GameObject scarePanelGo = new GameObject("DeathScarePanel");
+        scarePanelGo.transform.SetParent(parent, false);
+        RectTransform scarePanelRect = scarePanelGo.AddComponent<RectTransform>();
+        scarePanelRect.anchorMin = Vector2.zero;
+        scarePanelRect.anchorMax = Vector2.one;
+        scarePanelRect.offsetMin = Vector2.zero;
+        scarePanelRect.offsetMax = Vector2.zero;
+        scarePanelGo.AddComponent<CanvasGroup>().alpha = 1f;
+
+        GameObject scareBackdropGo = new GameObject("DeathScareBackdrop");
+        scareBackdropGo.transform.SetParent(scarePanelGo.transform, false);
+        RectTransform backdropRect = scareBackdropGo.AddComponent<RectTransform>();
+        backdropRect.anchorMin = Vector2.zero;
+        backdropRect.anchorMax = Vector2.one;
+        backdropRect.offsetMin = Vector2.zero;
+        backdropRect.offsetMax = Vector2.zero;
+        Image backdropImage = scareBackdropGo.AddComponent<Image>();
+        backdropImage.color = new Color(0f, 0f, 0f, 0.92f);
+
+        GameObject scareImageGo = new GameObject("DeathScareImage");
+        scareImageGo.transform.SetParent(scarePanelGo.transform, false);
+        RectTransform scareImageRect = scareImageGo.AddComponent<RectTransform>();
+        scareImageRect.anchorMin = Vector2.zero;
+        scareImageRect.anchorMax = Vector2.one;
+        scareImageRect.offsetMin = Vector2.zero;
+        scareImageRect.offsetMax = Vector2.zero;
+        Image scareImage = scareImageGo.AddComponent<Image>();
+        scareImage.sprite = deathScareSprite;
+        scareImage.color = Color.white;
+        scareImage.preserveAspect = true;
+        scareImage.enabled = deathScareSprite != null;
+
+        GameObject panelGo = new GameObject("GameOverPanel");
+        panelGo.transform.SetParent(parent, false);
+        RectTransform panelRect = panelGo.AddComponent<RectTransform>();
+        panelRect.anchorMin = Vector2.zero;
+        panelRect.anchorMax = Vector2.one;
+        panelRect.offsetMin = Vector2.zero;
+        panelRect.offsetMax = Vector2.zero;
+
+        Image panelImage = panelGo.AddComponent<Image>();
+        panelImage.color = new Color(0f, 0f, 0f, 0.72f);
+
+        GameObject textGo = new GameObject("GameOverText");
+        textGo.transform.SetParent(panelGo.transform, false);
+        RectTransform textRect = textGo.AddComponent<RectTransform>();
+        textRect.anchorMin = new Vector2(0.5f, 0.5f);
+        textRect.anchorMax = new Vector2(0.5f, 0.5f);
+        textRect.pivot = new Vector2(0.5f, 0.5f);
+        textRect.sizeDelta = new Vector2(760f, 220f);
+
+        TextMeshProUGUI text = textGo.AddComponent<TextMeshProUGUI>();
+        text.alignment = TextAlignmentOptions.Center;
+        text.fontSize = 42f;
+        text.color = Color.white;
+        text.text = "GAME OVER\nPress R to Retry";
+
+        scarePanelGo.SetActive(false);
+        panelGo.SetActive(false);
+
+        GameObject controllerGo = new GameObject("GameOverController");
+        controllerGo.transform.SetParent(parent, false);
+        GameOverController controller = controllerGo.AddComponent<GameOverController>();
+        SerializedObject serialized = new SerializedObject(controller);
+        serialized.FindProperty("gameOverPanel").objectReferenceValue = panelGo;
+        serialized.FindProperty("deathScarePanel").objectReferenceValue = scarePanelGo;
+        serialized.FindProperty("deathScareCanvasGroup").objectReferenceValue = scarePanelGo.GetComponent<CanvasGroup>();
+        serialized.FindProperty("deathScareImage").objectReferenceValue = scareImage;
+        serialized.FindProperty("deathDelay").floatValue = 1.2f;
+        serialized.FindProperty("deathScareHoldSeconds").floatValue = 2.0f;
+        serialized.FindProperty("deathScareFadeSeconds").floatValue = 1.15f;
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+    }
+
+    private static TextMeshProUGUI CreatePrompt(Transform parent)
+    {
+        GameObject promptGo = new GameObject("HospitalPrompt");
+        promptGo.transform.SetParent(parent, false);
+        RectTransform rect = promptGo.AddComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.5f, 0.12f);
+        rect.anchorMax = new Vector2(0.5f, 0.12f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(420f, 60f);
+
+        TextMeshProUGUI text = promptGo.AddComponent<TextMeshProUGUI>();
+        text.alignment = TextAlignmentOptions.Center;
+        text.fontSize = 28f;
+        text.color = new Color(0.95f, 0.95f, 0.95f, 1f);
+        text.text = "Press E to Enter";
+        promptGo.SetActive(false);
+        return text;
+    }
+
+    private static void CreateWorldLabel(string name, string message, Vector3 position, Transform parent, float fontSize, Color color)
+    {
+        GameObject go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.position = position;
+
+        TextMeshPro text = go.AddComponent<TextMeshPro>();
+        text.text = message;
+        text.fontSize = fontSize;
+        text.alignment = TextAlignmentOptions.Center;
+        text.color = color;
+        text.sortingLayerID = SortingLayer.NameToID("Props");
+        text.sortingOrder = 6;
+
+        RectTransform rect = text.rectTransform;
+        rect.sizeDelta = new Vector2(10f, 2f);
+    }
+
+    private static void BuildTransitionScene()
+    {
+        Debug.Log("[Stage01ParkingToHospitalBuilder] Stage02_Transition generation is disabled. Hospital is the live Stage02 scene.");
+    }
+
+    private static TextMeshProUGUI CreateTransitionText(Transform parent, string name, string message, Vector2 anchor, Vector2 size, float fontSize, Color color)
+    {
+        GameObject go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        RectTransform rect = go.AddComponent<RectTransform>();
+        rect.anchorMin = anchor;
+        rect.anchorMax = anchor;
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = size;
+
+        TextMeshProUGUI text = go.AddComponent<TextMeshProUGUI>();
+        text.text = message;
+        text.fontSize = fontSize;
+        text.color = color;
+        text.enableWordWrapping = true;
+        text.alignment = TextAlignmentOptions.Center;
+        return text;
+    }
+
+    private static void WireAttackHitbox(GameObject player)
+    {
+        PlayerCombat combat = player.GetComponent<PlayerCombat>();
+        if (combat == null)
+        {
+            return;
+        }
+
+        combat.hitboxFlashPrefab = null;
+        combat.drawAttackGizmo = false;
+    }
+
+    private static Sprite GetAsphaltTile(int x, int y)
+    {
+        string[] assetNames =
+        {
+            "Asphalt01",
+            "Asphalt02",
+            "Asphalt03",
+            "Asphalt04",
+            "Asphalt05",
+            "Asphalt06",
+        };
+
+        string selected = assetNames[Mathf.Abs((x * 13 + y * 7) % assetNames.Length)];
+        return AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Tiles/{selected}.png");
+    }
+
+    private static Sprite GetCrackTile(int x, int y)
+    {
+        string assetName = ((x + y) % 2 == 0) ? "AsphaltCrack01" : "AsphaltCrack04";
+        return AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Tiles/{assetName}.png");
+    }
+}

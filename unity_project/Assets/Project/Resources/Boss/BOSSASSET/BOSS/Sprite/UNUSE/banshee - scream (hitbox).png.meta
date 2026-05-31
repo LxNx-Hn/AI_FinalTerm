@@ -1,0 +1,2613 @@
+fileFormatVersion: 2
+guid: 139f98f32cfc3a242b929d0ad36c9496
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7643260199945757874
+    second: banshee - scream (hitbox)_0
+  - first:
+      213: -4530508536159305277
+    second: banshee - scream (hitbox)_1
+  - first:
+      213: 9108587752421998153
+    second: banshee - scream (hitbox)_2
+  - first:
+      213: 8293378824309428062
+    second: banshee - scream (hitbox)_3
+  - first:
+      213: -4807885028580740874
+    second: banshee - scream (hitbox)_4
+  - first:
+      213: 8738785319815189063
+    second: banshee - scream (hitbox)_5
+  - first:
+      213: -8271235567606019120
+    second: banshee - scream (hitbox)_6
+  - first:
+      213: -3891655687830879406
+    second: banshee - scream (hitbox)_7
+  - first:
+      213: -2953500878726310623
+    second: banshee - scream (hitbox)_8
+  - first:
+      213: -618231803669486665
+    second: banshee - scream (hitbox)_9
+  - first:
+      213: -3214043624437810506
+    second: banshee - scream (hitbox)_10
+  - first:
+      213: 3812855970619153444
+    second: banshee - scream (hitbox)_11
+  - first:
+      213: -8377955400177558271
+    second: banshee - scream (hitbox)_12
+  - first:
+      213: 9049442538962501372
+    second: banshee - scream (hitbox)_13
+  - first:
+      213: -6122095988098734619
+    second: banshee - scream (hitbox)_14
+  - first:
+      213: 8995080909518008512
+    second: banshee - scream (hitbox)_15
+  - first:
+      213: -6439114368650089920
+    second: banshee - scream (hitbox)_16
+  - first:
+      213: -2565541564518063387
+    second: banshee - scream (hitbox)_17
+  - first:
+      213: 4256559639963841431
+    second: banshee - scream (hitbox)_18
+  - first:
+      213: 3719834639745594112
+    second: banshee - scream (hitbox)_19
+  - first:
+      213: -4949755283342853887
+    second: banshee - scream (hitbox)_20
+  - first:
+      213: -2552035116918315809
+    second: banshee - scream (hitbox)_21
+  - first:
+      213: 5584970210854648035
+    second: banshee - scream (hitbox)_22
+  - first:
+      213: -851203891981583361
+    second: banshee - scream (hitbox)_23
+  - first:
+      213: 3499096450878901358
+    second: banshee - scream (hitbox)_24
+  - first:
+      213: -6271494198086905716
+    second: banshee - scream (hitbox)_25
+  - first:
+      213: -6477238265930454881
+    second: banshee - scream (hitbox)_26
+  - first:
+      213: 2785747932537563675
+    second: banshee - scream (hitbox)_27
+  - first:
+      213: 8275090597170620294
+    second: banshee - scream (hitbox)_28
+  - first:
+      213: -8178899489134676419
+    second: banshee - scream (hitbox)_29
+  - first:
+      213: 3174026736042733214
+    second: banshee - scream (hitbox)_30
+  - first:
+      213: -6571388636531426850
+    second: banshee - scream (hitbox)_31
+  - first:
+      213: 4867828046431863316
+    second: banshee - scream (hitbox)_32
+  - first:
+      213: -4734175025344649984
+    second: banshee - scream (hitbox)_33
+  - first:
+      213: 3766763824265447114
+    second: banshee - scream (hitbox)_34
+  - first:
+      213: 4539621347462303391
+    second: banshee - scream (hitbox)_35
+  - first:
+      213: 4342369679007458254
+    second: banshee - scream (hitbox)_36
+  - first:
+      213: -1429024248701244768
+    second: banshee - scream (hitbox)_37
+  - first:
+      213: -1325159648654863543
+    second: banshee - scream (hitbox)_38
+  - first:
+      213: -3215826590760301876
+    second: banshee - scream (hitbox)_39
+  - first:
+      213: 7288854884171309311
+    second: banshee - scream (hitbox)_40
+  - first:
+      213: 8258143979735768075
+    second: banshee - scream (hitbox)_41
+  - first:
+      213: 3314565680733031693
+    second: banshee - scream (hitbox)_42
+  - first:
+      213: 9134461520972103099
+    second: banshee - scream (hitbox)_43
+  - first:
+      213: -5057731858640896175
+    second: banshee - scream (hitbox)_44
+  - first:
+      213: 3315163075416556602
+    second: banshee - scream (hitbox)_45
+  - first:
+      213: -7329361832871190729
+    second: banshee - scream (hitbox)_46
+  - first:
+      213: -8168467653961077410
+    second: banshee - scream (hitbox)_47
+  - first:
+      213: 1542871566872482529
+    second: banshee - scream (hitbox)_48
+  - first:
+      213: 1035419773289493176
+    second: banshee - scream (hitbox)_49
+  - first:
+      213: -864110768843547294
+    second: banshee - scream (hitbox)_50
+  - first:
+      213: 6867133401923607856
+    second: banshee - scream (hitbox)_51
+  - first:
+      213: -8852748257874113196
+    second: banshee - scream (hitbox)_52
+  - first:
+      213: -6006599756363500797
+    second: banshee - scream (hitbox)_53
+  - first:
+      213: -5926845926934465488
+    second: banshee - scream (hitbox)_54
+  - first:
+      213: 8266132934270584867
+    second: banshee - scream (hitbox)_55
+  - first:
+      213: 1177295502943752069
+    second: banshee - scream (hitbox)_56
+  - first:
+      213: -5536474331992587514
+    second: banshee - scream (hitbox)_57
+  - first:
+      213: 8866114767316080223
+    second: banshee - scream (hitbox)_58
+  - first:
+      213: 6390947065261663225
+    second: banshee - scream (hitbox)_59
+  - first:
+      213: 8535960266301517776
+    second: banshee - scream (hitbox)_60
+  - first:
+      213: -4210347912961316526
+    second: banshee - scream (hitbox)_61
+  - first:
+      213: 4587719814614024707
+    second: banshee - scream (hitbox)_62
+  - first:
+      213: 7584753897882875240
+    second: banshee - scream (hitbox)_63
+  - first:
+      213: 4532215172072138662
+    second: banshee - scream (hitbox)_64
+  - first:
+      213: 4359872338765619653
+    second: banshee - scream (hitbox)_65
+  - first:
+      213: 750254317155093491
+    second: banshee - scream (hitbox)_66
+  - first:
+      213: -6503218221710471368
+    second: banshee - scream (hitbox)_67
+  - first:
+      213: 7761680286577461291
+    second: banshee - scream (hitbox)_68
+  - first:
+      213: -5950367180174431403
+    second: banshee - scream (hitbox)_69
+  - first:
+      213: 3494342732241089864
+    second: banshee - scream (hitbox)_70
+  - first:
+      213: 2688184606267922458
+    second: banshee - scream (hitbox)_71
+  - first:
+      213: -807217336693406626
+    second: banshee - scream (hitbox)_72
+  - first:
+      213: 5173547987917935563
+    second: banshee - scream (hitbox)_73
+  - first:
+      213: -7513672882536116940
+    second: banshee - scream (hitbox)_74
+  - first:
+      213: 6160506399711002431
+    second: banshee - scream (hitbox)_75
+  - first:
+      213: 7335993520993444734
+    second: banshee - scream (hitbox)_76
+  - first:
+      213: -887036792393045087
+    second: banshee - scream (hitbox)_77
+  - first:
+      213: -5328740527338857516
+    second: banshee - scream (hitbox)_78
+  - first:
+      213: 3910790044212713531
+    second: banshee - scream (hitbox)_79
+  - first:
+      213: 7945011307211278712
+    second: banshee - scream (hitbox)_80
+  - first:
+      213: -1910662129312722911
+    second: banshee - scream (hitbox)_81
+  - first:
+      213: 1027012551946760096
+    second: banshee - scream (hitbox)_82
+  - first:
+      213: 3459658587265608693
+    second: banshee - scream (hitbox)_83
+  - first:
+      213: -557786444144693464
+    second: banshee - scream (hitbox)_84
+  - first:
+      213: 4282047615511483047
+    second: banshee - scream (hitbox)_85
+  - first:
+      213: -1206944122867589643
+    second: banshee - scream (hitbox)_86
+  - first:
+      213: 1518502154943178542
+    second: banshee - scream (hitbox)_87
+  - first:
+      213: -6876187131019128129
+    second: banshee - scream (hitbox)_88
+  - first:
+      213: 6674292769229717665
+    second: banshee - scream (hitbox)_89
+  - first:
+      213: 6974666821440709423
+    second: banshee - scream (hitbox)_90
+  - first:
+      213: 2441325845957620701
+    second: banshee - scream (hitbox)_91
+  - first:
+      213: -7556196087299396995
+    second: banshee - scream (hitbox)_92
+  - first:
+      213: -1546028232037687689
+    second: banshee - scream (hitbox)_93
+  - first:
+      213: -5217117573513991997
+    second: banshee - scream (hitbox)_94
+  - first:
+      213: 6389372410041916511
+    second: banshee - scream (hitbox)_95
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_0
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 621
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4e5a7f7a0521a60800000000000000
+      internalID: 7643260199945757874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_1
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 611
+        width: 56
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c189527d766021c0800000000000000
+      internalID: -4530508536159305277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_2
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 567
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94e369c2d44386e70800000000000000
+      internalID: 9108587752421998153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_3
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 559
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5fc5bab910081370800000000000000
+      internalID: 8293378824309428062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_4
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 559
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f0b68e2a06f64db0800000000000000
+      internalID: -4807885028580740874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_5
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 567
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7429bf3c2f6664970800000000000000
+      internalID: 8738785319815189063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_6
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 561
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0db444bf21ba63d80800000000000000
+      internalID: -8271235567606019120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_7
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 503
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25346b255cf0ef9c0800000000000000
+      internalID: -3891655687830879406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_8
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 561
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 125d6bf599e0307d0800000000000000
+      internalID: -2953500878726310623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_9
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 503
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b36e6933799b67f0800000000000000
+      internalID: -618231803669486665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_10
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 535
+        width: 10
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ba76c03a5c6563d0800000000000000
+      internalID: -3214043624437810506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_11
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 597
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42c5b7ccd4cf9e430800000000000000
+      internalID: 3812855970619153444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_12
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 597
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10dd95ca3f58bbb80800000000000000
+      internalID: -8377955400177558271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_13
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 535
+        width: 36
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe3b2e0b04169d70800000000000000
+      internalID: 9049442538962501372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_14
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 553
+        width: 28
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e5e7849222f90ba0800000000000000
+      internalID: -6122095988098734619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_15
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 527
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c0f7b1ed62f4dc70800000000000000
+      internalID: 8995080909518008512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_16
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 541
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04a6f7cf89ba3a6a0800000000000000
+      internalID: -6439114368650089920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_17
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 541
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e2a6663a8d556cd0800000000000000
+      internalID: -2565541564518063387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_18
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 527
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7933f49b076521b30800000000000000
+      internalID: 4256559639963841431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_19
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 495
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 003ba3575e18f9330800000000000000
+      internalID: 3719834639745594112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_20
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 495
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1097c337bcfee4bb0800000000000000
+      internalID: -4949755283342853887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_21
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 489
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd4e2c91599559cd0800000000000000
+      internalID: -2552035116918315809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_22
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 489
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e8312bf0dcc18d40800000000000000
+      internalID: 5584970210854648035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_23
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 487
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffbf103f19aef24f0800000000000000
+      internalID: -851203891981583361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_24
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 465
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6c877ddea94f8030800000000000000
+      internalID: 3499096450878901358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_25
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 397
+        width: 76
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c805b10314d27f8a0800000000000000
+      internalID: -6271494198086905716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_26
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 405
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f98e5a17d1a3c16a0800000000000000
+      internalID: -6477238265930454881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_27
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 405
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1a2ea03cf6f8a620800000000000000
+      internalID: 2785747932537563675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_28
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 441
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 687a7880e0707d270800000000000000
+      internalID: 8275090597170620294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_29
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 385
+        width: 78
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d36f0809f36be7e80800000000000000
+      internalID: -8178899489134676419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_30
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 455
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9e6b6def786c0c20800000000000000
+      internalID: 3174026736042733214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_31
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 411
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed9718e0adcbdc4a0800000000000000
+      internalID: -6571388636531426850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_32
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 405
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 412414f31dffd8340800000000000000
+      internalID: 4867828046431863316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_33
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 405
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0056ecda5e4dc4eb0800000000000000
+      internalID: -4734175025344649984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_34
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 409
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac64222bdbb364430800000000000000
+      internalID: 3766763824265447114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_35
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 409
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e45464099fffe30800000000000000
+      internalID: 4539621347462303391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_36
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 379
+        width: 10
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec3aaa85732334c30800000000000000
+      internalID: 4342369679007458254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_37
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 379
+        width: 36
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aa2eb064061b2ce0800000000000000
+      internalID: -1429024248701244768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_38
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 387
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 943de3f02561c9de0800000000000000
+      internalID: -1325159648654863543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_39
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 387
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cca0a7ef0c61f53d0800000000000000
+      internalID: -3215826590760301876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_40
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 347
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff0e66e26e6372560800000000000000
+      internalID: 7288854884171309311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_41
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 385
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0c5e203232da9270800000000000000
+      internalID: 8258143979735768075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_42
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 347
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0d0bc0ece3bffd20800000000000000
+      internalID: 3314565680733031693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_43
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 369
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbd340c5b5024ce70800000000000000
+      internalID: 9134461520972103099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_44
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 369
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f788ceba35fc9b0800000000000000
+      internalID: -5057731858640896175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_45
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 339
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3402baa043d10e20800000000000000
+      internalID: 3315163075416556602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_46
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 339
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73f1861ee30e84a90800000000000000
+      internalID: -7329361832871190729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_47
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5da16672f5c3ae80800000000000000
+      internalID: -8168467653961077410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_48
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e21c7df381696510800000000000000
+      internalID: 1542871566872482529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_49
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 331
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b2f5544ccc8e5e00800000000000000
+      internalID: 1035419773289493176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_50
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 305
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26d9d7085df0204f0800000000000000
+      internalID: -864110768843547294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_51
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 295
+        width: 56
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03d50e60275fc4f50800000000000000
+      internalID: 6867133401923607856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_52
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 249
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45d84730d58b42580800000000000000
+      internalID: -8852748257874113196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_53
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 245
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 303710e885544aca0800000000000000
+      internalID: -6006599756363500797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_54
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 227
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 034b99ef70d9fbda0800000000000000
+      internalID: -5926845926934465488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_55
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 251
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3280b5d9b1437b270800000000000000
+      internalID: 8266132934270584867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_56
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 245
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f80a8b508965010800000000000000
+      internalID: 1177295502943752069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_57
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 227
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6038385bded7a23b0800000000000000
+      internalID: -5536474331992587514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_58
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 245
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5658bbf764ca0b70800000000000000
+      internalID: 8866114767316080223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_59
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 187
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f32f33ce7431b850800000000000000
+      internalID: 6390947065261663225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_60
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 249
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0df20c103a2d57670800000000000000
+      internalID: 8535960266301517776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_61
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 245
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 259222b61e6d195c0800000000000000
+      internalID: -4210347912961316526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_62
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 187
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30207175ddadaaf30800000000000000
+      internalID: 4587719814614024707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_63
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 219
+        width: 10
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86571100c75724960800000000000000
+      internalID: 7584753897882875240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_64
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 281
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a7eef0bfa9a5ee30800000000000000
+      internalID: 4532215172072138662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_65
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 225
+        width: 58
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c12d22eac0618c30800000000000000
+      internalID: 4359872338765619653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_66
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 219
+        width: 36
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fb8b319350796a00800000000000000
+      internalID: 750254317155093491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_67
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 237
+        width: 27
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f891e9b7defb5a0800000000000000
+      internalID: -6503218221710471368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_68
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 209
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b280a95f81707bb60800000000000000
+      internalID: 7761680286577461291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_69
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 209
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b6f86739c0c6da0800000000000000
+      internalID: -5950367180174431403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_70
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 225
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 845b2be73366e7030800000000000000
+      internalID: 3494342732241089864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_71
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 179
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a18d54328a95e4520800000000000000
+      internalID: 2688184606267922458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_72
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 179
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e544addeb103cc4f0800000000000000
+      internalID: -807217336693406626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_73
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 173
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc319400c722cc740800000000000000
+      internalID: 5173547987917935563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_74
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 173
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43d03fd82521ab790800000000000000
+      internalID: -7513672882536116940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_75
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 171
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3f7b474ee38e7550800000000000000
+      internalID: 6160506399711002431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_76
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 145
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e73a1655d3faec560800000000000000
+      internalID: 7335993520993444734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_77
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 77
+        width: 76
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1abe5beacbc90b3f0800000000000000
+      internalID: -887036792393045087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_78
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 85
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4db5db729b28c06b0800000000000000
+      internalID: -5328740527338857516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_79
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 85
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b38de6033dae54630800000000000000
+      internalID: 3910790044212713531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_80
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 121
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8794ace70b9524e60800000000000000
+      internalID: 7945011307211278712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_81
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 121
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1201680aae6fb75e0800000000000000
+      internalID: -1910662129312722911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_82
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 135
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0af67a2897ea04e00800000000000000
+      internalID: 1027012551946760096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_83
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 89
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fba812b72d230030800000000000000
+      internalID: 3459658587265608693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_84
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 89
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82f2a303f285248f0800000000000000
+      internalID: -557786444144693464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_85
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 59
+        width: 10
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a2ded97e93ec6b30800000000000000
+      internalID: 4282047615511483047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_86
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 59
+        width: 36
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fd5bb407b2104fe0800000000000000
+      internalID: -1206944122867589643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_87
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 49
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e27ad002aadc21510800000000000000
+      internalID: 1518502154943178542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_88
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 49
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb21e766c30e290a0800000000000000
+      internalID: -6876187131019128129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_89
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 27
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a045e469e9df9c50800000000000000
+      internalID: 6674292769229717665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_90
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 27
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f232dae458efac060800000000000000
+      internalID: 6974666821440709423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_91
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 19
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd3b8451ce451e120800000000000000
+      internalID: 2441325845957620701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_92
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 19
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7aa25b61bff22790800000000000000
+      internalID: -7556196087299396995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_93
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 13
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77e1ba0a3876b8ae0800000000000000
+      internalID: -1546028232037687689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_94
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 5
+        width: 54
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c8204755331997b0800000000000000
+      internalID: -5217117573513991997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream (hitbox)_95
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 11
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5cda36ca5c9ba850800000000000000
+      internalID: 6389372410041916511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      banshee - scream (hitbox)_0: 7643260199945757874
+      banshee - scream (hitbox)_1: -4530508536159305277
+      banshee - scream (hitbox)_10: -3214043624437810506
+      banshee - scream (hitbox)_11: 3812855970619153444
+      banshee - scream (hitbox)_12: -8377955400177558271
+      banshee - scream (hitbox)_13: 9049442538962501372
+      banshee - scream (hitbox)_14: -6122095988098734619
+      banshee - scream (hitbox)_15: 8995080909518008512
+      banshee - scream (hitbox)_16: -6439114368650089920
+      banshee - scream (hitbox)_17: -2565541564518063387
+      banshee - scream (hitbox)_18: 4256559639963841431
+      banshee - scream (hitbox)_19: 3719834639745594112
+      banshee - scream (hitbox)_2: 9108587752421998153
+      banshee - scream (hitbox)_20: -4949755283342853887
+      banshee - scream (hitbox)_21: -2552035116918315809
+      banshee - scream (hitbox)_22: 5584970210854648035
+      banshee - scream (hitbox)_23: -851203891981583361
+      banshee - scream (hitbox)_24: 3499096450878901358
+      banshee - scream (hitbox)_25: -6271494198086905716
+      banshee - scream (hitbox)_26: -6477238265930454881
+      banshee - scream (hitbox)_27: 2785747932537563675
+      banshee - scream (hitbox)_28: 8275090597170620294
+      banshee - scream (hitbox)_29: -8178899489134676419
+      banshee - scream (hitbox)_3: 8293378824309428062
+      banshee - scream (hitbox)_30: 3174026736042733214
+      banshee - scream (hitbox)_31: -6571388636531426850
+      banshee - scream (hitbox)_32: 4867828046431863316
+      banshee - scream (hitbox)_33: -4734175025344649984
+      banshee - scream (hitbox)_34: 3766763824265447114
+      banshee - scream (hitbox)_35: 4539621347462303391
+      banshee - scream (hitbox)_36: 4342369679007458254
+      banshee - scream (hitbox)_37: -1429024248701244768
+      banshee - scream (hitbox)_38: -1325159648654863543
+      banshee - scream (hitbox)_39: -3215826590760301876
+      banshee - scream (hitbox)_4: -4807885028580740874
+      banshee - scream (hitbox)_40: 7288854884171309311
+      banshee - scream (hitbox)_41: 8258143979735768075
+      banshee - scream (hitbox)_42: 3314565680733031693
+      banshee - scream (hitbox)_43: 9134461520972103099
+      banshee - scream (hitbox)_44: -5057731858640896175
+      banshee - scream (hitbox)_45: 3315163075416556602
+      banshee - scream (hitbox)_46: -7329361832871190729
+      banshee - scream (hitbox)_47: -8168467653961077410
+      banshee - scream (hitbox)_48: 1542871566872482529
+      banshee - scream (hitbox)_49: 1035419773289493176
+      banshee - scream (hitbox)_5: 8738785319815189063
+      banshee - scream (hitbox)_50: -864110768843547294
+      banshee - scream (hitbox)_51: 6867133401923607856
+      banshee - scream (hitbox)_52: -8852748257874113196
+      banshee - scream (hitbox)_53: -6006599756363500797
+      banshee - scream (hitbox)_54: -5926845926934465488
+      banshee - scream (hitbox)_55: 8266132934270584867
+      banshee - scream (hitbox)_56: 1177295502943752069
+      banshee - scream (hitbox)_57: -5536474331992587514
+      banshee - scream (hitbox)_58: 8866114767316080223
+      banshee - scream (hitbox)_59: 6390947065261663225
+      banshee - scream (hitbox)_6: -8271235567606019120
+      banshee - scream (hitbox)_60: 8535960266301517776
+      banshee - scream (hitbox)_61: -4210347912961316526
+      banshee - scream (hitbox)_62: 4587719814614024707
+      banshee - scream (hitbox)_63: 7584753897882875240
+      banshee - scream (hitbox)_64: 4532215172072138662
+      banshee - scream (hitbox)_65: 4359872338765619653
+      banshee - scream (hitbox)_66: 750254317155093491
+      banshee - scream (hitbox)_67: -6503218221710471368
+      banshee - scream (hitbox)_68: 7761680286577461291
+      banshee - scream (hitbox)_69: -5950367180174431403
+      banshee - scream (hitbox)_7: -3891655687830879406
+      banshee - scream (hitbox)_70: 3494342732241089864
+      banshee - scream (hitbox)_71: 2688184606267922458
+      banshee - scream (hitbox)_72: -807217336693406626
+      banshee - scream (hitbox)_73: 5173547987917935563
+      banshee - scream (hitbox)_74: -7513672882536116940
+      banshee - scream (hitbox)_75: 6160506399711002431
+      banshee - scream (hitbox)_76: 7335993520993444734
+      banshee - scream (hitbox)_77: -887036792393045087
+      banshee - scream (hitbox)_78: -5328740527338857516
+      banshee - scream (hitbox)_79: 3910790044212713531
+      banshee - scream (hitbox)_8: -2953500878726310623
+      banshee - scream (hitbox)_80: 7945011307211278712
+      banshee - scream (hitbox)_81: -1910662129312722911
+      banshee - scream (hitbox)_82: 1027012551946760096
+      banshee - scream (hitbox)_83: 3459658587265608693
+      banshee - scream (hitbox)_84: -557786444144693464
+      banshee - scream (hitbox)_85: 4282047615511483047
+      banshee - scream (hitbox)_86: -1206944122867589643
+      banshee - scream (hitbox)_87: 1518502154943178542
+      banshee - scream (hitbox)_88: -6876187131019128129
+      banshee - scream (hitbox)_89: 6674292769229717665
+      banshee - scream (hitbox)_9: -618231803669486665
+      banshee - scream (hitbox)_90: 6974666821440709423
+      banshee - scream (hitbox)_91: 2441325845957620701
+      banshee - scream (hitbox)_92: -7556196087299396995
+      banshee - scream (hitbox)_93: -1546028232037687689
+      banshee - scream (hitbox)_94: -5217117573513991997
+      banshee - scream (hitbox)_95: 6389372410041916511
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

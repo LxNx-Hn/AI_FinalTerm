@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: c80eac572b297af4789115817cee86e6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4013314627798433352
+    second: evelyn axe attack_0
+  - first:
+      213: 1817445520624655368
+    second: evelyn axe attack_1
+  - first:
+      213: -4103339765782169202
+    second: evelyn axe attack_2
+  - first:
+      213: 6631520604967263649
+    second: evelyn axe attack_3
+  - first:
+      213: 6571200096010056239
+    second: evelyn axe attack_4
+  - first:
+      213: 6150824111391369836
+    second: evelyn axe attack_5
+  - first:
+      213: -7327184564667106277
+    second: evelyn axe attack_6
+  - first:
+      213: 7670584424840238882
+    second: evelyn axe attack_7
+  - first:
+      213: 7735609101042731670
+    second: evelyn axe attack_8
+  - first:
+      213: -5355732986727617034
+    second: evelyn axe attack_9
+  - first:
+      213: 3135579414602366239
+    second: evelyn axe attack_10
+  - first:
+      213: 3463930802346551081
+    second: evelyn axe attack_11
+  - first:
+      213: 4919251449634684344
+    second: evelyn axe attack_12
+  - first:
+      213: 6501845652274886174
+    second: evelyn axe attack_13
+  - first:
+      213: -3009981332956786710
+    second: evelyn axe attack_14
+  - first:
+      213: 5982931396936848743
+    second: evelyn axe attack_15
+  - first:
+      213: 235209602615269676
+    second: evelyn axe attack_16
+  - first:
+      213: 5812565930259584506
+    second: evelyn axe attack_17
+  - first:
+      213: 333354951940748895
+    second: evelyn axe attack_18
+  - first:
+      213: -7378997021047946409
+    second: evelyn axe attack_19
+  - first:
+      213: -4057619489029612776
+    second: evelyn axe attack_20
+  - first:
+      213: -6483297686824338367
+    second: evelyn axe attack_21
+  - first:
+      213: 4224245109110890660
+    second: evelyn axe attack_22
+  - first:
+      213: -3815581781109437662
+    second: evelyn axe attack_23
+  - first:
+      213: 2918441728200646230
+    second: evelyn axe attack_24
+  - first:
+      213: -5968620622792342470
+    second: evelyn axe attack_25
+  - first:
+      213: 403865905140433409
+    second: evelyn axe attack_26
+  - first:
+      213: -7663313595837720188
+    second: evelyn axe attack_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: evelyn axe attack_0
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 4008
+        width: 420
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84efdc9f36822b730800000000000000
+      internalID: 4013314627798433352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_1
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 4008
+        width: 420
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80c157f521dd83910800000000000000
+      internalID: 1817445520624655368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_2
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 4008
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e89b1d339320e07c0800000000000000
+      internalID: -4103339765782169202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_3
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 4008
+        width: 629
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1add1cbdad4e70c50800000000000000
+      internalID: 6631520604967263649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_4
+      rect:
+        serializedVersion: 2
+        x: 5186
+        y: 4008
+        width: 496
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2231beeba7913b50800000000000000
+      internalID: 6571200096010056239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_5
+      rect:
+        serializedVersion: 2
+        x: 6440
+        y: 4008
+        width: 458
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6ae36bd0fd1c5550800000000000000
+      internalID: 6150824111391369836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_6
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 2811
+        width: 553
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1cba43a57c905a90800000000000000
+      internalID: -7327184564667106277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_7
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 2811
+        width: 572
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2271f36d4e3637a60800000000000000
+      internalID: 7670584424840238882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_8
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 2811
+        width: 591
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69a4eec0e776a5b60800000000000000
+      internalID: 7735609101042731670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_9
+      rect:
+        serializedVersion: 2
+        x: 4065
+        y: 2697
+        width: 515
+        height: 724
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fd2246793d9ca5b0800000000000000
+      internalID: -5355732986727617034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_10
+      rect:
+        serializedVersion: 2
+        x: 5281
+        y: 2697
+        width: 439
+        height: 724
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1db6645dd0d38b20800000000000000
+      internalID: 3135579414602366239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_11
+      rect:
+        serializedVersion: 2
+        x: 6497
+        y: 2735
+        width: 439
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 927666846ba521030800000000000000
+      internalID: 3463930802346551081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_12
+      rect:
+        serializedVersion: 2
+        x: 7713
+        y: 2811
+        width: 534
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bdfc405121b44440800000000000000
+      internalID: 4919251449634684344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_13
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 1481
+        width: 458
+        height: 724
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1633482c223b3a50800000000000000
+      internalID: 6501845652274886174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_14
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 1557
+        width: 477
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aefcd8cdce56a36d0800000000000000
+      internalID: -3009981332956786710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_15
+      rect:
+        serializedVersion: 2
+        x: 2754
+        y: 1557
+        width: 496
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 765d3f51864a70350800000000000000
+      internalID: 5982931396936848743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_16
+      rect:
+        serializedVersion: 2
+        x: 3951
+        y: 1519
+        width: 515
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c29d4ab23e1a34300800000000000000
+      internalID: 235209602615269676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_17
+      rect:
+        serializedVersion: 2
+        x: 5205
+        y: 1519
+        width: 477
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af519a2dae16aa050800000000000000
+      internalID: 5812565930259584506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_18
+      rect:
+        serializedVersion: 2
+        x: 6459
+        y: 1519
+        width: 439
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f56bb86009050a400800000000000000
+      internalID: 333354951940748895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_19
+      rect:
+        serializedVersion: 2
+        x: 7694
+        y: 1538
+        width: 420
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75385c11e49889990800000000000000
+      internalID: -7378997021047946409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_20
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 360
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81b10baa29070b7c0800000000000000
+      internalID: -4057619489029612776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_21
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 341
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c39b39a13b606a0800000000000000
+      internalID: -6483297686824338367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_22
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 341
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a06cb4bb888f9a30800000000000000
+      internalID: 4224245109110890660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_23
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 360
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22b058df5945c0bc0800000000000000
+      internalID: -3815581781109437662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_24
+      rect:
+        serializedVersion: 2
+        x: 5262
+        y: 322
+        width: 534
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65e931b0a43608820800000000000000
+      internalID: 2918441728200646230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_25
+      rect:
+        serializedVersion: 2
+        x: 6478
+        y: 322
+        width: 477
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a34446baa233b2da0800000000000000
+      internalID: -5968620622792342470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_26
+      rect:
+        serializedVersion: 2
+        x: 7694
+        y: 322
+        width: 458
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10289c4a6e1da9500800000000000000
+      internalID: 403865905140433409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe attack_27
+      rect:
+        serializedVersion: 2
+        x: 8910
+        y: 360
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 489dba5f2e076a590800000000000000
+      internalID: -7663313595837720188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      evelyn axe attack_0: 4013314627798433352
+      evelyn axe attack_1: 1817445520624655368
+      evelyn axe attack_10: 3135579414602366239
+      evelyn axe attack_11: 3463930802346551081
+      evelyn axe attack_12: 4919251449634684344
+      evelyn axe attack_13: 6501845652274886174
+      evelyn axe attack_14: -3009981332956786710
+      evelyn axe attack_15: 5982931396936848743
+      evelyn axe attack_16: 235209602615269676
+      evelyn axe attack_17: 5812565930259584506
+      evelyn axe attack_18: 333354951940748895
+      evelyn axe attack_19: -7378997021047946409
+      evelyn axe attack_2: -4103339765782169202
+      evelyn axe attack_20: -4057619489029612776
+      evelyn axe attack_21: -6483297686824338367
+      evelyn axe attack_22: 4224245109110890660
+      evelyn axe attack_23: -3815581781109437662
+      evelyn axe attack_24: 2918441728200646230
+      evelyn axe attack_25: -5968620622792342470
+      evelyn axe attack_26: 403865905140433409
+      evelyn axe attack_27: -7663313595837720188
+      evelyn axe attack_3: 6631520604967263649
+      evelyn axe attack_4: 6571200096010056239
+      evelyn axe attack_5: 6150824111391369836
+      evelyn axe attack_6: -7327184564667106277
+      evelyn axe attack_7: 7670584424840238882
+      evelyn axe attack_8: 7735609101042731670
+      evelyn axe attack_9: -5355732986727617034
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

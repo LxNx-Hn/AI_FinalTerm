@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 8bb8e4f3869d6c9468a583206b29479d
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371138
+  packageName: Heart System
+  packageVersion: 1.0
+  assetPath: Assets/HeartSystem/Scripts/EventSystem/HeartEvents.cs
+  uploadId: 892582

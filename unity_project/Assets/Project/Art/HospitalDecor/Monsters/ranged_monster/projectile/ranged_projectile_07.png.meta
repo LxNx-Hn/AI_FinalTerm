@@ -1,0 +1,1040 @@
+fileFormatVersion: 2
+guid: d87df4bf74ac7c84aa8005037418f65e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3793744785043823558
+    second: ranged_projectile_07_0
+  - first:
+      213: 7809454384474834621
+    second: ranged_projectile_07_1
+  - first:
+      213: 6646636251031878293
+    second: ranged_projectile_07_2
+  - first:
+      213: 9092820388920317428
+    second: ranged_projectile_07_3
+  - first:
+      213: 7889428118670118618
+    second: ranged_projectile_07_4
+  - first:
+      213: 2568575849935277463
+    second: ranged_projectile_07_5
+  - first:
+      213: -6827153182953018479
+    second: ranged_projectile_07_6
+  - first:
+      213: -8118837982599565666
+    second: ranged_projectile_07_7
+  - first:
+      213: -3200579192487606590
+    second: ranged_projectile_07_8
+  - first:
+      213: 1976866167625339907
+    second: ranged_projectile_07_9
+  - first:
+      213: -5436553722214881563
+    second: ranged_projectile_07_10
+  - first:
+      213: -1037875630517299859
+    second: ranged_projectile_07_11
+  - first:
+      213: -2520918040280777331
+    second: ranged_projectile_07_12
+  - first:
+      213: -8834941242600778705
+    second: ranged_projectile_07_13
+  - first:
+      213: 2683259607973644017
+    second: ranged_projectile_07_14
+  - first:
+      213: -742533113412324961
+    second: ranged_projectile_07_15
+  - first:
+      213: 3665245229061577406
+    second: ranged_projectile_07_16
+  - first:
+      213: -667083540487920195
+    second: ranged_projectile_07_17
+  - first:
+      213: 6484983762646336377
+    second: ranged_projectile_07_18
+  - first:
+      213: -2955332734495189112
+    second: ranged_projectile_07_19
+  - first:
+      213: -6835568882296011541
+    second: ranged_projectile_07_20
+  - first:
+      213: 3491066024121622848
+    second: ranged_projectile_07_21
+  - first:
+      213: -3444717962196982742
+    second: ranged_projectile_07_22
+  - first:
+      213: -8211835748870465032
+    second: ranged_projectile_07_23
+  - first:
+      213: 7569152220654041755
+    second: ranged_projectile_07_24
+  - first:
+      213: -6726215363071148878
+    second: ranged_projectile_07_25
+  - first:
+      213: 8267925408094917413
+    second: ranged_projectile_07_26
+  - first:
+      213: -5228275123612587366
+    second: ranged_projectile_07_27
+  - first:
+      213: 1500760167988677635
+    second: ranged_projectile_07_28
+  - first:
+      213: 8138139367981706824
+    second: ranged_projectile_07_29
+  - first:
+      213: -4270207330905032895
+    second: ranged_projectile_07_30
+  - first:
+      213: -6207190284964659210
+    second: ranged_projectile_07_31
+  - first:
+      213: -7607253996856865832
+    second: ranged_projectile_07_32
+  - first:
+      213: -6981526284229968702
+    second: ranged_projectile_07_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ranged_projectile_07_0
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 221
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cb170928c616a430800000000000000
+      internalID: 3793744785043823558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_1
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 227
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db64d3ce261c06c60800000000000000
+      internalID: 7809454384474834621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 211
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59a3df574789d3c50800000000000000
+      internalID: 6646636251031878293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_3
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 171
+        width: 41
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f55608c7ff203e70800000000000000
+      internalID: 9092820388920317428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_4
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 202
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ade8f4ee211ec7d60800000000000000
+      internalID: 7889428118670118618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_5
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 159
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d0a0a602a65a320800000000000000
+      internalID: 2568575849935277463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_6
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 172
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19b68e61a541141a0800000000000000
+      internalID: -6827153182953018479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_7
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 172
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9e243aced7145f80800000000000000
+      internalID: -8118837982599565666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_8
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 166
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c6054c8e224593d0800000000000000
+      internalID: -3200579192487606590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_9
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 166
+        width: 19
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 304dbc93e4d3f6b10800000000000000
+      internalID: 1976866167625339907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_10
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 102
+        width: 127
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e6ed09913b7d84b0800000000000000
+      internalID: -5436553722214881563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_11
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 163
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d655bf9ec99b891f0800000000000000
+      internalID: -1037875630517299859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_12
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 157
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8db0351666e30dd0800000000000000
+      internalID: -2520918040280777331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_13
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 157
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f241557dfbbf36580800000000000000
+      internalID: -8834941242600778705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_14
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 156
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f64c6d956adc3520800000000000000
+      internalID: 2683259607973644017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_15
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 150
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f91f715411ef1b5f0800000000000000
+      internalID: -742533113412324961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_16
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 118
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eba19e4dd119dd230800000000000000
+      internalID: 3665245229061577406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_17
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 113
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db525b5ed0b0eb6f0800000000000000
+      internalID: -667083540487920195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_18
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 104
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97306ba8f5a4ff950800000000000000
+      internalID: 6484983762646336377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_19
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 33
+        width: 38
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8879457398c8cf6d0800000000000000
+      internalID: -2955332734495189112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_20
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 90
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be44805615e2321a0800000000000000
+      internalID: -6835568882296011541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_21
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 91
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 041643f6d02c27030800000000000000
+      internalID: 3491066024121622848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_22
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 97
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2467d7a347e130d0800000000000000
+      internalID: -3444717962196982742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_23
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 50
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f9d8b205e2b90e80800000000000000
+      internalID: -8211835748870465032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_24
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 79
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9a71f277d70b0960800000000000000
+      internalID: 7569152220654041755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_25
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 70
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bc7e59a3cea7a2a0800000000000000
+      internalID: -6726215363071148878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 57
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5239ce27a529db270800000000000000
+      internalID: 8267925408094917413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_27
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 76
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9a6f05c97f6177b0800000000000000
+      internalID: -5228275123612587366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_28
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 64
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30c4502eb65c3d410800000000000000
+      internalID: 1500760167988677635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_29
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 65
+        width: 7
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84eeb2133aa70f070800000000000000
+      internalID: 8138139367981706824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_30
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 59
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147f22c9e0d2db4c0800000000000000
+      internalID: -4270207330905032895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_31
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 51
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fffc6ba251abd9a0800000000000000
+      internalID: -6207190284964659210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_32
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 34
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8db0d297bca9d6690800000000000000
+      internalID: -7607253996856865832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_projectile_07_33
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 28
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cc7b6e85d2ac1f90800000000000000
+      internalID: -6981526284229968702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ranged_projectile_07_0: 3793744785043823558
+      ranged_projectile_07_1: 7809454384474834621
+      ranged_projectile_07_10: -5436553722214881563
+      ranged_projectile_07_11: -1037875630517299859
+      ranged_projectile_07_12: -2520918040280777331
+      ranged_projectile_07_13: -8834941242600778705
+      ranged_projectile_07_14: 2683259607973644017
+      ranged_projectile_07_15: -742533113412324961
+      ranged_projectile_07_16: 3665245229061577406
+      ranged_projectile_07_17: -667083540487920195
+      ranged_projectile_07_18: 6484983762646336377
+      ranged_projectile_07_19: -2955332734495189112
+      ranged_projectile_07_2: 6646636251031878293
+      ranged_projectile_07_20: -6835568882296011541
+      ranged_projectile_07_21: 3491066024121622848
+      ranged_projectile_07_22: -3444717962196982742
+      ranged_projectile_07_23: -8211835748870465032
+      ranged_projectile_07_24: 7569152220654041755
+      ranged_projectile_07_25: -6726215363071148878
+      ranged_projectile_07_26: 8267925408094917413
+      ranged_projectile_07_27: -5228275123612587366
+      ranged_projectile_07_28: 1500760167988677635
+      ranged_projectile_07_29: 8138139367981706824
+      ranged_projectile_07_3: 9092820388920317428
+      ranged_projectile_07_30: -4270207330905032895
+      ranged_projectile_07_31: -6207190284964659210
+      ranged_projectile_07_32: -7607253996856865832
+      ranged_projectile_07_33: -6981526284229968702
+      ranged_projectile_07_4: 7889428118670118618
+      ranged_projectile_07_5: 2568575849935277463
+      ranged_projectile_07_6: -6827153182953018479
+      ranged_projectile_07_7: -8118837982599565666
+      ranged_projectile_07_8: -3200579192487606590
+      ranged_projectile_07_9: 1976866167625339907
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

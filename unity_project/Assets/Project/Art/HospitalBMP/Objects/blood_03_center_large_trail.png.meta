@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: eaf9b1bb75d909e46aec98c19c822042
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 699356740395409998
+    second: blood_03_center_large_trail_0
+  - first:
+      213: 118489431962751388
+    second: blood_03_center_large_trail_1
+  - first:
+      213: -2370900693502982208
+    second: blood_03_center_large_trail_2
+  - first:
+      213: -8971906743486514510
+    second: blood_03_center_large_trail_3
+  - first:
+      213: 5762046145906588387
+    second: blood_03_center_large_trail_4
+  - first:
+      213: 604599524155275823
+    second: blood_03_center_large_trail_5
+  - first:
+      213: 7707733678936985303
+    second: blood_03_center_large_trail_6
+  - first:
+      213: -6639949465372998927
+    second: blood_03_center_large_trail_7
+  - first:
+      213: -7795098703961594016
+    second: blood_03_center_large_trail_8
+  - first:
+      213: 4902039966369236058
+    second: blood_03_center_large_trail_9
+  - first:
+      213: 6288621132868704224
+    second: blood_03_center_large_trail_10
+  - first:
+      213: 9158202767640116724
+    second: blood_03_center_large_trail_11
+  - first:
+      213: 8666652566932494650
+    second: blood_03_center_large_trail_12
+  - first:
+      213: -919691558796150944
+    second: blood_03_center_large_trail_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 138
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e422b82004d94b900800000000000000
+      internalID: 699356740395409998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 130
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9117c5b285f4a100800000000000000
+      internalID: 118489431962751388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 108
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c7070e716ed81fd0800000000000000
+      internalID: -2370900693502982208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_3
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 89
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bafd8c1a526d7380800000000000000
+      internalID: -8971906743486514510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 95
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eabb2ae076e6ff40800000000000000
+      internalID: 5762046145906588387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_5
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 95
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2a35ac5018f36800800000000000000
+      internalID: 604599524155275823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_6
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 89
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7de8a5491fe57fa60800000000000000
+      internalID: 7707733678936985303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_7
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 61
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f2c5e524292ad3a0800000000000000
+      internalID: -6639949465372998927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_8
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 56
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 067e249670f32d390800000000000000
+      internalID: -7795098703961594016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_9
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 34
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a54c436906b870440800000000000000
+      internalID: 4902039966369236058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_10
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 33
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e757af0a9ba54750800000000000000
+      internalID: 6288621132868704224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_11
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 26
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fd303a15e8781f70800000000000000
+      internalID: 9158202767640116724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_12
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 18
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a391dbb7792264870800000000000000
+      internalID: 8666652566932494650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blood_03_center_large_trail_13
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 5
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 067b70766699c33f0800000000000000
+      internalID: -919691558796150944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      blood_03_center_large_trail_0: 699356740395409998
+      blood_03_center_large_trail_1: 118489431962751388
+      blood_03_center_large_trail_10: 6288621132868704224
+      blood_03_center_large_trail_11: 9158202767640116724
+      blood_03_center_large_trail_12: 8666652566932494650
+      blood_03_center_large_trail_13: -919691558796150944
+      blood_03_center_large_trail_2: -2370900693502982208
+      blood_03_center_large_trail_3: -8971906743486514510
+      blood_03_center_large_trail_4: 5762046145906588387
+      blood_03_center_large_trail_5: 604599524155275823
+      blood_03_center_large_trail_6: 7707733678936985303
+      blood_03_center_large_trail_7: -6639949465372998927
+      blood_03_center_large_trail_8: -7795098703961594016
+      blood_03_center_large_trail_9: 4902039966369236058
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

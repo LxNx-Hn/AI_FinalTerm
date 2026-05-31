@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: afb13141207a06c419932c386cec9096
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7275088563556062307
+    second: $MonsterA_0
+  - first:
+      213: 155271217877653415
+    second: $MonsterA_1
+  - first:
+      213: -5536082565513660157
+    second: $MonsterA_2
+  - first:
+      213: -4798077680850200638
+    second: $MonsterA_3
+  - first:
+      213: 1244145513963830834
+    second: $MonsterA_4
+  - first:
+      213: -8419989986218186101
+    second: $MonsterA_5
+  - first:
+      213: -1782505685296176049
+    second: $MonsterA_6
+  - first:
+      213: -1923279607981849289
+    second: $MonsterA_7
+  - first:
+      213: 1599908462530088165
+    second: $MonsterA_8
+  - first:
+      213: 5990374202640999251
+    second: $MonsterA_9
+  - first:
+      213: 7870434235204495626
+    second: $MonsterA_10
+  - first:
+      213: 2239585432475433164
+    second: $MonsterA_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: $MonsterA_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 95
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9bebbb1f71b90b90800000000000000
+      internalID: -7275088563556062307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 95
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a790799952a72200800000000000000
+      internalID: 155271217877653415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 95
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3093353fc32eb23b0800000000000000
+      internalID: -5536082565513660157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 63
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c7913445cdc96db0800000000000000
+      internalID: -4798077680850200638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_4
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 63
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23eb5b0d0c7144110800000000000000
+      internalID: 1244145513963830834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_5
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 63
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8a6e13f7bf262b80800000000000000
+      internalID: -8419989986218186101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_6
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 31
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f44aec9f5844347e0800000000000000
+      internalID: -1782505685296176049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_7
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 31
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7354d72f2632f45e0800000000000000
+      internalID: -1923279607981849289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_8
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 31
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ec4f3e1544043610800000000000000
+      internalID: 1599908462530088165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_9
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 353a4145995122350800000000000000
+      internalID: 5990374202640999251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_10
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 0
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a09ef61dc36693d60800000000000000
+      internalID: 7870434235204495626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $MonsterA_11
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc876d2c51b941f10800000000000000
+      internalID: 2239585432475433164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      $MonsterA_0: -7275088563556062307
+      $MonsterA_1: 155271217877653415
+      $MonsterA_10: 7870434235204495626
+      $MonsterA_11: 2239585432475433164
+      $MonsterA_2: -5536082565513660157
+      $MonsterA_3: -4798077680850200638
+      $MonsterA_4: 1244145513963830834
+      $MonsterA_5: -8419989986218186101
+      $MonsterA_6: -1782505685296176049
+      $MonsterA_7: -1923279607981849289
+      $MonsterA_8: 1599908462530088165
+      $MonsterA_9: 5990374202640999251
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

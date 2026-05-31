@@ -1,0 +1,342 @@
+// Editor-only setup script — executed via MCP execute_code
+// Handles all cutscene scene/Inspector connections.
+
+#if UNITY_EDITOR
+using System.IO;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class CutsceneSceneSetup
+{
+    // SpeakerType enum indices (must match SpeakerType.cs order)
+    const int SpkNormal         = 0;
+    const int SpkDelusion       = 1;
+    const int SpkNameCrack1     = 2;
+    const int SpkNameCrack2     = 3;
+    const int SpkMergedDelusion = 4;
+    const int SpkMergedNormal   = 5;
+    const int SpkNarration      = 6;
+
+    // ── Entry point ─────────────────────────────────────────────────────────
+    public static void Execute()
+    {
+        Debug.Log("[CutsceneSetup] === START ===");
+
+        Step1_CreatePortraitDatabase();
+        Step2_SetupStage01();
+        Step3_SetupStage02();
+        Step4_SetupBoss01();
+        Step5_SetupRooftop();
+        Step6_SetupCredits();
+
+        AssetDatabase.SaveAssets();
+        Debug.Log("[CutsceneSetup] === DONE ===");
+    }
+
+    // ── 1. PortraitDatabase ──────────────────────────────────────────────────
+    static void Step1_CreatePortraitDatabase()
+    {
+        string dir  = "Assets/Project/Resources";
+        string path = dir + "/PortraitDatabase.asset";
+
+        if (!AssetDatabase.IsValidFolder(dir))
+            AssetDatabase.CreateFolder("Assets/Project", "Resources");
+
+        PortraitDatabase db = AssetDatabase.LoadAssetAtPath<PortraitDatabase>(path);
+        if (db == null)
+        {
+            db = ScriptableObject.CreateInstance<PortraitDatabase>();
+            AssetDatabase.CreateAsset(db, path);
+        }
+
+        var so = new SerializedObject(db);
+        SetSprite(so, "normal",         "Assets/Project/Profile/portrait_haemin_normal.png");
+        SetSprite(so, "delusion",       "Assets/Project/Profile/portrait_delusion_00_black.png");
+        SetSprite(so, "nameCrack1",     "Assets/Project/Profile/portrait_delusion_01_reveal.png");
+        SetSprite(so, "nameCrack2",     "Assets/Project/Profile/portrait_delusion_02_distorted.png");
+        SetSprite(so, "mergedDelusion", "Assets/Project/Profile/portrait_delusion_03_merged.png");
+        SetSprite(so, "mergedNormal",   "Assets/Project/Profile/portrait_haemin_final.png");
+        so.ApplyModifiedPropertiesWithoutUndo();
+        EditorUtility.SetDirty(db);
+        AssetDatabase.SaveAssets();
+
+        Debug.Log("[CutsceneSetup] PortraitDatabase OK: " + path);
+    }
+
+    // ── 2. Stage01 ──────────────────────────────────────────────────────────
+    static void Step2_SetupStage01()
+    {
+        var scene = OpenScene("Assets/Project/Scenes/Stage01_ParkingToHospital.unity");
+
+        // SceneIntroController
+        var introLines = new (string n, int t, string b)[]
+        {
+            ("채하민", SpkNormal,   "여기까지는 기억나."),
+            ("채하민", SpkNormal,   "차를 세웠고,\n병원 입구 쪽으로 걸어갔고..."),
+            ("채하민", SpkNormal,   "그다음부터 뭔가 이상해졌어."),
+            ("???",    SpkDelusion, "나가."),
+            ("채하민", SpkNormal,   "누구야?"),
+            ("???",    SpkDelusion, "지금 당장."),
+            ("채하민", SpkNormal,   "...나도 그러고 싶어."),
+        };
+        EnsureIntroController(introLines, true, 0.8f);
+
+        // SceneEndDialogueTrigger
+        var endLines = new (string n, int t, string b)[]
+        {
+            ("채하민", SpkNormal,   "막혔어..."),
+            ("채하민", SpkNormal,   "주차장 쪽으로는 못 돌아가."),
+            ("???",    SpkDelusion, "안으로 가."),
+            ("채하민", SpkNormal,   "병원 안으로?"),
+            ("???",    SpkDelusion, "살고 싶으면."),
+            ("채하민", SpkNormal,   "...젠장."),
+        };
+        EnsureEndTrigger(endLines, "Hospital");
+
+        // GameOverController
+        var deathLines = new (string n, int t, string b)[]
+        {
+            ("채하민", SpkNormal,   "아, 안 돼—!"),
+            ("???",    SpkDelusion, "늦었어."),
+        };
+        SetupGameOverController("Assets/Project/CUTSCENE/1_GAMEOVER.png", deathLines);
+
+        SaveScene(scene, "Stage01");
+    }
+
+    // ── 3. Stage02 ──────────────────────────────────────────────────────────
+    static void Step3_SetupStage02()
+    {
+        var scene = OpenScene("Assets/Project/Scenes/Hospital.unity");
+
+        var introLines = new (string n, int t, string b)[]
+        {
+            ("채하민", SpkNormal,   "여긴..."),
+            ("채하민", SpkNormal,   "사람이 있어야 할 곳이잖아."),
+            ("???",    SpkDelusion, "다 변했어."),
+            ("채하민", SpkNormal,   "다?"),
+            ("???",    SpkDelusion, "네가 본 대로."),
+            ("채하민", SpkNormal,   "그럼...\n다가오기 전에 끝내야 해."),
+        };
+        EnsureIntroController(introLines, true, 0.8f);
+
+        var endLines = new (string n, int t, string b)[]
+        {
+            ("채하민", SpkNormal,   "열렸다..."),
+            ("???",    SpkDelusion, "들어가."),
+            ("채하민", SpkNormal,   "뒤에서 따라와."),
+            ("???",    SpkDelusion, "뒤는 보지 마."),
+            ("채하민", SpkNormal,   "왜?"),
+            ("???",    SpkDelusion, "잡히면 끝나."),
+            ("채하민", SpkNormal,   "...알았어."),
+        };
+        EnsureEndTrigger(endLines, "Boss01_Elevator");
+
+        var deathLines = new (string n, int t, string b)[]
+        {
+            ("채하민", SpkNormal,   "오지 마...!"),
+            ("???",    SpkDelusion, "아직도 사람으로 보여?"),
+        };
+        SetupGameOverController("Assets/Project/CUTSCENE/2_GAMEOVER.png", deathLines);
+
+        SaveScene(scene, "Stage02");
+    }
+
+    // ── 4. Boss01 ───────────────────────────────────────────────────────────
+    static void Step4_SetupBoss01()
+    {
+        var scene = OpenScene("Assets/Project/Scenes/Boss01_Elevator.unity");
+
+        var deathLines = new (string n, int t, string b)[]
+        {
+            ("채하민", SpkNormal,   "아, 안 돼...!"),
+            ("???",    SpkDelusion, "아직 못 나가."),
+        };
+        SetupGameOverController("Assets/Project/CUTSCENE/BOSS_GAMEOVER.png", deathLines);
+
+        SaveScene(scene, "Boss01");
+    }
+
+    // ── 5. RooftopEndingWalk ────────────────────────────────────────────────
+    static void Step5_SetupRooftop()
+    {
+        var scene = OpenScene("Assets/Project/Scenes/RooftopEndingWalk.unity");
+
+        // Ensure RooftopEndingSequenceRuntime GO exists
+        var runtime = Object.FindFirstObjectByType<RooftopEndingSequenceRuntime>();
+        if (runtime == null)
+        {
+            var go = new GameObject("RooftopEndingSequenceRuntime");
+            runtime = go.AddComponent<RooftopEndingSequenceRuntime>();
+        }
+
+        var so = new SerializedObject(runtime);
+
+        // Memory images (5 slots)
+        string[] memPaths =
+        {
+            "Assets/Project/CUTSCENE/1_Norm.png",
+            "Assets/Project/CUTSCENE/2_Norm.png",
+            "Assets/Project/CUTSCENE/2_1Norm.png",
+            "Assets/Project/CUTSCENE/2-2Norm.png",
+            "Assets/Project/CUTSCENE/Boss_Norm.png",
+        };
+        var memProp = so.FindProperty("memoryImages");
+        memProp.arraySize = memPaths.Length;
+        for (int i = 0; i < memPaths.Length; i++)
+        {
+            Sprite s = AssetDatabase.LoadAssetAtPath<Sprite>(memPaths[i]);
+            if (s == null) Debug.LogWarning("[CutsceneSetup] Memory sprite not found: " + memPaths[i]);
+            memProp.GetArrayElementAtIndex(i).objectReferenceValue = s;
+        }
+        so.ApplyModifiedPropertiesWithoutUndo();
+        EditorUtility.SetDirty(runtime);
+
+        Debug.Log("[CutsceneSetup] RooftopEndingSequenceRuntime configured");
+        SaveScene(scene, "RooftopEndingWalk");
+    }
+
+    // ── 6. EndingCredits ────────────────────────────────────────────────────
+    static void Step6_SetupCredits()
+    {
+        var scene = OpenScene("Assets/Project/Scenes/EndingCredits.unity");
+
+        var runtime = Object.FindFirstObjectByType<EndingCreditsRuntime>();
+        if (runtime == null)
+        {
+            var go = new GameObject("EndingCreditsRuntime");
+            runtime = go.AddComponent<EndingCreditsRuntime>();
+        }
+
+        var so = new SerializedObject(runtime);
+        Sprite creditBg = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Project/CUTSCENE/Credit.png");
+        if (creditBg == null) Debug.LogWarning("[CutsceneSetup] Credit.png not found");
+        so.FindProperty("creditBgSprite").objectReferenceValue = creditBg;
+        so.ApplyModifiedPropertiesWithoutUndo();
+        EditorUtility.SetDirty(runtime);
+
+        Debug.Log("[CutsceneSetup] EndingCreditsRuntime configured");
+        SaveScene(scene, "EndingCredits");
+    }
+
+    // ── Helpers ─────────────────────────────────────────────────────────────
+
+    static Scene OpenScene(string path)
+    {
+        return EditorSceneManager.OpenScene(path, OpenSceneMode.Single);
+    }
+
+    static void SaveScene(Scene scene, string label)
+    {
+        EditorSceneManager.MarkSceneDirty(scene);
+        EditorSceneManager.SaveScene(scene);
+        Debug.Log("[CutsceneSetup] Saved: " + label);
+    }
+
+    static void EnsureIntroController((string n, int t, string b)[] lines, bool fadeFromBlack, float fadeInDuration)
+    {
+        GameObject go = GameObject.Find("SceneIntroController");
+        if (go == null)
+            go = new GameObject("SceneIntroController");
+
+        SceneIntroController sic = go.GetComponent<SceneIntroController>();
+        if (sic == null)
+            sic = go.AddComponent<SceneIntroController>();
+
+        var so = new SerializedObject(sic);
+        SetDialogueLines(so.FindProperty("introLines"), lines);
+        so.FindProperty("fadeFromBlack").boolValue      = fadeFromBlack;
+        so.FindProperty("fadeInDuration").floatValue    = fadeInDuration;
+        so.ApplyModifiedPropertiesWithoutUndo();
+        EditorUtility.SetDirty(sic);
+    }
+
+    static void EnsureEndTrigger((string n, int t, string b)[] lines, string nextScene)
+    {
+        // Find existing StageClearTrigger to get position/size
+        Vector3 pos  = new Vector3(100f, 0f, 0f); // fallback far-right
+        Vector2Int sz = new Vector2Int(3, 5);
+
+        StageClearTrigger existing = Object.FindFirstObjectByType<StageClearTrigger>();
+        if (existing != null)
+        {
+            pos = existing.transform.position;
+            sz  = existing.size;
+            // Disable original to prevent double-fire
+            existing.enabled = false;
+            EditorUtility.SetDirty(existing);
+            Debug.Log("[CutsceneSetup] Disabled StageClearTrigger at " + pos);
+        }
+
+        // Find or create SceneEndDialogueTrigger
+        SceneEndDialogueTrigger trigger = Object.FindFirstObjectByType<SceneEndDialogueTrigger>();
+        GameObject go;
+        if (trigger == null)
+        {
+            go      = new GameObject("SceneEndDialogueTrigger");
+            trigger = go.AddComponent<SceneEndDialogueTrigger>();
+        }
+        else
+        {
+            go = trigger.gameObject;
+        }
+
+        go.transform.position = pos;
+        trigger.size          = sz;
+        trigger.triggerOnce   = true;
+
+        var so = new SerializedObject(trigger);
+        SetDialogueLines(so.FindProperty("lines"), lines);
+        so.FindProperty("nextSceneName").stringValue    = nextScene;
+        so.FindProperty("fadeOutDuration").floatValue   = 0.8f;
+        so.ApplyModifiedPropertiesWithoutUndo();
+        EditorUtility.SetDirty(trigger);
+    }
+
+    static void SetupGameOverController(string imagePath, (string n, int t, string b)[] deathLines)
+    {
+        GameOverController goc = Object.FindFirstObjectByType<GameOverController>();
+        if (goc == null)
+        {
+            Debug.LogWarning("[CutsceneSetup] No GameOverController in scene");
+            return;
+        }
+
+        var so = new SerializedObject(goc);
+
+        Sprite scare = AssetDatabase.LoadAssetAtPath<Sprite>(imagePath);
+        if (scare == null) Debug.LogWarning("[CutsceneSetup] GAMEOVER sprite not found: " + imagePath);
+        so.FindProperty("deathScareImage").objectReferenceValue = scare;
+
+        SetDialogueLines(so.FindProperty("deathDialogueLines"), deathLines);
+        so.ApplyModifiedPropertiesWithoutUndo();
+        EditorUtility.SetDirty(goc);
+    }
+
+    // ── Low-level helpers ───────────────────────────────────────────────────
+
+    static void SetDialogueLines(SerializedProperty arrayProp, (string n, int t, string b)[] data)
+    {
+        if (arrayProp == null) { Debug.LogWarning("[CutsceneSetup] arrayProp is null"); return; }
+        arrayProp.arraySize = data.Length;
+        for (int i = 0; i < data.Length; i++)
+        {
+            var elem = arrayProp.GetArrayElementAtIndex(i);
+            elem.FindPropertyRelative("speakerName").stringValue    = data[i].n;
+            elem.FindPropertyRelative("speakerType").enumValueIndex = data[i].t;
+            elem.FindPropertyRelative("body").stringValue           = data[i].b;
+        }
+    }
+
+    static void SetSprite(SerializedObject so, string fieldName, string spritePath)
+    {
+        Sprite s = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
+        if (s == null) Debug.LogWarning("[CutsceneSetup] Sprite not found: " + spritePath);
+        var prop = so.FindProperty(fieldName);
+        if (prop == null) { Debug.LogWarning("[CutsceneSetup] Property not found: " + fieldName); return; }
+        prop.objectReferenceValue = s;
+    }
+}
+#endif

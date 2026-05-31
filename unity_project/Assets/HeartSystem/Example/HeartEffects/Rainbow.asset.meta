@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 69ee5298005d051469a2d2aa450ea22e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371138
+  packageName: Heart System
+  packageVersion: 1.0
+  assetPath: Assets/HeartSystem/Example/HeartEffects/Rainbow.asset
+  uploadId: 892582

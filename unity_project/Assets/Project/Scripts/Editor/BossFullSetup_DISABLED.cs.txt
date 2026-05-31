@@ -1,0 +1,165 @@
+using System.IO;
+using UnityEditor;
+using UnityEditor.Animations;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+
+/// <summary>
+/// Manual full boss setup entrypoint.
+/// This remains an explicit editor action so runtime testing is never interrupted.
+/// </summary>
+public static class BossFullSetup
+{
+    static readonly string ANIM_BASE = "Assets/Project/Resources/Boss/BOSSASSET/BOSS/ANIME/";
+    static readonly string SFX_BASE = "Assets/Project/Resources/Boss/BOSSASSET/BOSS/SFX/";
+    static readonly string CTRL_PATH = "Assets/Project/Resources/Boss/BOSSASSET/BOSS/ANIME/BossAnimator.controller";
+
+    [MenuItem("Project Tools/Boss/Full Boss Setup (Force Rebuild)")]
+    public static void Execute()
+    {
+        if (EditorApplication.isPlaying)
+        {
+            Debug.LogWarning("[BossSetup] Exit Play mode manually before running Full Boss Setup.");
+            return;
+        }
+
+        RunSetup();
+    }
+
+    public static void RunSetup()
+    {
+        AssetDatabase.Refresh();
+
+        CreateAnimController();
+        BoxPrototypeBuilder.BuildBoss01();
+        AssetDatabase.Refresh();
+        WireSFX();
+
+        EditorSceneManager.SaveOpenScenes();
+        Debug.Log("[BossSetup] Completed boss controller, scene wiring, and SFX setup.");
+    }
+
+    static void CreateAnimController()
+    {
+        var stateNames = new[]
+        {
+            "IDLE_DOWN", "IDLE_UP", "IDLE_LEFT", "IDLE_RIGHT",
+            "MOVE_DOWN", "MOVE_UP", "MOVE_LEFT", "MOVE_RIGHT",
+            "ATTACK_DOWN", "ATTACK_UP", "ATTACK_LEFT", "ATTACK_RIGHT",
+            "ATTACK_READY_DOWN", "ATTACK_READY_UP", "ATTACK_READY_LEFT", "ATTACK_READY_RIGHT",
+            "SCREAM_DOWN", "SCREAM_UP", "SCREAM_LEFT", "SCREAM_RIGHT",
+            "APPEAR_DOWN", "APPEAR_UP", "APPEAR_LEFT", "APPEAR_RIGHT",
+            "DIE_DOWN", "DIE_UP", "DIE_LEFT", "DIE_RIGHT",
+            "MARKATK"
+        };
+
+        AnimatorController ctrl;
+        if (File.Exists(CTRL_PATH))
+        {
+            ctrl = AssetDatabase.LoadAssetAtPath<AnimatorController>(CTRL_PATH);
+            if (ctrl == null)
+            {
+                Debug.LogError("[BossSetup] Failed to load existing BossAnimator.controller.");
+                return;
+            }
+        }
+        else
+        {
+            ctrl = AnimatorController.CreateAnimatorControllerAtPath(CTRL_PATH);
+        }
+
+        var sm = ctrl.layers[0].stateMachine;
+        foreach (string name in stateNames)
+        {
+            bool exists = false;
+            foreach (var s in sm.states)
+            {
+                if (s.state.name == name)
+                {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (exists)
+                continue;
+
+            string clipPath = ANIM_BASE + name + ".anim";
+            var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(clipPath);
+            var state = sm.AddState(name);
+            if (clip != null)
+                state.motion = clip;
+            else
+                Debug.LogWarning("[BossSetup] Missing clip: " + clipPath);
+        }
+
+        foreach (var cs in sm.states)
+        {
+            if (cs.state.name == "IDLE_DOWN")
+            {
+                sm.defaultState = cs.state;
+                break;
+            }
+        }
+
+        EditorUtility.SetDirty(ctrl);
+        AssetDatabase.SaveAssets();
+    }
+
+    static void WireSFX()
+    {
+        var bossGo = GameObject.Find("Boss_Elevator");
+        if (bossGo == null)
+        {
+            Debug.LogError("[BossSetup] Boss_Elevator not found.");
+            return;
+        }
+
+        var ctrl = bossGo.GetComponent<ElevatorBossController>();
+        if (ctrl == null)
+        {
+            Debug.LogError("[BossSetup] ElevatorBossController not found.");
+            return;
+        }
+
+        var audio = bossGo.GetComponent<AudioSource>();
+        if (audio == null)
+            audio = bossGo.AddComponent<AudioSource>();
+        audio.playOnAwake = false;
+        audio.spatialBlend = 0f;
+
+        var so = new SerializedObject(ctrl);
+        so.FindProperty("bossAudioSource").objectReferenceValue = audio;
+
+        SetClip(so, "bossHitSfx", SFX_BASE + "hit/HIT.wav");
+        SetClip(so, "bossAttackSfx", SFX_BASE + "ATTAK/ATTACK_[cut_1sec].mp3");
+        SetClip(so, "bossEnhancedAttackSfx", SFX_BASE + "ATTAK/STRATTACK_[cut_1sec].mp3");
+        SetClip(so, "bossDashWhooshSfx", SFX_BASE + "DASH/dragon-studio-whoosh-cinematic-5-376880.mp3");
+        SetClip(so, "bossDashScreamSfx", SFX_BASE + "DASH/DASHSCREAM.mp3");
+        SetClip(so, "bossScreamSfx", SFX_BASE + "SCREAM/dragon-studio-scary-scream-401725.mp3");
+        SetClip(so, "bossAppearSfx", SFX_BASE + "LANDING/LAND.mp3");
+        SetClip(so, "bossSlamSfx", SFX_BASE + "LANDING/LAND.mp3");
+        SetClip(so, "bossMarkWarningSfx", SFX_BASE + "MARKWARNING/WARNING.wav");
+        SetClip(so, "bossDeathSfx", SFX_BASE + "DIE.wav");
+
+        so.ApplyModifiedProperties();
+        EditorUtility.SetDirty(ctrl);
+        EditorUtility.SetDirty(bossGo);
+    }
+
+    static void SetClip(SerializedObject so, string field, string path)
+    {
+        var prop = so.FindProperty(field);
+        if (prop == null)
+        {
+            Debug.LogWarning("[BossSetup] Missing field: " + field);
+            return;
+        }
+
+        var clip = AssetDatabase.LoadAssetAtPath<AudioClip>(path);
+        if (clip != null)
+            prop.objectReferenceValue = clip;
+        else
+            Debug.LogWarning("[BossSetup] Missing audio clip: " + path);
+    }
+}

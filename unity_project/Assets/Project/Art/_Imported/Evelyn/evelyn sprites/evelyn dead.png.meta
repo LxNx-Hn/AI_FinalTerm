@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 79828cae92208df409b22ace5c49fac8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5136062354147305160
+    second: evelyn dead_0
+  - first:
+      213: -8971561702946776892
+    second: evelyn dead_1
+  - first:
+      213: 247244968267397184
+    second: evelyn dead_2
+  - first:
+      213: -8231412236917843138
+    second: evelyn dead_3
+  - first:
+      213: 3782769006272774892
+    second: evelyn dead_4
+  - first:
+      213: -1321445669173875557
+    second: evelyn dead_5
+  - first:
+      213: -5265946249431407156
+    second: evelyn dead_6
+  - first:
+      213: -4846516445973021421
+    second: evelyn dead_7
+  - first:
+      213: 7397344183285472749
+    second: evelyn dead_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: evelyn dead_0
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 360
+        width: 420
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8391bcc308a09b8b0800000000000000
+      internalID: -5136062354147305160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn dead_1
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 360
+        width: 420
+        height: 591
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c8db5f1a2c9e7380800000000000000
+      internalID: -8971561702946776892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn dead_2
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 360
+        width: 420
+        height: 572
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 048b41a1df36e6300800000000000000
+      internalID: 247244968267397184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn dead_3
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 360
+        width: 420
+        height: 572
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b55b2be2624cd80800000000000000
+      internalID: -8231412236917843138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn dead_4
+      rect:
+        serializedVersion: 2
+        x: 5262
+        y: 303
+        width: 420
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce20f368e581f7430800000000000000
+      internalID: 3782769006272774892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn dead_5
+      rect:
+        serializedVersion: 2
+        x: 6478
+        y: 303
+        width: 420
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9ca9ea4a2849ade0800000000000000
+      internalID: -1321445669173875557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn dead_6
+      rect:
+        serializedVersion: 2
+        x: 7694
+        y: 303
+        width: 420
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc5275c49c99be6b0800000000000000
+      internalID: -5265946249431407156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn dead_7
+      rect:
+        serializedVersion: 2
+        x: 8910
+        y: 303
+        width: 420
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31d70b768f6bdbcb0800000000000000
+      internalID: -4846516445973021421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn dead_8
+      rect:
+        serializedVersion: 2
+        x: 10126
+        y: 284
+        width: 420
+        height: 477
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ded58068755a8a660800000000000000
+      internalID: 7397344183285472749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      evelyn dead_0: -5136062354147305160
+      evelyn dead_1: -8971561702946776892
+      evelyn dead_2: 247244968267397184
+      evelyn dead_3: -8231412236917843138
+      evelyn dead_4: 3782769006272774892
+      evelyn dead_5: -1321445669173875557
+      evelyn dead_6: -5265946249431407156
+      evelyn dead_7: -4846516445973021421
+      evelyn dead_8: 7397344183285472749
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

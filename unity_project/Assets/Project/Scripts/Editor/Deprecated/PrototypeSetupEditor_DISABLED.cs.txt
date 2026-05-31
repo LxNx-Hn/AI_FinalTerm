@@ -1,0 +1,641 @@
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEditorInternal;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public static class PrototypeSetupEditor
+{
+    private const string RootPath = "Assets/Project";
+    private const string PrefabsPath = RootPath + "/Prefabs";
+    private const string SystemPrefabPath = PrefabsPath + "/System";
+    private const string PlayerPrefabPath = PrefabsPath + "/Player";
+    private const string EnemyPrefabPath = PrefabsPath + "/Enemy";
+    private const string ItemPrefabPath = PrefabsPath + "/Item";
+    private const string BossPrefabPath = PrefabsPath + "/Boss";
+    private const string PatternPrefabPath = PrefabsPath + "/Pattern";
+    private const string TriggerPrefabPath = PrefabsPath + "/Trigger";
+    private const string UiPrefabPath = PrefabsPath + "/UI";
+    private const string Stage01ScenePath = RootPath + "/Scenes/Stage01_ParkingLobby.unity";
+    private const string Stage02ScenePath = RootPath + "/Scenes/Stage02_WardElevator.unity";
+    private const string Boss01ScenePath = RootPath + "/Scenes/Boss01_Elevator.unity";
+    private const string Boss02ScenePath = RootPath + "/Scenes/Boss02_Rooftop.unity";
+    private const string TestLayoutRootName = "PrototypeTestLayout";
+
+    [MenuItem("Project Tools/Apply Box Prototype First Pass")]
+    public static void ApplyBoxPrototypeFirstPass()
+    {
+        BuildBoxPrototype();
+        ConfigureSceneCameras();
+        CreateTestSceneLayout();
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        Debug.Log("Box prototype first pass applied.");
+    }
+
+    [MenuItem("Project Tools/Build Box Prototype")]
+    public static void BuildBoxPrototype()
+    {
+        EnsureFolders();
+        EnsureTagsAndLayers();
+
+        GameObject healItemPrefab = CreateHealItemPrefab();
+        GameObject attackBuffItemPrefab = CreateAttackBuffItemPrefab();
+        GameObject speedBuffItemPrefab = CreateSpeedBuffItemPrefab();
+
+        CreateKeycardPrefab();
+        CreateGridManagerPrefab();
+        CreateWallPrefab();
+        CreateGameStatePrefab();
+        CreatePlayerPrefab();
+        CreateSmallEnemyPrefab(healItemPrefab, attackBuffItemPrefab, speedBuffItemPrefab);
+        CreateMediumEnemyPrefab(healItemPrefab, attackBuffItemPrefab, speedBuffItemPrefab);
+        CreateWarningTilePrefab();
+        CreateDamageTilePrefab();
+        CreateSafeTilePrefab();
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        Debug.Log("Box prototype prefabs created or updated under Assets/Project/Prefabs.");
+    }
+
+    [MenuItem("Project Tools/Create Test Scene Layout")]
+    public static void CreateTestSceneLayout()
+    {
+        EnsureFolders();
+        EnsureTagsAndLayers();
+        EnsurePrototypePrefabsExist();
+
+        Scene scene = EditorSceneManager.OpenScene(Stage01ScenePath, OpenSceneMode.Single);
+        ClearExistingTestObjects();
+
+        GameObject layoutRoot = new GameObject(TestLayoutRootName);
+
+        GameObject gameState = InstantiatePrefab(SystemPrefabPath + "/GameState.prefab", Vector3.zero, null);
+        GameObject gridManager = InstantiatePrefab(SystemPrefabPath + "/GridManager.prefab", Vector3.zero, null);
+        GameObject player = InstantiatePrefab(PlayerPrefabPath + "/Player.prefab", Vector3.zero, null);
+
+        if (gameState == null || gridManager == null || player == null)
+        {
+            Object.DestroyImmediate(layoutRoot);
+            Debug.LogError("Stage01 test layout could not instantiate required core prefabs.");
+            return;
+        }
+
+        gameState.name = "GameState";
+        gameState.transform.position = Vector3.zero;
+        gridManager.name = "GridManager";
+        gridManager.transform.position = Vector3.zero;
+        player.name = "Player";
+        player.transform.position = Vector3.zero;
+
+        InstantiateWall(layoutRoot.transform, new Vector3(2f, 0f, 0f));
+        InstantiateWall(layoutRoot.transform, new Vector3(2f, 1f, 0f));
+        InstantiateWall(layoutRoot.transform, new Vector3(2f, -1f, 0f));
+
+        GameObject smallEnemy = InstantiatePrefab(EnemyPrefabPath + "/SmallEnemy.prefab", new Vector3(5f, 0f, 0f), layoutRoot.transform);
+        if (smallEnemy != null)
+        {
+            smallEnemy.name = "SmallEnemy";
+            EnemyAI ai = smallEnemy.GetComponent<EnemyAI>();
+            if (ai != null)
+            {
+                ai.startActive = true;
+                ai.Activate();
+            }
+        }
+
+        GameObject healItem = InstantiatePrefab(ItemPrefabPath + "/HealItem.prefab", new Vector3(0f, 2f, 0f), layoutRoot.transform);
+        if (healItem != null)
+        {
+            healItem.name = "HealItem";
+        }
+
+        ConfigureCameraForLoadedScene(scene.name, player.transform);
+        EditorSceneManager.MarkSceneDirty(scene);
+        EditorSceneManager.SaveScene(scene);
+        Selection.activeObject = player;
+
+        Debug.Log("Stage01 test layout created.");
+    }
+
+    private static void EnsurePrototypePrefabsExist()
+    {
+        string[] requiredPaths =
+        {
+            SystemPrefabPath + "/GridManager.prefab",
+            SystemPrefabPath + "/GameState.prefab",
+            SystemPrefabPath + "/Wall.prefab",
+            PlayerPrefabPath + "/Player.prefab",
+            EnemyPrefabPath + "/SmallEnemy.prefab",
+            EnemyPrefabPath + "/MediumEnemy.prefab",
+            ItemPrefabPath + "/HealItem.prefab",
+            ItemPrefabPath + "/AttackBuffItem.prefab",
+            ItemPrefabPath + "/SpeedBuffItem.prefab",
+            ItemPrefabPath + "/Keycard.prefab",
+            PatternPrefabPath + "/WarningTile.prefab",
+            PatternPrefabPath + "/DamageTile.prefab",
+            PatternPrefabPath + "/SafeTile.prefab"
+        };
+
+        foreach (string path in requiredPaths)
+        {
+            if (AssetDatabase.LoadAssetAtPath<GameObject>(path) == null)
+            {
+                BuildBoxPrototype();
+                return;
+            }
+        }
+    }
+
+    private static void EnsureFolders()
+    {
+        EnsureFolder("Assets", "Project");
+        EnsureFolder(RootPath, "Prefabs");
+        EnsureFolder(PrefabsPath, "System");
+        EnsureFolder(PrefabsPath, "Player");
+        EnsureFolder(PrefabsPath, "Enemy");
+        EnsureFolder(PrefabsPath, "Item");
+        EnsureFolder(PrefabsPath, "Boss");
+        EnsureFolder(PrefabsPath, "Pattern");
+        EnsureFolder(PrefabsPath, "Trigger");
+        EnsureFolder(PrefabsPath, "UI");
+        EnsureFolder(RootPath + "/Scripts", "Editor");
+    }
+
+    private static void EnsureFolder(string parent, string folderName)
+    {
+        string combined = parent + "/" + folderName;
+        if (!AssetDatabase.IsValidFolder(combined))
+        {
+            AssetDatabase.CreateFolder(parent, folderName);
+        }
+    }
+
+    private static void EnsureTagsAndLayers()
+    {
+        EnsureTag("Player");
+        EnsureTag("Enemy");
+        EnsureTag("Boss");
+        EnsureTag("Item");
+        EnsureTag("GameController");
+
+        EnsureLayer("Player");
+        EnsureLayer("Enemy");
+        EnsureLayer("Boss");
+        EnsureLayer("Wall");
+        EnsureLayer("Item");
+        EnsureLayer("Trigger");
+        EnsureLayer("Hazard");
+        EnsureLayer("PatternWarning");
+    }
+
+    private static void EnsureTag(string tag)
+    {
+        SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
+        SerializedProperty tagsProperty = tagManager.FindProperty("tags");
+
+        for (int i = 0; i < tagsProperty.arraySize; i++)
+        {
+            SerializedProperty entry = tagsProperty.GetArrayElementAtIndex(i);
+            if (entry.stringValue == tag)
+            {
+                return;
+            }
+        }
+
+        tagsProperty.InsertArrayElementAtIndex(tagsProperty.arraySize);
+        tagsProperty.GetArrayElementAtIndex(tagsProperty.arraySize - 1).stringValue = tag;
+        tagManager.ApplyModifiedProperties();
+    }
+
+    private static void EnsureLayer(string layerName)
+    {
+        if (LayerMask.NameToLayer(layerName) != -1)
+        {
+            return;
+        }
+
+        SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
+        SerializedProperty layersProperty = tagManager.FindProperty("layers");
+
+        for (int i = 8; i < layersProperty.arraySize; i++)
+        {
+            SerializedProperty entry = layersProperty.GetArrayElementAtIndex(i);
+            if (string.IsNullOrEmpty(entry.stringValue))
+            {
+                entry.stringValue = layerName;
+                tagManager.ApplyModifiedProperties();
+                return;
+            }
+        }
+
+        Debug.LogWarning("No free custom layer slot found for " + layerName + ".");
+    }
+
+    private static GameObject CreateGridManagerPrefab()
+    {
+        GameObject root = new GameObject("GridManager");
+        GridManager manager = root.AddComponent<GridManager>();
+        manager.tileSize = 1f;
+        manager.worldOrigin = Vector2.zero;
+        return SaveAsPrefab(SystemPrefabPath + "/GridManager.prefab", root);
+    }
+
+    private static GameObject CreateGameStatePrefab()
+    {
+        GameObject root = new GameObject("GameState");
+        SetTagIfExists(root, "GameController");
+        root.AddComponent<GameState>();
+        return SaveAsPrefab(SystemPrefabPath + "/GameState.prefab", root);
+    }
+
+    private static GameObject CreateWallPrefab()
+    {
+        GameObject wall = CreateSpriteObject("Wall", LoadSquareSprite(), Color.gray, Vector3.one);
+        SetLayerIfExists(wall, "Wall");
+        wall.AddComponent<GridObstacle>();
+        return SaveAsPrefab(SystemPrefabPath + "/Wall.prefab", wall);
+    }
+
+    private static GameObject CreatePlayerPrefab()
+    {
+        GameObject player = CreateSpriteObject("Player", LoadSquareSprite(), Color.blue, Vector3.one);
+        SetTagIfExists(player, "Player");
+        SetLayerIfExists(player, "Player");
+
+        GridOccupant occupant = player.AddComponent<GridOccupant>();
+        occupant.blocksMovement = true;
+
+        GridMover mover = player.AddComponent<GridMover>();
+        mover.moveDuration = 0.14f;
+
+        player.AddComponent<PlayerController>();
+
+        PlayerHealth health = player.AddComponent<PlayerHealth>();
+        health.maxHp = 3;
+        health.currentHp = 3;
+        health.invincibleDuration = 1f;
+        health.blinkInterval = 0.08f;
+        health.spriteRenderer = player.GetComponent<SpriteRenderer>();
+
+        player.AddComponent<BuffController>();
+
+        PlayerCombat combat = player.AddComponent<PlayerCombat>();
+        combat.baseDamage = 1;
+        combat.attackCooldown = 0.5f;
+        combat.drawAttackGizmo = true;
+
+        PlayerDash dash = player.AddComponent<PlayerDash>();
+        dash.dashDistance = 3;
+        dash.dashCooldown = 5f;
+        dash.dashMoveDuration = 0.08f;
+        dash.sideDamage = 1;
+
+        return SaveAsPrefab(PlayerPrefabPath + "/Player.prefab", player);
+    }
+
+    private static GameObject CreateSmallEnemyPrefab(GameObject healItemPrefab, GameObject attackBuffItemPrefab, GameObject speedBuffItemPrefab)
+    {
+        GameObject enemy = CreateEnemyPrototype(
+            "SmallEnemy",
+            Color.red,
+            Vector3.one,
+            0.22f,
+            0.35f,
+            3,
+            false,
+            healItemPrefab,
+            attackBuffItemPrefab,
+            speedBuffItemPrefab);
+
+        return SaveAsPrefab(EnemyPrefabPath + "/SmallEnemy.prefab", enemy);
+    }
+
+    private static GameObject CreateMediumEnemyPrefab(GameObject healItemPrefab, GameObject attackBuffItemPrefab, GameObject speedBuffItemPrefab)
+    {
+        GameObject enemy = CreateEnemyPrototype(
+            "MediumEnemy",
+            new Color(0.5f, 0f, 0f, 1f),
+            new Vector3(1.3f, 1.3f, 1f),
+            0.28f,
+            0.45f,
+            6,
+            true,
+            healItemPrefab,
+            attackBuffItemPrefab,
+            speedBuffItemPrefab);
+
+        return SaveAsPrefab(EnemyPrefabPath + "/MediumEnemy.prefab", enemy);
+    }
+
+    private static GameObject CreateHealItemPrefab()
+    {
+        return CreateItemPrefab("HealItem", Color.green, ItemType.Heal);
+    }
+
+    private static GameObject CreateAttackBuffItemPrefab()
+    {
+        return CreateItemPrefab("AttackBuffItem", Color.yellow, ItemType.AttackBuff);
+    }
+
+    private static GameObject CreateSpeedBuffItemPrefab()
+    {
+        return CreateItemPrefab("SpeedBuffItem", Color.cyan, ItemType.SpeedBuff);
+    }
+
+    private static GameObject CreateKeycardPrefab()
+    {
+        return CreateItemPrefab("Keycard", new Color(1f, 0.5f, 0f, 1f), ItemType.Keycard);
+    }
+
+    private static GameObject CreateItemPrefab(string name, Color color, ItemType itemType)
+    {
+        GameObject item = CreateSpriteObject(name, LoadSquareSprite(), color, new Vector3(0.6f, 0.6f, 1f));
+        SetTagIfExists(item, "Item");
+        SetLayerIfExists(item, "Item");
+
+        GridOccupant occupant = item.AddComponent<GridOccupant>();
+        occupant.blocksMovement = false;
+
+        GridItem gridItem = item.AddComponent<GridItem>();
+        gridItem.itemType = itemType;
+        gridItem.attackBuffDuration = 8f;
+        gridItem.speedBuffDuration = 6f;
+
+        return SaveAsPrefab(ItemPrefabPath + "/" + name + ".prefab", item);
+    }
+
+    private static GameObject CreateWarningTilePrefab()
+    {
+        GameObject tile = CreateSpriteObject("WarningTile", LoadSquareSprite(), new Color(1f, 0f, 0f, 0.45f), Vector3.one);
+        SetLayerIfExists(tile, "PatternWarning");
+
+        PatternTile patternTile = tile.AddComponent<PatternTile>();
+        patternTile.lifeTime = 1f;
+
+        return SaveAsPrefab(PatternPrefabPath + "/WarningTile.prefab", tile);
+    }
+
+    private static GameObject CreateDamageTilePrefab()
+    {
+        GameObject tile = CreateSpriteObject("DamageTile", LoadSquareSprite(), new Color(1f, 0f, 0f, 1f), Vector3.one);
+        SetLayerIfExists(tile, "Hazard");
+
+        DamageTile damageTile = tile.AddComponent<DamageTile>();
+        damageTile.damage = 1;
+        damageTile.lifeTime = 0.4f;
+
+        return SaveAsPrefab(PatternPrefabPath + "/DamageTile.prefab", tile);
+    }
+
+    private static GameObject CreateSafeTilePrefab()
+    {
+        GameObject tile = CreateSpriteObject("SafeTile", LoadSquareSprite(), new Color(0.75f, 0.9f, 1f, 1f), Vector3.one);
+        return SaveAsPrefab(PatternPrefabPath + "/SafeTile.prefab", tile);
+    }
+
+    private static GameObject CreateEnemyPrototype(
+        string name,
+        Color color,
+        Vector3 scale,
+        float moveDuration,
+        float moveInterval,
+        int maxHp,
+        bool guaranteedDrop,
+        GameObject healItemPrefab,
+        GameObject attackBuffItemPrefab,
+        GameObject speedBuffItemPrefab)
+    {
+        GameObject enemy = CreateSpriteObject(name, LoadSquareSprite(), color, scale);
+        SetTagIfExists(enemy, "Enemy");
+        SetLayerIfExists(enemy, "Enemy");
+
+        GridOccupant occupant = enemy.AddComponent<GridOccupant>();
+        occupant.blocksMovement = true;
+
+        GridMover mover = enemy.AddComponent<GridMover>();
+        mover.moveDuration = moveDuration;
+
+        EnemyAI ai = enemy.AddComponent<EnemyAI>();
+        ai.moveInterval = moveInterval;
+        ai.detectRange = 12;
+        ai.startActive = false;
+
+        EnemyAttack attack = enemy.AddComponent<EnemyAttack>();
+        attack.damage = 1;
+        attack.attackCooldown = 0.8f;
+        attack.canAttack = true;
+
+        EnemyHealth health = enemy.AddComponent<EnemyHealth>();
+        health.maxHp = maxHp;
+        health.currentHp = maxHp;
+        health.stunDuration = 0.3f;
+        health.spriteRenderer = enemy.GetComponent<SpriteRenderer>();
+        health.ai = ai;
+        health.occupant = occupant;
+
+        DropTable dropTable = enemy.AddComponent<DropTable>();
+        dropTable.guaranteedDrop = guaranteedDrop;
+        dropTable.healItemPrefab = healItemPrefab;
+        dropTable.attackBuffItemPrefab = attackBuffItemPrefab;
+        dropTable.speedBuffItemPrefab = speedBuffItemPrefab;
+        dropTable.healRate = 0.15f;
+        dropTable.attackBuffRate = 0.10f;
+        dropTable.speedBuffRate = 0.10f;
+        health.dropTable = dropTable;
+
+        return enemy;
+    }
+
+    private static void InstantiateWall(Transform parent, Vector3 position)
+    {
+        GameObject wall = InstantiatePrefab(SystemPrefabPath + "/Wall.prefab", position, parent);
+        if (wall != null)
+        {
+            wall.name = "Wall";
+        }
+    }
+
+    private static void ClearExistingTestObjects()
+    {
+        GameObject[] allObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        List<GameObject> toDelete = new List<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj == null)
+            {
+                continue;
+            }
+
+            string objectName = obj.name;
+            if (objectName == TestLayoutRootName
+                || objectName == "GameState"
+                || objectName == "GridManager"
+                || objectName == "Player"
+                || objectName == "SmallEnemy"
+                || objectName == "HealItem"
+                || objectName == "Wall")
+            {
+                toDelete.Add(obj);
+            }
+        }
+
+        foreach (GameObject obj in toDelete)
+        {
+            if (obj != null)
+            {
+                Object.DestroyImmediate(obj);
+            }
+        }
+    }
+
+    private static void ConfigureSceneCameras()
+    {
+        ConfigureSceneCamera(Stage01ScenePath, 5f, true);
+        ConfigureSceneCamera(Stage02ScenePath, 5f, true);
+        ConfigureSceneCamera(Boss01ScenePath, 5f, false);
+        ConfigureSceneCamera(Boss02ScenePath, 7.5f, false);
+        EditorSceneManager.OpenScene(Stage01ScenePath, OpenSceneMode.Single);
+    }
+
+    private static void ConfigureSceneCamera(string scenePath, float orthographicSize, bool attachFollow)
+    {
+        Scene scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
+        ConfigureCameraForLoadedScene(scene.name, null, orthographicSize, attachFollow);
+        EditorSceneManager.MarkSceneDirty(scene);
+        EditorSceneManager.SaveScene(scene);
+    }
+
+    private static void ConfigureCameraForLoadedScene(
+        string sceneName,
+        Transform followTarget,
+        float orthographicSizeOverride = -1f,
+        bool? attachFollowOverride = null)
+    {
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            mainCamera = Object.FindFirstObjectByType<Camera>();
+        }
+
+        if (mainCamera == null)
+        {
+            Debug.LogWarning("No camera found in scene " + sceneName + ".");
+            return;
+        }
+
+        mainCamera.transform.position = new Vector3(0f, 0f, -10f);
+        mainCamera.orthographic = true;
+
+        float size = orthographicSizeOverride;
+        if (size < 0f)
+        {
+            size = sceneName switch
+            {
+                "Stage01_ParkingLobby" => 5f,
+                "Stage02_WardElevator" => 5f,
+                "Boss01_Elevator" => 5f,
+                "Boss02_Rooftop" => 7.5f,
+                _ => mainCamera.orthographicSize
+            };
+        }
+
+        mainCamera.orthographicSize = size;
+
+        bool shouldHaveFollow = attachFollowOverride ?? (sceneName == "Stage01_ParkingLobby" || sceneName == "Stage02_WardElevator");
+        CameraFollow follow = mainCamera.GetComponent<CameraFollow>();
+        if (shouldHaveFollow)
+        {
+            if (follow == null)
+            {
+                follow = mainCamera.gameObject.AddComponent<CameraFollow>();
+            }
+
+            if (followTarget != null)
+            {
+                follow.target = followTarget;
+            }
+        }
+        else if (follow != null)
+        {
+            Object.DestroyImmediate(follow);
+        }
+    }
+
+    private static GameObject InstantiatePrefab(string assetPath, Vector3 position, Transform parent)
+    {
+        GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
+        if (prefab == null)
+        {
+            Debug.LogError("Missing prefab at path: " + assetPath);
+            return null;
+        }
+
+        GameObject instance = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+        if (instance != null)
+        {
+            instance.transform.SetParent(parent);
+            instance.transform.position = position;
+        }
+
+        return instance;
+    }
+
+    private static GameObject SaveAsPrefab(string assetPath, GameObject root)
+    {
+        GameObject prefab = PrefabUtility.SaveAsPrefabAsset(root, assetPath);
+        Object.DestroyImmediate(root);
+        return prefab;
+    }
+
+    private static GameObject CreateSpriteObject(string name, Sprite sprite, Color color, Vector3 scale)
+    {
+        GameObject gameObject = new GameObject(name);
+        SpriteRenderer renderer = gameObject.AddComponent<SpriteRenderer>();
+        renderer.sprite = sprite;
+        renderer.color = color;
+        gameObject.transform.localScale = scale;
+        return gameObject;
+    }
+
+    private static Sprite LoadSquareSprite()
+    {
+        Sprite sprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
+        if (sprite == null)
+        {
+            Debug.LogWarning("Could not load built-in square sprite. SpriteRenderer will still be created.");
+        }
+
+        return sprite;
+    }
+
+    private static void SetTagIfExists(GameObject gameObject, string tag)
+    {
+        if (InternalEditorUtility.tags == null)
+        {
+            return;
+        }
+
+        foreach (string existingTag in InternalEditorUtility.tags)
+        {
+            if (existingTag == tag)
+            {
+                gameObject.tag = tag;
+                return;
+            }
+        }
+    }
+
+    private static void SetLayerIfExists(GameObject gameObject, string layerName)
+    {
+        int layer = LayerMask.NameToLayer(layerName);
+        if (layer != -1)
+        {
+            gameObject.layer = layer;
+        }
+    }
+}

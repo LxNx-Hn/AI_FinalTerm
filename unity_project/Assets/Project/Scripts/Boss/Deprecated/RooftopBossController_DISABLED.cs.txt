@@ -1,0 +1,197 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class RooftopBossController : MonoBehaviour
+{
+    public BossHealth bossHealth;
+    public BossPatternCaster caster;
+    public string endingSceneName = "Ending";
+
+    private bool enraged;
+
+    private void Awake()
+    {
+        if (bossHealth == null)
+        {
+            bossHealth = GetComponent<BossHealth>();
+        }
+
+        if (caster == null)
+        {
+            caster = GetComponent<BossPatternCaster>();
+        }
+    }
+
+    private void Start()
+    {
+        if (bossHealth == null || caster == null)
+        {
+            enabled = false;
+            return;
+        }
+
+        bossHealth.SetDamageable(true);
+        bossHealth.onDead.AddListener(OnBossDead);
+        StartCoroutine(BossRoutine());
+    }
+
+    private IEnumerator BossRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+        yield return FullScreenAttack();
+
+        while (bossHealth.currentHp > 0)
+        {
+            if (!enraged && bossHealth.currentHp <= bossHealth.maxHp / 2)
+            {
+                enraged = true;
+            }
+
+            if (!enraged)
+            {
+                yield return FistThree();
+                yield return HorizontalThree();
+                yield return Combo(false);
+            }
+            else
+            {
+                yield return FullScreenAttack();
+                yield return Combo(true);
+                yield return HorizontalFour(true);
+                yield return FistSix(true);
+            }
+
+            yield return new WaitForSeconds(0.4f);
+        }
+    }
+
+    private IEnumerator FullScreenAttack()
+    {
+        List<Vector2Int> safe = new List<Vector2Int>
+        {
+            new Vector2Int(-7, -5),
+            new Vector2Int(-6, -5),
+            new Vector2Int(6, -5),
+            new Vector2Int(7, -5)
+        };
+
+        List<Vector2Int> danger = caster.FullExceptSafeZones(9, 6, safe);
+        yield return caster.CastCells(danger, 1.2f, 0.5f);
+    }
+
+    private IEnumerator FistThree()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Vector2Int center = GetPlayerRelativeCell();
+            yield return caster.CastCells(caster.Rect(center, 1, 1), 0.7f, 0.35f);
+            yield return new WaitForSeconds(0.15f);
+        }
+    }
+
+    private IEnumerator FistSix(bool aftershock)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            Vector2Int center = GetPlayerRelativeCell();
+            if (aftershock)
+            {
+                yield return caster.CastWithAftershock(caster.Rect(center, 1, 1), 0.55f, 0.3f, 0.45f);
+            }
+            else
+            {
+                yield return caster.CastCells(caster.Rect(center, 1, 1), 0.6f, 0.3f);
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private IEnumerator HorizontalThree()
+    {
+        int[] rows = { -3, 0, 3 };
+        foreach (int row in rows)
+        {
+            yield return caster.CastCells(caster.HorizontalRow(row, 9), 0.65f, 0.3f);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private IEnumerator HorizontalFour(bool aftershock)
+    {
+        int[] rows = { -4, -1, 2, 5 };
+        foreach (int row in rows)
+        {
+            List<Vector2Int> cells = caster.HorizontalRow(row, 9);
+            if (aftershock)
+            {
+                yield return caster.CastWithAftershock(cells, 0.55f, 0.3f, 0.45f);
+            }
+            else
+            {
+                yield return caster.CastCells(cells, 0.6f, 0.3f);
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private IEnumerator Combo(bool aftershock)
+    {
+        List<Vector2Int> column = caster.VerticalColumn(Random.Range(-6, 7), 6);
+        if (aftershock)
+        {
+            yield return caster.CastWithAftershock(column, 0.6f, 0.3f, 0.5f);
+        }
+        else
+        {
+            yield return caster.CastCells(column, 0.7f, 0.3f);
+        }
+
+        Vector2Int center = GetPlayerRelativeCell();
+        if (aftershock)
+        {
+            yield return caster.CastWithAftershock(caster.Rect(center, 1, 1), 0.55f, 0.3f, 0.5f);
+        }
+        else
+        {
+            yield return caster.CastCells(caster.Rect(center, 1, 1), 0.7f, 0.3f);
+        }
+
+        int row = Random.Range(-5, 6);
+        List<Vector2Int> horizontal = caster.HorizontalRow(row, 9);
+        if (aftershock)
+        {
+            yield return caster.CastWithAftershock(horizontal, 0.55f, 0.3f, 0.5f);
+        }
+        else
+        {
+            yield return caster.CastCells(horizontal, 0.7f, 0.3f);
+        }
+    }
+
+    private Vector2Int GetPlayerRelativeCell()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj == null || caster.patternOrigin == null || GridManager.Instance == null)
+        {
+            return Vector2Int.zero;
+        }
+
+        GridOccupant player = playerObj.GetComponent<GridOccupant>();
+        if (player == null)
+        {
+            return Vector2Int.zero;
+        }
+
+        Vector2Int originCell = GridManager.Instance.WorldToCell(caster.patternOrigin.position);
+        return player.CurrentCell - originCell;
+    }
+
+    private void OnBossDead()
+    {
+        SceneManager.LoadScene(endingSceneName);
+    }
+}

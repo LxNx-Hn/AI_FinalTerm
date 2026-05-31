@@ -1,0 +1,1074 @@
+fileFormatVersion: 2
+guid: f76f922dc75812e4db0c21cef5a66ddb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1773019835960668297
+    second: PlayerAttackAxeAllGenerated_0
+  - first:
+      213: 256434062770398927
+    second: PlayerAttackAxeAllGenerated_1
+  - first:
+      213: 7540789970196157743
+    second: PlayerAttackAxeAllGenerated_2
+  - first:
+      213: 112622218257584164
+    second: PlayerAttackAxeAllGenerated_3
+  - first:
+      213: -8157885155140673943
+    second: PlayerAttackAxeAllGenerated_4
+  - first:
+      213: -3380714204019987644
+    second: PlayerAttackAxeAllGenerated_5
+  - first:
+      213: 5752703399359927751
+    second: PlayerAttackAxeAllGenerated_6
+  - first:
+      213: 1753605686539354948
+    second: PlayerAttackAxeAllGenerated_7
+  - first:
+      213: 2966358007422429839
+    second: PlayerAttackAxeAllGenerated_8
+  - first:
+      213: -1251852930205759983
+    second: PlayerAttackAxeAllGenerated_9
+  - first:
+      213: 51135877151968276
+    second: PlayerAttackAxeAllGenerated_10
+  - first:
+      213: 355271210253030184
+    second: PlayerAttackAxeAllGenerated_11
+  - first:
+      213: -6355646858227632435
+    second: PlayerAttackAxeAllGenerated_12
+  - first:
+      213: -5027083774562444421
+    second: PlayerAttackAxeAllGenerated_13
+  - first:
+      213: 5463322874003038243
+    second: PlayerAttackAxeAllGenerated_14
+  - first:
+      213: 5789860492810871980
+    second: PlayerAttackAxeAllGenerated_15
+  - first:
+      213: -8882012456674897639
+    second: PlayerAttackAxeAllGenerated_16
+  - first:
+      213: 6916341633943564388
+    second: PlayerAttackAxeAllGenerated_17
+  - first:
+      213: -4838850932867257792
+    second: PlayerAttackAxeAllGenerated_18
+  - first:
+      213: 1287516904963021417
+    second: PlayerAttackAxeAllGenerated_19
+  - first:
+      213: 111727654867044379
+    second: PlayerAttackAxeAllGenerated_20
+  - first:
+      213: -790954843445285321
+    second: PlayerAttackAxeAllGenerated_21
+  - first:
+      213: 5782685704311522199
+    second: PlayerAttackAxeAllGenerated_22
+  - first:
+      213: 7426009805417472932
+    second: PlayerAttackAxeAllGenerated_23
+  - first:
+      213: 7000424777269181300
+    second: PlayerAttackAxeAllGenerated_24
+  - first:
+      213: 532801523465811040
+    second: PlayerAttackAxeAllGenerated_25
+  - first:
+      213: -2486583043674378467
+    second: PlayerAttackAxeAllGenerated_26
+  - first:
+      213: 59492103721202836
+    second: PlayerAttackAxeAllGenerated_27
+  - first:
+      213: -53461763818401791
+    second: PlayerAttackAxeAllGenerated_r01_c01
+  - first:
+      213: -4861314709941415622
+    second: PlayerAttackAxeAllGenerated_r01_c02
+  - first:
+      213: 2026216993461751629
+    second: PlayerAttackAxeAllGenerated_r01_c03
+  - first:
+      213: -2020243519620338727
+    second: PlayerAttackAxeAllGenerated_r01_c04
+  - first:
+      213: -5249195800745034499
+    second: PlayerAttackAxeAllGenerated_r01_c05
+  - first:
+      213: -8743636674438635783
+    second: PlayerAttackAxeAllGenerated_r01_c06
+  - first:
+      213: 8716671657804684626
+    second: PlayerAttackAxeAllGenerated_r01_c07
+  - first:
+      213: -672165659138569850
+    second: PlayerAttackAxeAllGenerated_r01_c08
+  - first:
+      213: -4137621890460263160
+    second: PlayerAttackAxeAllGenerated_r02_c01
+  - first:
+      213: 5253217301013724180
+    second: PlayerAttackAxeAllGenerated_r02_c02
+  - first:
+      213: 2055875666101254282
+    second: PlayerAttackAxeAllGenerated_r02_c03
+  - first:
+      213: -7071181141493691465
+    second: PlayerAttackAxeAllGenerated_r02_c04
+  - first:
+      213: 4296482660155095597
+    second: PlayerAttackAxeAllGenerated_r02_c05
+  - first:
+      213: 4526813728608496950
+    second: PlayerAttackAxeAllGenerated_r02_c06
+  - first:
+      213: 979736421594425865
+    second: PlayerAttackAxeAllGenerated_r02_c07
+  - first:
+      213: 8149536906560431460
+    second: PlayerAttackAxeAllGenerated_r02_c08
+  - first:
+      213: 3280994911520344704
+    second: PlayerAttackAxeAllGenerated_r03_c01
+  - first:
+      213: -642740054595996667
+    second: PlayerAttackAxeAllGenerated_r03_c02
+  - first:
+      213: 5283736956183933802
+    second: PlayerAttackAxeAllGenerated_r03_c03
+  - first:
+      213: -1434816441715128589
+    second: PlayerAttackAxeAllGenerated_r03_c04
+  - first:
+      213: -772577485075061076
+    second: PlayerAttackAxeAllGenerated_r03_c05
+  - first:
+      213: 6127490138540109228
+    second: PlayerAttackAxeAllGenerated_r03_c06
+  - first:
+      213: 4804789692566242214
+    second: PlayerAttackAxeAllGenerated_r03_c07
+  - first:
+      213: -873901286237262135
+    second: PlayerAttackAxeAllGenerated_r03_c08
+  - first:
+      213: -9220512294557250043
+    second: PlayerAttackAxeAllGenerated_r04_c01
+  - first:
+      213: 1243763196208545179
+    second: PlayerAttackAxeAllGenerated_r04_c02
+  - first:
+      213: 4657312156382346147
+    second: PlayerAttackAxeAllGenerated_r04_c03
+  - first:
+      213: 736468559029738815
+    second: PlayerAttackAxeAllGenerated_r04_c04
+  - first:
+      213: -8102956123761638622
+    second: PlayerAttackAxeAllGenerated_r04_c05
+  - first:
+      213: 7180740425856706778
+    second: PlayerAttackAxeAllGenerated_r04_c06
+  - first:
+      213: -5700894325807358305
+    second: PlayerAttackAxeAllGenerated_r04_c07
+  - first:
+      213: 342818100403788567
+    second: PlayerAttackAxeAllGenerated_r04_c08
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 640
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r01_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100d98e1fc0124ff0800000000000000
+      internalID: -53461763818401791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r01_c02
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 6
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a319f841704298cb0800000000000000
+      internalID: -4861314709941415622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r01_c03
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 6
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4fc525ce919e1c10800000000000000
+      internalID: 2026216993461751629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r01_c04
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 6
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dbae3df837a6f3e0800000000000000
+      internalID: -2020243519620338727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r01_c05
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 6
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfcbe1c0b3c1727b0800000000000000
+      internalID: -5249195800745034499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r01_c06
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 6
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fed10735cc58a680800000000000000
+      internalID: -8743636674438635783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r01_c07
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 6
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25dd92b90b6d7f870800000000000000
+      internalID: 8716671657804684626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r01_c08
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 6
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68944d0f4ecfba6f0800000000000000
+      internalID: -672165659138569850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r02_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80d5c3c00d63496c0800000000000000
+      internalID: -4137621890460263160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r02_c02
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 4
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41cfbd27d4d27e840800000000000000
+      internalID: 5253217301013724180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r02_c03
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 4
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a88b55c9600f78c10800000000000000
+      internalID: 2055875666101254282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r02_c04
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 4
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bbc3de673e1edd90800000000000000
+      internalID: -7071181141493691465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r02_c05
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2a7b26373c20ab30800000000000000
+      internalID: 4296482660155095597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r02_c06
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 4
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d22122a1972de30800000000000000
+      internalID: 4526813728608496950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r02_c07
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 4
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90ae5a6a519b89d00800000000000000
+      internalID: 979736421594425865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r02_c08
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 4
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 465687f63a8f81170800000000000000
+      internalID: 8149536906560431460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r03_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08ac8031d7f688d20800000000000000
+      internalID: 3280994911520344704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r03_c02
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 504f3e263578417f0800000000000000
+      internalID: -642740054595996667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r03_c03
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6372f764ca935940800000000000000
+      internalID: 5283736956183933802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r03_c04
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f60ea95c02861ce0800000000000000
+      internalID: -1434816441715128589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r03_c05
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca6e2a0eed04745f0800000000000000
+      internalID: -772577485075061076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r03_c06
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 2
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cad6460f0d7390550800000000000000
+      internalID: 6127490138540109228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r03_c07
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 2
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a38eddb4ca0ea240800000000000000
+      internalID: 4804789692566242214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r03_c08
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 2
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ce221909674fd3f0800000000000000
+      internalID: -873901286237262135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r04_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e0bc3abe82a0080800000000000000
+      internalID: -9220512294557250043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r04_c02
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9df6b6890cb24110800000000000000
+      internalID: 1243763196208545179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r04_c03
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ab37411bb812a040800000000000000
+      internalID: 4657312156382346147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r04_c04
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d1631a046783a00800000000000000
+      internalID: 736468559029738815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r04_c05
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2238c9436548c8f80800000000000000
+      internalID: -8102956123761638622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r04_c06
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad8e9734f5d17a360800000000000000
+      internalID: 7180740425856706778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r04_c07
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 0
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e5638b0da52e0b0800000000000000
+      internalID: -5700894325807358305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackAxeAllGenerated_r04_c08
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 1
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71b5429fe3fe1c400800000000000000
+      internalID: 342818100403788567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PlayerAttackAxeAllGenerated_0: 1773019835960668297
+      PlayerAttackAxeAllGenerated_1: 256434062770398927
+      PlayerAttackAxeAllGenerated_10: 51135877151968276
+      PlayerAttackAxeAllGenerated_11: 355271210253030184
+      PlayerAttackAxeAllGenerated_12: -6355646858227632435
+      PlayerAttackAxeAllGenerated_13: -5027083774562444421
+      PlayerAttackAxeAllGenerated_14: 5463322874003038243
+      PlayerAttackAxeAllGenerated_15: 5789860492810871980
+      PlayerAttackAxeAllGenerated_16: -8882012456674897639
+      PlayerAttackAxeAllGenerated_17: 6916341633943564388
+      PlayerAttackAxeAllGenerated_18: -4838850932867257792
+      PlayerAttackAxeAllGenerated_19: 1287516904963021417
+      PlayerAttackAxeAllGenerated_2: 7540789970196157743
+      PlayerAttackAxeAllGenerated_20: 111727654867044379
+      PlayerAttackAxeAllGenerated_21: -790954843445285321
+      PlayerAttackAxeAllGenerated_22: 5782685704311522199
+      PlayerAttackAxeAllGenerated_23: 7426009805417472932
+      PlayerAttackAxeAllGenerated_24: 7000424777269181300
+      PlayerAttackAxeAllGenerated_25: 532801523465811040
+      PlayerAttackAxeAllGenerated_26: -2486583043674378467
+      PlayerAttackAxeAllGenerated_27: 59492103721202836
+      PlayerAttackAxeAllGenerated_3: 112622218257584164
+      PlayerAttackAxeAllGenerated_4: -8157885155140673943
+      PlayerAttackAxeAllGenerated_5: -3380714204019987644
+      PlayerAttackAxeAllGenerated_6: 5752703399359927751
+      PlayerAttackAxeAllGenerated_7: 1753605686539354948
+      PlayerAttackAxeAllGenerated_8: 2966358007422429839
+      PlayerAttackAxeAllGenerated_9: -1251852930205759983
+      PlayerAttackAxeAllGenerated_r01_c01: -53461763818401791
+      PlayerAttackAxeAllGenerated_r01_c02: -4861314709941415622
+      PlayerAttackAxeAllGenerated_r01_c03: 2026216993461751629
+      PlayerAttackAxeAllGenerated_r01_c04: -2020243519620338727
+      PlayerAttackAxeAllGenerated_r01_c05: -5249195800745034499
+      PlayerAttackAxeAllGenerated_r01_c06: -8743636674438635783
+      PlayerAttackAxeAllGenerated_r01_c07: 8716671657804684626
+      PlayerAttackAxeAllGenerated_r01_c08: -672165659138569850
+      PlayerAttackAxeAllGenerated_r02_c01: -4137621890460263160
+      PlayerAttackAxeAllGenerated_r02_c02: 5253217301013724180
+      PlayerAttackAxeAllGenerated_r02_c03: 2055875666101254282
+      PlayerAttackAxeAllGenerated_r02_c04: -7071181141493691465
+      PlayerAttackAxeAllGenerated_r02_c05: 4296482660155095597
+      PlayerAttackAxeAllGenerated_r02_c06: 4526813728608496950
+      PlayerAttackAxeAllGenerated_r02_c07: 979736421594425865
+      PlayerAttackAxeAllGenerated_r02_c08: 8149536906560431460
+      PlayerAttackAxeAllGenerated_r03_c01: 3280994911520344704
+      PlayerAttackAxeAllGenerated_r03_c02: -642740054595996667
+      PlayerAttackAxeAllGenerated_r03_c03: 5283736956183933802
+      PlayerAttackAxeAllGenerated_r03_c04: -1434816441715128589
+      PlayerAttackAxeAllGenerated_r03_c05: -772577485075061076
+      PlayerAttackAxeAllGenerated_r03_c06: 6127490138540109228
+      PlayerAttackAxeAllGenerated_r03_c07: 4804789692566242214
+      PlayerAttackAxeAllGenerated_r03_c08: -873901286237262135
+      PlayerAttackAxeAllGenerated_r04_c01: -9220512294557250043
+      PlayerAttackAxeAllGenerated_r04_c02: 1243763196208545179
+      PlayerAttackAxeAllGenerated_r04_c03: 4657312156382346147
+      PlayerAttackAxeAllGenerated_r04_c04: 736468559029738815
+      PlayerAttackAxeAllGenerated_r04_c05: -8102956123761638622
+      PlayerAttackAxeAllGenerated_r04_c06: 7180740425856706778
+      PlayerAttackAxeAllGenerated_r04_c07: -5700894325807358305
+      PlayerAttackAxeAllGenerated_r04_c08: 342818100403788567
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

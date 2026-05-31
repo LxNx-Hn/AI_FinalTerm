@@ -1,0 +1,1059 @@
+fileFormatVersion: 2
+guid: 8159b8843275c944b96a7c0698f67c00
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8000110977549246983
+    second: banshee - death_0
+  - first:
+      213: 3445164193720639808
+    second: banshee - death_1
+  - first:
+      213: 1218792994297804489
+    second: banshee - death_2
+  - first:
+      213: 6472002865689985326
+    second: banshee - death_3
+  - first:
+      213: -452590321965586085
+    second: banshee - death_4
+  - first:
+      213: 53089591521307057
+    second: banshee - death_5
+  - first:
+      213: 646665255461885457
+    second: banshee - death_6
+  - first:
+      213: -2770526401958310841
+    second: banshee - death_7
+  - first:
+      213: 8264911529594576926
+    second: banshee - death_8
+  - first:
+      213: -4322539733389336852
+    second: banshee - death_9
+  - first:
+      213: 7779393806618477271
+    second: banshee - death_10
+  - first:
+      213: -1507365597682404653
+    second: banshee - death_11
+  - first:
+      213: 6757763644173682906
+    second: banshee - death_12
+  - first:
+      213: -8584497553834231932
+    second: banshee - death_13
+  - first:
+      213: -7851904950635729458
+    second: banshee - death_14
+  - first:
+      213: -1040894999203082208
+    second: banshee - death_15
+  - first:
+      213: -753848688545988083
+    second: banshee - death_16
+  - first:
+      213: -5782076593377979762
+    second: banshee - death_17
+  - first:
+      213: 8084932200915503048
+    second: banshee - death_18
+  - first:
+      213: 1456297300363754722
+    second: banshee - death_19
+  - first:
+      213: 8342755114712109143
+    second: banshee - death_20
+  - first:
+      213: -2121994865488120410
+    second: banshee - death_21
+  - first:
+      213: -7740611717041055942
+    second: banshee - death_22
+  - first:
+      213: 3532165806862114170
+    second: banshee - death_23
+  - first:
+      213: -6053249634713151953
+    second: banshee - death_24
+  - first:
+      213: -8586597501281205223
+    second: banshee - death_25
+  - first:
+      213: -3178624085611275290
+    second: banshee - death_26
+  - first:
+      213: 6857706975253492924
+    second: banshee - death_27
+  - first:
+      213: -5687184339092287363
+    second: banshee - death_28
+  - first:
+      213: 3181804893197359740
+    second: banshee - death_29
+  - first:
+      213: 6231789022110961468
+    second: banshee - death_30
+  - first:
+      213: -4346903796468877068
+    second: banshee - death_31
+  - first:
+      213: -5923794359047998832
+    second: banshee - death_32
+  - first:
+      213: 6220424038469181449
+    second: banshee - death_33
+  - first:
+      213: -7900145749556988308
+    second: banshee - death_34
+  - first:
+      213: 3754395742237281123
+    second: banshee - death_35
+  - first:
+      213: 4130291625052029586
+    second: banshee - death_36
+  - first:
+      213: -4306074743427946768
+    second: banshee - death_37
+  - first:
+      213: 8201727260408230591
+    second: banshee - death_38
+  - first:
+      213: 2837705197054292306
+    second: banshee - death_39
+  - first:
+      213: 4115374510077860879
+    second: banshee - death_40
+  - first:
+      213: 6446244625260788127
+    second: banshee - death_41
+  - first:
+      213: 2620369567078108737
+    second: banshee - death_42
+  - first:
+      213: -5204845676366134316
+    second: banshee - death_43
+  - first:
+      213: -5648230092364698611
+    second: banshee - death_44
+  - first:
+      213: -8402238848594924266
+    second: banshee - death_45
+  - first:
+      213: -719250315009929009
+    second: banshee - death_46
+  - first:
+      213: -6420590541229143946
+    second: banshee - death_47
+  - first:
+      213: 1482486500139714431
+    second: banshee - death_48
+  - first:
+      213: -4111500101093720564
+    second: banshee - death_49
+  - first:
+      213: -5223205035665618503
+    second: banshee - death_50
+  - first:
+      213: -7292919889287114159
+    second: banshee - death_51
+  - first:
+      213: -79933256003775705
+    second: banshee - death_52
+  - first:
+      213: 2300375311305086420
+    second: banshee - death_53
+  - first:
+      213: -5101700717405103562
+    second: banshee - death_54
+  - first:
+      213: -7594405246427596344
+    second: banshee - death_55
+  - first:
+      213: -5253628593435977277
+    second: banshee - death_56
+  - first:
+      213: -1908156672159221473
+    second: banshee - death_57
+  - first:
+      213: -5992369002024718396
+    second: banshee - death_58
+  - first:
+      213: -3967036775591637749
+    second: banshee - death_59
+  - first:
+      213: 1652327178358081562
+    second: banshee - death_60
+  - first:
+      213: 2099944602151207041
+    second: banshee - death_61
+  - first:
+      213: -6491097438550979330
+    second: banshee - death_62
+  - first:
+      213: 1438400249903722428
+    second: banshee - death_63
+  - first:
+      213: 1816578421428339351
+    second: banshee - death_64
+  - first:
+      213: 4602010234054418079
+    second: banshee - death_65
+  - first:
+      213: 5620396418469704484
+    second: banshee - death_66
+  - first:
+      213: 8062060858732877401
+    second: banshee - death_67
+  - first:
+      213: 2417182198113471886
+    second: banshee - death_68
+  - first:
+      213: 5853312089193612418
+    second: banshee - death_69
+  - first:
+      213: 6180438966706259571
+    second: banshee - death_70
+  - first:
+      213: -4969101121798265204
+    second: banshee - death_71
+  - first:
+      213: -1038173836563903522
+    second: banshee - death_72
+  - first:
+      213: 8898435044414084374
+    second: banshee - death_73
+  - first:
+      213: 1867951833564158441
+    second: banshee - death_74
+  - first:
+      213: 5316347748235034577
+    second: banshee - death_75
+  - first:
+      213: 2806719291832753577
+    second: banshee - death_76
+  - first:
+      213: -6178673903719987273
+    second: banshee - death_77
+  - first:
+      213: -1736593176165744406
+    second: banshee - death_78
+  - first:
+      213: 2309521186465311475
+    second: banshee - death_79
+  - first:
+      213: -7845999986358977905
+    second: banshee - death_80
+  - first:
+      213: 6723151154661642378
+    second: banshee - death_81
+  - first:
+      213: -7467119392825963984
+    second: banshee - death_82
+  - first:
+      213: 3407365566576245806
+    second: banshee - death_83
+  - first:
+      213: 2757917544179413038
+    second: banshee - death_84
+  - first:
+      213: 8398351373644110163
+    second: banshee - death_85
+  - first:
+      213: -6044627086841020965
+    second: banshee - death_86
+  - first:
+      213: 4296805837720582980
+    second: banshee - death_87
+  - first:
+      213: 8101699442682242537
+    second: banshee - death_88
+  - first:
+      213: -308138455071781217
+    second: banshee - death_89
+  - first:
+      213: -1176346643735447779
+    second: banshee - death_90
+  - first:
+      213: -7045566651977448651
+    second: banshee - death_91
+  - first:
+      213: -6329355291569505393
+    second: banshee - death_92
+  - first:
+      213: -6582175799731872526
+    second: banshee - death_93
+  - first:
+      213: 1192688077306921588
+    second: banshee - death_94
+  - first:
+      213: 7157523111984782343
+    second: banshee - death_95
+  - first:
+      213: -8320687989839376535
+    second: banshee - death_96
+  - first:
+      213: 4821199657348632891
+    second: banshee - death_97
+  - first:
+      213: 2618016509345127902
+    second: banshee - death_98
+  - first:
+      213: 8408671066097851436
+    second: banshee - death_99
+  - first:
+      213: 8851641165063791599
+    second: banshee - death_100
+  - first:
+      213: -8576492562717805428
+    second: banshee - death_101
+  - first:
+      213: -1403379552083299119
+    second: banshee - death_102
+  - first:
+      213: -6253765554455221150
+    second: banshee - death_103
+  - first:
+      213: 1035961816547890040
+    second: banshee - death_104
+  - first:
+      213: 5916771918419399931
+    second: banshee - death_105
+  - first:
+      213: 2004652456582520221
+    second: banshee - death_106
+  - first:
+      213: -6838204787864983805
+    second: banshee - death_107
+  - first:
+      213: 8141933901137213956
+    second: banshee - death_108
+  - first:
+      213: 99229763338952009
+    second: banshee - death_109
+  - first:
+      213: -6947736733151010404
+    second: banshee - death_110
+  - first:
+      213: 8606404286124317962
+    second: banshee - death_111
+  - first:
+      213: 6307326061213413101
+    second: banshee - death_112
+  - first:
+      213: -3427186512117867932
+    second: banshee - death_113
+  - first:
+      213: 5471364791817366033
+    second: banshee - death_114
+  - first:
+      213: -8512305146295732870
+    second: banshee - death_115
+  - first:
+      213: -4791511549853885567
+    second: banshee - death_116
+  - first:
+      213: 6884246338308375524
+    second: banshee - death_117
+  - first:
+      213: 4928667443315165416
+    second: banshee - death_118
+  - first:
+      213: -5972286206112244153
+    second: banshee - death_119
+  - first:
+      213: -8088345499063790142
+    second: banshee - death_120
+  - first:
+      213: 1648874613432756048
+    second: banshee - death_121
+  - first:
+      213: 7336263281032729133
+    second: banshee - death_122
+  - first:
+      213: 425647199713857400
+    second: banshee - death_123
+  - first:
+      213: 3717778072054212058
+    second: banshee - death_124
+  - first:
+      213: -79382223169903524
+    second: banshee - death_125
+  - first:
+      213: 8385735342594783616
+    second: banshee - death_126
+  - first:
+      213: -67214576336281415
+    second: banshee - death_127
+  - first:
+      213: 352625447265436067
+    second: banshee - death_128
+  - first:
+      213: 4410631448368868237
+    second: banshee - death_129
+  - first:
+      213: -2058218311997997192
+    second: banshee - death_130
+  - first:
+      213: -4341515105377258455
+    second: banshee - death_131
+  - first:
+      213: -6002956235307362265
+    second: banshee - death_132
+  - first:
+      213: 2128561221934919134
+    second: banshee - death_133
+  - first:
+      213: -6146008469377425265
+    second: banshee - death_134
+  - first:
+      213: -8105641932087462576
+    second: banshee - death_135
+  - first:
+      213: -3113840922242671932
+    second: banshee - death_136
+  - first:
+      213: 8756727163757411164
+    second: banshee - death_137
+  - first:
+      213: 6275469683785300139
+    second: banshee - death_138
+  - first:
+      213: -4149084566620636121
+    second: banshee - death_139
+  - first:
+      213: 90579248463651565
+    second: banshee - death_140
+  - first:
+      213: -5148320124506806557
+    second: banshee - death_141
+  - first:
+      213: 2142780686605199811
+    second: banshee - death_142
+  - first:
+      213: 5473806851631434558
+    second: banshee - death_143
+  - first:
+      213: 7906882049685231068
+    second: banshee - death_144
+  - first:
+      213: 1041947152318696814
+    second: banshee - death_145
+  - first:
+      213: -5457221203397966670
+    second: banshee - death_146
+  - first:
+      213: 6125878326878289091
+    second: banshee - death_147
+  - first:
+      213: 2188981170545602457
+    second: banshee - death_148
+  - first:
+      213: 369055074125204603
+    second: banshee - death_149
+  - first:
+      213: -6981526781423175642
+    second: banshee - death_150
+  - first:
+      213: -8303304851673962906
+    second: banshee - death_151
+  - first:
+      213: -3952259968769450680
+    second: banshee - death_152
+  - first:
+      213: -3860446192731482421
+    second: banshee - death_153
+  - first:
+      213: 1964151332842833376
+    second: banshee - death_154
+  - first:
+      213: -4074069472281391358
+    second: banshee - death_155
+  - first:
+      213: -749061409473603410
+    second: banshee - death_156
+  - first:
+      213: 3504072924928767873
+    second: banshee - death_157
+  - first:
+      213: 1427139123601173789
+    second: banshee - death_158
+  - first:
+      213: 7331575091460723518
+    second: banshee - death_159
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: banshee - death_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 702a6843c8a160f60800000000000000
+      internalID: 8000110977549246983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0412d97b49eafcf20800000000000000
+      internalID: 3445164193720639808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c6fad755c50ae010800000000000000
+      internalID: 1218792994297804489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2103c2f05c21d950800000000000000
+      internalID: 6472002865689985326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b592676008318b9f0800000000000000
+      internalID: -452590321965586085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b9e5e3c3bc9cb000800000000000000
+      internalID: 53089591521307057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_6
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1169468af9a69f800800000000000000
+      internalID: 646665255461885457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_7
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74c0f629aec1d89d0800000000000000
+      internalID: -2770526401958310841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_8
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e10e38d2f3dd2b270800000000000000
+      internalID: 8264911529594576926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_9
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee11d7a3014304c0800000000000000
+      internalID: -4322539733389336852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d24e5b3375f5fb60800000000000000
+      internalID: 7779393806618477271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2fe7ba9f2c41be0800000000000000
+      internalID: -1507365597682404653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_12
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad8850fea3668cd50800000000000000
+      internalID: 6757763644173682906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_13
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 487308815fcbdd880800000000000000
+      internalID: -8584497553834231932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_14
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecde93f6c0e680390800000000000000
+      internalID: -7851904950635729458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 020150c538ffd81f0800000000000000
+      internalID: -1040894999203082208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0282d0ac9ac985f0800000000000000
+      internalID: -753848688545988083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_17
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e82da9b19ffe1cfa0800000000000000
+      internalID: -5782076593377979762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_18
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c78fac3003733070800000000000000
+      internalID: 8084932200915503048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - death_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ecba8bcdaec53410800000000000000
+      internalID: 1456297300363754722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5067ff6ebf96e4941a0774c0ceacc1d8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      banshee - death_0: 8000110977549246983
+      banshee - death_1: 3445164193720639808
+      banshee - death_10: 7779393806618477271
+      banshee - death_11: -1507365597682404653
+      banshee - death_12: 6757763644173682906
+      banshee - death_13: -8584497553834231932
+      banshee - death_14: -7851904950635729458
+      banshee - death_15: -1040894999203082208
+      banshee - death_16: -753848688545988083
+      banshee - death_17: -5782076593377979762
+      banshee - death_18: 8084932200915503048
+      banshee - death_19: 1456297300363754722
+      banshee - death_2: 1218792994297804489
+      banshee - death_3: 6472002865689985326
+      banshee - death_4: -452590321965586085
+      banshee - death_5: 53089591521307057
+      banshee - death_6: 646665255461885457
+      banshee - death_7: -2770526401958310841
+      banshee - death_8: 8264911529594576926
+      banshee - death_9: -4322539733389336852
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

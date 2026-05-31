@@ -1,0 +1,4 @@
+// Stub — original script moved to Deprecated/PrototypeSetupEditor_DISABLED.cs.txt
+// This file exists only to satisfy the Unity Bee build cache reference.
+// Safe to delete after running `Project Tools → Build Box Prototype (All)`.
+public static class PrototypeSetupEditor { }

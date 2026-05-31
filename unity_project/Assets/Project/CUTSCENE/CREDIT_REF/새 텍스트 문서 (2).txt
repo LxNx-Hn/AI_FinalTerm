@@ -1,0 +1,555 @@
+CODE BLUE
+
+
+A Game By
+Team CODE BLUE
+
+
+총괄 디렉터
+KiKi
+
+
+개발 기간
+2026-03-30 ~ 2026-05-26
+
+
+
+공통 · 전체 제작
+
+
+총괄 기획
+KiKi
+
+
+총괄 프로그래밍
+breezemin1009
+
+
+게임 시스템 설계
+KiKi
+
+
+밸런스 · 난이도 조정
+lh7721004
+
+
+시나리오 · 스토리
+공동 제작
+
+
+전체 아트 디렉션
+breezemin1009
+
+
+전체 UI / UX
+lh7721004
+
+
+전체 사운드 디렉션
+KiKi
+
+
+
+
+공통 시스템
+
+
+그리드 시스템 제작
+KiKi
+
+
+이동 알고리즘 제작
+KiKi
+
+
+플레이어 컨트롤러 제작
+breezemin1009
+
+
+전투 시스템 제작
+breezemin1009
+
+
+대시 · 무적 시스템 제작
+breezemin1009
+
+
+버프 시스템 제작
+lh7721004
+
+
+적 AI · 경로탐색 제작
+KiKi
+
+
+아이템 · 드롭 시스템 제작
+lh7721004
+
+
+씬 전환 · 로딩 시스템 제작
+KiKi
+
+
+카메라 추적 시스템 제작
+breezemin1009
+
+
+대화 시스템 제작
+KiKi
+
+
+사망 화면 시스템 제작
+KiKi
+
+
+크레딧 연출 시스템 제작
+KiKi
+
+
+
+
+공통 캐릭터 · 프리팹
+
+
+캐릭터 디자인
+KiKi
+
+
+플레이어 스프라이트 제작
+breezemin1009
+
+
+플레이어 애니메이션 기준 제작
+breezemin1009
+
+
+적 스프라이트 제작
+lh7721004
+
+
+플레이어 프리팹 구성
+breezemin1009
+
+
+플레이어 애니메이션 연결
+breezemin1009
+
+
+적 프리팹 구성
+lh7721004
+
+
+아이템 프리팹 구성
+lh7721004
+
+
+보스 프리팹 구성
+KiKi
+
+
+
+
+공통 UI / UX
+
+
+시작 화면 제작
+breezemin1009
+
+
+타이틀 메뉴 레이아웃 제작
+lh7721004
+
+
+HUD 레이아웃 제작
+lh7721004
+
+
+보스 체력바 UI 제작
+KiKi
+
+
+키카드 획득 UI 제작
+lh7721004
+
+
+버프 아이콘 UI 제작
+lh7721004
+
+
+대화창 UI 제작
+KiKi
+
+
+사망 화면 UI 제작
+KiKi
+
+
+다시하기 · 타이틀 메뉴 제작
+lh7721004
+
+
+화면 전환 연출 제작
+lh7721004
+
+
+피격 플래시 연출 제작
+breezemin1009
+
+
+스킵 확인창 제작
+breezemin1009
+
+
+엔딩 메뉴 제작
+lh7721004
+
+
+게임 경험 조정
+lh7721004
+
+
+카메라 조작감 조정
+breezemin1009
+
+
+
+
+공통 사운드
+
+
+오프닝 BGM 제작
+KiKi
+
+
+타격음 시스템 제작
+breezemin1009
+
+
+발소리 시스템 제작
+breezemin1009
+
+
+보스 공격 SFX 제작
+KiKi
+
+
+보스 착지 SFX 제작
+KiKi
+
+
+보스 경고음 제작
+KiKi
+
+
+보스 사망 SFX 제작
+KiKi
+
+
+
+
+STAGE 1 - 병원 주차장
+
+[이미지 오버랩]
+
+By breezemin1009
+
+
+스테이지 기획
+
+레벨 디자인
+
+주차장 동선 구성
+
+적 배치 · 웨이브 설계
+
+타일 · 배경 아트 제작
+
+소품 · 데칼 제작
+
+시작 씬 이미지 제작
+
+사망 씬 이미지 제작
+
+발소리 SFX 제작
+
+
+STAGE 2 - 병동
+
+[이미지 오버랩]
+
+By lh7721004
+
+
+스테이지 기획
+
+레벨 디자인
+
+병동 동선 구성
+
+아이템 배치
+
+키카드 획득 연출
+
+게임 경험 조정
+
+카메라 조작감 조정
+
+사망 화면 — Stage 2 제작
+
+
+병원 소품 · 장식 제작
+
+보조 스프라이트 제작
+
+사망 씬 이미지 제작
+
+
+병동 타일셋
+Hospital Tiles
+Darby Machin  (PixelJustice)
+
+
+캐릭터 · 오브젝트
+Horror City – Frankenstein
+Darby Machin  (PixelJustice)
+
+
+STAGE 3
+엘리베이터 보스 By KiKi
+ [이미지 오버랩]
+
+스테이지 기획
+
+레벨 디자인
+
+보스 설계
+
+보스 패턴 설계
+
+보스 패턴 시스템 제작
+
+보스 밸런스 조정
+
+보스 인트로 연출 제작
+
+보스 클리어 연출 제작
+
+
+보스 전투 BGM 제작
+
+보스 공격 SFX 제작
+
+보스 포효 · 착지음 제작
+
+보스 경고 SFX 제작
+
+보스 사망 SFX 제작
+
+사망 씬 이미지 제작
+
+
+보스 스프라이트
+Banshee Spritesheet - ITCH.io
+베이스라인 편집 및 변환
+
+
+
+대시 연기 VFX
+Cinematic Explosions FREE
+Mirza Beig
+
+
+피격 이펙트 VFX
+VFXPACK IMPACT
+WALLCOEUR  (Free Version)
+
+
+빔 · 에너지 VFX
+Free Game VFX
+Eric Wang
+
+
+전투 타격음 팩
+Blades & Bludgeonings Free
+IdiaSoftware
+
+
+HP 시스템 UI
+HeartSystem
+DreamNoms
+
+
+보스 보이스 — 공포 음성 1
+alesiadavina
+freesound.org
+
+
+보스 보이스 — 공포 음성 2
+dragon-studio
+freesound.org
+
+
+보스 보이스 — 공포 음성 3
+neo_panda_25
+freesound.org
+
+
+보스 보이스 — 환경음
+imagne_impossible
+freesound.org
+
+
+ENDING 옥상 - By KiKi
+
+[여기는 이미지 없어도됨, 배경이 옥상이니]
+
+엔딩 연출 설계
+
+시나리오 최종 편집
+
+옥상 배경 아트 제작
+
+워크 애니메이션 제작
+
+옥상 회상 시스템 제작
+
+이름 변화 연출 제작
+
+플레이어 페이드아웃 연출 제작
+
+크레딧 배경 아트 제작
+
+
+
+MUSIC
+
+
+Original Songs
+「Old Doll」, 「メモリー (Memory)」 - Eve
+
+편곡 · 재연주
+KiKi
+
+
+보스 인트로 BGM - 「Old Doll」
+편곡 · 재연주  KiKi
+
+
+옥상 회상 BGM - 「メモリー (Memory)」
+편곡 · 재연주  KiKi
+
+
+
+EXTERNAL SOUND CREDITS
+
+
+alesiadavina
+freesound.org
+
+
+dragon-studio
+freesound.org
+
+
+neo_panda_25
+freesound.org
+
+
+imagne_impossible
+freesound.org
+
+
+Blades & Bludgeonings Free
+IdiaSoftware
+
+
+
+
+EXTERNAL GRAPHIC CREDITS
+
+
+Hospital Tiles
+Darby Machin  (PixelJustice)
+
+
+Horror City – Frankenstein
+Darby Machin  (PixelJustice)
+
+
+Banshee Spritesheet
+외부 구매 에셋
+
+
+Cinematic Explosions FREE
+Mirza Beig
+
+
+Free Game VFX
+Eric Wang
+
+
+VFXPACK IMPACT
+WALLCOEUR
+
+
+HeartSystem
+DreamNoms
+
+
+
+
+TECHNOLOGY
+
+
+Unity 2022
+
+
+Universal Render Pipeline 17.3.0
+
+
+TextMesh Pro
+Unity Technologies
+
+
+Liberation Sans Font
+SIL Open Font License
+
+
+Aseprite
+
+
+Cinemachine 2.10.5
+
+
+Unity Input System
+
+
+Unity 2D Tilemap
+
+
+
+
+SPECIAL THANKS
+
+
+이 게임을 끝까지 플레이해 주신 모든 분들에게
+
+
+감사합니다
+
+
+
+
+채하민은
+도망치지 않았다
+
+
+
+
+CODE BLUE
+2026
+
+
+
+
+Thanks for Playing

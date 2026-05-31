@@ -1,0 +1,1063 @@
+fileFormatVersion: 2
+guid: 52c6c035289dec24b82c33cce4dd6639
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5815348099680454111
+    second: banshee - scream_0
+  - first:
+      213: 7053530842611417717
+    second: banshee - scream_1
+  - first:
+      213: 5600884070160931274
+    second: banshee - scream_2
+  - first:
+      213: -5750980557240353476
+    second: banshee - scream_3
+  - first:
+      213: -610186576229863714
+    second: banshee - scream_4
+  - first:
+      213: 3380682637653293685
+    second: banshee - scream_5
+  - first:
+      213: -5635550526806101704
+    second: banshee - scream_6
+  - first:
+      213: -7035002603138476062
+    second: banshee - scream_7
+  - first:
+      213: 6442531778873997998
+    second: banshee - scream_8
+  - first:
+      213: -236017583023266257
+    second: banshee - scream_9
+  - first:
+      213: -6565433835455562058
+    second: banshee - scream_10
+  - first:
+      213: -3322514206528512259
+    second: banshee - scream_11
+  - first:
+      213: -6555369585471990970
+    second: banshee - scream_12
+  - first:
+      213: -4913659753026216726
+    second: banshee - scream_13
+  - first:
+      213: -3341297206722259929
+    second: banshee - scream_14
+  - first:
+      213: 8713690262790540357
+    second: banshee - scream_15
+  - first:
+      213: 2870556135459360030
+    second: banshee - scream_16
+  - first:
+      213: 5909336351747671476
+    second: banshee - scream_17
+  - first:
+      213: -577618755611926950
+    second: banshee - scream_18
+  - first:
+      213: 2239509366220118400
+    second: banshee - scream_19
+  - first:
+      213: -1039259947251951563
+    second: banshee - scream_20
+  - first:
+      213: 3453514002493084586
+    second: banshee - scream_21
+  - first:
+      213: -211676417490124289
+    second: banshee - scream_22
+  - first:
+      213: -6928571978124255769
+    second: banshee - scream_23
+  - first:
+      213: 303848526851630073
+    second: banshee - scream_24
+  - first:
+      213: 9146991992174231729
+    second: banshee - scream_25
+  - first:
+      213: -6159778749216819967
+    second: banshee - scream_26
+  - first:
+      213: -1783711369645108810
+    second: banshee - scream_27
+  - first:
+      213: -3766674589017239787
+    second: banshee - scream_28
+  - first:
+      213: 8542036214462900847
+    second: banshee - scream_29
+  - first:
+      213: -5906740242658227722
+    second: banshee - scream_30
+  - first:
+      213: 5031672199187222836
+    second: banshee - scream_31
+  - first:
+      213: 5125688786169153277
+    second: banshee - scream_32
+  - first:
+      213: 2837305631061597021
+    second: banshee - scream_33
+  - first:
+      213: 8842192706080843900
+    second: banshee - scream_34
+  - first:
+      213: 9122245084942591507
+    second: banshee - scream_35
+  - first:
+      213: -919342739993422000
+    second: banshee - scream_36
+  - first:
+      213: -484433809903638153
+    second: banshee - scream_37
+  - first:
+      213: -1171757250824571958
+    second: banshee - scream_38
+  - first:
+      213: 3489479099070648344
+    second: banshee - scream_39
+  - first:
+      213: -4874147286279522395
+    second: banshee - scream_40
+  - first:
+      213: -6524132960281034528
+    second: banshee - scream_41
+  - first:
+      213: 7284824900294453294
+    second: banshee - scream_42
+  - first:
+      213: 2291466782759481042
+    second: banshee - scream_43
+  - first:
+      213: -49887289722908583
+    second: banshee - scream_44
+  - first:
+      213: 6210813887153908892
+    second: banshee - scream_45
+  - first:
+      213: -7458749959105955355
+    second: banshee - scream_46
+  - first:
+      213: 1515007537867386630
+    second: banshee - scream_47
+  - first:
+      213: -2011036835298542775
+    second: banshee - scream_48
+  - first:
+      213: -2081080779886145674
+    second: banshee - scream_49
+  - first:
+      213: 8062444942832386445
+    second: banshee - scream_50
+  - first:
+      213: -2926329741154517867
+    second: banshee - scream_51
+  - first:
+      213: -1000528147681498966
+    second: banshee - scream_52
+  - first:
+      213: -1510532732021920409
+    second: banshee - scream_53
+  - first:
+      213: 8892261985352116071
+    second: banshee - scream_54
+  - first:
+      213: -4658606129592502961
+    second: banshee - scream_55
+  - first:
+      213: -7404570169505881691
+    second: banshee - scream_56
+  - first:
+      213: 9080091848385648558
+    second: banshee - scream_57
+  - first:
+      213: 1428063837452113304
+    second: banshee - scream_58
+  - first:
+      213: 7323215451308679228
+    second: banshee - scream_59
+  - first:
+      213: 7987361189776416312
+    second: banshee - scream_60
+  - first:
+      213: 413186737609639771
+    second: banshee - scream_61
+  - first:
+      213: 7023647120789551944
+    second: banshee - scream_62
+  - first:
+      213: 5377147876261474113
+    second: banshee - scream_63
+  - first:
+      213: -9221638799170650759
+    second: banshee - scream_64
+  - first:
+      213: -7481371210149740676
+    second: banshee - scream_65
+  - first:
+      213: 6019627376213163572
+    second: banshee - scream_66
+  - first:
+      213: 1842781661835777840
+    second: banshee - scream_67
+  - first:
+      213: 6014321447854353710
+    second: banshee - scream_68
+  - first:
+      213: 205513045763315750
+    second: banshee - scream_69
+  - first:
+      213: -3810949369895243008
+    second: banshee - scream_70
+  - first:
+      213: 7321302782737037355
+    second: banshee - scream_71
+  - first:
+      213: -5001193839763360189
+    second: banshee - scream_72
+  - first:
+      213: -5256283317488584195
+    second: banshee - scream_73
+  - first:
+      213: -4155550105373561466
+    second: banshee - scream_74
+  - first:
+      213: 6828887905637999982
+    second: banshee - scream_75
+  - first:
+      213: -2134839238596044603
+    second: banshee - scream_76
+  - first:
+      213: 2179158475738600483
+    second: banshee - scream_77
+  - first:
+      213: -8610016452382833695
+    second: banshee - scream_78
+  - first:
+      213: 8425471968845701275
+    second: banshee - scream_79
+  - first:
+      213: 7285158503020297213
+    second: banshee - scream_80
+  - first:
+      213: 7394158941163712434
+    second: banshee - scream_81
+  - first:
+      213: 8478758121462367998
+    second: banshee - scream_82
+  - first:
+      213: -9116957820410147790
+    second: banshee - scream_83
+  - first:
+      213: -5675153535591506775
+    second: banshee - scream_84
+  - first:
+      213: -2021920215755079099
+    second: banshee - scream_85
+  - first:
+      213: -962171029462018880
+    second: banshee - scream_86
+  - first:
+      213: -1972019143007223758
+    second: banshee - scream_87
+  - first:
+      213: -4703666244801711460
+    second: banshee - scream_88
+  - first:
+      213: -3834389799868899483
+    second: banshee - scream_89
+  - first:
+      213: -4899808981452205315
+    second: banshee - scream_90
+  - first:
+      213: -8676285936518770302
+    second: banshee - scream_91
+  - first:
+      213: -1114608810814638174
+    second: banshee - scream_92
+  - first:
+      213: -2312620587857936319
+    second: banshee - scream_93
+  - first:
+      213: 8912759934768774451
+    second: banshee - scream_94
+  - first:
+      213: -7770685128457413999
+    second: banshee - scream_95
+  - first:
+      213: -5665604442370353334
+    second: banshee - scream_96
+  - first:
+      213: 474605517684283381
+    second: banshee - scream_97
+  - first:
+      213: 2359720664482186267
+    second: banshee - scream_98
+  - first:
+      213: 5341847079865259171
+    second: banshee - scream_99
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: banshee - scream_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd542be194444b050800000000000000
+      internalID: 5815348099680454111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5728d1e1eec23e160800000000000000
+      internalID: 7053530842611417717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac9161613665abd40800000000000000
+      internalID: 5600884070160931274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3db28737a96030b0800000000000000
+      internalID: -5750980557240353476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ede6b15ba8e2887f0800000000000000
+      internalID: -610186576229863714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_5
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57ab7a382f89aee20800000000000000
+      internalID: 3380682637653293685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_6
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 480
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 831f4ff77a08ac1b0800000000000000
+      internalID: -5635550526806101704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e79bfdc766ae5e90800000000000000
+      internalID: -7035002603138476062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_8
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaa33f5d488786950800000000000000
+      internalID: 6442531778873997998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f26e62b324f79bcf0800000000000000
+      internalID: -236017583023266257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_10
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6be375936b4e2e4a0800000000000000
+      internalID: -6565433835455562058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_11
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfeddaebeee04e1d0800000000000000
+      internalID: -3322514206528512259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_12
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 643da860816a605a0800000000000000
+      internalID: -6555369585471990970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_13
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 320
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aec1db10d7c2fcbb0800000000000000
+      internalID: -4913659753026216726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7249058b4e351a1d0800000000000000
+      internalID: -3341297206722259929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_15
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54c096c702f3de870800000000000000
+      internalID: 8713690262790540357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_16
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1d8fd9a89346d720800000000000000
+      internalID: 2870556135459360030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_17
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b509385a1e220250800000000000000
+      internalID: 5909336351747671476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_18
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5ed5285dc2ebf7f0800000000000000
+      internalID: -577618755611926950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_19
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 089d5b437e5541f10800000000000000
+      internalID: 2239509366220118400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_20
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53891ce859ec391f0800000000000000
+      internalID: -1039259947251951563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa3107110b85def20800000000000000
+      internalID: 3453514002493084586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_22
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff18c287b69ff0df0800000000000000
+      internalID: -211676417490124289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_23
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ed9d2bbe74c8df90800000000000000
+      internalID: -6928571978124255769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_24
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f3648410ac773400800000000000000
+      internalID: 303848526851630073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_25
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b043e801c4a0fe70800000000000000
+      internalID: 9146991992174231729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_26
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1057eed0dd1148aa0800000000000000
+      internalID: -6159778749216819967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banshee - scream_27
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b15a76b5fbfe37e0800000000000000
+      internalID: -1783711369645108810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 326cc0612b5415547aaabed65e1f2035
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      banshee - scream_0: 5815348099680454111
+      banshee - scream_1: 7053530842611417717
+      banshee - scream_10: -6565433835455562058
+      banshee - scream_11: -3322514206528512259
+      banshee - scream_12: -6555369585471990970
+      banshee - scream_13: -4913659753026216726
+      banshee - scream_14: -3341297206722259929
+      banshee - scream_15: 8713690262790540357
+      banshee - scream_16: 2870556135459360030
+      banshee - scream_17: 5909336351747671476
+      banshee - scream_18: -577618755611926950
+      banshee - scream_19: 2239509366220118400
+      banshee - scream_2: 5600884070160931274
+      banshee - scream_20: -1039259947251951563
+      banshee - scream_21: 3453514002493084586
+      banshee - scream_22: -211676417490124289
+      banshee - scream_23: -6928571978124255769
+      banshee - scream_24: 303848526851630073
+      banshee - scream_25: 9146991992174231729
+      banshee - scream_26: -6159778749216819967
+      banshee - scream_27: -1783711369645108810
+      banshee - scream_3: -5750980557240353476
+      banshee - scream_4: -610186576229863714
+      banshee - scream_5: 3380682637653293685
+      banshee - scream_6: -5635550526806101704
+      banshee - scream_7: -7035002603138476062
+      banshee - scream_8: 6442531778873997998
+      banshee - scream_9: -236017583023266257
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

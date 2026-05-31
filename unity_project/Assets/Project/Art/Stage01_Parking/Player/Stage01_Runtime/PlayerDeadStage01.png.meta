@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: 1d588fd0f3a97f048a9833713c263d1e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3986619819814733257
+    second: PlayerDeadStage01_0
+  - first:
+      213: -515695493320628671
+    second: PlayerDeadStage01_1
+  - first:
+      213: -3436010962947625442
+    second: PlayerDeadStage01_2
+  - first:
+      213: -652479268547650229
+    second: PlayerDeadStage01_3
+  - first:
+      213: 8930013028763191919
+    second: PlayerDeadStage01_4
+  - first:
+      213: 1453749854367875317
+    second: PlayerDeadStage01_5
+  - first:
+      213: -6418392635583584729
+    second: PlayerDeadStage01_6
+  - first:
+      213: -718566520697397185
+    second: PlayerDeadStage01_7
+  - first:
+      213: 4586879844878934541
+    second: PlayerDeadStage01_8
+  - first:
+      213: -2935876096079278254
+    second: PlayerDeadStage01_r01_c01
+  - first:
+      213: -2338020805452632392
+    second: PlayerDeadStage01_r01_c02
+  - first:
+      213: -500880953651586018
+    second: PlayerDeadStage01_r01_c03
+  - first:
+      213: -8394375111926141774
+    second: PlayerDeadStage01_r01_c04
+  - first:
+      213: 3463357699437965819
+    second: PlayerDeadStage01_r01_c05
+  - first:
+      213: 3656377416776916536
+    second: PlayerDeadStage01_r01_c06
+  - first:
+      213: 7019616492047324841
+    second: PlayerDeadStage01_r01_c07
+  - first:
+      213: 170353861627790773
+    second: PlayerDeadStage01_r01_c08
+  - first:
+      213: -7982614729299998543
+    second: PlayerDeadStage01_r01_c09
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 270
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlayerDeadStage01_r01_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f42acde3ca147d0800000000000000
+      internalID: -2935876096079278254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadStage01_r01_c02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bee58df67ead8fd0800000000000000
+      internalID: -2338020805452632392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadStage01_r01_c03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1c96da2d638c09f0800000000000000
+      internalID: -500880953651586018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadStage01_r01_c04
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bc234e9f40318b80800000000000000
+      internalID: -8394375111926141774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadStage01_r01_c05
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf13d1d5a71501030800000000000000
+      internalID: 3463357699437965819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadStage01_r01_c06
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83e9fb363ef0eb230800000000000000
+      internalID: 3656377416776916536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadStage01_r01_c07
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a654fb0200ba6160800000000000000
+      internalID: 7019616492047324841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadStage01_r01_c08
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 0
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b5c0704fe73d5200800000000000000
+      internalID: 170353861627790773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadStage01_r01_c09
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b8c549823e083190800000000000000
+      internalID: -7982614729299998543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PlayerDeadStage01_0: 3986619819814733257
+      PlayerDeadStage01_1: -515695493320628671
+      PlayerDeadStage01_2: -3436010962947625442
+      PlayerDeadStage01_3: -652479268547650229
+      PlayerDeadStage01_4: 8930013028763191919
+      PlayerDeadStage01_5: 1453749854367875317
+      PlayerDeadStage01_6: -6418392635583584729
+      PlayerDeadStage01_7: -718566520697397185
+      PlayerDeadStage01_8: 4586879844878934541
+      PlayerDeadStage01_r01_c01: -2935876096079278254
+      PlayerDeadStage01_r01_c02: -2338020805452632392
+      PlayerDeadStage01_r01_c03: -500880953651586018
+      PlayerDeadStage01_r01_c04: -8394375111926141774
+      PlayerDeadStage01_r01_c05: 3463357699437965819
+      PlayerDeadStage01_r01_c06: 3656377416776916536
+      PlayerDeadStage01_r01_c07: 7019616492047324841
+      PlayerDeadStage01_r01_c08: 170353861627790773
+      PlayerDeadStage01_r01_c09: -7982614729299998543
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: 5db9707a9ddd2cd4d943ab15a13f6eca
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4245740795561612508
+    second: PlayerDeadGenerated_0
+  - first:
+      213: 1123574513215924140
+    second: PlayerDeadGenerated_1
+  - first:
+      213: 443775420539447823
+    second: PlayerDeadGenerated_2
+  - first:
+      213: 586503414002418762
+    second: PlayerDeadGenerated_3
+  - first:
+      213: 464608860678417569
+    second: PlayerDeadGenerated_4
+  - first:
+      213: -7726362358537518636
+    second: PlayerDeadGenerated_5
+  - first:
+      213: -3012544346933254901
+    second: PlayerDeadGenerated_6
+  - first:
+      213: 8547824088533596254
+    second: PlayerDeadGenerated_7
+  - first:
+      213: -991837355611269422
+    second: PlayerDeadGenerated_8
+  - first:
+      213: 405921187363755556
+    second: PlayerDeadGenerated_r01_c01
+  - first:
+      213: 6453773075045691076
+    second: PlayerDeadGenerated_r01_c02
+  - first:
+      213: 5313162458461038222
+    second: PlayerDeadGenerated_r01_c03
+  - first:
+      213: 3829768792267816230
+    second: PlayerDeadGenerated_r01_c04
+  - first:
+      213: -8568008071685942683
+    second: PlayerDeadGenerated_r01_c05
+  - first:
+      213: 2291411104698331908
+    second: PlayerDeadGenerated_r01_c06
+  - first:
+      213: 766932090969174488
+    second: PlayerDeadGenerated_r01_c07
+  - first:
+      213: -1446682757507757823
+    second: PlayerDeadGenerated_r01_c08
+  - first:
+      213: -8968377567012067276
+    second: PlayerDeadGenerated_r01_c09
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 640
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlayerDeadGenerated_r01_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4261f935b2f12a500800000000000000
+      internalID: 405921187363755556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadGenerated_r01_c02
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ce241f0b68609950800000000000000
+      internalID: 6453773075045691076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadGenerated_r01_c03
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e86e28a0b152cb940800000000000000
+      internalID: 5313162458461038222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadGenerated_r01_c04
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62dfff2fc62162530800000000000000
+      internalID: 3829768792267816230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadGenerated_r01_c05
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 562da76dd02581980800000000000000
+      internalID: -8568008071685942683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadGenerated_r01_c06
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 403fde1624abccf10800000000000000
+      internalID: 2291411104698331908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadGenerated_r01_c07
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d1b0116ca0b4aa00800000000000000
+      internalID: 766932090969174488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadGenerated_r01_c08
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 109411862b95cebe0800000000000000
+      internalID: -1446682757507757823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadGenerated_r01_c09
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 438e9aa8e1ce98380800000000000000
+      internalID: -8968377567012067276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PlayerDeadGenerated_0: 4245740795561612508
+      PlayerDeadGenerated_1: 1123574513215924140
+      PlayerDeadGenerated_2: 443775420539447823
+      PlayerDeadGenerated_3: 586503414002418762
+      PlayerDeadGenerated_4: 464608860678417569
+      PlayerDeadGenerated_5: -7726362358537518636
+      PlayerDeadGenerated_6: -3012544346933254901
+      PlayerDeadGenerated_7: 8547824088533596254
+      PlayerDeadGenerated_8: -991837355611269422
+      PlayerDeadGenerated_r01_c01: 405921187363755556
+      PlayerDeadGenerated_r01_c02: 6453773075045691076
+      PlayerDeadGenerated_r01_c03: 5313162458461038222
+      PlayerDeadGenerated_r01_c04: 3829768792267816230
+      PlayerDeadGenerated_r01_c05: -8568008071685942683
+      PlayerDeadGenerated_r01_c06: 2291411104698331908
+      PlayerDeadGenerated_r01_c07: 766932090969174488
+      PlayerDeadGenerated_r01_c08: -1446682757507757823
+      PlayerDeadGenerated_r01_c09: -8968377567012067276
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

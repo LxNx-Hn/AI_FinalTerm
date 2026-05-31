@@ -1,0 +1,3549 @@
+fileFormatVersion: 2
+guid: c12bcf259c229cb4cbc073e01d45d7b0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1166569380737680462
+    second: evelyn shotgun shot walk_0
+  - first:
+      213: -7333098659202085651
+    second: evelyn shotgun shot walk_1
+  - first:
+      213: 7131258955531200677
+    second: evelyn shotgun shot walk_2
+  - first:
+      213: -8559843920063336530
+    second: evelyn shotgun shot walk_3
+  - first:
+      213: -3535645117844474609
+    second: evelyn shotgun shot walk_4
+  - first:
+      213: -2555066196882678095
+    second: evelyn shotgun shot walk_5
+  - first:
+      213: 6296187906599835787
+    second: evelyn shotgun shot walk_6
+  - first:
+      213: -7018954081263379311
+    second: evelyn shotgun shot walk_7
+  - first:
+      213: 4430976644925934265
+    second: evelyn shotgun shot walk_8
+  - first:
+      213: 5860494233163935836
+    second: evelyn shotgun shot walk_9
+  - first:
+      213: -3889259255114654424
+    second: evelyn shotgun shot walk_10
+  - first:
+      213: -3907107319462964598
+    second: evelyn shotgun shot walk_11
+  - first:
+      213: 448913723187272316
+    second: evelyn shotgun shot walk_12
+  - first:
+      213: 5263772424022789858
+    second: evelyn shotgun shot walk_13
+  - first:
+      213: 973297088646444797
+    second: evelyn shotgun shot walk_14
+  - first:
+      213: 1654324791415977486
+    second: evelyn shotgun shot walk_15
+  - first:
+      213: -767976225915975132
+    second: evelyn shotgun shot walk_16
+  - first:
+      213: 4909385303173763853
+    second: evelyn shotgun shot walk_17
+  - first:
+      213: -1155586901969713047
+    second: evelyn shotgun shot walk_18
+  - first:
+      213: 4259410492830467189
+    second: evelyn shotgun shot walk_19
+  - first:
+      213: -4449893845302331367
+    second: evelyn shotgun shot walk_20
+  - first:
+      213: -6427570045068425218
+    second: evelyn shotgun shot walk_21
+  - first:
+      213: -5492125149973041051
+    second: evelyn shotgun shot walk_22
+  - first:
+      213: -7192159589582877961
+    second: evelyn shotgun shot walk_23
+  - first:
+      213: -6303916133713003589
+    second: evelyn shotgun shot walk_24
+  - first:
+      213: -1550613358090708600
+    second: evelyn shotgun shot walk_25
+  - first:
+      213: 2222090690722917418
+    second: evelyn shotgun shot walk_26
+  - first:
+      213: -7439387350515604622
+    second: evelyn shotgun shot walk_27
+  - first:
+      213: 4964151528899535971
+    second: evelyn shotgun shot walk_28
+  - first:
+      213: 3313591525438870614
+    second: evelyn shotgun shot walk_29
+  - first:
+      213: -3436573524259649050
+    second: evelyn shotgun shot walk_30
+  - first:
+      213: 8092157216441443077
+    second: evelyn shotgun shot walk_31
+  - first:
+      213: 5022961156507543289
+    second: evelyn shotgun shot walk_32
+  - first:
+      213: 3906926636144008410
+    second: evelyn shotgun shot walk_33
+  - first:
+      213: -3332432593192916388
+    second: evelyn shotgun shot walk_34
+  - first:
+      213: 5902815583378684433
+    second: evelyn shotgun shot walk_35
+  - first:
+      213: 3051617099189502442
+    second: evelyn shotgun shot walk_36
+  - first:
+      213: 8921926153286281275
+    second: evelyn shotgun shot walk_37
+  - first:
+      213: 5133204578138689940
+    second: evelyn shotgun shot walk_38
+  - first:
+      213: 8185142605521544335
+    second: evelyn shotgun shot walk_39
+  - first:
+      213: -5438786065898221185
+    second: evelyn shotgun shot walk_40
+  - first:
+      213: -5026751023450901864
+    second: evelyn shotgun shot walk_41
+  - first:
+      213: -6749695437148201104
+    second: evelyn shotgun shot walk_42
+  - first:
+      213: -4992028126707411975
+    second: evelyn shotgun shot walk_43
+  - first:
+      213: -7182893287754078746
+    second: evelyn shotgun shot walk_44
+  - first:
+      213: 6297903730549204506
+    second: evelyn shotgun shot walk_45
+  - first:
+      213: -6466737682649002796
+    second: evelyn shotgun shot walk_46
+  - first:
+      213: -7165605488528430805
+    second: evelyn shotgun shot walk_47
+  - first:
+      213: 1890446202952195946
+    second: evelyn shotgun shot walk_48
+  - first:
+      213: 2671422496346959141
+    second: evelyn shotgun shot walk_49
+  - first:
+      213: 1904401103770539272
+    second: evelyn shotgun shot walk_50
+  - first:
+      213: 7299881463901496910
+    second: evelyn shotgun shot walk_51
+  - first:
+      213: -2548111515725294893
+    second: evelyn shotgun shot walk_52
+  - first:
+      213: 8252384248796492975
+    second: evelyn shotgun shot walk_53
+  - first:
+      213: -7905245017351754283
+    second: evelyn shotgun shot walk_54
+  - first:
+      213: -8265241520497777428
+    second: evelyn shotgun shot walk_55
+  - first:
+      213: -3089124164537800935
+    second: evelyn shotgun shot walk_56
+  - first:
+      213: 849393811262480787
+    second: evelyn shotgun shot walk_57
+  - first:
+      213: 1328806381353884036
+    second: evelyn shotgun shot walk_58
+  - first:
+      213: 4538405205228531576
+    second: evelyn shotgun shot walk_59
+  - first:
+      213: -3729668167432777357
+    second: evelyn shotgun shot walk_60
+  - first:
+      213: -8851039984342231767
+    second: evelyn shotgun shot walk_61
+  - first:
+      213: -1397144118325136925
+    second: evelyn shotgun shot walk_62
+  - first:
+      213: 7835564339914326192
+    second: evelyn shotgun shot walk_63
+  - first:
+      213: 6406678250057397790
+    second: evelyn shotgun shot walk_64
+  - first:
+      213: 3217850288223847769
+    second: evelyn shotgun shot walk_65
+  - first:
+      213: 4354048936228367496
+    second: evelyn shotgun shot walk_66
+  - first:
+      213: 1387159941850462372
+    second: evelyn shotgun shot walk_67
+  - first:
+      213: -1426038093596076021
+    second: evelyn shotgun shot walk_68
+  - first:
+      213: -3753718776949519988
+    second: evelyn shotgun shot walk_69
+  - first:
+      213: -7444499511943095057
+    second: evelyn shotgun shot walk_70
+  - first:
+      213: -6597824893474489117
+    second: evelyn shotgun shot walk_71
+  - first:
+      213: 2046595038292751743
+    second: evelyn shotgun shot walk_72
+  - first:
+      213: -8936510899633437053
+    second: evelyn shotgun shot walk_73
+  - first:
+      213: -5099955710694902983
+    second: evelyn shotgun shot walk_74
+  - first:
+      213: -7035380165744000367
+    second: evelyn shotgun shot walk_75
+  - first:
+      213: -883160696573485768
+    second: evelyn shotgun shot walk_76
+  - first:
+      213: -4001209553727820399
+    second: evelyn shotgun shot walk_77
+  - first:
+      213: 2866734460697117720
+    second: evelyn shotgun shot walk_78
+  - first:
+      213: -3942138748856781898
+    second: evelyn shotgun shot walk_79
+  - first:
+      213: 4186139949981143263
+    second: evelyn shotgun shot walk_80
+  - first:
+      213: -6255049354584362509
+    second: evelyn shotgun shot walk_81
+  - first:
+      213: -8257466987450265296
+    second: evelyn shotgun shot walk_82
+  - first:
+      213: -600430195891126967
+    second: evelyn shotgun shot walk_83
+  - first:
+      213: 5642841453030059566
+    second: evelyn shotgun shot walk_84
+  - first:
+      213: 8957015171321132491
+    second: evelyn shotgun shot walk_85
+  - first:
+      213: 9189386041332225941
+    second: evelyn shotgun shot walk_86
+  - first:
+      213: 2927310247040126686
+    second: evelyn shotgun shot walk_87
+  - first:
+      213: 5793084259022758665
+    second: evelyn shotgun shot walk_88
+  - first:
+      213: 5679427383869872741
+    second: evelyn shotgun shot walk_89
+  - first:
+      213: 5255330514843565690
+    second: evelyn shotgun shot walk_90
+  - first:
+      213: 1486988328576403539
+    second: evelyn shotgun shot walk_91
+  - first:
+      213: 1987029820715317435
+    second: evelyn shotgun shot walk_92
+  - first:
+      213: -3414791489829339714
+    second: evelyn shotgun shot walk_93
+  - first:
+      213: -4298224147692192558
+    second: evelyn shotgun shot walk_94
+  - first:
+      213: 5633572847785652517
+    second: evelyn shotgun shot walk_95
+  - first:
+      213: -4898719095050115381
+    second: evelyn shotgun shot walk_96
+  - first:
+      213: -3535528267002049475
+    second: evelyn shotgun shot walk_97
+  - first:
+      213: 4329891899042635967
+    second: evelyn shotgun shot walk_98
+  - first:
+      213: 4586554757018275467
+    second: evelyn shotgun shot walk_99
+  - first:
+      213: -1391471608266436547
+    second: evelyn shotgun shot walk_100
+  - first:
+      213: 4243922838598894719
+    second: evelyn shotgun shot walk_101
+  - first:
+      213: 3281893595738555841
+    second: evelyn shotgun shot walk_102
+  - first:
+      213: -5330920486590161224
+    second: evelyn shotgun shot walk_103
+  - first:
+      213: 4729800388247927031
+    second: evelyn shotgun shot walk_104
+  - first:
+      213: -2336982847682844815
+    second: evelyn shotgun shot walk_105
+  - first:
+      213: -697403289305967429
+    second: evelyn shotgun shot walk_106
+  - first:
+      213: 5945800737651392187
+    second: evelyn shotgun shot walk_107
+  - first:
+      213: 8746052693098583666
+    second: evelyn shotgun shot walk_108
+  - first:
+      213: 6200881137535475578
+    second: evelyn shotgun shot walk_109
+  - first:
+      213: 8601483930287732110
+    second: evelyn shotgun shot walk_110
+  - first:
+      213: -2026429529390815326
+    second: evelyn shotgun shot walk_111
+  - first:
+      213: 1227295898719953852
+    second: evelyn shotgun shot walk_112
+  - first:
+      213: -7216761176879553917
+    second: evelyn shotgun shot walk_113
+  - first:
+      213: 1417902563892414195
+    second: evelyn shotgun shot walk_114
+  - first:
+      213: 7430542041937146060
+    second: evelyn shotgun shot walk_115
+  - first:
+      213: 38207622134136227
+    second: evelyn shotgun shot walk_116
+  - first:
+      213: 7384319530641162862
+    second: evelyn shotgun shot walk_117
+  - first:
+      213: -2410347695965667386
+    second: evelyn shotgun shot walk_118
+  - first:
+      213: -2824138887036427309
+    second: evelyn shotgun shot walk_119
+  - first:
+      213: 7494760051367710251
+    second: evelyn shotgun shot walk_120
+  - first:
+      213: 4503043959907268940
+    second: evelyn shotgun shot walk_121
+  - first:
+      213: 286277998169609154
+    second: evelyn shotgun shot walk_122
+  - first:
+      213: 1206111835882997676
+    second: evelyn shotgun shot walk_123
+  - first:
+      213: 3396262189800970576
+    second: evelyn shotgun shot walk_124
+  - first:
+      213: 1852298539461956952
+    second: evelyn shotgun shot walk_125
+  - first:
+      213: -2458589756945138250
+    second: evelyn shotgun shot walk_126
+  - first:
+      213: 2974363920515720541
+    second: evelyn shotgun shot walk_127
+  - first:
+      213: 3757473738092520693
+    second: evelyn shotgun shot walk_128
+  - first:
+      213: 1877299760821750659
+    second: evelyn shotgun shot walk_129
+  - first:
+      213: 164828280424322517
+    second: evelyn shotgun shot walk_130
+  - first:
+      213: 7077473893375658795
+    second: evelyn shotgun shot walk_131
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_0
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 4008
+        width: 591
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bb784734538fcfe0800000000000000
+      internalID: -1166569380737680462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_1
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 4350
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deccd533f999b3a90800000000000000
+      internalID: -7333098659202085651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_2
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 4008
+        width: 591
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a8a2cdac3257f260800000000000000
+      internalID: 7131258955531200677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_3
+      rect:
+        serializedVersion: 2
+        x: 2317
+        y: 4350
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaf66d38e43553980800000000000000
+      internalID: -8559843920063336530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_4
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 4008
+        width: 591
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f05390b7f7ddeeec0800000000000000
+      internalID: -3535645117844474609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_5
+      rect:
+        serializedVersion: 2
+        x: 3533
+        y: 4350
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1be133dc4d49a8cd0800000000000000
+      internalID: -2555066196882678095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_6
+      rect:
+        serializedVersion: 2
+        x: 4065
+        y: 4008
+        width: 591
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b885efbda8d806750800000000000000
+      internalID: 6296187906599835787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_7
+      rect:
+        serializedVersion: 2
+        x: 4749
+        y: 4350
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19c948b737aa79e90800000000000000
+      internalID: -7018954081263379311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_8
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 4312
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9baccd048cdfd7d30800000000000000
+      internalID: 4430976644925934265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_9
+      rect:
+        serializedVersion: 2
+        x: 2260
+        y: 4312
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5036ff6478a45150800000000000000
+      internalID: 5860494233163935836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_10
+      rect:
+        serializedVersion: 2
+        x: 3476
+        y: 4312
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82d9d7b4053960ac0800000000000000
+      internalID: -3889259255114654424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_11
+      rect:
+        serializedVersion: 2
+        x: 4692
+        y: 4312
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a82d41cf79a27c9c0800000000000000
+      internalID: -3907107319462964598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_12
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 4255
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a106d17acda3600800000000000000
+      internalID: 448913723187272316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_13
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 4274
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ee0068812dac0940800000000000000
+      internalID: 5263772424022789858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_14
+      rect:
+        serializedVersion: 2
+        x: 2279
+        y: 4255
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df671bd9b88d18d00800000000000000
+      internalID: 973297088646444797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_15
+      rect:
+        serializedVersion: 2
+        x: 2355
+        y: 4274
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e06b87ff1a755f610800000000000000
+      internalID: 1654324791415977486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_16
+      rect:
+        serializedVersion: 2
+        x: 3495
+        y: 4255
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42a455201b99755f0800000000000000
+      internalID: -767976225915975132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_17
+      rect:
+        serializedVersion: 2
+        x: 3571
+        y: 4274
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0312351ce3a12440800000000000000
+      internalID: 4909385303173763853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_18
+      rect:
+        serializedVersion: 2
+        x: 4711
+        y: 4255
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9684001d5d786ffe0800000000000000
+      internalID: -1155586901969713047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_19
+      rect:
+        serializedVersion: 2
+        x: 4787
+        y: 4274
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5744bb1a6477c1b30800000000000000
+      internalID: 4259410492830467189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_20
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 918be8ecf1dce32c0800000000000000
+      internalID: -4449893845302331367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_21
+      rect:
+        serializedVersion: 2
+        x: 2241
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef741c6491facc6a0800000000000000
+      internalID: -6427570045068425218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_22
+      rect:
+        serializedVersion: 2
+        x: 3457
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5603edd464d08c3b0800000000000000
+      internalID: -5492125149973041051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_23
+      rect:
+        serializedVersion: 2
+        x: 4673
+        y: 4198
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fa4efe75f0503c90800000000000000
+      internalID: -7192159589582877961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_24
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 4141
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbbbe2c0dadf388a0800000000000000
+      internalID: -6303916133713003589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_25
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 4141
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8891707cd5d1b7ae0800000000000000
+      internalID: -1550613358090708600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_26
+      rect:
+        serializedVersion: 2
+        x: 2260
+        y: 4141
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2ced37c5b376de10800000000000000
+      internalID: 2222090690722917418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_27
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 4141
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273abf9ce9cf1c890800000000000000
+      internalID: -7439387350515604622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_28
+      rect:
+        serializedVersion: 2
+        x: 3476
+        y: 4141
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 364e44ba38534e440800000000000000
+      internalID: 4964151528899535971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_29
+      rect:
+        serializedVersion: 2
+        x: 3552
+        y: 4141
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 654578cafed3cfd20800000000000000
+      internalID: 3313591525438870614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_30
+      rect:
+        serializedVersion: 2
+        x: 4692
+        y: 4141
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e9cdf16696de40d0800000000000000
+      internalID: -3436573524259649050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_31
+      rect:
+        serializedVersion: 2
+        x: 4768
+        y: 4141
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5032b904d1e1d4070800000000000000
+      internalID: 8092157216441443077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_32
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 4103
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f6a73e1f8425b540800000000000000
+      internalID: 5022961156507543289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_33
+      rect:
+        serializedVersion: 2
+        x: 2317
+        y: 4103
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adc10e66311383630800000000000000
+      internalID: 3906926636144008410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_34
+      rect:
+        serializedVersion: 2
+        x: 3533
+        y: 4103
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5a6dc46632d0c1d0800000000000000
+      internalID: -3332432593192916388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_35
+      rect:
+        serializedVersion: 2
+        x: 4749
+        y: 4103
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11a3de5af730be150800000000000000
+      internalID: 5902815583378684433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_36
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 2811
+        width: 515
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae1c2b36595895a20800000000000000
+      internalID: 3051617099189502442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_37
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 3343
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3865e6e09c01db70800000000000000
+      internalID: 8921926153286281275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_38
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 3324
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4919d5fed5ecc3740800000000000000
+      internalID: 5133204578138689940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_39
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 2811
+        width: 515
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f84e60e35d7779170800000000000000
+      internalID: 8185142605521544335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_40
+      rect:
+        serializedVersion: 2
+        x: 2146
+        y: 3343
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f71dac493ec8584b0800000000000000
+      internalID: -5438786065898221185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_41
+      rect:
+        serializedVersion: 2
+        x: 2279
+        y: 3324
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 892b0e8b3946d3ab0800000000000000
+      internalID: -5026751023450901864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_42
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 2811
+        width: 515
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07fd4b6e2c34452a0800000000000000
+      internalID: -6749695437148201104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_43
+      rect:
+        serializedVersion: 2
+        x: 3362
+        y: 3343
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f398de1ed0c8bab0800000000000000
+      internalID: -4992028126707411975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_44
+      rect:
+        serializedVersion: 2
+        x: 3495
+        y: 3324
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e561e38c9c315c90800000000000000
+      internalID: -7182893287754078746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_45
+      rect:
+        serializedVersion: 2
+        x: 4065
+        y: 2811
+        width: 515
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a162ef04316a66750800000000000000
+      internalID: 6297903730549204506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_46
+      rect:
+        serializedVersion: 2
+        x: 4578
+        y: 3343
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dcc21207588146a0800000000000000
+      internalID: -6466737682649002796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_47
+      rect:
+        serializedVersion: 2
+        x: 4711
+        y: 3324
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b296cafe5c7ae8c90800000000000000
+      internalID: -7165605488528430805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_48
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 3305
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6f93f93ec63c3a10800000000000000
+      internalID: 1890446202952195946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_49
+      rect:
+        serializedVersion: 2
+        x: 2317
+        y: 3305
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52d6fbb4b9cc21520800000000000000
+      internalID: 2671422496346959141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_50
+      rect:
+        serializedVersion: 2
+        x: 3533
+        y: 3305
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 805da14c6bacd6a10800000000000000
+      internalID: 1904401103770539272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_51
+      rect:
+        serializedVersion: 2
+        x: 4749
+        y: 3305
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e46ae46d3836e4560800000000000000
+      internalID: 7299881463901496910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_52
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 3267
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d29c11b31a43acd0800000000000000
+      internalID: -2548111515725294893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_53
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 3248
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa43b8350cb568270800000000000000
+      internalID: 8252384248796492975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_54
+      rect:
+        serializedVersion: 2
+        x: 2165
+        y: 3267
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dd625e5a8dea4290800000000000000
+      internalID: -7905245017351754283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_55
+      rect:
+        serializedVersion: 2
+        x: 2279
+        y: 3248
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce4abe3d0a6fb4d80800000000000000
+      internalID: -8265241520497777428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_56
+      rect:
+        serializedVersion: 2
+        x: 3381
+        y: 3267
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91726a170f93125d0800000000000000
+      internalID: -3089124164537800935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_57
+      rect:
+        serializedVersion: 2
+        x: 3495
+        y: 3248
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39127bacb27a9cb00800000000000000
+      internalID: 849393811262480787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_58
+      rect:
+        serializedVersion: 2
+        x: 4597
+        y: 3267
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 489dedf0d5ed07210800000000000000
+      internalID: 1328806381353884036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_59
+      rect:
+        serializedVersion: 2
+        x: 4711
+        y: 3248
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87f2e681d77abfe30800000000000000
+      internalID: 4538405205228531576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_60
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 3229
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3715616ff8e8d3cc0800000000000000
+      internalID: -3729668167432777357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_61
+      rect:
+        serializedVersion: 2
+        x: 2222
+        y: 3229
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9259080770aca2580800000000000000
+      internalID: -8851039984342231767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_62
+      rect:
+        serializedVersion: 2
+        x: 3438
+        y: 3229
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e13437a3d85c9ce0800000000000000
+      internalID: -1397144118325136925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_63
+      rect:
+        serializedVersion: 2
+        x: 4654
+        y: 3229
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b0cf47a0448dbc60800000000000000
+      internalID: 7835564339914326192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_64
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 3191
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1674e4ace719e850800000000000000
+      internalID: 6406678250057397790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_65
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 3153
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95588f9c9c918ac20800000000000000
+      internalID: 3217850288223847769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_66
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 3191
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88c2f825070bc6c30800000000000000
+      internalID: 4354048936228367496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_67
+      rect:
+        serializedVersion: 2
+        x: 2203
+        y: 3153
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a8f5ac1e9e204310800000000000000
+      internalID: 1387159941850462372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_68
+      rect:
+        serializedVersion: 2
+        x: 3400
+        y: 3191
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b08d70bc8e1b53ce0800000000000000
+      internalID: -1426038093596076021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_69
+      rect:
+        serializedVersion: 2
+        x: 3419
+        y: 3153
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c89c53119ac18ebc0800000000000000
+      internalID: -3753718776949519988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_70
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 3191
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fec1014f223dfa890800000000000000
+      internalID: -7444499511943095057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_71
+      rect:
+        serializedVersion: 2
+        x: 4635
+        y: 3153
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec39365731df64a0800000000000000
+      internalID: -6597824893474489117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_72
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1500
+        width: 420
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7534801857f66c10800000000000000
+      internalID: 2046595038292751743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_73
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 1500
+        width: 420
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38641f73fa22bf380800000000000000
+      internalID: -8936510899633437053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_74
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 1500
+        width: 420
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9333ec54d415939b0800000000000000
+      internalID: -5099955710694902983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_75
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 1500
+        width: 420
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1920009a30f4d5e90800000000000000
+      internalID: -7035380165744000367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_76
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83d962196026eb3f0800000000000000
+      internalID: -883160696573485768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_77
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1462
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19d67263c19d878c0800000000000000
+      internalID: -4001209553727820399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_78
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 814093badcfa8c720800000000000000
+      internalID: 2866734460697117720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_79
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b3b61bb1b5ba49c0800000000000000
+      internalID: -3942138748856781898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_80
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 1462
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd092bafa18281a30800000000000000
+      internalID: 4186139949981143263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_81
+      rect:
+        serializedVersion: 2
+        x: 1823
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f1767fa0c99139a0800000000000000
+      internalID: -6255049354584362509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_82
+      rect:
+        serializedVersion: 2
+        x: 2868
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 031138c5685976d80800000000000000
+      internalID: -8257466987450265296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_83
+      rect:
+        serializedVersion: 2
+        x: 2925
+        y: 1462
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94dbd750be7daa7f0800000000000000
+      internalID: -600430195891126967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_84
+      rect:
+        serializedVersion: 2
+        x: 3039
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2ea4bb87666f4e40800000000000000
+      internalID: 5642841453030059566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_85
+      rect:
+        serializedVersion: 2
+        x: 4084
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc5716e87d5bd4c70800000000000000
+      internalID: 8957015171321132491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_86
+      rect:
+        serializedVersion: 2
+        x: 4141
+        y: 1462
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5975a89cae1478f70800000000000000
+      internalID: 9189386041332225941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_87
+      rect:
+        serializedVersion: 2
+        x: 4255
+        y: 1443
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ede003ef825ef9820800000000000000
+      internalID: 2927310247040126686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_88
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1424
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90365f4c07b256050800000000000000
+      internalID: 5793084259022758665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_89
+      rect:
+        serializedVersion: 2
+        x: 1766
+        y: 1424
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56a903f5d1161de40800000000000000
+      internalID: 5679427383869872741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_90
+      rect:
+        serializedVersion: 2
+        x: 2982
+        y: 1424
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7e7582624faee840800000000000000
+      internalID: 5255330514843565690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_91
+      rect:
+        serializedVersion: 2
+        x: 4198
+        y: 1424
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 358c2f5a108d2a410800000000000000
+      internalID: 1486988328576403539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_92
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb838dd1819539b10800000000000000
+      internalID: 1987029820715317435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_93
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1367
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebdf1ba7b393c90d0800000000000000
+      internalID: -3414791489829339714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_94
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dcfccf19e3a954c0800000000000000
+      internalID: -4298224147692192558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_95
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 521bc8838a87e2e40800000000000000
+      internalID: 5633572847785652517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_96
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 1367
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc66d1500f0440cb0800000000000000
+      internalID: -4898719095050115381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_97
+      rect:
+        serializedVersion: 2
+        x: 1861
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c8dffe5c74feec0800000000000000
+      internalID: -3535528267002049475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_98
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb0274ecdbdd61c30800000000000000
+      internalID: 4329891899042635967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_99
+      rect:
+        serializedVersion: 2
+        x: 2868
+        y: 1367
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8ec3fa3047b6af30800000000000000
+      internalID: 4586554757018275467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_100
+      rect:
+        serializedVersion: 2
+        x: 3077
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d30dc32d1ff70bce0800000000000000
+      internalID: -1391471608266436547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_101
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f74cad0265175ea30800000000000000
+      internalID: 4243922838598894719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_102
+      rect:
+        serializedVersion: 2
+        x: 4084
+        y: 1367
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c540ac46d0ab8d20800000000000000
+      internalID: 3281893595738555841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_103
+      rect:
+        serializedVersion: 2
+        x: 4293
+        y: 1386
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bed0f6df04c406b0800000000000000
+      internalID: -5330920486590161224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_104
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 1348
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f8b500c460a3a140800000000000000
+      internalID: 4729800388247927031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_105
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 1348
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 177eead5b7e519fd0800000000000000
+      internalID: -2336982847682844815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_106
+      rect:
+        serializedVersion: 2
+        x: 3001
+        y: 1348
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb49ab347635256f0800000000000000
+      internalID: -697403289305967429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_107
+      rect:
+        serializedVersion: 2
+        x: 4217
+        y: 1348
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbe77f8c44ab38250800000000000000
+      internalID: 5945800737651392187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_108
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 1063
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2765df6f598306970800000000000000
+      internalID: 8746052693098583666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_109
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7fd8397a84fd0650800000000000000
+      internalID: 6200881137535475578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_110
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 1063
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e85f70edf0c9e5770800000000000000
+      internalID: 8601483930287732110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_111
+      rect:
+        serializedVersion: 2
+        x: 2032
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a76c4a541da0e3e0800000000000000
+      internalID: -2026429529390815326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_112
+      rect:
+        serializedVersion: 2
+        x: 3115
+        y: 1063
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb32f7d0e1b380110800000000000000
+      internalID: 1227295898719953852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_113
+      rect:
+        serializedVersion: 2
+        x: 3248
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 382a34712f9e8db90800000000000000
+      internalID: -7216761176879553917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_114
+      rect:
+        serializedVersion: 2
+        x: 4331
+        y: 1063
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f64ce69ed66da310800000000000000
+      internalID: 1417902563892414195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_115
+      rect:
+        serializedVersion: 2
+        x: 4464
+        y: 1044
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc0f4425e969e1760800000000000000
+      internalID: 7430542041937146060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_116
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ad740141adb78000800000000000000
+      internalID: 38207622134136227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_117
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6288d34d7f5a7660800000000000000
+      internalID: 7384319530641162862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_118
+      rect:
+        serializedVersion: 2
+        x: 1823
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cff8c48a89bc8ed0800000000000000
+      internalID: -2410347695965667386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_119
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d3a3d925a4aec8d0800000000000000
+      internalID: -2824138887036427309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_120
+      rect:
+        serializedVersion: 2
+        x: 3039
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2e8f8ace8cb20860800000000000000
+      internalID: 7494760051367710251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_121
+      rect:
+        serializedVersion: 2
+        x: 3286
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c49bd369f960e7e30800000000000000
+      internalID: 4503043959907268940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_122
+      rect:
+        serializedVersion: 2
+        x: 4255
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c3d8e3925019f300800000000000000
+      internalID: 286277998169609154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_123
+      rect:
+        serializedVersion: 2
+        x: 4502
+        y: 1025
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca743311358fcb010800000000000000
+      internalID: 1206111835882997676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_124
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 360
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0595d2ba772f12f20800000000000000
+      internalID: 3396262189800970576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_125
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 968
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 855da9e25bfa4b910800000000000000
+      internalID: 1852298539461956952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_126
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 341
+        width: 420
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bdfed864a551edd0800000000000000
+      internalID: -2458589756945138250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_127
+      rect:
+        serializedVersion: 2
+        x: 2032
+        y: 968
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d55e3131a30174920800000000000000
+      internalID: 2974363920515720541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_128
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 360
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f42dd3f47a352430800000000000000
+      internalID: 3757473738092520693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_129
+      rect:
+        serializedVersion: 2
+        x: 3248
+        y: 968
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38bc4b4af228d0a10800000000000000
+      internalID: 1877299760821750659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_130
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 341
+        width: 420
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d551af9276994200800000000000000
+      internalID: 164828280424322517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn shotgun shot walk_131
+      rect:
+        serializedVersion: 2
+        x: 4464
+        y: 968
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2bc1c9020d383260800000000000000
+      internalID: 7077473893375658795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      evelyn shotgun shot walk_0: -1166569380737680462
+      evelyn shotgun shot walk_1: -7333098659202085651
+      evelyn shotgun shot walk_10: -3889259255114654424
+      evelyn shotgun shot walk_100: -1391471608266436547
+      evelyn shotgun shot walk_101: 4243922838598894719
+      evelyn shotgun shot walk_102: 3281893595738555841
+      evelyn shotgun shot walk_103: -5330920486590161224
+      evelyn shotgun shot walk_104: 4729800388247927031
+      evelyn shotgun shot walk_105: -2336982847682844815
+      evelyn shotgun shot walk_106: -697403289305967429
+      evelyn shotgun shot walk_107: 5945800737651392187
+      evelyn shotgun shot walk_108: 8746052693098583666
+      evelyn shotgun shot walk_109: 6200881137535475578
+      evelyn shotgun shot walk_11: -3907107319462964598
+      evelyn shotgun shot walk_110: 8601483930287732110
+      evelyn shotgun shot walk_111: -2026429529390815326
+      evelyn shotgun shot walk_112: 1227295898719953852
+      evelyn shotgun shot walk_113: -7216761176879553917
+      evelyn shotgun shot walk_114: 1417902563892414195
+      evelyn shotgun shot walk_115: 7430542041937146060
+      evelyn shotgun shot walk_116: 38207622134136227
+      evelyn shotgun shot walk_117: 7384319530641162862
+      evelyn shotgun shot walk_118: -2410347695965667386
+      evelyn shotgun shot walk_119: -2824138887036427309
+      evelyn shotgun shot walk_12: 448913723187272316
+      evelyn shotgun shot walk_120: 7494760051367710251
+      evelyn shotgun shot walk_121: 4503043959907268940
+      evelyn shotgun shot walk_122: 286277998169609154
+      evelyn shotgun shot walk_123: 1206111835882997676
+      evelyn shotgun shot walk_124: 3396262189800970576
+      evelyn shotgun shot walk_125: 1852298539461956952
+      evelyn shotgun shot walk_126: -2458589756945138250
+      evelyn shotgun shot walk_127: 2974363920515720541
+      evelyn shotgun shot walk_128: 3757473738092520693
+      evelyn shotgun shot walk_129: 1877299760821750659
+      evelyn shotgun shot walk_13: 5263772424022789858
+      evelyn shotgun shot walk_130: 164828280424322517
+      evelyn shotgun shot walk_131: 7077473893375658795
+      evelyn shotgun shot walk_14: 973297088646444797
+      evelyn shotgun shot walk_15: 1654324791415977486
+      evelyn shotgun shot walk_16: -767976225915975132
+      evelyn shotgun shot walk_17: 4909385303173763853
+      evelyn shotgun shot walk_18: -1155586901969713047
+      evelyn shotgun shot walk_19: 4259410492830467189
+      evelyn shotgun shot walk_2: 7131258955531200677
+      evelyn shotgun shot walk_20: -4449893845302331367
+      evelyn shotgun shot walk_21: -6427570045068425218
+      evelyn shotgun shot walk_22: -5492125149973041051
+      evelyn shotgun shot walk_23: -7192159589582877961
+      evelyn shotgun shot walk_24: -6303916133713003589
+      evelyn shotgun shot walk_25: -1550613358090708600
+      evelyn shotgun shot walk_26: 2222090690722917418
+      evelyn shotgun shot walk_27: -7439387350515604622
+      evelyn shotgun shot walk_28: 4964151528899535971
+      evelyn shotgun shot walk_29: 3313591525438870614
+      evelyn shotgun shot walk_3: -8559843920063336530
+      evelyn shotgun shot walk_30: -3436573524259649050
+      evelyn shotgun shot walk_31: 8092157216441443077
+      evelyn shotgun shot walk_32: 5022961156507543289
+      evelyn shotgun shot walk_33: 3906926636144008410
+      evelyn shotgun shot walk_34: -3332432593192916388
+      evelyn shotgun shot walk_35: 5902815583378684433
+      evelyn shotgun shot walk_36: 3051617099189502442
+      evelyn shotgun shot walk_37: 8921926153286281275
+      evelyn shotgun shot walk_38: 5133204578138689940
+      evelyn shotgun shot walk_39: 8185142605521544335
+      evelyn shotgun shot walk_4: -3535645117844474609
+      evelyn shotgun shot walk_40: -5438786065898221185
+      evelyn shotgun shot walk_41: -5026751023450901864
+      evelyn shotgun shot walk_42: -6749695437148201104
+      evelyn shotgun shot walk_43: -4992028126707411975
+      evelyn shotgun shot walk_44: -7182893287754078746
+      evelyn shotgun shot walk_45: 6297903730549204506
+      evelyn shotgun shot walk_46: -6466737682649002796
+      evelyn shotgun shot walk_47: -7165605488528430805
+      evelyn shotgun shot walk_48: 1890446202952195946
+      evelyn shotgun shot walk_49: 2671422496346959141
+      evelyn shotgun shot walk_5: -2555066196882678095
+      evelyn shotgun shot walk_50: 1904401103770539272
+      evelyn shotgun shot walk_51: 7299881463901496910
+      evelyn shotgun shot walk_52: -2548111515725294893
+      evelyn shotgun shot walk_53: 8252384248796492975
+      evelyn shotgun shot walk_54: -7905245017351754283
+      evelyn shotgun shot walk_55: -8265241520497777428
+      evelyn shotgun shot walk_56: -3089124164537800935
+      evelyn shotgun shot walk_57: 849393811262480787
+      evelyn shotgun shot walk_58: 1328806381353884036
+      evelyn shotgun shot walk_59: 4538405205228531576
+      evelyn shotgun shot walk_6: 6296187906599835787
+      evelyn shotgun shot walk_60: -3729668167432777357
+      evelyn shotgun shot walk_61: -8851039984342231767
+      evelyn shotgun shot walk_62: -1397144118325136925
+      evelyn shotgun shot walk_63: 7835564339914326192
+      evelyn shotgun shot walk_64: 6406678250057397790
+      evelyn shotgun shot walk_65: 3217850288223847769
+      evelyn shotgun shot walk_66: 4354048936228367496
+      evelyn shotgun shot walk_67: 1387159941850462372
+      evelyn shotgun shot walk_68: -1426038093596076021
+      evelyn shotgun shot walk_69: -3753718776949519988
+      evelyn shotgun shot walk_7: -7018954081263379311
+      evelyn shotgun shot walk_70: -7444499511943095057
+      evelyn shotgun shot walk_71: -6597824893474489117
+      evelyn shotgun shot walk_72: 2046595038292751743
+      evelyn shotgun shot walk_73: -8936510899633437053
+      evelyn shotgun shot walk_74: -5099955710694902983
+      evelyn shotgun shot walk_75: -7035380165744000367
+      evelyn shotgun shot walk_76: -883160696573485768
+      evelyn shotgun shot walk_77: -4001209553727820399
+      evelyn shotgun shot walk_78: 2866734460697117720
+      evelyn shotgun shot walk_79: -3942138748856781898
+      evelyn shotgun shot walk_8: 4430976644925934265
+      evelyn shotgun shot walk_80: 4186139949981143263
+      evelyn shotgun shot walk_81: -6255049354584362509
+      evelyn shotgun shot walk_82: -8257466987450265296
+      evelyn shotgun shot walk_83: -600430195891126967
+      evelyn shotgun shot walk_84: 5642841453030059566
+      evelyn shotgun shot walk_85: 8957015171321132491
+      evelyn shotgun shot walk_86: 9189386041332225941
+      evelyn shotgun shot walk_87: 2927310247040126686
+      evelyn shotgun shot walk_88: 5793084259022758665
+      evelyn shotgun shot walk_89: 5679427383869872741
+      evelyn shotgun shot walk_9: 5860494233163935836
+      evelyn shotgun shot walk_90: 5255330514843565690
+      evelyn shotgun shot walk_91: 1486988328576403539
+      evelyn shotgun shot walk_92: 1987029820715317435
+      evelyn shotgun shot walk_93: -3414791489829339714
+      evelyn shotgun shot walk_94: -4298224147692192558
+      evelyn shotgun shot walk_95: 5633572847785652517
+      evelyn shotgun shot walk_96: -4898719095050115381
+      evelyn shotgun shot walk_97: -3535528267002049475
+      evelyn shotgun shot walk_98: 4329891899042635967
+      evelyn shotgun shot walk_99: 4586554757018275467
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

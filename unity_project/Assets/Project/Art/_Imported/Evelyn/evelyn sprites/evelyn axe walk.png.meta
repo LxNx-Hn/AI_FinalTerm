@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: e7481ffb6e0510542a30dd32108bdb87
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4651389643212257355
+    second: evelyn axe walk_0
+  - first:
+      213: 5764374719731242546
+    second: evelyn axe walk_1
+  - first:
+      213: 4460960601577231770
+    second: evelyn axe walk_2
+  - first:
+      213: 5864901319622516125
+    second: evelyn axe walk_3
+  - first:
+      213: 846566892347933998
+    second: evelyn axe walk_4
+  - first:
+      213: -6764313400039853293
+    second: evelyn axe walk_5
+  - first:
+      213: -4135861574390535758
+    second: evelyn axe walk_6
+  - first:
+      213: -613168795694969321
+    second: evelyn axe walk_7
+  - first:
+      213: -8570637130382979290
+    second: evelyn axe walk_8
+  - first:
+      213: -916274141522585736
+    second: evelyn axe walk_9
+  - first:
+      213: 6991352867678994708
+    second: evelyn axe walk_10
+  - first:
+      213: 5405125894689477770
+    second: evelyn axe walk_11
+  - first:
+      213: 592693752849399017
+    second: evelyn axe walk_12
+  - first:
+      213: 804778983961680849
+    second: evelyn axe walk_13
+  - first:
+      213: -7773189244993479291
+    second: evelyn axe walk_14
+  - first:
+      213: -4310324878895955819
+    second: evelyn axe walk_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: evelyn axe walk_0
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 4008
+        width: 420
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b7076c73c1f27fb0800000000000000
+      internalID: -4651389643212257355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_1
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 4008
+        width: 496
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23692d1444c2fff40800000000000000
+      internalID: 5764374719731242546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_2
+      rect:
+        serializedVersion: 2
+        x: 2792
+        y: 4008
+        width: 458
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a95160e280488ed30800000000000000
+      internalID: 4460960601577231770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_3
+      rect:
+        serializedVersion: 2
+        x: 4065
+        y: 4008
+        width: 420
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9dd1d63da0546150800000000000000
+      internalID: 5864901319622516125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_4
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 2811
+        width: 553
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2541017a1c9fbb00800000000000000
+      internalID: 846566892347933998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_5
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 2735
+        width: 439
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313b5313dc45022a0800000000000000
+      internalID: -6764313400039853293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_6
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 2811
+        width: 534
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b9a3429fc77a96c0800000000000000
+      internalID: -4135861574390535758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_7
+      rect:
+        serializedVersion: 2
+        x: 4065
+        y: 2811
+        width: 572
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71e4f31aa369d77f0800000000000000
+      internalID: -613168795694969321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_8
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 1481
+        width: 458
+        height: 724
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62fcfb860fafe0980800000000000000
+      internalID: -8570637130382979290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_9
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 1538
+        width: 420
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8779badd58db843f0800000000000000
+      internalID: -916274141522585736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_10
+      rect:
+        serializedVersion: 2
+        x: 2811
+        y: 1519
+        width: 439
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4114a613466460160800000000000000
+      internalID: 6991352867678994708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_11
+      rect:
+        serializedVersion: 2
+        x: 3989
+        y: 1557
+        width: 477
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a845b371d5dd20b40800000000000000
+      internalID: 5405125894689477770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_12
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 360
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ec7e27f3dba93800800000000000000
+      internalID: 592693752849399017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_13
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 341
+        width: 420
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1db5cb5d8362b2b00800000000000000
+      internalID: 804778983961680849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_14
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 360
+        width: 534
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58dd648d095102490800000000000000
+      internalID: -7773189244993479291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evelyn axe walk_15
+      rect:
+        serializedVersion: 2
+        x: 4046
+        y: 322
+        width: 458
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 590c0e61c56ae24c0800000000000000
+      internalID: -4310324878895955819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      evelyn axe walk_0: -4651389643212257355
+      evelyn axe walk_1: 5764374719731242546
+      evelyn axe walk_10: 6991352867678994708
+      evelyn axe walk_11: 5405125894689477770
+      evelyn axe walk_12: 592693752849399017
+      evelyn axe walk_13: 804778983961680849
+      evelyn axe walk_14: -7773189244993479291
+      evelyn axe walk_15: -4310324878895955819
+      evelyn axe walk_2: 4460960601577231770
+      evelyn axe walk_3: 5864901319622516125
+      evelyn axe walk_4: 846566892347933998
+      evelyn axe walk_5: -6764313400039853293
+      evelyn axe walk_6: -4135861574390535758
+      evelyn axe walk_7: -613168795694969321
+      evelyn axe walk_8: -8570637130382979290
+      evelyn axe walk_9: -916274141522585736
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

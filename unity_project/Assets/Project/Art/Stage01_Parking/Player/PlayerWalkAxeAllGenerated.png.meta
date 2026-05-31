@@ -1,0 +1,610 @@
+fileFormatVersion: 2
+guid: 128865a1c612b2745ba8c57bdbd070ff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6214671313981974417
+    second: PlayerWalkAxeAllGenerated_0
+  - first:
+      213: -7548207375751300931
+    second: PlayerWalkAxeAllGenerated_1
+  - first:
+      213: -9188221775633159935
+    second: PlayerWalkAxeAllGenerated_2
+  - first:
+      213: -4731950137903057434
+    second: PlayerWalkAxeAllGenerated_3
+  - first:
+      213: -514215802189483620
+    second: PlayerWalkAxeAllGenerated_4
+  - first:
+      213: 4273709238151715309
+    second: PlayerWalkAxeAllGenerated_5
+  - first:
+      213: -1716242258964717008
+    second: PlayerWalkAxeAllGenerated_6
+  - first:
+      213: -2579345293679484083
+    second: PlayerWalkAxeAllGenerated_7
+  - first:
+      213: -4819264940268269140
+    second: PlayerWalkAxeAllGenerated_8
+  - first:
+      213: -4919955234158019029
+    second: PlayerWalkAxeAllGenerated_9
+  - first:
+      213: -2226694642066598016
+    second: PlayerWalkAxeAllGenerated_10
+  - first:
+      213: -6691413240467697976
+    second: PlayerWalkAxeAllGenerated_11
+  - first:
+      213: -2976874681681029556
+    second: PlayerWalkAxeAllGenerated_12
+  - first:
+      213: 5506746537856920646
+    second: PlayerWalkAxeAllGenerated_13
+  - first:
+      213: -7211692348254582390
+    second: PlayerWalkAxeAllGenerated_14
+  - first:
+      213: -5538337899685748231
+    second: PlayerWalkAxeAllGenerated_15
+  - first:
+      213: -6713739472005754210
+    second: PlayerWalkAxeAllGenerated_r01_c01
+  - first:
+      213: -777404312303538351
+    second: PlayerWalkAxeAllGenerated_r01_c02
+  - first:
+      213: 7813179014362187569
+    second: PlayerWalkAxeAllGenerated_r01_c03
+  - first:
+      213: 4636118962484944615
+    second: PlayerWalkAxeAllGenerated_r01_c04
+  - first:
+      213: -6027816448208585580
+    second: PlayerWalkAxeAllGenerated_r02_c01
+  - first:
+      213: -5150640664728742626
+    second: PlayerWalkAxeAllGenerated_r02_c02
+  - first:
+      213: -3409322961772924043
+    second: PlayerWalkAxeAllGenerated_r02_c03
+  - first:
+      213: 6382501892696286855
+    second: PlayerWalkAxeAllGenerated_r02_c04
+  - first:
+      213: -3624161712651397147
+    second: PlayerWalkAxeAllGenerated_r03_c01
+  - first:
+      213: 325241536789428361
+    second: PlayerWalkAxeAllGenerated_r03_c02
+  - first:
+      213: -2111296102792166227
+    second: PlayerWalkAxeAllGenerated_r03_c03
+  - first:
+      213: -4151907637536015664
+    second: PlayerWalkAxeAllGenerated_r03_c04
+  - first:
+      213: -4995523284888007857
+    second: PlayerWalkAxeAllGenerated_r04_c01
+  - first:
+      213: 2199707933968654109
+    second: PlayerWalkAxeAllGenerated_r04_c02
+  - first:
+      213: -153562778895645969
+    second: PlayerWalkAxeAllGenerated_r04_c03
+  - first:
+      213: 8631300194929430261
+    second: PlayerWalkAxeAllGenerated_r04_c04
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 640
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r01_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3648
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e921498658104d2a0800000000000000
+      internalID: -6713739472005754210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r01_c02
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 3648
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f6a4695ea1635f0800000000000000
+      internalID: -777404312303538351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r01_c03
+      rect:
+        serializedVersion: 2
+        x: 2432
+        y: 3648
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1374895eaecfd6c60800000000000000
+      internalID: 7813179014362187569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r01_c04
+      rect:
+        serializedVersion: 2
+        x: 3648
+        y: 3648
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ee1e5712adc65040800000000000000
+      internalID: 4636118962484944615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r02_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2432
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49c354980e4e85ca0800000000000000
+      internalID: -6027816448208585580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r02_c02
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 2432
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e15592dca9f3588b0800000000000000
+      internalID: -5150640664728742626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r02_c03
+      rect:
+        serializedVersion: 2
+        x: 2432
+        y: 2432
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57331f264d6afa0d0800000000000000
+      internalID: -3409322961772924043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r02_c04
+      rect:
+        serializedVersion: 2
+        x: 3648
+        y: 2432
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 786ab6cc7a3339850800000000000000
+      internalID: 6382501892696286855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r03_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1216
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e797dcbf1464bdc0800000000000000
+      internalID: -3624161712651397147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r03_c02
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1216
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 988398a547d738400800000000000000
+      internalID: 325241536789428361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r03_c03
+      rect:
+        serializedVersion: 2
+        x: 2432
+        y: 1216
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da40861716b23b2e0800000000000000
+      internalID: -2111296102792166227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r03_c04
+      rect:
+        serializedVersion: 2
+        x: 3648
+        y: 1216
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0da3f6c50067166c0800000000000000
+      internalID: -4151907637536015664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r04_c01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4bce013a065caab0800000000000000
+      internalID: -4995523284888007857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r04_c02
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 0
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1f5fcd16bee68e10800000000000000
+      internalID: 2199707933968654109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r04_c03
+      rect:
+        serializedVersion: 2
+        x: 2432
+        y: 0
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe20439577f6eddf0800000000000000
+      internalID: -153562778895645969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerWalkAxeAllGenerated_r04_c04
+      rect:
+        serializedVersion: 2
+        x: 3648
+        y: 0
+        width: 1216
+        height: 1216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fe4784fbc988c770800000000000000
+      internalID: 8631300194929430261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PlayerWalkAxeAllGenerated_0: -6214671313981974417
+      PlayerWalkAxeAllGenerated_1: -7548207375751300931
+      PlayerWalkAxeAllGenerated_10: -2226694642066598016
+      PlayerWalkAxeAllGenerated_11: -6691413240467697976
+      PlayerWalkAxeAllGenerated_12: -2976874681681029556
+      PlayerWalkAxeAllGenerated_13: 5506746537856920646
+      PlayerWalkAxeAllGenerated_14: -7211692348254582390
+      PlayerWalkAxeAllGenerated_15: -5538337899685748231
+      PlayerWalkAxeAllGenerated_2: -9188221775633159935
+      PlayerWalkAxeAllGenerated_3: -4731950137903057434
+      PlayerWalkAxeAllGenerated_4: -514215802189483620
+      PlayerWalkAxeAllGenerated_5: 4273709238151715309
+      PlayerWalkAxeAllGenerated_6: -1716242258964717008
+      PlayerWalkAxeAllGenerated_7: -2579345293679484083
+      PlayerWalkAxeAllGenerated_8: -4819264940268269140
+      PlayerWalkAxeAllGenerated_9: -4919955234158019029
+      PlayerWalkAxeAllGenerated_r01_c01: -6713739472005754210
+      PlayerWalkAxeAllGenerated_r01_c02: -777404312303538351
+      PlayerWalkAxeAllGenerated_r01_c03: 7813179014362187569
+      PlayerWalkAxeAllGenerated_r01_c04: 4636118962484944615
+      PlayerWalkAxeAllGenerated_r02_c01: -6027816448208585580
+      PlayerWalkAxeAllGenerated_r02_c02: -5150640664728742626
+      PlayerWalkAxeAllGenerated_r02_c03: -3409322961772924043
+      PlayerWalkAxeAllGenerated_r02_c04: 6382501892696286855
+      PlayerWalkAxeAllGenerated_r03_c01: -3624161712651397147
+      PlayerWalkAxeAllGenerated_r03_c02: 325241536789428361
+      PlayerWalkAxeAllGenerated_r03_c03: -2111296102792166227
+      PlayerWalkAxeAllGenerated_r03_c04: -4151907637536015664
+      PlayerWalkAxeAllGenerated_r04_c01: -4995523284888007857
+      PlayerWalkAxeAllGenerated_r04_c02: 2199707933968654109
+      PlayerWalkAxeAllGenerated_r04_c03: -153562778895645969
+      PlayerWalkAxeAllGenerated_r04_c04: 8631300194929430261
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

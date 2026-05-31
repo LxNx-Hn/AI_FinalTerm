@@ -1,0 +1,702 @@
+fileFormatVersion: 2
+guid: 77513d451617cab46b8c24fb85d3cf20
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8092269246983549248
+    second: hospital_tileset_atlas 77_0
+  - first:
+      213: 7985693527583479636
+    second: hospital_tileset_atlas 77_1
+  - first:
+      213: 8704611358985879238
+    second: hospital_tileset_atlas 77_2
+  - first:
+      213: 4284518153060903177
+    second: hospital_tileset_atlas 77_3
+  - first:
+      213: 357251725394845945
+    second: hospital_tileset_atlas 77_4
+  - first:
+      213: -5831345240822244655
+    second: hospital_tileset_atlas 77_5
+  - first:
+      213: -4691751228333695657
+    second: hospital_tileset_atlas 77_6
+  - first:
+      213: 586979680827347961
+    second: hospital_tileset_atlas 77_7
+  - first:
+      213: -7991209188155181503
+    second: hospital_tileset_atlas 77_8
+  - first:
+      213: -2843207444025269802
+    second: hospital_tileset_atlas 77_9
+  - first:
+      213: -1653124848237822613
+    second: hospital_tileset_atlas 77_10
+  - first:
+      213: -1134417890262580496
+    second: hospital_tileset_atlas 77_11
+  - first:
+      213: 4951192662851270649
+    second: hospital_tileset_atlas 77_12
+  - first:
+      213: -2982376638302995192
+    second: hospital_tileset_atlas 77_13
+  - first:
+      213: -5417641009356945688
+    second: hospital_tileset_atlas 77_14
+  - first:
+      213: -7457630964527928176
+    second: hospital_tileset_atlas 77_15
+  - first:
+      213: 3680389067862516375
+    second: hospital_tileset_atlas 77_16
+  - first:
+      213: -5253978963992601424
+    second: hospital_tileset_atlas 77_17
+  - first:
+      213: 2663408394043022195
+    second: hospital_tileset_atlas 77_18
+  - first:
+      213: 156177957209180359
+    second: hospital_tileset_atlas 77_19
+  - first:
+      213: -2929407092083011938
+    second: hospital_tileset_atlas 77_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 5
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 041b54561048d4070800000000000000
+      internalID: 8092269246983549248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 106
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 457dfbc04f1e2de60800000000000000
+      internalID: 7985693527583479636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_2
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 107
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cefe2879edfcc870800000000000000
+      internalID: 8704611358985879238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_3
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 107
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90968e25f8aa57b30800000000000000
+      internalID: 4284518153060903177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_4
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 111
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f02e8b2d8635f400800000000000000
+      internalID: 357251725394845945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_5
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 108
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1da10263666e21fa0800000000000000
+      internalID: -5831345240822244655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 99
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75ddaa4ad1d83eeb0800000000000000
+      internalID: -4691751228333695657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_7
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 93
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f31616e8ee552800800000000000000
+      internalID: 586979680827347961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 73
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1463c262595891190800000000000000
+      internalID: -7991209188155181503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_9
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 69
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d1a024c4e5ea88d0800000000000000
+      internalID: -2843207444025269802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_10
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 72
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6db96b85bbee09e0800000000000000
+      internalID: -1653124848237822613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_11
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 56
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f20d0070fcb140f0800000000000000
+      internalID: -1134417890262580496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_12
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 62
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f735cb8e7b26b440800000000000000
+      internalID: 4951192662851270649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80db68faf387c96d0800000000000000
+      internalID: -2982376638302995192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_14
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 50
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e6c0b4b43ca0d4b0800000000000000
+      internalID: -5417641009356945688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_15
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 43
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09ceb55662c218890800000000000000
+      internalID: -7457630964527928176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_16
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 12
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7922d219b5e531330800000000000000
+      internalID: 3680389067862516375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_17
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 21
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bc98d118fd1617b0800000000000000
+      internalID: -5253978963992601424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_18
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 4
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37b5ab2b2d356f420800000000000000
+      internalID: 2663408394043022195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_19
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c8033d460bda2200800000000000000
+      internalID: 156177957209180359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hospital_tileset_atlas 77_20
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9ec1e935c7a857d0800000000000000
+      internalID: -2929407092083011938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      hospital_tileset_atlas 77_0: 8092269246983549248
+      hospital_tileset_atlas 77_1: 7985693527583479636
+      hospital_tileset_atlas 77_10: -1653124848237822613
+      hospital_tileset_atlas 77_11: -1134417890262580496
+      hospital_tileset_atlas 77_12: 4951192662851270649
+      hospital_tileset_atlas 77_13: -2982376638302995192
+      hospital_tileset_atlas 77_14: -5417641009356945688
+      hospital_tileset_atlas 77_15: -7457630964527928176
+      hospital_tileset_atlas 77_16: 3680389067862516375
+      hospital_tileset_atlas 77_17: -5253978963992601424
+      hospital_tileset_atlas 77_18: 2663408394043022195
+      hospital_tileset_atlas 77_19: 156177957209180359
+      hospital_tileset_atlas 77_2: 8704611358985879238
+      hospital_tileset_atlas 77_20: -2929407092083011938
+      hospital_tileset_atlas 77_3: 4284518153060903177
+      hospital_tileset_atlas 77_4: 357251725394845945
+      hospital_tileset_atlas 77_5: -5831345240822244655
+      hospital_tileset_atlas 77_6: -4691751228333695657
+      hospital_tileset_atlas 77_7: 586979680827347961
+      hospital_tileset_atlas 77_8: -7991209188155181503
+      hospital_tileset_atlas 77_9: -2843207444025269802
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

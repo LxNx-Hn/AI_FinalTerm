@@ -1,0 +1,164 @@
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+
+public static class SceneBootstrapEditor
+{
+    private const string GridManagerPath = "Assets/Project/Prefabs/System/Gridmanager.prefab";
+    private const string PlayerPrefabPath = "Assets/Project/Prefabs/Player/Player.prefab";
+
+    [MenuItem("Project Tools/Bootstrap Missing Scenes")]
+    public static void BootstrapMissingScenes()
+    {
+        CreateEntryScene();
+        CreateRooftopEndingWalk();
+        CreateEndingCredits();
+        UpdateBuildSettings();
+        Debug.Log("[SceneBootstrap] Done. Entry, RooftopEndingWalk, and EndingCredits verified and Build Settings updated.");
+    }
+
+    private static void CreateEntryScene()
+    {
+        const string path = "Assets/Project/Scenes/Entry.unity";
+        if (System.IO.File.Exists(path))
+        {
+            return;
+        }
+
+        Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+        // Camera
+        GameObject camGo = new GameObject("Main Camera");
+        Camera cam = camGo.AddComponent<Camera>();
+        cam.orthographic = true;
+        cam.orthographicSize = 5f;
+        cam.clearFlags = CameraClearFlags.SolidColor;
+        cam.backgroundColor = Color.black;
+        camGo.tag = "MainCamera";
+
+        // GameController
+        GameObject gc = new GameObject("EntryController");
+        gc.AddComponent<EntryUI>();
+
+        EditorSceneManager.SaveScene(scene, path);
+    }
+
+    private static void CreateRooftopEndingWalk()
+    {
+        const string path = "Assets/Project/Scenes/RooftopEndingWalk.unity";
+        if (System.IO.File.Exists(path))
+        {
+            return;
+        }
+
+        Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+        // Camera
+        GameObject camGo = new GameObject("Main Camera");
+        Camera cam = camGo.AddComponent<Camera>();
+        cam.orthographic = true;
+        cam.orthographicSize = 5f;
+        cam.clearFlags = CameraClearFlags.SolidColor;
+        cam.backgroundColor = Color.black;
+        camGo.tag = "MainCamera";
+
+        // GridManager
+        GameObject gridPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(GridManagerPath);
+        if (gridPrefab != null)
+        {
+            PrefabUtility.InstantiatePrefab(gridPrefab);
+        }
+
+        // Player
+        GameObject playerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(PlayerPrefabPath);
+        if (playerPrefab != null)
+        {
+            GameObject player = (GameObject)PrefabUtility.InstantiatePrefab(playerPrefab);
+            player.transform.position = Vector3.zero;
+
+            // CameraFollow
+            CameraFollow follow = camGo.AddComponent<CameraFollow>();
+            follow.target = player.transform;
+            follow.smoothSpeed = 4f;
+            follow.offset = new Vector3(0f, 0f, -10f);
+        }
+
+        // CutsceneTriggers (3)
+        Vector3[] cutscenePositions = { new Vector3(-4f, 0f, 0f), new Vector3(0f, 0f, 0f), new Vector3(4f, 0f, 0f) };
+        for (int i = 0; i < cutscenePositions.Length; i++)
+        {
+            GameObject ct = new GameObject($"CutsceneTrigger_{i + 1}");
+            ct.transform.position = cutscenePositions[i];
+            CutsceneTrigger trigger = ct.AddComponent<CutsceneTrigger>();
+            trigger.size = new Vector2Int(2, 2);
+            trigger.triggerOnce = true;
+        }
+
+        // FinalEndingTrigger
+        GameObject fet = new GameObject("FinalEndingTrigger");
+        fet.transform.position = new Vector3(8f, 0f, 0f);
+        FinalEndingTrigger ending = fet.AddComponent<FinalEndingTrigger>();
+        ending.size = new Vector2Int(3, 2);
+        ending.triggerOnce = true;
+
+        // Empty UI Canvas root
+        GameObject canvasGo = new GameObject("Canvas");
+        Canvas canvas = canvasGo.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvasGo.AddComponent<UnityEngine.UI.CanvasScaler>();
+        canvasGo.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+
+        EditorSceneManager.SaveScene(scene, path);
+    }
+
+    private static void CreateEndingCredits()
+    {
+        const string path = "Assets/Project/Scenes/EndingCredits.unity";
+        if (System.IO.File.Exists(path))
+        {
+            return;
+        }
+
+        Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+        // Camera
+        GameObject camGo = new GameObject("Main Camera");
+        Camera cam = camGo.AddComponent<Camera>();
+        cam.orthographic = true;
+        cam.orthographicSize = 5f;
+        cam.clearFlags = CameraClearFlags.SolidColor;
+        cam.backgroundColor = Color.black;
+        camGo.tag = "MainCamera";
+
+        // Canvas with credits text
+        GameObject canvasGo = new GameObject("Canvas");
+        Canvas canvas = canvasGo.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvasGo.AddComponent<UnityEngine.UI.CanvasScaler>();
+        canvasGo.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+
+        // GameController
+        GameObject gc = new GameObject("GameController");
+        gc.AddComponent<SceneLoader>();
+
+        EditorSceneManager.SaveScene(scene, path);
+    }
+
+    private static void UpdateBuildSettings()
+    {
+        var scenes = new List<EditorBuildSettingsScene>
+        {
+            new EditorBuildSettingsScene("Assets/Project/Scenes/Entry.unity", true),
+            new EditorBuildSettingsScene("Assets/Project/Scenes/Stage01_ParkingToHospital.unity", true),
+            new EditorBuildSettingsScene("Assets/Project/Scenes/Hospital.unity", true),
+            new EditorBuildSettingsScene("Assets/Project/Scenes/Boss01_Elevator.unity", true),
+            new EditorBuildSettingsScene("Assets/Project/Scenes/RooftopEndingWalk.unity", true),
+            new EditorBuildSettingsScene("Assets/Project/Scenes/EndingCredits.unity", true),
+            new EditorBuildSettingsScene("Assets/Project/Scenes/Boss02_Rooftop.unity", false),
+        };
+
+        EditorBuildSettings.scenes = scenes.ToArray();
+    }
+}

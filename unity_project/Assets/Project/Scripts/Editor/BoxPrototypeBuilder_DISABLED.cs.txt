@@ -1,0 +1,1422 @@
+using System.Collections.Generic;
+using System.IO;
+using TMPro;
+using UnityEditor;
+using UnityEditor.Animations;
+using UnityEditor.Events;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Tilemaps;
+using UnityEngine.UI;
+
+/// <summary>
+/// Builds the full editable box prototype for CODE BLUE.
+/// Menu: Project Tools → Build Box Prototype
+/// Run "Build Box Prototype (All)" to create all scenes in one pass.
+/// Individual scene items are available for partial rebuilds.
+/// </summary>
+public static class BoxPrototypeBuilder
+{
+    // ─── Prefab paths ────────────────────────────────────────────────────────
+    const string P_GRID   = "Assets/Project/Prefabs/System/Gridmanager.prefab";
+    const string P_STATE  = "Assets/Project/Prefabs/System/GameState.prefab";
+    const string P_WALL   = "Assets/Project/Prefabs/System/Wall.prefab";
+    const string P_PLAYER = "Assets/Project/Prefabs/Player/Player.prefab";
+    const string P_SMALL  = "Assets/Project/Prefabs/Enemy/SmallEnemy.prefab";
+    const string P_MED    = "Assets/Project/Prefabs/Enemy/MediumEnemy.prefab";
+    const string P_KEY    = "Assets/Project/Prefabs/Item/KeyCard.prefab";
+    const string P_HEAL   = "Assets/Project/Prefabs/Item/HealItem.prefab";
+    const string P_FLOOR_A = "Assets/Project/Prefabs/Tiles/FloorTile_A.prefab";
+    const string P_FLOOR_B = "Assets/Project/Prefabs/Tiles/FloorTile_B.prefab";
+    const string T_FLOOR_A = "Assets/Project/Art/Tiles/FloorTile_A.asset";
+    const string T_FLOOR_B = "Assets/Project/Art/Tiles/FloorTile_B.asset";
+    const string P_DMG    = "Assets/Project/Prefabs/Pattern/DamageTile.prefab";
+    const string P_WARN   = "Assets/Project/Prefabs/Pattern/WarningTile.prefab";
+    const string P_SAFE   = "Assets/Project/Prefabs/Pattern/SafeTile.prefab";
+    const string P_HITBOX            = "Assets/Project/Prefabs/Pattern/AttackHitbox.prefab";
+
+    // ─── Scene paths ─────────────────────────────────────────────────────────
+    const string S_ENTRY   = "Assets/Project/Scenes/Entry.unity";
+    // Stage01 is team-authored (Stage01_ParkingToHospital) — not rebuilt by BoxPrototypeBuilder.
+    const string S_S02     = "Assets/Project/Scenes/Hospital.unity";
+    const string S_BOSS    = "Assets/Project/Scenes/Boss01_Elevator.unity";
+    const string S_ROOF    = "Assets/Project/Scenes/RooftopEndingWalk.unity";
+    const string S_END     = "Assets/Project/Scenes/EndingCredits.unity";
+
+    // ─── Menu items ──────────────────────────────────────────────────────────
+
+    [MenuItem("Project Tools/Build Box Prototype (All)")]
+    public static void BuildAll()
+    {
+        AssetDatabase.Refresh();
+
+        // Ensure generated assets exist
+        if (!File.Exists(S_ENTRY)) SceneBootstrapEditor.BootstrapMissingScenes();
+        if (!File.Exists(T_FLOOR_A))
+            FloorTileCreator.CreateFloorTilePlaceholders();
+
+        // Ensure placeholder sprites are assigned to all prefabs
+        PlaceholderSpriteCreator.CreateAll();
+        EnsureAttackHitboxPrefab();
+        // After placeholders, overlay any imported real assets (Evelyn idle, item icons).
+        // Order matters: ImportedAssetApplier wins so BuildAll never reverts real art.
+        ImportedAssetApplier.ApplyAll();
+        AssetDatabase.Refresh();
+
+        BuildEntry();
+        BuildStage02();
+        BuildBoss01();
+        BuildRooftopEndingWalk();
+        BuildEndingCredits();
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        Debug.Log("[BoxPrototype] ✅ All scenes built.");
+    }
+
+    [MenuItem("Project Tools/Build Box Prototype/1 Entry")]
+    public static void BuildEntry() => BuildScene(S_ENTRY, SetupEntry);
+
+    [MenuItem("Project Tools/Build Box Prototype/2 Hospital")]
+    public static void BuildStage02() => BuildScene(S_S02, SetupStage02);
+
+    [MenuItem("Project Tools/Build Box Prototype/4 Boss01_Elevator")]
+    public static void BuildBoss01() => BuildScene(S_BOSS, SetupBoss01);
+
+    [MenuItem("Project Tools/Build Box Prototype/5 RooftopEndingWalk")]
+    public static void BuildRooftopEndingWalk() => BuildScene(S_ROOF, SetupRooftop);
+
+    [MenuItem("Project Tools/Build Box Prototype/6 EndingCredits")]
+    public static void BuildEndingCredits() => BuildScene(S_END, SetupEndingCredits);
+
+    [MenuItem("Project Tools/Boss/Create Boss Animator Controller")]
+    public static void CreateBossAnimatorController()
+    {
+        const string ANIM_BASE = "Assets/Project/Resources/Boss/BOSSASSET/BOSS/ANIME/";
+        const string CTRL_PATH = ANIM_BASE + "BossAnimator.controller";
+
+        // 상태 목록 — DISAPPEAR_* 제외, 29개 상태 + MARKATK = 29 상태
+        var stateNames = new string[]
+        {
+            "IDLE_DOWN",  "IDLE_UP",  "IDLE_LEFT",  "IDLE_RIGHT",
+            "MOVE_DOWN",  "MOVE_UP",  "MOVE_LEFT",  "MOVE_RIGHT",
+            "ATTACK_DOWN","ATTACK_UP","ATTACK_LEFT", "ATTACK_RIGHT",
+            "ATTACK_READY_DOWN","ATTACK_READY_UP","ATTACK_READY_LEFT","ATTACK_READY_RIGHT",
+            "SCREAM_DOWN","SCREAM_UP","SCREAM_LEFT", "SCREAM_RIGHT",
+            "APPEAR_DOWN","APPEAR_UP","APPEAR_LEFT", "APPEAR_RIGHT",
+            "DIE_DOWN",   "DIE_UP",   "DIE_LEFT",    "DIE_RIGHT",
+            "MARKATK"
+        };
+
+        AnimatorController ctrl;
+        if (File.Exists(CTRL_PATH))
+        {
+            ctrl = AssetDatabase.LoadAssetAtPath<AnimatorController>(CTRL_PATH);
+            if (ctrl == null)
+            {
+                Debug.LogError($"[BossAnim] Failed to load existing controller at {CTRL_PATH}");
+                return;
+            }
+        }
+        else
+        {
+            ctrl = AnimatorController.CreateAnimatorControllerAtPath(CTRL_PATH);
+        }
+
+        var sm = ctrl.layers[0].stateMachine;
+
+        foreach (string stateName in stateNames)
+        {
+            // 이미 존재하는 상태는 건너뜀
+            bool exists = false;
+            foreach (var s in sm.states)
+                if (s.state.name == stateName) { exists = true; break; }
+            if (exists) continue;
+
+            string clipPath = ANIM_BASE + stateName + ".anim";
+            var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(clipPath);
+
+            var state = sm.AddState(stateName);
+            if (clip != null) state.motion = clip;
+            else Debug.LogWarning($"[BossAnim] Clip not found: {clipPath}");
+        }
+
+        // 기본 상태를 IDLE_DOWN으로 설정
+        foreach (var cs in sm.states)
+            if (cs.state.name == "IDLE_DOWN")
+            {
+                sm.defaultState = cs.state;
+                break;
+            }
+
+        EditorUtility.SetDirty(ctrl);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        Debug.Log($"[BossAnim] ✅ BossAnimator.controller created/updated at {CTRL_PATH}");
+    }
+
+    // ─── Scene runner ─────────────────────────────────────────────────────────
+
+    [MenuItem("Project Tools/Boss/Rebuild Boss VFX Prefabs")]
+    public static void RebuildBossVFXPrefabs()
+    {
+        EnsureBossVFXPrefabs(forceRebuild: true);
+        AssetDatabase.Refresh();
+        Debug.Log("[BossVFX] Boss VFX prefabs rebuilt.");
+    }
+
+    static void BuildScene(string path, System.Action setup)
+    {
+        if (!File.Exists(path))
+        {
+            Debug.LogWarning($"[BoxPrototype] Scene not found: {path}. Run Bootstrap first.");
+            return;
+        }
+
+        var scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Single);
+        setup();
+        EditorSceneManager.SaveScene(scene);
+        Debug.Log($"[BoxPrototype] Saved: {path}");
+    }
+
+    // =========================================================================
+    // Entry
+    // =========================================================================
+    static void SetupEntry()
+    {
+        EnsureCamera(null, 5f);
+        EnsureEventSystem();
+
+        var sys = FindOrCreate("00_System");
+        var loader = EnsureComponent<SceneLoader>(sys);
+
+        // Canvas
+        var canvas = GetOrCreateCanvas("Canvas");
+        var ct = canvas.transform;
+
+        var bg = MakeUIPanel(ct, "BackgroundPanel", Color.black);
+        StretchFull(bg);
+
+        var title = MakeUIText(ct, "TitleText", "CODE BLUE", 72, TextAlignmentOptions.Center);
+        SetRect(title, new Vector2(0.1f, 0.6f), new Vector2(0.9f, 0.85f));
+
+        var startBtn = MakeButton(ct, "StartButton", "START", loader, "Stage01_ParkingToHospital");
+        SetRect(startBtn, new Vector2(0.35f, 0.42f), new Vector2(0.65f, 0.55f));
+
+        var quitBtn = MakeQuitButton(ct, "QuitButton", "QUIT", loader);
+        SetRect(quitBtn, new Vector2(0.35f, 0.26f), new Vector2(0.65f, 0.39f));
+
+        MakeReadme("00_System", "Entry: START→Stage01, QUIT→quit. Edit TitleText, button text, background color.");
+    }
+
+    // =========================================================================
+    // Stage02 — Ward Elevator
+    // =========================================================================
+    static void SetupStage02()
+    {
+        var sys    = FindOrCreate("00_System");
+        var walls  = FindOrCreate("02_Walls");
+        var props  = FindOrCreate("03_Props");
+        var enemies= FindOrCreate("04_Enemies");
+        var items  = FindOrCreate("05_Items");
+        var trigs  = FindOrCreate("06_Triggers");
+        var ui     = FindOrCreate("07_UI");
+        var cam    = FindOrCreate("08_Camera");
+
+        PlacePrefab(P_GRID,  Vector3.zero, sys.transform, "GridManager");
+        EnsureEventSystem(sys.transform);
+
+        var player = PlacePrefab(P_PLAYER, new Vector3(-40, -20, 0), null, "Player");
+        WireAttackHitbox(player);
+        WirePlayerAnimator(player);
+
+        var camGo = EnsureCamera(cam.transform, 7f);
+        var cf = EnsureComponent<CameraFollow>(camGo);
+        cf.target = player.transform;
+        cf.smoothSpeed = 8f;
+        cf.offset = new Vector3(0, 0, -10);
+
+        // ── Floor (Tilemap) ───────────────────────────────────────────────────
+        var tm = EnsureFloorTilemap();
+        FillFloor(tm, -45, -25, -22, -10);  // Entry bottom-left
+        FillFloor(tm, -22,  -4,  25,   4);  // Main corridor E-W
+        FillFloor(tm, -20,   4,  15,  22);  // Ward north
+        FillFloor(tm, -20,   6,  -5,  20);  // Patient room 1
+        FillFloor(tm,   0,   6,  15,  20);  // Patient room 2
+        FillFloor(tm,  22, -12,  45,  12);  // Keycard + elevator area
+
+        // ── Outer walls ───────────────────────────────────────────────────────
+        FillWallRow(walls.transform, -45, 45, -25, "Wall_S02_Bottom");
+        FillWallRow(walls.transform, -45, 45,  25, "Wall_S02_Top");
+        FillWallCol(walls.transform,  25, -45, -45, "Wall_S02_Left");
+        FillWallCol(walls.transform,  25,  45,  45, "Wall_S02_Right");
+
+        // Corridor walls
+        FillWallRow(walls.transform, -22, -1, -4, "Wall_S02_CorridorSouth");
+        FillWallRow(walls.transform, -22, -1,  4, "Wall_S02_CorridorNorth");
+
+        // ── Late lobby — 5 Small ──────────────────────────────────────────────
+        var le1 = PlaceEnemy(P_SMALL, -38, -18, enemies.transform, "Enemy_S02_Entry_S01");
+        var le2 = PlaceEnemy(P_SMALL, -35, -18, enemies.transform, "Enemy_S02_Entry_S02");
+        var le3 = PlaceEnemy(P_SMALL, -32, -18, enemies.transform, "Enemy_S02_Entry_S03");
+        var le4 = PlaceEnemy(P_SMALL, -38, -14, enemies.transform, "Enemy_S02_Entry_S04");
+        var le5 = PlaceEnemy(P_SMALL, -35, -14, enemies.transform, "Enemy_S02_Entry_S05");
+        CreateEnemyActivateTrigger(trigs.transform, -42, -22, 6, 6,
+            "Trigger_S02_Entry",
+            new[] { le1.GetComponent<EnemyAI>(), le2.GetComponent<EnemyAI>(),
+                    le3.GetComponent<EnemyAI>(), le4.GetComponent<EnemyAI>(),
+                    le5.GetComponent<EnemyAI>() });
+
+        // ── Ward corridor — 6 Small (patrol pairs) ────────────────────────────
+        var wc1 = PlaceEnemy(P_SMALL, -10, 0, enemies.transform, "Enemy_S02_Ward_S01");
+        var wc2 = PlaceEnemy(P_SMALL,  -8, 0, enemies.transform, "Enemy_S02_Ward_S02");
+        var wc3 = PlaceEnemy(P_SMALL,   0, 0, enemies.transform, "Enemy_S02_Ward_S03");
+        var wc4 = PlaceEnemy(P_SMALL,   2, 0, enemies.transform, "Enemy_S02_Ward_S04");
+        var wc5 = PlaceEnemy(P_SMALL,  10, 0, enemies.transform, "Enemy_S02_Ward_S05");
+        var wc6 = PlaceEnemy(P_SMALL,  12, 0, enemies.transform, "Enemy_S02_Ward_S06");
+
+        // ── Patient room fight — 5 Small + 1 Medium ───────────────────────────
+        var pr1 = PlaceEnemy(P_SMALL, -14, 12, enemies.transform, "Enemy_S02_PatRoom_S01");
+        var pr2 = PlaceEnemy(P_SMALL, -12, 12, enemies.transform, "Enemy_S02_PatRoom_S02");
+        var pr3 = PlaceEnemy(P_SMALL, -14, 15, enemies.transform, "Enemy_S02_PatRoom_S03");
+        var pr4 = PlaceEnemy(P_SMALL, -12, 15, enemies.transform, "Enemy_S02_PatRoom_S04");
+        var pr5 = PlaceEnemy(P_SMALL, -10, 15, enemies.transform, "Enemy_S02_PatRoom_S05");
+        var pr6 = PlaceEnemy(P_MED,   -12, 10, enemies.transform, "Enemy_S02_PatRoom_M01");
+        CreateWaveTrigger(trigs.transform, -20, 5, 4, 4,
+            "Trigger_S02_PatientRoom",
+            new[] { pr1, pr2, pr3, pr4, pr5, pr6 });
+
+        // ── Keycard room — 1 Medium + 3 Small ─────────────────────────────────
+        var kr1 = PlaceEnemy(P_SMALL, 27,  8, enemies.transform, "Enemy_S02_KeyRoom_S01");
+        var kr2 = PlaceEnemy(P_SMALL, 30,  8, enemies.transform, "Enemy_S02_KeyRoom_S02");
+        var kr3 = PlaceEnemy(P_SMALL, 33,  8, enemies.transform, "Enemy_S02_KeyRoom_S03");
+        var kr4 = PlaceEnemy(P_MED,   30, -4, enemies.transform, "Enemy_S02_KeyRoom_M01");
+        CreateEnemyActivateTrigger(trigs.transform, 22, 0, 4, 4,
+            "Trigger_S02_KeycardRoom",
+            new[] { kr1.GetComponent<EnemyAI>(), kr2.GetComponent<EnemyAI>(),
+                    kr3.GetComponent<EnemyAI>(), kr4.GetComponent<EnemyAI>() });
+
+        // ── Items ─────────────────────────────────────────────────────────────
+        var keycard = PlacePrefab(P_KEY, new Vector3(30, -5, 0), items.transform, "Item_Keycard_Main");
+        SetGridItemType(keycard, ItemType.Keycard);
+        PlacePrefab(P_HEAL, new Vector3(-14, 17, 0), items.transform, "Item_Heal_01");
+
+        // ── Elevator trigger ───────────────────────────────────────────────────
+        CreateStageClearTrigger(trigs.transform, 42, 0, 3, 3,
+            "Trigger_ToBoss01", "Boss01_Elevator", true);
+
+        // ── UI ────────────────────────────────────────────────────────────────
+        SetupCombatUI(ui.transform, "Stage02");
+
+        MakeReadme("00_System",
+            "Stage02 Ward Elevator. Keycard at (30,-5). Elevator trigger requires Keycard.");
+    }
+
+    // =========================================================================
+    // Boss01 — Elevator
+    // =========================================================================
+    static void SetupBoss01()
+    {
+        var sys  = FindOrCreate("00_System");
+        var ui   = FindOrCreate("07_UI");
+        var cam  = FindOrCreate("08_Camera");
+
+        PlacePrefab(P_GRID, Vector3.zero, sys.transform, "GridManager");
+        EnsureEventSystem(sys.transform);
+
+        // vFinal-Lock-4 시작 위치: 플레이어 (0, -2), 보스 (0, 2)
+        var player = PlacePrefab(P_PLAYER, new Vector3(0, -2, 0), null, "Player");
+        WireAttackHitbox(player);
+        WirePlayerAnimator(player);
+
+        var camGo = EnsureCamera(cam.transform, 5f);
+        var cf = EnsureComponent<CameraFollow>(camGo);
+        cf.target = player.transform;
+        cf.smoothSpeed = 8f;
+        cf.offset = new Vector3(0, 0, -10);
+
+        // ── Boss object ────────────────────────────────────────────────────────
+        var bossGo = FindOrCreateWithComponent<BossHealth>("Boss_Elevator");
+        bossGo.transform.position = new Vector3(0, 2, 0); // 명세 시작 위치
+        EnsureComponent<BossPatternCaster>(bossGo);
+        var bc = EnsureComponent<ElevatorBossController>(bossGo);
+
+        // Non-blocking occupant — player can walk through boss; PlayerCombat hits via BossCell property
+        var bossOcc = EnsureComponent<GridOccupant>(bossGo);
+        bossOcc.blocksMovement = false;
+
+        // Boss sprite (visible placeholder, 64×64 purple)
+        var bossSpriteGo = FindOrCreateChild(bossGo.transform, "BossSprite");
+        bossSpriteGo.transform.localPosition = Vector3.zero;
+        var bossSR = EnsureComponent<SpriteRenderer>(bossSpriteGo);
+        var bossPH = PlaceholderSpriteCreator.GetSprite("Boss_PH");
+        if (bossPH != null)
+        {
+            bossSR.sprite           = bossPH;
+            bossSR.sortingLayerName = "Boss";
+            bossSR.sortingOrder     = 0;
+        }
+
+        // Animator — IDLE_DOWN.anim 등 클립의 path: "" 바인딩 때문에
+        //            Animator는 SpriteRenderer와 같은 오브젝트(BossSprite)에 있어야 한다.
+        //            Root(Boss_Elevator)에 두면 clip이 SpriteRenderer를 찾지 못함.
+        var bossAnimator = EnsureComponent<Animator>(bossSpriteGo);
+        const string BOSS_CTRL_PATH = "Assets/Project/Resources/Boss/BOSSASSET/BOSS/ANIME/BossAnimator.controller";
+        var animCtrl = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(BOSS_CTRL_PATH);
+        if (animCtrl != null)
+            bossAnimator.runtimeAnimatorController = animCtrl;
+        else
+            Debug.LogWarning("[Boss] BossAnimator.controller not found. Run 'Project Tools > Boss > Create Boss Animator Controller' first.");
+
+        // BossAnimatorDriver — animator + bossSpriteRenderer 와이어링 (드라이버는 Root에 유지)
+        var animDriver = EnsureComponent<BossAnimatorDriver>(bossGo);
+        var animDriverSO = new SerializedObject(animDriver);
+        animDriverSO.FindProperty("animator").objectReferenceValue = bossAnimator;
+        animDriverSO.FindProperty("bossSpriteRenderer").objectReferenceValue = bossSR;
+        animDriverSO.ApplyModifiedProperties();
+
+        // AudioSource — 2D, playOnAwake=false
+        var bossAudio = EnsureComponent<AudioSource>(bossGo);
+        bossAudio.playOnAwake  = false;
+        bossAudio.spatialBlend = 0f;
+
+        // PatternOrigin — standalone at arena center (NOT child of boss, so boss teleports don't shift it)
+        var originGo = GameObject.Find("PatternOrigin");
+        if (originGo == null) originGo = new GameObject("PatternOrigin");
+        originGo.transform.SetParent(sys.transform, false);
+        originGo.transform.position = Vector3.zero;
+
+        // Arena floor (7x7 centered)
+        var tm = EnsureFloorTilemap();
+        FillFloor(tm, -3, -3, 3, 3);
+
+        // Arena outer walls
+        var walls = FindOrCreate("02_Walls");
+        FillWallRow(walls.transform, -4, 4, -4, "Wall_Boss01_Bottom");
+        FillWallRow(walls.transform, -4, 4,  4, "Wall_Boss01_Top");
+        FillWallCol(walls.transform,  4, -4, -4, "Wall_Boss01_Left");
+        FillWallCol(walls.transform,  4,  4,  4, "Wall_Boss01_Right");
+
+        // Wire BossPatternCaster references via serialized fields
+        var casterSO = new SerializedObject(bossGo.GetComponent<BossPatternCaster>());
+        casterSO.FindProperty("patternOrigin").objectReferenceValue = originGo.transform;
+        var dmgPfb = AssetDatabase.LoadAssetAtPath<GameObject>(P_DMG);
+        var wrnPfb = AssetDatabase.LoadAssetAtPath<GameObject>(P_WARN);
+        var sfePfb = AssetDatabase.LoadAssetAtPath<GameObject>(P_SAFE);
+        if (dmgPfb) casterSO.FindProperty("damageTilePrefab").objectReferenceValue = dmgPfb;
+        if (wrnPfb) casterSO.FindProperty("warningTilePrefab").objectReferenceValue = wrnPfb;
+        if (sfePfb) casterSO.FindProperty("safeTilePrefab").objectReferenceValue = sfePfb;
+        casterSO.ApplyModifiedProperties();
+
+        // Wire ElevatorBossController
+        var ctrlSO = new SerializedObject(bc);
+        ctrlSO.FindProperty("nextSceneName").stringValue = "RooftopEndingWalk";
+        AssignObjectReferenceIfNull(ctrlSO, "bossSpriteTransform", bossSpriteGo.transform);
+        // 애니메이션 방향별 클립 사용 — 회전 불필요
+        AssignBoolIfDefault(ctrlSO, "rotateBossVisualByFacing", false);
+        AssignFloatIfZero(ctrlSO, "visualRotationOffsetDegrees", 0f);
+        // bossSpriteYOffset: IDLE_DOWN.anim 첫 프레임 sprite로 자동 계산
+        float autoYOffset = CalcSpriteHalfHeight(
+            "Assets/Project/Resources/Boss/BOSSASSET/BOSS/ANIME/IDLE_DOWN.anim");
+        AssignFloatIfZero(ctrlSO, "bossSpriteYOffset", autoYOffset);
+        var bhSO = bossGo.GetComponent<BossHealth>();
+        AssignObjectReferenceIfNull(ctrlSO, "bossHealth", bhSO);
+        AssignObjectReferenceIfNull(ctrlSO, "caster", bossGo.GetComponent<BossPatternCaster>());
+        AssignObjectReferenceIfNull(ctrlSO, "animDriver", animDriver);
+        AssignObjectReferenceIfNull(ctrlSO, "bossAudioSource", bossAudio);
+
+        // VFX 프리팹 와이어링
+        var scratchPfb = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Project/Prefabs/Boss/ScratchVFX.prefab");
+        var slamPfb    = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Project/Prefabs/Boss/SlamVFX.prefab");
+        var smokePfb   = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Project/Prefabs/Boss/DashSmokeVFX.prefab");
+        var markAtkPfb = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Project/Prefabs/Boss/MarkATKVFX.prefab");
+        if (scratchPfb != null) AssignObjectReferenceIfNull(ctrlSO, "scratchVFXPrefab", scratchPfb);
+        if (slamPfb    != null) AssignObjectReferenceIfNull(ctrlSO, "slamVFXPrefab", slamPfb);
+        if (smokePfb   != null) AssignObjectReferenceIfNull(ctrlSO, "dashSmokeVFXPrefab", smokePfb);
+        if (markAtkPfb != null) AssignObjectReferenceIfNull(ctrlSO, "markAtkVFXPrefab", markAtkPfb);
+
+        ctrlSO.ApplyModifiedProperties();
+
+        // ── Boss UI ────────────────────────────────────────────────────────────
+        var canvas = GetOrCreateCanvas("Canvas");
+        var ct = canvas.transform;
+
+        // Remove legacy flat HPText at canvas root from old builds
+        var legacyHp = ct.Find("HPText");
+        if (legacyHp != null) Object.DestroyImmediate(legacyHp.gameObject);
+
+        // Player HP panel (background + text)
+        var hpPanel = FindOrCreateUIChild(ct, "HPPanel");
+        SetRect(hpPanel, new Vector2(0f, 0.88f), new Vector2(0.28f, 1f));
+        var hpBg = EnsureComponent<Image>(hpPanel);
+        hpBg.color = new Color(0f, 0f, 0f, 0.6f);
+        var hpTextGo = FindOrCreateUIChild(hpPanel.transform, "HPText");
+        var hpText = EnsureComponent<TextMeshProUGUI>(hpTextGo);
+        hpText.text = "HP: 3 / 3";
+        hpText.fontSize = 36;
+        hpText.color = Color.white;
+        hpText.alignment = TextAlignmentOptions.MidlineLeft;
+        SetRect(hpTextGo, new Vector2(0.05f, 0f), new Vector2(0.95f, 1f));
+        var hpUI = EnsureComponent<HpTextUI>(hpTextGo);
+        var hpUISO = new SerializedObject(hpUI);
+        hpUISO.FindProperty("hpText").objectReferenceValue = hpText;
+        hpUISO.FindProperty("heartRoot").objectReferenceValue = hpPanel.GetComponent<RectTransform>();
+        hpUISO.FindProperty("heartContainerPrefab").objectReferenceValue =
+            AssetDatabase.LoadAssetAtPath<GameObject>("Assets/HeartSystem/Prefabs/HeartContainer.prefab");
+        hpUISO.ApplyModifiedProperties();
+
+        // Boss HP panel (background + text)
+        var bossPanel = FindOrCreateUIChild(ct, "BossHPPanel");
+        SetRect(bossPanel, new Vector2(0.28f, 0.88f), new Vector2(0.72f, 1f));
+        var bossPanelBg = EnsureComponent<Image>(bossPanel);
+        bossPanelBg.color = new Color(0f, 0f, 0f, 0.6f);
+        var bossTextGo = FindOrCreateUIChild(bossPanel.transform, "BossHPText");
+        var bossText = EnsureComponent<TextMeshProUGUI>(bossTextGo);
+        bossText.text = "BOSS: 40 / 40";
+        bossText.fontSize = 36;
+        bossText.color = new Color(1f, 0.3f, 0.3f, 1f);
+        bossText.alignment = TextAlignmentOptions.Center;
+        SetRect(bossTextGo, new Vector2(0.05f, 0f), new Vector2(0.95f, 1f));
+        var bossUI = EnsureComponent<BossHpTextUI>(bossPanel);
+        var bossUISO = new SerializedObject(bossUI);
+        bossUISO.FindProperty("hpText").objectReferenceValue = bossText;
+        bossUISO.FindProperty("bossHealth").objectReferenceValue = bhSO;
+        bossUISO.FindProperty("container").objectReferenceValue = bossPanel;
+        bossUISO.ApplyModifiedProperties();
+
+        // BossHpBar (fill-based, 단색 Image — 나중에 스프라이트로 교체 가능)
+        var hpBarBg = FindOrCreateUIChild(bossPanel.transform, "BossHpBarBg");
+        SetRect(hpBarBg, new Vector2(0f, 0f), new Vector2(1f, 0.35f));
+        var hpBarBgImg = EnsureComponent<Image>(hpBarBg);
+        hpBarBgImg.color = new Color(0.15f, 0f, 0f, 0.8f);
+
+        var hpBarFill = FindOrCreateUIChild(hpBarBg.transform, "BossHpBarFill");
+        SetRect(hpBarFill, Vector2.zero, Vector2.one);
+        var hpBarFillImg = EnsureComponent<Image>(hpBarFill);
+        hpBarFillImg.sprite     = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
+        hpBarFillImg.color      = new Color(0.9f, 0.1f, 0.1f, 1f);
+        hpBarFillImg.type       = Image.Type.Simple;
+        hpBarFillImg.fillMethod = Image.FillMethod.Horizontal;
+        hpBarFillImg.fillOrigin = 0; // Left
+
+        var hpBar   = EnsureComponent<BossHpBar>(hpBarFill);
+        var hpBarSO = new SerializedObject(hpBar);
+        hpBarSO.FindProperty("fillImage").objectReferenceValue  = hpBarFillImg;
+        hpBarSO.FindProperty("bossHealth").objectReferenceValue = bhSO;
+        hpBarSO.ApplyModifiedProperties();
+
+        // GameOver panel
+        CreateGameOverPanel(ct, "Boss01");
+
+        MakeReadme("00_System",
+            "Boss01 Elevator. Arena 7x7. nextSceneName=RooftopEndingWalk. " +
+            "PatternTile prefabs wired in BossPatternCaster. " +
+            "Do NOT modify ElevatorBossController pattern code.");
+    }
+
+    // =========================================================================
+    // RooftopEndingWalk
+    // =========================================================================
+    static void SetupRooftop()
+    {
+        var sys   = FindOrCreate("00_System");
+        var walls = FindOrCreate("02_Walls");
+        var trigs = FindOrCreate("06_Triggers");
+        var ui    = FindOrCreate("07_UI");
+        var cam   = FindOrCreate("08_Camera");
+
+        PlacePrefab(P_GRID, Vector3.zero, sys.transform, "GridManager");
+        EnsureEventSystem(sys.transform);
+
+        var player = PlacePrefab(P_PLAYER, new Vector3(-14, 0, 0), null, "Player");
+        WirePlayerAnimator(player);
+        // Disable combat on player for this scene (non-combat)
+        var combat = player.GetComponent<PlayerCombat>();
+        if (combat) combat.enabled = false;
+        var dash = player.GetComponent<PlayerDash>();
+        if (dash) dash.enabled = false;
+
+        var camGo = EnsureCamera(cam.transform, 5f);
+        var cf = EnsureComponent<CameraFollow>(camGo);
+        cf.target = player.transform;
+        cf.smoothSpeed = 4f;
+        cf.offset = new Vector3(0, 0, -10);
+
+        // Rooftop floor (Tilemap)
+        var tm = EnsureFloorTilemap();
+        FillFloor(tm, -15, -4, 15, 5);
+
+        // Outer walls (railing placeholders)
+        FillWallRow(walls.transform, -16, 16, -5, "Wall_Rooftop_Bottom");
+        FillWallRow(walls.transform, -16, 16,  6, "Wall_Rooftop_Top");
+        PlaceWall(walls.transform, -16, 0, "Wall_Rooftop_Left");
+        PlaceWall(walls.transform,  16, 0, "Wall_Rooftop_Right");
+
+        // ── Cutscene UI ────────────────────────────────────────────────────────
+        var canvas = GetOrCreateCanvas("Canvas");
+        var ct = canvas.transform;
+
+        var csPanel = FindOrCreateUIChild(ct, "CutscenePanel");
+        csPanel.SetActive(false);
+        SetRect(csPanel, new Vector2(0f, 0f), new Vector2(1f, 0.25f));
+        var bg = EnsureComponent<Image>(csPanel);
+        bg.color = new Color(0, 0, 0, 0.8f);
+
+        var csText = FindOrCreateUIChild(csPanel.transform, "CutsceneText");
+        var csTMP = EnsureComponent<TextMeshProUGUI>(csText);
+        csTMP.text = "";
+        csTMP.fontSize = 28;
+        csTMP.color = Color.white;
+        csTMP.alignment = TextAlignmentOptions.MidlineLeft;
+        SetRect(csText, new Vector2(0.05f, 0.1f), new Vector2(0.95f, 0.9f));
+
+        var fadePanel = FindOrCreateUIChild(ct, "FadePanel");
+        SetRect(fadePanel, Vector2.zero, Vector2.one);
+        var fadeImg = EnsureComponent<Image>(fadePanel);
+        fadeImg.color = Color.clear;
+
+        // ── Cutscene triggers ─────────────────────────────────────────────────
+        CreateCutsceneTrigger(trigs.transform, -10, 0, 2, 4,
+            "CutsceneTrigger_01", "...Stop...", csPanel, csText.GetComponent<TextMeshProUGUI>());
+        CreateCutsceneTrigger(trigs.transform,  -2, 0, 2, 4,
+            "CutsceneTrigger_02", "That wasn't a monster.", csPanel, csText.GetComponent<TextMeshProUGUI>());
+        CreateCutsceneTrigger(trigs.transform,   6, 0, 2, 4,
+            "CutsceneTrigger_03", "The memory returns.", csPanel, csText.GetComponent<TextMeshProUGUI>());
+
+        // Final ending trigger
+        var fetGo = new GameObject("FinalEndingTrigger");
+        fetGo.transform.SetParent(trigs.transform, false);
+        fetGo.transform.position = new Vector3(14, 0, 0);
+        var fet = fetGo.AddComponent<FinalEndingTrigger>();
+        var fetSO = new SerializedObject(fet);
+        var sizeProp = fetSO.FindProperty("size");
+        if (sizeProp != null) { sizeProp.vector2IntValue = new Vector2Int(3, 4); }
+        fetSO.FindProperty("endingSceneName").stringValue = "EndingCredits";
+        fetSO.FindProperty("delayBeforeLoad").floatValue = 1f;
+        fetSO.FindProperty("triggerOnce").boolValue = true;
+        fetSO.ApplyModifiedProperties();
+
+        MakeReadme("00_System",
+            "RooftopEndingWalk — NO combat, NO enemies. " +
+            "Walk left to right. Cutscene triggers at x=-10,-2,6. FinalEndingTrigger at x=14. " +
+            "Adjust CutscenePanel messages in CutsceneTrigger components.");
+    }
+
+    // =========================================================================
+    // EndingCredits
+    // =========================================================================
+    static void SetupEndingCredits()
+    {
+        EnsureCamera(null, 5f);
+        EnsureEventSystem();
+
+        var sys = FindOrCreate("00_System");
+        EnsureComponent<SceneLoader>(sys);
+
+        var canvas = GetOrCreateCanvas("Canvas");
+        var ct = canvas.transform;
+
+        var bg = MakeUIPanel(ct, "BackgroundPanel", Color.black);
+        StretchFull(bg);
+
+        var titleGo = MakeUIText(ct, "TitleText", "CODE BLUE", 64, TextAlignmentOptions.Center);
+        SetRect(titleGo, new Vector2(0.1f, 0.72f), new Vector2(0.9f, 0.9f));
+
+        string credits =
+            "Created by Team ...\n\n" +
+            "Programming:\n" +
+            "Design:\n" +
+            "Art:\n" +
+            "Sound:";
+        var creditGo = MakeUIText(ct, "CreditText", credits, 28, TextAlignmentOptions.Center);
+        SetRect(creditGo, new Vector2(0.1f, 0.28f), new Vector2(0.9f, 0.72f));
+
+        var finalGo = MakeUIText(ct, "FinalText", "Thanks for playing", 36, TextAlignmentOptions.Center);
+        SetRect(finalGo, new Vector2(0.1f, 0.1f), new Vector2(0.9f, 0.26f));
+
+        MakeReadme("00_System",
+            "EndingCredits. Edit TitleText, CreditText, FinalText in the Canvas hierarchy. " +
+            "Replace background color in BackgroundPanel Image component.");
+    }
+
+    // =========================================================================
+    // Helpers — Objects
+    // =========================================================================
+
+    static GameObject PlacePrefab(string path, Vector3 pos, Transform parent, string name)
+    {
+        var pfb = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+        if (pfb == null)
+        {
+            Debug.LogWarning($"[BoxPrototype] Prefab not found: {path}");
+            var empty = new GameObject(name);
+            empty.transform.SetParent(parent, false);
+            empty.transform.position = pos;
+            return empty;
+        }
+
+        // Check if already exists in scene with this name — if so, force-update position
+        // so SetupXxx changes to start positions take effect on rebuild.
+        if (parent != null)
+        {
+            var existing = parent.Find(name);
+            if (existing != null) { existing.position = pos; return existing.gameObject; }
+        }
+        else
+        {
+            var found = GameObject.Find(name);
+            if (found != null) { found.transform.position = pos; return found; }
+        }
+
+        var go = (GameObject)PrefabUtility.InstantiatePrefab(pfb);
+        go.name = name;
+        go.transform.position = pos;
+        if (parent != null) go.transform.SetParent(parent, true);
+        return go;
+    }
+
+    static GameObject PlaceEnemy(string path, int x, int y, Transform parent, string name)
+    {
+        var go = PlacePrefab(path, new Vector3(x, y, 0), parent, name);
+        var ai = go.GetComponent<EnemyAI>();
+        if (ai != null)
+        {
+            var so = new SerializedObject(ai);
+            so.FindProperty("startActive").boolValue = false;
+            so.ApplyModifiedProperties();
+        }
+        go.SetActive(true);
+        return go;
+    }
+
+    static void PlaceWall(Transform parent, int x, int y, string name)
+    {
+        PlacePrefab(P_WALL, new Vector3(x, y, 0), parent, name);
+    }
+
+    static void PlaceVehicle(Transform parent, int startX, int startY, string label)
+    {
+        // 2-wide x 3-tall wall block
+        for (int dx = 0; dx < 2; dx++)
+            for (int dy = 0; dy < 3; dy++)
+                PlaceWall(parent, startX + dx, startY + dy, $"{label}_{dx}_{dy}");
+    }
+
+    static Tilemap EnsureFloorTilemap()
+    {
+        var gridGo = GameObject.Find("01_Floor");
+        if (gridGo == null)
+            gridGo = new GameObject("01_Floor");
+
+        // If no Tilemap exists yet, clear legacy individual tile GameObjects
+        if (gridGo.GetComponentInChildren<Tilemap>() == null)
+        {
+            for (int i = gridGo.transform.childCount - 1; i >= 0; i--)
+                Object.DestroyImmediate(gridGo.transform.GetChild(i).gameObject);
+        }
+
+        var grid = gridGo.GetComponent<Grid>();
+        if (grid == null) grid = gridGo.AddComponent<Grid>();
+        grid.cellSize = new Vector3(1, 1, 0);
+
+        var tilemapGo = gridGo.transform.Find("FloorMap")?.gameObject;
+        if (tilemapGo == null)
+        {
+            tilemapGo = new GameObject("FloorMap");
+            tilemapGo.transform.SetParent(gridGo.transform, false);
+        }
+
+        var tm = tilemapGo.GetComponent<Tilemap>();
+        if (tm == null) tm = tilemapGo.AddComponent<Tilemap>();
+
+        var tmr = tilemapGo.GetComponent<TilemapRenderer>();
+        if (tmr == null) tmr = tilemapGo.AddComponent<TilemapRenderer>();
+        tmr.sortingLayerName = "Floor";
+        tmr.sortingOrder = 0;
+
+        return tm;
+    }
+
+    static void FillFloor(Tilemap tm, int xMin, int yMin, int xMax, int yMax)
+    {
+        var tileA = AssetDatabase.LoadAssetAtPath<TileBase>(T_FLOOR_A);
+        var tileB = AssetDatabase.LoadAssetAtPath<TileBase>(T_FLOOR_B);
+        if (tileA == null || tileB == null)
+        {
+            Debug.LogWarning("[BoxPrototype] FloorTile .asset files missing. Run 'Create FloorTile Placeholders' first.");
+            return;
+        }
+        for (int x = xMin; x <= xMax; x++)
+            for (int y = yMin; y <= yMax; y++)
+                tm.SetTile(new Vector3Int(x, y, 0), (x + y) % 2 == 0 ? tileA : tileB);
+    }
+
+    static void FillWallRow(Transform parent, int xMin, int xMax, int y, string label)
+    {
+        var pfb = AssetDatabase.LoadAssetAtPath<GameObject>(P_WALL);
+        if (pfb == null) return;
+        for (int x = xMin; x <= xMax; x++)
+        {
+            string wname = $"{label}_{x}";
+            if (parent.Find(wname) != null) continue;
+            var go = (GameObject)PrefabUtility.InstantiatePrefab(pfb);
+            go.name = wname;
+            go.transform.position = new Vector3(x, y, 0);
+            go.transform.SetParent(parent, true);
+        }
+    }
+
+    static void FillWallCol(Transform parent, int yRange, int x, int xLabel, string label)
+    {
+        // yRange = abs range (y from -yRange to yRange), x = x position
+        var pfb = AssetDatabase.LoadAssetAtPath<GameObject>(P_WALL);
+        if (pfb == null) return;
+        for (int y = -yRange; y <= yRange; y++)
+        {
+            string wname = $"{label}_{y}";
+            if (parent.Find(wname) != null) continue;
+            var go = (GameObject)PrefabUtility.InstantiatePrefab(pfb);
+            go.name = wname;
+            go.transform.position = new Vector3(x, y, 0);
+            go.transform.SetParent(parent, true);
+        }
+    }
+
+    // =========================================================================
+    // Helpers — Triggers
+    // =========================================================================
+
+    static void CreateEnemyActivateTrigger(Transform parent, int x, int y, int sizeX, int sizeY,
+        string name, EnemyAI[] enemies)
+    {
+        if (parent.Find(name) != null) return;
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.position = new Vector3(x, y, 0);
+        var trig = go.AddComponent<EnemyActivateTrigger>();
+        var so = new SerializedObject(trig);
+        so.FindProperty("size").vector2IntValue = new Vector2Int(sizeX, sizeY);
+        so.FindProperty("triggerOnce").boolValue = true;
+        var enemyProp = so.FindProperty("enemies");
+        enemyProp.arraySize = enemies.Length;
+        for (int i = 0; i < enemies.Length; i++)
+            enemyProp.GetArrayElementAtIndex(i).objectReferenceValue = enemies[i];
+        so.ApplyModifiedProperties();
+    }
+
+    static void CreateWaveTrigger(Transform parent, int x, int y, int sizeX, int sizeY,
+        string name, GameObject[] enemyObjects)
+    {
+        if (parent.Find(name) != null) return;
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.position = new Vector3(x, y, 0);
+        var trig = go.AddComponent<WaveTrigger>();
+        var so = new SerializedObject(trig);
+        so.FindProperty("size").vector2IntValue = new Vector2Int(sizeX, sizeY);
+        so.FindProperty("triggerOnce").boolValue = true;
+        var prop = so.FindProperty("enemiesToEnable");
+        prop.arraySize = enemyObjects.Length;
+        for (int i = 0; i < enemyObjects.Length; i++)
+            prop.GetArrayElementAtIndex(i).objectReferenceValue = enemyObjects[i];
+        so.ApplyModifiedProperties();
+    }
+
+    static void CreateStageClearTrigger(Transform parent, int x, int y, int sizeX, int sizeY,
+        string name, string nextScene, bool requireKeycard)
+    {
+        if (parent.Find(name) != null) return;
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.position = new Vector3(x, y, 0);
+        var trig = go.AddComponent<StageClearTrigger>();
+        var so = new SerializedObject(trig);
+        so.FindProperty("size").vector2IntValue = new Vector2Int(sizeX, sizeY);
+        so.FindProperty("triggerOnce").boolValue = true;
+        so.FindProperty("nextSceneName").stringValue = nextScene;
+        so.FindProperty("requireKeycard").boolValue = requireKeycard;
+        so.ApplyModifiedProperties();
+    }
+
+    static void CreateCutsceneTrigger(Transform parent, int x, int y, int sizeX, int sizeY,
+        string name, string message, GameObject panel, TextMeshProUGUI msgText)
+    {
+        if (parent.Find(name) != null) return;
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.position = new Vector3(x, y, 0);
+        var trig = go.AddComponent<CutsceneTrigger>();
+        var so = new SerializedObject(trig);
+        so.FindProperty("size").vector2IntValue = new Vector2Int(sizeX, sizeY);
+        so.FindProperty("triggerOnce").boolValue = true;
+        so.FindProperty("message").stringValue = message;
+        so.FindProperty("showDuration").floatValue = 3f;
+        so.FindProperty("lockPlayerDuringCutscene").boolValue = true;
+        if (panel != null)
+            so.FindProperty("panelToShow").objectReferenceValue = panel;
+        if (msgText != null)
+            so.FindProperty("messageText").objectReferenceValue = msgText;
+        so.ApplyModifiedProperties();
+    }
+
+    // =========================================================================
+    // Helpers — UI
+    // =========================================================================
+
+    static void SetupCombatUI(Transform uiParent, string sceneTag)
+    {
+        var canvas = GetOrCreateCanvas("Canvas");
+        var ct = canvas.transform;
+
+        // Remove legacy flat HPText that may exist at canvas root from old builds
+        var legacyHp = ct.Find("HPText");
+        if (legacyHp != null) Object.DestroyImmediate(legacyHp.gameObject);
+
+        // HP panel (background + text)
+        var hpPanel = FindOrCreateUIChild(ct, "HPPanel");
+        SetRect(hpPanel, new Vector2(0f, 0.88f), new Vector2(0.28f, 1f));
+        var hpBg = EnsureComponent<Image>(hpPanel);
+        hpBg.color = new Color(0f, 0f, 0f, 0.6f);
+
+        var hpGo = FindOrCreateUIChild(hpPanel.transform, "HPText");
+        var hpTMP = EnsureComponent<TextMeshProUGUI>(hpGo);
+        hpTMP.text = "HP: 3 / 3";
+        hpTMP.fontSize = 36;
+        hpTMP.color = Color.white;
+        hpTMP.alignment = TextAlignmentOptions.MidlineLeft;
+        SetRect(hpGo, new Vector2(0.05f, 0f), new Vector2(0.95f, 1f));
+        var hpUI = EnsureComponent<HpTextUI>(hpGo);
+        var hpSO = new SerializedObject(hpUI);
+        hpSO.FindProperty("hpText").objectReferenceValue = hpTMP;
+        hpSO.ApplyModifiedProperties();
+
+        // Buff status text
+        var buffGo = FindOrCreateUIChild(ct, "BuffStatusText");
+        var buffTMP = EnsureComponent<TextMeshProUGUI>(buffGo);
+        buffTMP.text = "";
+        buffTMP.fontSize = 28;
+        buffTMP.color = Color.yellow;
+        SetRect(buffGo, new Vector2(0f, 0.8f), new Vector2(0.28f, 0.88f));
+
+        // GameOver panel
+        CreateGameOverPanel(ct, sceneTag);
+    }
+
+    static void CreateGameOverPanel(Transform ct, string sceneTag)
+    {
+        var panelGo = FindOrCreateUIChild(ct, "GameOverPanel");
+        panelGo.SetActive(false);
+        SetRect(panelGo, Vector2.zero, Vector2.one);
+        var bg = EnsureComponent<Image>(panelGo);
+        bg.color = new Color(0, 0, 0, 0.85f);
+
+        var textGo = FindOrCreateUIChild(panelGo.transform, "GameOverText");
+        var tmp = EnsureComponent<TextMeshProUGUI>(textGo);
+        tmp.text = "GAME OVER\nPress R to Retry";
+        tmp.fontSize = 56;
+        tmp.color = Color.white;
+        tmp.alignment = TextAlignmentOptions.Center;
+        SetRect(textGo, new Vector2(0.2f, 0.4f), new Vector2(0.8f, 0.7f));
+
+        // Wire GameOverController
+        var sys = GameObject.Find("00_System");
+        if (sys != null)
+        {
+            var goc = EnsureComponent<GameOverController>(sys);
+            var so = new SerializedObject(goc);
+            so.FindProperty("gameOverPanel").objectReferenceValue = panelGo;
+            so.ApplyModifiedProperties();
+        }
+    }
+
+    static Canvas GetOrCreateCanvas(string name)
+    {
+        var existing = Object.FindObjectOfType<Canvas>();
+        if (existing != null && existing.name == name) return existing;
+
+        // Canvas needs RectTransform — create with all UI components in one go
+        // so the Transform is RectTransform from the start.
+        var go = GameObject.Find(name);
+        if (go == null)
+        {
+            go = new GameObject(name,
+                typeof(RectTransform),
+                typeof(Canvas),
+                typeof(CanvasScaler),
+                typeof(GraphicRaycaster));
+        }
+        var canvas = EnsureComponent<Canvas>(go);
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 100;
+        var scaler = EnsureComponent<CanvasScaler>(go);
+        scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(960, 540);
+        scaler.matchWidthOrHeight  = 0f;
+        EnsureComponent<GraphicRaycaster>(go);
+        return canvas;
+    }
+
+    // UI children must have RectTransform. `new GameObject(name)` creates a plain
+    // Transform; AddComponent<RectTransform> on it later is a no-op. Force the
+    // RectTransform at construction time.
+    static GameObject FindOrCreateUIChild(Transform parent, string name)
+    {
+        var existing = parent.Find(name);
+        if (existing != null) return existing.gameObject;
+        var go = new GameObject(name, typeof(RectTransform));
+        go.transform.SetParent(parent, false);
+        return go;
+    }
+
+    static GameObject MakeUIPanel(Transform parent, string name, Color color)
+    {
+        var go = FindOrCreateUIChild(parent, name);
+        var img = EnsureComponent<Image>(go);
+        img.color = color;
+        return go;
+    }
+
+    static GameObject MakeUIText(Transform parent, string name, string text, int size,
+        TextAlignmentOptions align)
+    {
+        var go = FindOrCreateUIChild(parent, name);
+        var tmp = EnsureComponent<TextMeshProUGUI>(go);
+        tmp.text = text;
+        tmp.fontSize = size;
+        tmp.color = Color.white;
+        tmp.alignment = align;
+        return go;
+    }
+
+    static GameObject MakeButton(Transform parent, string name, string label,
+        SceneLoader loader, string sceneName)
+    {
+        var go = FindOrCreateUIChild(parent, name);
+        EnsureComponent<Image>(go).color = new Color(0.2f, 0.2f, 0.2f, 1f);
+        var btn = EnsureComponent<Button>(go);
+
+        var textGo = FindOrCreateUIChild(go.transform, "Text");
+        var tmp = EnsureComponent<TextMeshProUGUI>(textGo);
+        tmp.text = label;
+        tmp.fontSize = 36;
+        tmp.color = Color.white;
+        tmp.alignment = TextAlignmentOptions.Center;
+        SetRect(textGo, Vector2.zero, Vector2.one);
+
+        if (loader != null)
+        {
+            btn.onClick.RemoveAllListeners();
+            UnityEventTools.AddStringPersistentListener(btn.onClick, loader.LoadScene, sceneName);
+        }
+        return go;
+    }
+
+    static GameObject MakeQuitButton(Transform parent, string name, string label, SceneLoader loader)
+    {
+        var go = FindOrCreateUIChild(parent, name);
+        EnsureComponent<Image>(go).color = new Color(0.15f, 0.15f, 0.15f, 1f);
+        var btn = EnsureComponent<Button>(go);
+
+        var textGo = FindOrCreateUIChild(go.transform, "Text");
+        var tmp = EnsureComponent<TextMeshProUGUI>(textGo);
+        tmp.text = label;
+        tmp.fontSize = 36;
+        tmp.color = Color.white;
+        tmp.alignment = TextAlignmentOptions.Center;
+        SetRect(textGo, Vector2.zero, Vector2.one);
+
+        if (loader != null)
+        {
+            btn.onClick.RemoveAllListeners();
+            UnityEventTools.AddVoidPersistentListener(btn.onClick, loader.QuitGame);
+        }
+        return go;
+    }
+
+    // RectTransform helpers
+    static void SetRect(GameObject go, Vector2 anchorMin, Vector2 anchorMax)
+    {
+        var rt = go.GetComponent<RectTransform>();
+        if (rt == null) rt = go.AddComponent<RectTransform>();
+        rt.anchorMin = anchorMin;
+        rt.anchorMax = anchorMax;
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+    }
+
+    static void SetRect(Transform t, Vector2 anchorMin, Vector2 anchorMax)
+        => SetRect(t.gameObject, anchorMin, anchorMax);
+
+    static void StretchFull(GameObject go) => SetRect(go, Vector2.zero, Vector2.one);
+
+    // =========================================================================
+    // Helpers — General
+    // =========================================================================
+
+    static GameObject FindOrCreate(string name)
+    {
+        var found = GameObject.Find(name);
+        return found != null ? found : new GameObject(name);
+    }
+
+    // Generates Assets/Project/Prefabs/Pattern/AttackHitbox.prefab if missing,
+    // and wires its sprite to the AttackHitbox_PH placeholder.
+    static void EnsureAttackHitboxPrefab()
+    {
+        var sprite = PlaceholderSpriteCreator.GetSprite("AttackHitbox_PH");
+        if (sprite == null)
+        {
+            Debug.LogWarning("[BoxPrototype] AttackHitbox_PH sprite missing — run PlaceholderSpriteCreator first.");
+            return;
+        }
+
+        Directory.CreateDirectory(Path.Combine(Application.dataPath, "Project/Prefabs/Pattern"));
+
+        if (!File.Exists(P_HITBOX))
+        {
+            var template = new GameObject("AttackHitbox");
+            var sr = template.AddComponent<SpriteRenderer>();
+            sr.sprite           = sprite;
+            sr.sortingLayerName = "PatternWarning";
+            sr.sortingOrder     = 5;
+            PrefabUtility.SaveAsPrefabAsset(template, P_HITBOX);
+            Object.DestroyImmediate(template);
+        }
+        else
+        {
+            using var scope = new PrefabUtility.EditPrefabContentsScope(P_HITBOX);
+            var sr = scope.prefabContentsRoot.GetComponent<SpriteRenderer>();
+            if (sr == null) sr = scope.prefabContentsRoot.AddComponent<SpriteRenderer>();
+            sr.sprite           = sprite;
+            sr.sortingLayerName = "PatternWarning";
+            sr.sortingOrder     = 5;
+        }
+    }
+
+    // Sets PlayerCombat.hitboxFlashPrefab on the given player instance.
+    static void WireAttackHitbox(GameObject player)
+    {
+        if (player == null) return;
+        var combat = player.GetComponent<PlayerCombat>();
+        if (combat == null) return;
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(P_HITBOX);
+        if (prefab == null) return;
+        combat.hitboxFlashPrefab = prefab;
+        EditorUtility.SetDirty(combat);
+    }
+
+    // Adds PlayerVisualAnimator2D and wires all sprite arrays from Stage01_Parking player art.
+    static void WirePlayerAnimator(GameObject player)
+    {
+        if (player == null) return;
+        var anim = EnsureComponent<PlayerVisualAnimator2D>(player);
+        var so = new SerializedObject(anim);
+
+        const string BASE = "Assets/Project/Art/Stage01_Parking/Player/";
+
+        Sprite[] Load(string tex, params string[] names)
+        {
+            var all = AssetDatabase.LoadAllAssetsAtPath(tex);
+            var result = new List<Sprite>();
+            foreach (var n in names)
+                foreach (var a in all)
+                    if (a is Sprite s && s.name == n) { result.Add(s); break; }
+            return result.ToArray();
+        }
+
+        SetSpriteArray(so, "idleDown",  Load(BASE + "PlayerIdleDown.png",  "PlayerIdleDown_01",  "PlayerIdleDown_02"));
+        SetSpriteArray(so, "idleUp",    Load(BASE + "PlayerIdleUp.png",    "PlayerIdleUp_01",    "PlayerIdleUp_02"));
+        SetSpriteArray(so, "idleSide",  Load(BASE + "PlayerIdleSide.png",  "PlayerIdleSide_01",  "PlayerIdleSide_02"));
+
+        SetSpriteArray(so, "walkDown",  Load(BASE + "PlayerWalkDown.png",
+            "PlayerWalkDown_01",  "PlayerWalkDown_02",  "PlayerWalkDown_03",  "PlayerWalkDown_04"));
+        SetSpriteArray(so, "walkUp",    Load(BASE + "PlayerWalkUp.png",
+            "PlayerWalkUp_01",    "PlayerWalkUp_02",    "PlayerWalkUp_03",    "PlayerWalkUp_04"));
+        SetSpriteArray(so, "walkLeft",  Load(BASE + "PlayerWalkLeft.png",
+            "PlayerWalkLeft_01",  "PlayerWalkLeft_02",  "PlayerWalkLeft_03",  "PlayerWalkLeft_04"));
+        SetSpriteArray(so, "walkRight", Load(BASE + "PlayerWalkRight.png",
+            "PlayerWalkRight_01", "PlayerWalkRight_02", "PlayerWalkRight_03", "PlayerWalkRight_04"));
+
+        // AttackAll: 4 rows × 8 cols. r01=Down r02=Up r03=Left r04=Right (Unity y: r01 at top of sheet)
+        string atk = BASE + "PlayerAttackAll.png";
+        SetSpriteArray(so, "attackDown",  Load(atk,
+            "PlayerAttackAll_r01_c01","PlayerAttackAll_r01_c02","PlayerAttackAll_r01_c03","PlayerAttackAll_r01_c04",
+            "PlayerAttackAll_r01_c05","PlayerAttackAll_r01_c06","PlayerAttackAll_r01_c07","PlayerAttackAll_r01_c08"));
+        SetSpriteArray(so, "attackUp",    Load(atk,
+            "PlayerAttackAll_r02_c01","PlayerAttackAll_r02_c02","PlayerAttackAll_r02_c03","PlayerAttackAll_r02_c04",
+            "PlayerAttackAll_r02_c05","PlayerAttackAll_r02_c06","PlayerAttackAll_r02_c07","PlayerAttackAll_r02_c08"));
+        SetSpriteArray(so, "attackLeft",  Load(atk,
+            "PlayerAttackAll_r03_c01","PlayerAttackAll_r03_c02","PlayerAttackAll_r03_c03","PlayerAttackAll_r03_c04",
+            "PlayerAttackAll_r03_c05","PlayerAttackAll_r03_c06","PlayerAttackAll_r03_c07","PlayerAttackAll_r03_c08"));
+        SetSpriteArray(so, "attackRight", Load(atk,
+            "PlayerAttackAll_r04_c01","PlayerAttackAll_r04_c02","PlayerAttackAll_r04_c03","PlayerAttackAll_r04_c04",
+            "PlayerAttackAll_r04_c05","PlayerAttackAll_r04_c06","PlayerAttackAll_r04_c07","PlayerAttackAll_r04_c08"));
+
+        // HurtAll: 4 rows × 2 cols. r01=Down r02=Up r03=Left r04=Right
+        string hrt = BASE + "PlayerHurtAll.png";
+        SetSpriteArray(so, "hurtDown",  Load(hrt, "PlayerHurtAll_r01_c01", "PlayerHurtAll_r01_c02"));
+        SetSpriteArray(so, "hurtUp",    Load(hrt, "PlayerHurtAll_r02_c01", "PlayerHurtAll_r02_c02"));
+        SetSpriteArray(so, "hurtLeft",  Load(hrt, "PlayerHurtAll_r03_c01", "PlayerHurtAll_r03_c02"));
+        SetSpriteArray(so, "hurtRight", Load(hrt, "PlayerHurtAll_r04_c01", "PlayerHurtAll_r04_c02"));
+
+        so.ApplyModifiedProperties();
+        EditorUtility.SetDirty(anim);
+    }
+
+    static void SetSpriteArray(SerializedObject so, string fieldName, Sprite[] sprites)
+    {
+        var prop = so.FindProperty(fieldName);
+        if (prop == null) return;
+        prop.arraySize = sprites.Length;
+        for (int i = 0; i < sprites.Length; i++)
+            prop.GetArrayElementAtIndex(i).objectReferenceValue = sprites[i];
+    }
+
+    static GameObject FindOrCreateChild(Transform parent, string name)
+    {
+        var existing = parent.Find(name);
+        if (existing != null) return existing.gameObject;
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        return go;
+    }
+
+    static GameObject FindOrCreateWithComponent<T>(string name) where T : Component
+    {
+        var found = Object.FindObjectOfType<T>();
+        if (found != null) return found.gameObject;
+        var go = new GameObject(name);
+        go.AddComponent<T>();
+        return go;
+    }
+
+    static T EnsureComponent<T>(GameObject go) where T : Component
+    {
+        var c = go.GetComponent<T>();
+        return c != null ? c : go.AddComponent<T>();
+    }
+
+    static GameObject EnsureCamera(Transform parent, float orthoSize)
+    {
+        var camGo = GameObject.Find("Main Camera");
+        if (camGo == null)
+        {
+            camGo = new GameObject("Main Camera");
+            camGo.tag = "MainCamera";
+        }
+        if (parent != null && camGo.transform.parent != parent)
+            camGo.transform.SetParent(parent, false);
+
+        var cam = EnsureComponent<Camera>(camGo);
+        cam.orthographic = true;
+        cam.orthographicSize = orthoSize;
+        cam.clearFlags = CameraClearFlags.SolidColor;
+        cam.backgroundColor = new Color(0.05f, 0.05f, 0.1f);
+        camGo.transform.position = new Vector3(0, 0, -10);
+        return camGo;
+    }
+
+    static void EnsureEventSystem(Transform parent = null)
+    {
+        if (Object.FindObjectOfType<EventSystem>() != null) return;
+        var esGo = new GameObject("EventSystem");
+        if (parent != null) esGo.transform.SetParent(parent, false);
+        esGo.AddComponent<EventSystem>();
+        esGo.AddComponent<StandaloneInputModule>();
+    }
+
+    static void SetGridItemType(GameObject go, ItemType type)
+    {
+        var item = go.GetComponent<GridItem>();
+        if (item == null) return;
+        var so = new SerializedObject(item);
+        so.FindProperty("itemType").enumValueIndex = (int)type;
+        so.ApplyModifiedProperties();
+    }
+
+    static void MakeReadme(string parentName, string content)
+    {
+        var parent = GameObject.Find(parentName);
+        Transform p = parent != null ? parent.transform : null;
+        var existing = p != null ? p.Find("README_SCENE_GUIDE") : null;
+        if (existing != null) Object.DestroyImmediate(existing.gameObject);
+
+        var go = new GameObject("README_SCENE_GUIDE [" + content.Substring(0, Mathf.Min(40, content.Length)) + "...]");
+        if (p != null) go.transform.SetParent(p, false);
+    }
+
+    static void AssignObjectReferenceIfNull(SerializedObject so, string propertyName, Object value)
+    {
+        var prop = so.FindProperty(propertyName);
+        if (prop != null && prop.objectReferenceValue == null)
+            prop.objectReferenceValue = value;
+    }
+
+    static void AssignFloatIfZero(SerializedObject so, string propertyName, float value)
+    {
+        var prop = so.FindProperty(propertyName);
+        if (prop != null && Mathf.Approximately(prop.floatValue, 0f))
+            prop.floatValue = value;
+    }
+
+    static void AssignBoolIfDefault(SerializedObject so, string propertyName, bool value)
+    {
+        var prop = so.FindProperty(propertyName);
+        if (prop != null && prop.boolValue == default(bool))
+            prop.boolValue = value;
+    }
+
+    // =========================================================================
+    // Boss VFX Prefab creation
+    // =========================================================================
+
+    /// <summary>IDLE_DOWN.anim 등의 첫 프레임 sprite에서 world 단위 반높이를 반환합니다.</summary>
+    static float CalcSpriteHalfHeight(string animPath)
+    {
+        var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(animPath);
+        if (clip == null) return 0f;
+
+        var bindings = AnimationUtility.GetObjectReferenceCurveBindings(clip);
+        foreach (var b in bindings)
+        {
+            if (b.propertyName != "m_Sprite") continue;
+            var keys = AnimationUtility.GetObjectReferenceCurve(clip, b);
+            if (keys.Length == 0) continue;
+            if (keys[0].value is Sprite spr)
+                return spr.bounds.extents.y;
+        }
+        return 0f;
+    }
+
+    static void EnsureBossVFXPrefabs(bool forceRebuild = false)
+    {
+        const string BOSS_SPR  = "Assets/Project/Resources/Boss/BOSSASSET/BOSS/Sprite/";
+        const string BOSS_ANIM = "Assets/Project/Resources/Boss/BOSSASSET/BOSS/ANIME/";
+
+        Directory.CreateDirectory(
+            Path.Combine(Application.dataPath, "Project/Prefabs/Boss"));
+
+        // ScratchVFX — sprite only, localScale set at runtime
+        EnsureSimpleVFXPrefab(
+            "Assets/Project/Prefabs/Boss/ScratchVFX.prefab",
+            BOSS_SPR + "SCRATCH-Photoroom.png",
+            "Hazard", 5, forceRebuild);
+
+        // SlamVFX — SMASH sprite + Animator (wire SMASH.anim controller manually)
+        EnsureAnimatedVFXPrefab(
+            "Assets/Project/Prefabs/Boss/SlamVFX.prefab",
+            BOSS_SPR + "SMASH-Photoroom.png",
+            BOSS_ANIM + "SMASH.anim",
+            "Hazard", 18, forceRebuild);
+
+        // DashSmokeVFX — first-choice smoke sprite
+        const string SMOKE1 = "Assets/Eric VFX Studio/Resource/Textures/FX_smoke_02.png";
+        const string SMOKE2 = "Assets/VFXPACK_IMPACT_WALLCOEUR_FreeVersion/03_Texture/VFX_FP_SmokeCircleGround.png";
+        var smoke = AssetDatabase.LoadAssetAtPath<Sprite>(SMOKE1) != null ? SMOKE1 : SMOKE2;
+        EnsureSimpleVFXPrefab(
+            "Assets/Project/Prefabs/Boss/DashSmokeVFX.prefab",
+            smoke,
+            "Hazard", 20, forceRebuild);
+
+        // MarkATKVFX — warning line sprite + Animator (wire MARKATK.anim controller manually)
+        EnsureAnimatedVFXPrefab(
+            "Assets/Project/Prefabs/Boss/MarkATKVFX.prefab",
+            BOSS_SPR + "fx_red_eye_line_warning_vertical_640.png",
+            BOSS_ANIM + "MARKATK.anim",
+            "PatternWarning", 10, forceRebuild);
+
+        AssetDatabase.SaveAssets();
+    }
+
+    static void EnsureSimpleVFXPrefab(string prefabPath, string spritePath,
+        string sortingLayer, int sortingOrder, bool forceRebuild)
+    {
+        var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
+
+        if (File.Exists(prefabPath) && !forceRebuild)
+        {
+            return;
+        }
+
+        if (File.Exists(prefabPath))
+        {
+            using var scope = new PrefabUtility.EditPrefabContentsScope(prefabPath);
+            var sr = scope.prefabContentsRoot.GetComponent<SpriteRenderer>();
+            if (sr == null) sr = scope.prefabContentsRoot.AddComponent<SpriteRenderer>();
+            if (sprite != null) sr.sprite = sprite;
+            sr.sortingLayerName = sortingLayer;
+            sr.sortingOrder     = sortingOrder;
+        }
+        else
+        {
+            var tmpl = new GameObject(Path.GetFileNameWithoutExtension(prefabPath));
+            var sr = tmpl.AddComponent<SpriteRenderer>();
+            if (sprite != null) sr.sprite = sprite;
+            sr.sortingLayerName = sortingLayer;
+            sr.sortingOrder     = sortingOrder;
+            PrefabUtility.SaveAsPrefabAsset(tmpl, prefabPath);
+            Object.DestroyImmediate(tmpl);
+        }
+    }
+
+    static void EnsureAnimatedVFXPrefab(string prefabPath, string spritePath, string animPath,
+        string sortingLayer, int sortingOrder, bool forceRebuild)
+    {
+        var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
+        var clip   = AssetDatabase.LoadAssetAtPath<AnimationClip>(animPath);
+
+        // Build or reuse a standalone AnimatorController for this VFX
+        string ctrlPath = Path.ChangeExtension(prefabPath, null) + "_Ctrl.controller";
+        AnimatorController ctrl;
+
+        if (!File.Exists(ctrlPath))
+        {
+            ctrl = AnimatorController.CreateAnimatorControllerAtPath(ctrlPath);
+            if (clip != null)
+            {
+                var state = ctrl.layers[0].stateMachine.AddState("Play");
+                state.motion = clip;
+                ctrl.layers[0].stateMachine.defaultState = state;
+            }
+        }
+        else
+        {
+            ctrl = AssetDatabase.LoadAssetAtPath<AnimatorController>(ctrlPath);
+        }
+
+        if (File.Exists(prefabPath) && !forceRebuild)
+        {
+            return;
+        }
+
+        if (File.Exists(prefabPath))
+        {
+            using var scope = new PrefabUtility.EditPrefabContentsScope(prefabPath);
+            var root = scope.prefabContentsRoot;
+            var sr = root.GetComponent<SpriteRenderer>();
+            if (sr == null) sr = root.AddComponent<SpriteRenderer>();
+            if (sprite != null) sr.sprite = sprite;
+            sr.sortingLayerName = sortingLayer;
+            sr.sortingOrder     = sortingOrder;
+
+            var anim = root.GetComponent<Animator>();
+            if (anim == null) anim = root.AddComponent<Animator>();
+            if (ctrl != null) anim.runtimeAnimatorController = ctrl;
+        }
+        else
+        {
+            var tmpl = new GameObject(Path.GetFileNameWithoutExtension(prefabPath));
+            var sr = tmpl.AddComponent<SpriteRenderer>();
+            if (sprite != null) sr.sprite = sprite;
+            sr.sortingLayerName = sortingLayer;
+            sr.sortingOrder     = sortingOrder;
+
+            var anim = tmpl.AddComponent<Animator>();
+            if (ctrl != null) anim.runtimeAnimatorController = ctrl;
+
+            PrefabUtility.SaveAsPrefabAsset(tmpl, prefabPath);
+            Object.DestroyImmediate(tmpl);
+        }
+    }
+}

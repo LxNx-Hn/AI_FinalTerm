@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3253df4de00e1504a86e3b735f191110, type: 3}
+  m_Name: PortraitDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::PortraitDatabase
+  normal: {fileID: 5240267793677431283, guid: 4ab91643098d77a479a32860cab20f34, type: 3}
+  delusion: {fileID: -8626690518015131917, guid: b6189bb1d4c121047acd6f7882c9b18c, type: 3}
+  nameCrack1: {fileID: 4629374691472142295, guid: 0fda11181320358489aa91d0b7bb2780, type: 3}
+  nameCrack2: {fileID: -2205687370687737159, guid: 81ef8f18c8975b740a3f626852a0c9ef, type: 3}
+  mergedDelusion: {fileID: -3541461273608344066, guid: 475ece811e970f74d8d9fbf5c69eb511, type: 3}
+  mergedNormal: {fileID: 5707442595864104926, guid: b2352536705946240a7af90d60680c05, type: 3}

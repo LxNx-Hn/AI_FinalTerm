@@ -1,0 +1,876 @@
+fileFormatVersion: 2
+guid: c4937efc7d5889d45b73cebd448227f7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3631654693431038365
+    second: ranged_monster_move_attack_sprite_sheet_0
+  - first:
+      213: -319101679415547049
+    second: ranged_monster_move_attack_sprite_sheet_1
+  - first:
+      213: -9010516519156930626
+    second: ranged_monster_move_attack_sprite_sheet_2
+  - first:
+      213: -800195935440557337
+    second: ranged_monster_move_attack_sprite_sheet_3
+  - first:
+      213: -545574998049042142
+    second: ranged_monster_move_attack_sprite_sheet_4
+  - first:
+      213: -7587742792014789421
+    second: ranged_monster_move_attack_sprite_sheet_5
+  - first:
+      213: -7634072795098183840
+    second: ranged_monster_move_attack_sprite_sheet_6
+  - first:
+      213: 5172581461422566556
+    second: ranged_monster_move_attack_sprite_sheet_7
+  - first:
+      213: -3881831832142523867
+    second: ranged_monster_move_attack_sprite_sheet_8
+  - first:
+      213: 7552948803392400181
+    second: ranged_monster_move_attack_sprite_sheet_9
+  - first:
+      213: -3659829851949408318
+    second: ranged_monster_move_attack_sprite_sheet_10
+  - first:
+      213: 1709282407157553338
+    second: ranged_monster_move_attack_sprite_sheet_11
+  - first:
+      213: 6031158371087597211
+    second: ranged_monster_move_attack_sprite_sheet_12
+  - first:
+      213: -6558915067435476545
+    second: ranged_monster_move_attack_sprite_sheet_13
+  - first:
+      213: -4694495464849895642
+    second: ranged_monster_move_attack_sprite_sheet_14
+  - first:
+      213: 6828857616071871725
+    second: ranged_monster_move_attack_sprite_sheet_15
+  - first:
+      213: -8749099465463542287
+    second: ranged_monster_move_attack_sprite_sheet_16
+  - first:
+      213: -1206794181954766167
+    second: ranged_monster_move_attack_sprite_sheet_17
+  - first:
+      213: -6975717293140484927
+    second: ranged_monster_move_attack_sprite_sheet_18
+  - first:
+      213: 7755976735396100855
+    second: ranged_monster_move_attack_sprite_sheet_19
+  - first:
+      213: -8431516660857951709
+    second: ranged_monster_move_attack_sprite_sheet_20
+  - first:
+      213: -3472442861935836649
+    second: ranged_monster_move_attack_sprite_sheet_21
+  - first:
+      213: -3007509402531025526
+    second: ranged_monster_move_attack_sprite_sheet_22
+  - first:
+      213: -4993353737057775697
+    second: ranged_monster_move_attack_sprite_sheet_23
+  - first:
+      213: 7300904521706544144
+    second: ranged_monster_00
+  - first:
+      213: 6130435955203092637
+    second: ranged_monster_01
+  - first:
+      213: 2066809554623026820
+    second: ranged_monster_02
+  - first:
+      213: 1657364594031177582
+    second: ranged_monster_03
+  - first:
+      213: -2226677782456905300
+    second: ranged_monster_04
+  - first:
+      213: -9028628812752380335
+    second: ranged_monster_05
+  - first:
+      213: -4843683786204356402
+    second: ranged_monster_06
+  - first:
+      213: -4055759384196496560
+    second: ranged_monster_07
+  - first:
+      213: -6749302798619106543
+    second: ranged_monster_08
+  - first:
+      213: 9098977450843899846
+    second: ranged_monster_09
+  - first:
+      213: -643250399059559537
+    second: ranged_monster_10
+  - first:
+      213: -8736970013677660606
+    second: ranged_monster_11
+  - first:
+      213: 7217823789503636774
+    second: ranged_monster_12
+  - first:
+      213: -4297336556151185359
+    second: ranged_monster_13
+  - first:
+      213: 893179679537321764
+    second: ranged_monster_14
+  - first:
+      213: -4682834362464408406
+    second: ranged_monster_15
+  - first:
+      213: -3261454987178154592
+    second: ranged_monster_16
+  - first:
+      213: -9174022521283130003
+    second: ranged_monster_17
+  - first:
+      213: 6739886591917614950
+    second: ranged_monster_18
+  - first:
+      213: 1902618266788157950
+    second: ranged_monster_19
+  - first:
+      213: 7096312041158062905
+    second: ranged_monster_20
+  - first:
+      213: 4499321223161110133
+    second: ranged_monster_21
+  - first:
+      213: -1479764203163839115
+    second: ranged_monster_22
+  - first:
+      213: -6143695485924315944
+    second: ranged_monster_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ranged_monster_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c9c5b0bf5025560800000000000000
+      internalID: 7300904521706544144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d90b924550fa31550800000000000000
+      internalID: 6130435955203092637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48650b9e658ceac10800000000000000
+      internalID: 2066809554623026820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6fa9823154200710800000000000000
+      internalID: 1657364594031177582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_04
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca1d663ba504911e0800000000000000
+      internalID: -2226677782456905300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_05
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15e99073eedd3b280800000000000000
+      internalID: -9028628812752380335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_06
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec068f66247c7ccb0800000000000000
+      internalID: -4843683786204356402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_07
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 053c282145c07b7c0800000000000000
+      internalID: -4055759384196496560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_08
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11322ce2dd8a552a0800000000000000
+      internalID: -6749302798619106543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_09
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c707d878cf064e70800000000000000
+      internalID: 9098977450843899846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8b3d6e8b27b217f0800000000000000
+      internalID: -643250399059559537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 246d081201c00c680800000000000000
+      internalID: -8736970013677660606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6256ab0be7cda2460800000000000000
+      internalID: 7217823789503636774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 130ee42ab2bcc54c0800000000000000
+      internalID: -4297336556151185359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4275b6faf26356c00800000000000000
+      internalID: 893179679537321764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_15
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aace05345fa330fb0800000000000000
+      internalID: -4682834362464408406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a5e15618fbfcb2d0800000000000000
+      internalID: -3261454987178154592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6d4c797f135fa080800000000000000
+      internalID: -9174022521283130003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 667eaa95523e88d50800000000000000
+      internalID: 6739886591917614950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef9d31fab35776a10800000000000000
+      internalID: 1902618266788157950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 933bd8c143a2b7260800000000000000
+      internalID: 7096312041158062905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57ed4e460dcc07e30800000000000000
+      internalID: 4499321223161110133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_22
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 575941f1c42d67be0800000000000000
+      internalID: -1479764203163839115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranged_monster_23
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dc6f4991853dbaa0800000000000000
+      internalID: -6143695485924315944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ranged_monster_00: 7300904521706544144
+      ranged_monster_01: 6130435955203092637
+      ranged_monster_02: 2066809554623026820
+      ranged_monster_03: 1657364594031177582
+      ranged_monster_04: -2226677782456905300
+      ranged_monster_05: -9028628812752380335
+      ranged_monster_06: -4843683786204356402
+      ranged_monster_07: -4055759384196496560
+      ranged_monster_08: -6749302798619106543
+      ranged_monster_09: 9098977450843899846
+      ranged_monster_10: -643250399059559537
+      ranged_monster_11: -8736970013677660606
+      ranged_monster_12: 7217823789503636774
+      ranged_monster_13: -4297336556151185359
+      ranged_monster_14: 893179679537321764
+      ranged_monster_15: -4682834362464408406
+      ranged_monster_16: -3261454987178154592
+      ranged_monster_17: -9174022521283130003
+      ranged_monster_18: 6739886591917614950
+      ranged_monster_19: 1902618266788157950
+      ranged_monster_20: 7096312041158062905
+      ranged_monster_21: 4499321223161110133
+      ranged_monster_22: -1479764203163839115
+      ranged_monster_23: -6143695485924315944
+      ranged_monster_move_attack_sprite_sheet_0: 3631654693431038365
+      ranged_monster_move_attack_sprite_sheet_1: -319101679415547049
+      ranged_monster_move_attack_sprite_sheet_10: -3659829851949408318
+      ranged_monster_move_attack_sprite_sheet_11: 1709282407157553338
+      ranged_monster_move_attack_sprite_sheet_12: 6031158371087597211
+      ranged_monster_move_attack_sprite_sheet_13: -6558915067435476545
+      ranged_monster_move_attack_sprite_sheet_14: -4694495464849895642
+      ranged_monster_move_attack_sprite_sheet_15: 6828857616071871725
+      ranged_monster_move_attack_sprite_sheet_16: -8749099465463542287
+      ranged_monster_move_attack_sprite_sheet_17: -1206794181954766167
+      ranged_monster_move_attack_sprite_sheet_18: -6975717293140484927
+      ranged_monster_move_attack_sprite_sheet_19: 7755976735396100855
+      ranged_monster_move_attack_sprite_sheet_2: -9010516519156930626
+      ranged_monster_move_attack_sprite_sheet_20: -8431516660857951709
+      ranged_monster_move_attack_sprite_sheet_21: -3472442861935836649
+      ranged_monster_move_attack_sprite_sheet_22: -3007509402531025526
+      ranged_monster_move_attack_sprite_sheet_23: -4993353737057775697
+      ranged_monster_move_attack_sprite_sheet_3: -800195935440557337
+      ranged_monster_move_attack_sprite_sheet_4: -545574998049042142
+      ranged_monster_move_attack_sprite_sheet_5: -7587742792014789421
+      ranged_monster_move_attack_sprite_sheet_6: -7634072795098183840
+      ranged_monster_move_attack_sprite_sheet_7: 5172581461422566556
+      ranged_monster_move_attack_sprite_sheet_8: -3881831832142523867
+      ranged_monster_move_attack_sprite_sheet_9: 7552948803392400181
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
