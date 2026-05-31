@@ -31,13 +31,16 @@ public class BossRLStateExtractor : MonoBehaviour
     private readonly float[] damageMask  = new float[MaskObservationSize];
     private readonly float[] prevWarningMask = new float[MaskObservationSize];
 
-    // ── Recent danger memory ──────────────────────────────────────────────────
-    private const int RecentDangerWindowDecisions = 5;
-    private readonly Dictionary<Vector2Int, int> recentWarningCountdown = new Dictionary<Vector2Int, int>();
-    private readonly Dictionary<Vector2Int, int> recentDamageCountdown  = new Dictionary<Vector2Int, int>();
+    // ── Recent danger memory (Time.time TTL-based) ────────────────────────────
+    // warning TTL 0.65s: covers full warning→damage window so agent remembers danger zone
+    // damage TTL 0.30s: brief memory to avoid stepping back in immediately
+    private const float RecentWarningTTL = 0.65f;
+    private const float RecentDamageTTL  = 0.30f;
+    private readonly Dictionary<Vector2Int, float> recentWarningExpireTime = new Dictionary<Vector2Int, float>();
+    private readonly Dictionary<Vector2Int, float> recentDamageExpireTime  = new Dictionary<Vector2Int, float>();
     private readonly HashSet<Vector2Int> recentWarningCells = new HashSet<Vector2Int>();
     private readonly HashSet<Vector2Int> recentDamageCells  = new HashSet<Vector2Int>();
-    // Frame guard to avoid double-updating in the same decision step
+    // Frame guard to avoid double-updating in the same frame
     private int lastRecentDangerFrame = -1;
 
     // ── References ───────────────────────────────────────────────────────────
@@ -79,14 +82,17 @@ public class BossRLStateExtractor : MonoBehaviour
     public int  BossCurrentHp   => bossHealth != null ? bossHealth.currentHp : 0;
     public int  BossMaxHp       => bossHealth != null ? Mathf.Max(1, bossHealth.maxHp) : 1;
     public bool BossIsDead      => bossHealth != null && bossHealth.currentHp <= 0;
-    public bool MoveReady       => playerMover != null && !playerMover.IsMoving && !PlayerIsDead;
-    public bool AttackReady     => playerCombat != null && playerCombat.IsAttackReady;
+    public bool MoveReady              => playerMover != null && !playerMover.IsMoving && !PlayerIsDead;
+    public bool AttackReady            => playerCombat != null && playerCombat.IsAttackReady;
+    public bool IsPlayerMoving         => playerMover != null && playerMover.IsMoving;
+    public int  RecentWarningCellCount => recentWarningCells.Count;
+    public int  RecentDamageCellCount  => recentDamageCells.Count;
 
     public void ResetTemporalState()
     {
         System.Array.Clear(prevWarningMask, 0, prevWarningMask.Length);
-        recentWarningCountdown.Clear();
-        recentDamageCountdown.Clear();
+        recentWarningExpireTime.Clear();
+        recentDamageExpireTime.Clear();
         recentWarningCells.Clear();
         recentDamageCells.Clear();
         lastRecentDangerFrame = -1;
@@ -144,9 +150,11 @@ public class BossRLStateExtractor : MonoBehaviour
 
     public void GetHazardState(out bool onWarning, out bool onDamage)
     {
+        // Use cached hazard state — AppendObservations already calls RefreshHazardMasks each step.
+        // Do NOT call RefreshHazardMasks here; calling it from WriteDiscreteActionMask would
+        // overwrite warningMask BEFORE AppendObservations copies it to prevWarningMask,
+        // breaking the temporal observation AND doubling expensive FindObjectsByType calls.
         if (!EnsureReady(logWarning: false)) { onWarning = onDamage = false; return; }
-        RefreshHazardMasks();
-        TryUpdateRecentDanger();
         Vector2Int p = GetPlayerArenaCell();
         onWarning = warningCells.Contains(p);
         onDamage  = damageCells.Contains(p);
@@ -191,6 +199,22 @@ public class BossRLStateExtractor : MonoBehaviour
         if (playerMover == null) return false;
         if (playerMover.IsMoving) return false;
         return playerMover.CanMove(dir);
+    }
+
+    /// <summary>Geometry-only wall check for action masking.
+    /// Does NOT use IsMoving (busy ≠ wall). Boss cell is always passable.
+    /// Use this for movement hard-mask; never use CanMoveInDirection for wall detection.</summary>
+    public bool IsGeometryBlockedDirection(Vector2Int dir)
+    {
+        if (!EnsureReady(logWarning: false) || playerOccupant == null || GridManager.Instance == null)
+            return true;
+
+        // Boss cell is not a wall – player can attempt to move into it
+        if (IsNextCellBossCell(dir))
+            return false;
+
+        Vector2Int next = playerOccupant.CurrentCell + dir;
+        return !GridManager.Instance.IsWalkable(next, ignoreOccupant: true);
     }
 
     public bool IsNextCellWarning(Vector2Int dir)
@@ -290,31 +314,27 @@ public class BossRLStateExtractor : MonoBehaviour
 
     private void UpdateRecentDanger()
     {
-        // Decrement existing countdowns
-        var wKeys = new List<Vector2Int>(recentWarningCountdown.Keys);
-        foreach (var k in wKeys)
-        {
-            recentWarningCountdown[k]--;
-            if (recentWarningCountdown[k] <= 0) recentWarningCountdown.Remove(k);
-        }
-        var dKeys = new List<Vector2Int>(recentDamageCountdown.Keys);
-        foreach (var k in dKeys)
-        {
-            recentDamageCountdown[k]--;
-            if (recentDamageCountdown[k] <= 0) recentDamageCountdown.Remove(k);
-        }
+        float now = Time.time;
 
-        // Refresh/add current hazard cells at max countdown
+        // Refresh/add current hazard cells with TTL from now
         foreach (Vector2Int cell in warningCells)
-            recentWarningCountdown[cell] = RecentDangerWindowDecisions;
+            recentWarningExpireTime[cell] = now + RecentWarningTTL;
         foreach (Vector2Int cell in damageCells)
-            recentDamageCountdown[cell] = RecentDangerWindowDecisions;
+            recentDamageExpireTime[cell] = now + RecentDamageTTL;
+
+        // Expire old cells
+        var wKeys = new List<Vector2Int>(recentWarningExpireTime.Keys);
+        foreach (var k in wKeys)
+            if (now >= recentWarningExpireTime[k]) recentWarningExpireTime.Remove(k);
+        var dKeys = new List<Vector2Int>(recentDamageExpireTime.Keys);
+        foreach (var k in dKeys)
+            if (now >= recentDamageExpireTime[k]) recentDamageExpireTime.Remove(k);
 
         // Rebuild sets
         recentWarningCells.Clear();
-        foreach (var k in recentWarningCountdown.Keys) recentWarningCells.Add(k);
+        foreach (var k in recentWarningExpireTime.Keys) recentWarningCells.Add(k);
         recentDamageCells.Clear();
-        foreach (var k in recentDamageCountdown.Keys)  recentDamageCells.Add(k);
+        foreach (var k in recentDamageExpireTime.Keys)  recentDamageCells.Add(k);
     }
 
     private bool IsBossInAttackRangeInternal(Vector2Int playerArenaCell)

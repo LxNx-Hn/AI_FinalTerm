@@ -43,6 +43,32 @@ public static class BuildScript
             Debug.LogError("[BuildScript] Build FAILED: " + report.summary.result);
     }
 
+    [MenuItem("Build/Build RL Train (Windows x64)")]
+    public static void BuildRLTrain()
+    {
+        string projectRoot = Directory.GetParent(Application.dataPath).FullName;
+        string outputDir   = Path.Combine(projectRoot, "builds", "windows", "BossPPO_RLTrain");
+        string outputPath  = Path.Combine(outputDir, "BossPPO_RLTrain.exe");
+        Directory.CreateDirectory(outputDir);
+
+        BuildPlayerOptions opts = new BuildPlayerOptions
+        {
+            scenes           = new[] { "Assets/Project/Scenes/Boss01_Elevator_RLTrain.unity" },
+            locationPathName = outputPath,
+            target           = BuildTarget.StandaloneWindows64,
+            options          = BuildOptions.None,
+        };
+
+        BuildReport report = BuildPipeline.BuildPlayer(opts);
+        if (report.summary.result == BuildResult.Succeeded)
+            Debug.Log("[BuildScript] RL Train build succeeded: " + outputPath);
+        else
+        {
+            Debug.LogError("[BuildScript] RL Train build FAILED: " + report.summary.result);
+            EditorApplication.Exit(1);
+        }
+    }
+
     [MenuItem("Build/Build macOS")]
     public static void BuildMacOS()
     {

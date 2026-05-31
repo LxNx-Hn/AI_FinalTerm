@@ -25,19 +25,26 @@ public class BossRLDebugLogger : MonoBehaviour
     private float deathTime;
 
     // ── Movement mask metrics ─────────────────────────────────────────────────
-    private int moveMaskedWallCount;
-    private int moveMaskedWarningCount;       // should be 0 after relaxation
-    private int moveMaskedDamageCount;
-    private int moveMaskedRecentWarningCount; // should be 0 after relaxation
-    private int moveMaskedRecentDamageCount;  // should be 0 after relaxation
+    private int moveMaskedWallCount;           // geometry wall masked (pure blockedCells check)
+    private int moveMaskedWarningCount;        // should be 0 after relaxation
+    private int moveMaskedDamageCount;         // active damage tile masked
+    private int moveMaskedRecentWarningCount;  // should be 0 after relaxation
+    private int moveMaskedRecentDamageCount;   // should be 0 after relaxation
+    private int moveMaskedDueToBusyCount;      // must be 0 — busy no longer used as wall
     private int moveAllowedCount;
     private int movementActionCount;
     private int successfulMoveCount;
     private int dangerousMoveAttemptCount;
-    private int waitOnlyMaskStateCount;       // all 4 moves masked → only WAIT available
-    private int escapeActionForcedOpenCount;  // escape exception triggered
-    private int bossCellTreatedAsBlockedCount;// boss cell wrongly treated as wall (should be 0)
-    private int waitActionCount;              // times action=0 (WAIT) was selected
+    private int waitOnlyMaskStateCount;        // all 4 moves masked → only WAIT available
+    private int waitOnlyDueToGeometryCount;    // wait-only because all 4 dirs geometry blocked
+    private int waitOnlyDueToDamageCount;      // wait-only because damage blocking non-geometry dirs
+    private int waitOnlyDueToBusyCount;        // must be 0 — busy no longer a mask criterion
+    private int waitOnlyDueToBossCellCount;    // must be 0 — boss cell no longer blocked
+    private int escapeActionForcedOpenCount;   // escape exception triggered
+    private int bossCellTreatedAsBlockedCount; // boss cell wrongly blocked (must be 0 after fix)
+    private int bossCellMoveAllowedCount;      // boss cell correctly allowed (tracks fix working)
+    private int moveBusyStateCount;            // times IsMoving=true at mask call (informational)
+    private int waitActionCount;               // times action=0 (WAIT) was selected
 
     // ── Attack mask metrics ───────────────────────────────────────────────────
     private int attackMaskedNotReadyCount;
@@ -81,6 +88,10 @@ public class BossRLDebugLogger : MonoBehaviour
     private int   firstHitStep;
     private float firstHitTime;
 
+    // ── Recent danger presence tracking ──────────────────────────────────────
+    private int playerOnRecentWarningSteps;
+    private int playerOnRecentDamageSteps;
+
     // ── Warning → damage re-entry tracking ───────────────────────────────────
     private const int ReentryWindow = 4;
     private bool prevOnWarning;
@@ -109,9 +120,12 @@ public class BossRLDebugLogger : MonoBehaviour
         deathTime        = -1f;
 
         moveMaskedWallCount = moveMaskedWarningCount = moveMaskedDamageCount = 0;
-        moveMaskedRecentWarningCount = moveMaskedRecentDamageCount = 0;
+        moveMaskedRecentWarningCount = moveMaskedRecentDamageCount = moveMaskedDueToBusyCount = 0;
         moveAllowedCount = movementActionCount = successfulMoveCount = dangerousMoveAttemptCount = 0;
         waitOnlyMaskStateCount = escapeActionForcedOpenCount = bossCellTreatedAsBlockedCount = 0;
+        waitOnlyDueToGeometryCount = waitOnlyDueToDamageCount = 0;
+        waitOnlyDueToBusyCount = waitOnlyDueToBossCellCount = 0;
+        bossCellMoveAllowedCount = moveBusyStateCount = 0;
         waitActionCount = 0;
 
         attackMaskedNotReadyCount = attackMaskedOutOfRangeCount = 0;
@@ -138,6 +152,9 @@ public class BossRLDebugLogger : MonoBehaviour
         firstHitStep     = -1;
         firstHitTime     = -1f;
 
+        playerOnRecentWarningSteps = 0;
+        playerOnRecentDamageSteps  = 0;
+
         prevOnWarning             = false;
         lastWarningExitStep       = -9999;
         recentWarningReentryCount = 0;
@@ -152,6 +169,15 @@ public class BossRLDebugLogger : MonoBehaviour
     public void RecordWaitOnlyState()              { waitOnlyMaskStateCount++; }
     public void RecordEscapeActionForcedOpen()     { escapeActionForcedOpenCount++; }
     public void RecordBossCellTreatedAsBlocked()   { bossCellTreatedAsBlockedCount++; }
+    public void RecordBossCellMoveAllowed()        { bossCellMoveAllowedCount++; }
+    public void RecordMoveBusyState()              { moveBusyStateCount++; }
+
+    public void RecordWaitOnlyBreakdown(bool dueToGeometry, bool dueToDamage)
+    {
+        if (dueToGeometry) waitOnlyDueToGeometryCount++;
+        if (dueToDamage)   waitOnlyDueToDamageCount++;
+        // busy and boss_cell are no longer mask criteria → always 0, never incremented
+    }
 
     // ── Mask decision recording ───────────────────────────────────────────────
 
@@ -292,6 +318,10 @@ public class BossRLDebugLogger : MonoBehaviour
                 totalMoveAttempts++;
         }
 
+        // Recent danger presence
+        if (onRecentWarning) playerOnRecentWarningSteps++;
+        if (onRecentDamage)  playerOnRecentDamageSteps++;
+
         // Warning → damage re-entry
         if (prevOnWarning && !result.onWarningTile)
             lastWarningExitStep = stepCount;
@@ -323,6 +353,8 @@ public class BossRLDebugLogger : MonoBehaviour
     {
         float survivalTime = currentTime - episodeStartTime;
         int   bossHpLeft   = extractor != null ? extractor.BossCurrentHp : 0;
+        int   recentWarnCellsNow = extractor != null ? extractor.RecentWarningCellCount : 0;
+        int   recentDmgCellsNow  = extractor != null ? extractor.RecentDamageCellCount  : 0;
         if (reason == "player_dead") deathTime = survivalTime;
 
         float wallRatio   = totalMoveAttempts > 0 ? (float)wallBlockedMoves / totalMoveAttempts : 0f;
@@ -339,13 +371,18 @@ public class BossRLDebugLogger : MonoBehaviour
             $"missed_atk={rewardMissedAttack:F3} cooldown_atk={rewardAttackOnCooldown:F3}\n" +
             $"  boss: hp_start={episodeBossHpStart} hp_left={bossHpLeft} dmg_dealt={bossDamageTotal} " +
             $"dmg_before_first_hit={bossDamageBeforeFirstHit}\n" +
-            $"  move_mask: wall={moveMaskedWallCount} warn={moveMaskedWarningCount}(should=0) " +
+            $"  move_mask: wall(geometry)={moveMaskedWallCount} warn={moveMaskedWarningCount}(should=0) " +
             $"dmg={moveMaskedDamageCount} recent_warn={moveMaskedRecentWarningCount}(should=0) " +
-            $"recent_dmg={moveMaskedRecentDamageCount}(should=0) allowed={moveAllowedCount} " +
+            $"recent_dmg={moveMaskedRecentDamageCount}(should=0) " +
+            $"due_to_busy={moveMaskedDueToBusyCount}(must=0) allowed={moveAllowedCount} " +
             $"dangerous_attempts={dangerousMoveAttemptCount}\n" +
             $"  move_escape: wait_only_states={waitOnlyMaskStateCount} " +
+            $"geo={waitOnlyDueToGeometryCount} dmg={waitOnlyDueToDamageCount} " +
+            $"busy={waitOnlyDueToBusyCount}(must=0) boss_cell={waitOnlyDueToBossCellCount}(must=0) " +
             $"escape_forced_open={escapeActionForcedOpenCount} " +
-            $"boss_cell_blocked={bossCellTreatedAsBlockedCount}(should=0) " +
+            $"boss_cell_blocked={bossCellTreatedAsBlockedCount}(must=0) " +
+            $"boss_cell_allowed={bossCellMoveAllowedCount} " +
+            $"busy_at_mask={moveBusyStateCount} " +
             $"wait_actions={waitActionCount}\n" +
             $"  attack_mask: total_masked={attackMaskedTotalCount} allowed={attackAllowedCount} " +
             $"survival_stage={attackMaskedSurvivalStageCount} not_ready={attackMaskedNotReadyCount} " +
@@ -360,6 +397,9 @@ public class BossRLDebugLogger : MonoBehaviour
             $"  hazard: warn_steps={warningTileSteps} dmg_steps={damageTileSteps} " +
             $"atk_on_warn={attackWhenOnWarning} atk_on_dmg={attackWhenOnDamage} " +
             $"atk_on_recent_warn={attackWhenRecentWarning} atk_on_recent_dmg={attackWhenRecentDamage}\n" +
+            $"  recent_danger: on_recent_warn_steps={playerOnRecentWarningSteps} " +
+            $"on_recent_dmg_steps={playerOnRecentDamageSteps} " +
+            $"recent_warn_cells_now={recentWarnCellsNow} recent_dmg_cells_now={recentDmgCellsNow}\n" +
             $"  warn_reentry: reentry={recentWarningReentryCount} dmg_soon={damageSoonAfterWarning} " +
             $"hit_soon={warningToDamageHitCount} hit_after_avoid={hitAfterWarningAvoidCount}\n" +
             $"  player: hits={playerHitCount} first_hit_step={firstHitStep} " +

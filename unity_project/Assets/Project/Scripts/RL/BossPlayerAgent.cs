@@ -91,18 +91,23 @@ public class BossPlayerAgent : Agent
         bool[]       isDamageArr = new bool[4];
         bool[]       shouldMask  = new bool[4];
 
+        // Track busy state at mask time (informational only — NOT used as mask criterion)
+        if (stateExtractor.IsPlayerMoving)
+            debugLogger?.RecordMoveBusyState();
+
         for (int i = 0; i < 4; i++)
         {
-            bool isWall     = !stateExtractor.CanMoveInDirection(dirs[i]);
+            // Geometry-only check: IsMoving and boss cell are NOT wall criteria
+            bool isWall     = stateExtractor.IsGeometryBlockedDirection(dirs[i]);
             bool nextDamage = stateExtractor.IsNextCellDamage(dirs[i]);
-            // Debug: check if boss cell is wrongly treated as wall
             bool nextIsBossCell = stateExtractor.IsNextCellBossCell(dirs[i]);
             if (nextIsBossCell && isWall)
-                debugLogger?.RecordBossCellTreatedAsBlocked();
+                debugLogger?.RecordBossCellTreatedAsBlocked(); // must be 0 after fix
+            else if (nextIsBossCell)
+                debugLogger?.RecordBossCellMoveAllowed();      // boss cell correctly allowed
             isWallArr[i]   = isWall;
             isDamageArr[i] = nextDamage;
             shouldMask[i]  = isWall || nextDamage;
-            // Record with warning=false/recent=false (those are no longer hard-masked)
             debugLogger?.RecordMoveMaskDecision(moveActs[i], shouldMask[i],
                 isWall, false, nextDamage, false, false);
         }
@@ -112,6 +117,13 @@ public class BossPlayerAgent : Agent
         if (allMovesMasked)
         {
             debugLogger?.RecordWaitOnlyState();
+            // Breakdown: geometry-blocked vs damage-blocked causes
+            bool allGeometry        = isWallArr[0] && isWallArr[1] && isWallArr[2] && isWallArr[3];
+            bool anyDamageNotGeometry = (!isWallArr[0] && isDamageArr[0]) ||
+                                        (!isWallArr[1] && isDamageArr[1]) ||
+                                        (!isWallArr[2] && isDamageArr[2]) ||
+                                        (!isWallArr[3] && isDamageArr[3]);
+            debugLogger?.RecordWaitOnlyBreakdown(allGeometry, anyDamageNotGeometry);
             for (int i = 0; i < 4; i++)
             {
                 if (!isWallArr[i] && isDamageArr[i])

@@ -2210,7 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
   DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
+  TakeActionsBetweenDecisions: 0
 --- !u!114 &494318151
 MonoBehaviour:
   m_ObjectHideFlags: 0
