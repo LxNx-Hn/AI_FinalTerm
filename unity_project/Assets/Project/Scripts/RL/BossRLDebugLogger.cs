@@ -136,6 +136,16 @@ public class BossRLDebugLogger : MonoBehaviour
     private int  oppLastWarningEntryStep;
     private bool oppLastMoveIntoDanger;
 
+    // ── Danger movement mask metrics ─────────────────────────────────────────
+    private int moveMaskedWarnWhenSafeCount;
+    private int moveMaskedRecentWarnWhenSafeCount;
+    private int moveMaskedDmgWhenSafeCount;
+    private int leastDangerEscapeOpenedCount;
+    private int waitMaskedDueToDangerCount;
+    private int safeMoveAvailableStepCount;
+    private int choseSafeMoveCount;
+    private int choseDangerMoveCount;
+
     // ── Delayed hit attribution ───────────────────────────────────────────────
     private struct PendingAttackRecord
     {
@@ -223,6 +233,9 @@ public class BossRLDebugLogger : MonoBehaviour
         pendingAttacks.Clear();
         safeAttackHitSameStep = safeAttackHitWithin03s = safeAttackHitWithin05s = 0;
         outOfRangeAttackHitWithin05s = unsafeAttackHitWithin05s = 0;
+        moveMaskedWarnWhenSafeCount = moveMaskedRecentWarnWhenSafeCount = moveMaskedDmgWhenSafeCount = 0;
+        leastDangerEscapeOpenedCount = waitMaskedDueToDangerCount = safeMoveAvailableStepCount = 0;
+        choseSafeMoveCount = choseDangerMoveCount = 0;
     }
 
     // ── Escape/wait state recording ───────────────────────────────────────────
@@ -231,6 +244,18 @@ public class BossRLDebugLogger : MonoBehaviour
     public void RecordBossCellTreatedAsBlocked()   { bossCellTreatedAsBlockedCount++; }
     public void RecordBossCellMoveAllowed()        { bossCellMoveAllowedCount++; }
     public void RecordMoveBusyState()              { moveBusyStateCount++; }
+
+    public void RecordMoveDangerMaskStep(
+        int warnMaskedWhenSafe, int recentWarnMaskedWhenSafe, int dmgMaskedWhenSafe,
+        bool leastDangerOpened, bool waitMasked, bool safeMovePossible)
+    {
+        moveMaskedWarnWhenSafeCount       += warnMaskedWhenSafe;
+        moveMaskedRecentWarnWhenSafeCount += recentWarnMaskedWhenSafe;
+        moveMaskedDmgWhenSafeCount        += dmgMaskedWhenSafe;
+        if (leastDangerOpened) leastDangerEscapeOpenedCount++;
+        if (waitMasked)        waitMaskedDueToDangerCount++;
+        if (safeMovePossible)  safeMoveAvailableStepCount++;
+    }
 
     public void RecordWaitOnlyBreakdown(bool dueToGeometry, bool dueToDamage)
     {
@@ -248,7 +273,8 @@ public class BossRLDebugLogger : MonoBehaviour
         bool isMove, bool moveWillSucceed,
         bool moveIntoWarn, bool moveIntoDmg, bool moveIntoRecentWarn, bool moveIntoRecentDmg,
         bool gotHit, bool isWait,
-        float currentTime = 0f, int bossDamageDelta = 0)
+        float currentTime = 0f, int bossDamageDelta = 0,
+        bool choseSafeMove = false, bool choseDangerMove = false)
     {
         oppInternalStep++;
 
@@ -310,6 +336,10 @@ public class BossRLDebugLogger : MonoBehaviour
 
         // move-into-danger flag (1 step lookback)
         oppLastMoveIntoDanger = movedIntoDangerThisStep;
+
+        // chose safe/danger move tracking
+        if (choseSafeMove)   choseSafeMoveCount++;
+        if (choseDangerMove) choseDangerMoveCount++;
 
         // ── Delayed hit attribution ───────────────────────────────────────────
         // Register new attack in pending list
@@ -564,10 +594,11 @@ public class BossRLDebugLogger : MonoBehaviour
             $"boss_cell_allowed={bossCellMoveAllowedCount} " +
             $"busy_at_mask={moveBusyStateCount} " +
             $"wait_actions={waitActionCount}\n" +
-            $"  attack_mask: total_masked={attackMaskedTotalCount} allowed={attackAllowedCount} " +
+            $"  attack_mask: total_masked={attackMaskedTotalCount} allowed(safe_in_range)={attackAllowedCount} " +
             $"survival_stage={attackMaskedSurvivalStageCount} not_ready={attackMaskedNotReadyCount} " +
-            $"out_of_range={attackMaskedOutOfRangeCount}(should=0) on_warn={attackMaskedOnWarningCount}(should=0) " +
-            $"on_dmg={attackMaskedOnDamageCount}(should=0)\n" +
+            $"out_of_range={attackMaskedOutOfRangeCount} on_warn={attackMaskedOnWarningCount} " +
+            $"on_dmg={attackMaskedOnDamageCount} on_recent_warn={attackMaskedOnRecentWarningCount} " +
+            $"on_recent_dmg={attackMaskedOnRecentDamageCount}\n" +
             $"  attack_quality: actions={attackActionCount} hits={successfulHitSteps} " +
             $"missed={missedAttackCount} cooldown={attackOnCooldownCount} " +
             $"hit_rate={hitRate:P1} dmg_per_atk={bossHpPerAtk:F3}\n" +
@@ -589,6 +620,10 @@ public class BossRLDebugLogger : MonoBehaviour
             $"  delayed_hit: safe_same_step={safeAttackHitSameStep} safe_0.3s={safeAttackHitWithin03s} " +
             $"safe_0.5s={safeAttackHitWithin05s} out_of_range_0.5s={outOfRangeAttackHitWithin05s} " +
             $"unsafe_0.5s={unsafeAttackHitWithin05s}\n" +
+            $"  move_danger_mask: warn_when_safe={moveMaskedWarnWhenSafeCount} recent_warn_when_safe={moveMaskedRecentWarnWhenSafeCount} " +
+            $"dmg_when_safe={moveMaskedDmgWhenSafeCount} least_danger_opened={leastDangerEscapeOpenedCount} " +
+            $"wait_masked={waitMaskedDueToDangerCount} safe_avail_steps={safeMoveAvailableStepCount} " +
+            $"chose_safe={choseSafeMoveCount} chose_danger={choseDangerMoveCount}\n" +
             $"  danger: nearby_steps={dangerNearbySteps} wait_while_danger={waitWhileDangerNearbyCount} " +
             $"move_into_warn={movedIntoWarningCount} move_into_dmg={movedIntoDamageCount} " +
             $"move_into_recent_warn={movedIntoRecentWarningCount} move_into_recent_dmg={movedIntoRecentDamageCount}\n" +

@@ -69,7 +69,11 @@ public class PlayerController : MonoBehaviour
     {
         if (useExternalInput)
         {
-            return externalInput;
+            // One-shot: consume and clear immediately so RL input doesn't repeat across frames.
+            Vector2Int value = externalInput;
+            useExternalInput = false;
+            externalInput = Vector2Int.zero;
+            return value;
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))

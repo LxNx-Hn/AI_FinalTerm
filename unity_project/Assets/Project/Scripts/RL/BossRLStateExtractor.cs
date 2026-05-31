@@ -291,6 +291,21 @@ public class BossRLStateExtractor : MonoBehaviour
         return count;
     }
 
+    /// <summary>Danger level of the cell in the given direction:
+    /// 999=geometry-blocked  3=active_damage  2=active_warning  1=recent_warn/dmg  0=safe</summary>
+    public int GetDirectionDangerLevel(Vector2Int dir)
+    {
+        if (IsGeometryBlockedDirection(dir)) return 999;
+        bool nextDmg   = IsNextCellDamage(dir);
+        bool nextWarn  = IsNextCellWarning(dir);
+        bool nextRWarn = IsNextCellRecentWarning(dir);
+        bool nextRDmg  = IsNextCellRecentDamage(dir);
+        if (nextDmg)               return 3;
+        if (nextWarn)              return 2;
+        if (nextRWarn || nextRDmg) return 1;
+        return 0;
+    }
+
     /// <summary>True when the player is currently on any warning/damage/recent tile.</summary>
     public bool IsPlayerOnAnyDanger()
     {

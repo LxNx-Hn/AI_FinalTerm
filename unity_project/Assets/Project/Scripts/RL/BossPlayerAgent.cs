@@ -62,13 +62,11 @@ public class BossPlayerAgent : Agent
     }
 
     // ── Action masking (WriteDiscreteActionMask) ──────────────────────────────
-    // RELAXED MASK POLICY:
-    //   WAIT (0)     : always allowed
-    //   MOVE (1-4)   : hard mask only for wall/arena-out + active damage tile
-    //                  warning/recent danger → observation+reward only, NOT masked
-    //                  escape exception: if all 4 moves masked, force-open best escape
-    //   ATTACK (5)   : hard mask only when !AttackReady (cooldown)
-    //                  bossInRange/danger tile conditions → observation+reward only
+    // SAFE ACTION MASK POLICY:
+    //   WAIT (0)     : masked if player on danger + safe move exists (force escape)
+    //   MOVE (1-4)   : danger-level based; safer alternative → mask higher-danger dirs
+    //                  always keeps ≥1 direction open (lowest-danger escape)
+    //   ATTACK (5)   : AttackReady + boss_in_range + player NOT on any danger tile
     public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask)
     {
         if (terminalHandled || (episodeResetter != null && episodeResetter.ReloadQueued))
@@ -83,72 +81,97 @@ public class BossPlayerAgent : Agent
         bool survivalStageActive = survivalStage > 0.5f;
 
         // ── Movement masking (actions 1-4) ────────────────────────────────────
-        // Hard mask: wall/arena-out (isWall) + active damage tile (nextDamage)
-        // NOT masked: warning, recent_warning, recent_damage (use obs+reward)
+        // Danger levels: 999=wall  3=damage  2=warning  1=recent_warn/dmg  0=safe
+        // Mask directions whose danger level exceeds the minimum available level.
         Vector2Int[] dirs     = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
         int[]        moveActs = { 1, 2, 3, 4 };
-        bool[]       isWallArr   = new bool[4];
-        bool[]       isDamageArr = new bool[4];
-        bool[]       shouldMask  = new bool[4];
+        int[]        dangerLevel = new int[4];
 
-        // Track busy state at mask time (informational only — NOT used as mask criterion)
         if (stateExtractor.IsPlayerMoving)
             debugLogger?.RecordMoveBusyState();
 
         for (int i = 0; i < 4; i++)
+            dangerLevel[i] = stateExtractor.GetDirectionDangerLevel(dirs[i]);
+
+        int minDanger = Mathf.Min(Mathf.Min(dangerLevel[0], dangerLevel[1]),
+                                   Mathf.Min(dangerLevel[2], dangerLevel[3]));
+        bool safeMovePossible = (minDanger == 0);
+
+        bool[] moveShouldMask = new bool[4];
+        int warnMaskedWhenSafe = 0, recentWarnMaskedWhenSafe = 0, dmgMaskedWhenSafe = 0;
+
+        for (int i = 0; i < 4; i++)
         {
-            // Geometry-only check: IsMoving and boss cell are NOT wall criteria
-            bool isWall     = stateExtractor.IsGeometryBlockedDirection(dirs[i]);
-            bool nextDamage = stateExtractor.IsNextCellDamage(dirs[i]);
+            bool isGeo = (dangerLevel[i] == 999);
+            bool maskedByBetter = (!isGeo && minDanger < dangerLevel[i]);
+            moveShouldMask[i] = isGeo || maskedByBetter;
+
+            if (maskedByBetter)
+            {
+                if (dangerLevel[i] == 2) warnMaskedWhenSafe++;
+                else if (dangerLevel[i] == 1) recentWarnMaskedWhenSafe++;
+                else if (dangerLevel[i] == 3) dmgMaskedWhenSafe++;
+            }
+
+            // Boss cell tracking (should never be geometry-blocked)
             bool nextIsBossCell = stateExtractor.IsNextCellBossCell(dirs[i]);
-            if (nextIsBossCell && isWall)
-                debugLogger?.RecordBossCellTreatedAsBlocked(); // must be 0 after fix
+            if (nextIsBossCell && isGeo)
+                debugLogger?.RecordBossCellTreatedAsBlocked();
             else if (nextIsBossCell)
-                debugLogger?.RecordBossCellMoveAllowed();      // boss cell correctly allowed
-            isWallArr[i]   = isWall;
-            isDamageArr[i] = nextDamage;
-            shouldMask[i]  = isWall || nextDamage;
-            debugLogger?.RecordMoveMaskDecision(moveActs[i], shouldMask[i],
-                isWall, false, nextDamage, false, false);
+                debugLogger?.RecordBossCellMoveAllowed();
+
+            debugLogger?.RecordMoveMaskDecision(moveActs[i], moveShouldMask[i],
+                isGeo, dangerLevel[i] == 2, dangerLevel[i] == 3,
+                dangerLevel[i] == 1, false);
         }
 
-        // Escape exception: if ALL 4 moves are masked, force open at least one non-wall move
-        bool allMovesMasked = shouldMask[0] && shouldMask[1] && shouldMask[2] && shouldMask[3];
+        // Least-danger escape: opened when no safe move exists but non-geometry move does
+        bool leastDangerEscapeOpened = (minDanger > 0 && minDanger < 999);
+
+        // All-geometry-blocked: WAIT only — record for diagnostics
+        bool allMovesMasked = moveShouldMask[0] && moveShouldMask[1] && moveShouldMask[2] && moveShouldMask[3];
         if (allMovesMasked)
         {
             debugLogger?.RecordWaitOnlyState();
-            // Breakdown: geometry-blocked vs damage-blocked causes
-            bool allGeometry        = isWallArr[0] && isWallArr[1] && isWallArr[2] && isWallArr[3];
-            bool anyDamageNotGeometry = (!isWallArr[0] && isDamageArr[0]) ||
-                                        (!isWallArr[1] && isDamageArr[1]) ||
-                                        (!isWallArr[2] && isDamageArr[2]) ||
-                                        (!isWallArr[3] && isDamageArr[3]);
-            debugLogger?.RecordWaitOnlyBreakdown(allGeometry, anyDamageNotGeometry);
-            for (int i = 0; i < 4; i++)
-            {
-                if (!isWallArr[i] && isDamageArr[i])
-                {
-                    shouldMask[i] = false;  // damage tile but not permanent wall → allow escape
-                    debugLogger?.RecordEscapeActionForcedOpen();
-                    break;
-                }
-            }
+            bool allGeometry = dangerLevel[0] == 999 && dangerLevel[1] == 999 &&
+                               dangerLevel[2] == 999 && dangerLevel[3] == 999;
+            debugLogger?.RecordWaitOnlyBreakdown(allGeometry, !allGeometry);
         }
 
         for (int i = 0; i < 4; i++)
-            if (shouldMask[i]) actionMask.SetActionEnabled(0, moveActs[i], false);
+            if (moveShouldMask[i]) actionMask.SetActionEnabled(0, moveActs[i], false);
+
+        // WAIT masking: force move-away when on danger and safe move available
+        bool playerOnDangerForWait = stateExtractor.IsPlayerOnAnyDanger();
+        bool maskWait = playerOnDangerForWait && safeMovePossible;
+        if (maskWait) actionMask.SetActionEnabled(0, 0, false);
+
+        debugLogger?.RecordMoveDangerMaskStep(
+            warnMaskedWhenSafe, recentWarnMaskedWhenSafe, dmgMaskedWhenSafe,
+            leastDangerEscapeOpened, maskWait, safeMovePossible);
 
         // ── Attack masking (action 5) ─────────────────────────────────────────
-        // Hard mask ONLY: !AttackReady (cooldown)
-        // bossInRange, danger tiles → handled by observation + reward
-        bool attackReady = stateExtractor.AttackReady;
-        bool maskAttack  = survivalStageActive || !attackReady;
+        // Hard mask: !AttackReady OR !boss_in_range OR player on any danger tile
+        bool attackReady    = stateExtractor.AttackReady;
+        bool bossInRangeMask = stateExtractor.IsBossInAttackRange();
+        stateExtractor.GetCachedHazardAndRecentState(
+            out bool playerOnWarn, out bool playerOnDmg,
+            out bool playerOnRWarn, out bool playerOnRDmg);
+        bool playerOnAnyDanger = playerOnWarn || playerOnDmg || playerOnRWarn || playerOnRDmg;
 
+        bool maskedByNotReady  = !survivalStageActive && !attackReady;
+        bool maskedByOOR       = !survivalStageActive && attackReady && !bossInRangeMask;
+        bool maskedByWarn      = !survivalStageActive && attackReady && bossInRangeMask && playerOnWarn;
+        bool maskedByDmg       = !survivalStageActive && attackReady && bossInRangeMask && !playerOnWarn && playerOnDmg;
+        bool maskedByRWarn     = !survivalStageActive && attackReady && bossInRangeMask && !playerOnWarn && !playerOnDmg && playerOnRWarn;
+        bool maskedByRDmg      = !survivalStageActive && attackReady && bossInRangeMask && !playerOnWarn && !playerOnDmg && !playerOnRWarn && playerOnRDmg;
+
+        bool maskAttack = survivalStageActive || !attackReady || !bossInRangeMask || playerOnAnyDanger;
         if (maskAttack)
             actionMask.SetActionEnabled(0, 5, false);
 
         debugLogger?.RecordAttackMaskDecision(maskAttack, survivalStageActive,
-            !attackReady, false, false, false, false, false);
+            maskedByNotReady, maskedByOOR, maskedByWarn, maskedByDmg, maskedByRWarn, maskedByRDmg);
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -236,13 +259,19 @@ public class BossPlayerAgent : Agent
             moveOutcome, moveDir, stepResult, bossInRange, manhattanDist,
             onRecentWarning, onRecentDamage);
 
+        bool choseSafeMove   = isMoveAct && moveWillSucceed &&
+                              !nextCellWarn && !nextCellDmg && !nextCellRecentWarn && !nextCellRecentDmg;
+        bool choseDangerMove = isMoveAct && moveWillSucceed &&
+                              (nextCellWarn || nextCellDmg || nextCellRecentWarn || nextCellRecentDmg);
+
         debugLogger?.RecordOpportunityMetrics(
             isAttackAct, safeOpportunity, attackHit, bossInRange, attackWasReady,
             dangerNearby, safeMoveCount, onWarning, onDamage, onRecentWarn, onRecentDmg,
             isMoveAct, moveWillSucceed,
             nextCellWarn, nextCellDmg, nextCellRecentWarn, nextCellRecentDmg,
             gotHit, isWaitAct,
-            Time.time, stepResult.bossDamageDelta);
+            Time.time, stepResult.bossDamageDelta,
+            choseSafeMove, choseDangerMove);
 
         if (stepResult.bossDead || stepResult.playerDead || stepResult.timedOut)
         {
