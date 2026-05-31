@@ -249,6 +249,74 @@ public class BossRLStateExtractor : MonoBehaviour
         return nextWorldCell == bossController.BossCell;
     }
 
+    // ── Opportunity / danger diagnostic helpers ───────────────────────────────
+
+    /// <summary>True when attack is ready, boss is in range, and player is on no danger tile (including recent).</summary>
+    public bool IsSafeAttackOpportunity()
+    {
+        if (!EnsureReady(logWarning: false)) return false;
+        if (!AttackReady || !IsBossInAttackRange()) return false;
+        Vector2Int p = GetPlayerArenaCell();
+        return !warningCells.Contains(p) && !damageCells.Contains(p) &&
+               !recentWarningCells.Contains(p) && !recentDamageCells.Contains(p);
+    }
+
+    /// <summary>True when any cardinal-adjacent arena cell contains a warning/damage/recent hazard.</summary>
+    public bool IsDangerNearby()
+    {
+        if (!EnsureReady(logWarning: false)) return false;
+        Vector2Int p = GetPlayerArenaCell();
+        foreach (Vector2Int dir in CardinalDirs)
+        {
+            Vector2Int n = p + dir;
+            if (warningCells.Contains(n) || damageCells.Contains(n) ||
+                recentWarningCells.Contains(n) || recentDamageCells.Contains(n))
+                return true;
+        }
+        return false;
+    }
+
+    /// <summary>Number of directions the player can move to without hitting geometry wall or any hazard.</summary>
+    public int SafeMoveDirectionCount()
+    {
+        if (!EnsureReady(logWarning: false)) return 0;
+        int count = 0;
+        foreach (Vector2Int dir in CardinalDirs)
+        {
+            if (!IsGeometryBlockedDirection(dir) &&
+                !IsNextCellWarning(dir) && !IsNextCellDamage(dir) &&
+                !IsNextCellRecentWarning(dir) && !IsNextCellRecentDamage(dir))
+                count++;
+        }
+        return count;
+    }
+
+    /// <summary>True when the player is currently on any warning/damage/recent tile.</summary>
+    public bool IsPlayerOnAnyDanger()
+    {
+        if (!EnsureReady(logWarning: false)) return false;
+        Vector2Int p = GetPlayerArenaCell();
+        return warningCells.Contains(p) || damageCells.Contains(p) ||
+               recentWarningCells.Contains(p) || recentDamageCells.Contains(p);
+    }
+
+    /// <summary>Returns cached hazard and recent-danger state without calling RefreshHazardMasks.
+    /// Safe to call from OnActionReceived after CollectObservations has run.</summary>
+    public void GetCachedHazardAndRecentState(out bool onWarning, out bool onDamage,
+                                              out bool onRecentWarning, out bool onRecentDamage)
+    {
+        if (!EnsureReady(logWarning: false))
+        {
+            onWarning = onDamage = onRecentWarning = onRecentDamage = false;
+            return;
+        }
+        Vector2Int p = GetPlayerArenaCell();
+        onWarning       = warningCells.Contains(p);
+        onDamage        = damageCells.Contains(p);
+        onRecentWarning = recentWarningCells.Contains(p);
+        onRecentDamage  = recentDamageCells.Contains(p);
+    }
+
     // ── Attack range helpers ──────────────────────────────────────────────────
 
     public bool IsBossInAttackRange()

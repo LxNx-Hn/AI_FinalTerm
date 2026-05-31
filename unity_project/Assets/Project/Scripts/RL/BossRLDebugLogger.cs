@@ -105,6 +105,35 @@ public class BossRLDebugLogger : MonoBehaviour
     private bool survived10s;
     private bool survived20s;
 
+    // ── Opportunity / danger metrics ──────────────────────────────────────────
+    private int safeAttackOpportunitySteps;
+    private int safeAttackTakenCount;
+    private int safeAttackMissedCount;
+    private int safeAttackHitCount;
+    private int bossInRangeNoAttackCount;
+    private int attackOutOfRangeCount;
+    private int attackWhenDangerNearbyCount;
+    private int dangerNearbySteps;
+    private int movedIntoWarningCount;
+    private int movedIntoDamageCount;
+    private int movedIntoRecentWarningCount;
+    private int movedIntoRecentDamageCount;
+    private int waitWhileDangerNearbyCount;
+    private int hitWhileSafeMoveAvailableCount;
+    private int avoidableHitCount;
+    private int hitOnWarningTileCount;
+    private int hitOnDamageTileCount;
+    private int hitOnRecentWarningTileCount;
+    private int hitAfterMovingIntoDangerCount;
+    private int warningToHitStepSum;
+    private int warningToHitStepCount;
+
+    // cross-step state for opportunity tracking
+    private int  oppInternalStep;
+    private bool oppLastStepOnWarning;
+    private int  oppLastWarningEntryStep;
+    private bool oppLastMoveIntoDanger;
+
     // ── Episode reset ─────────────────────────────────────────────────────────
     public void ResetEpisode(int bossHpStart, float startTime)
     {
@@ -163,6 +192,17 @@ public class BossRLDebugLogger : MonoBehaviour
         hitAfterWarningAvoidCount = 0;
 
         survived10s = survived20s = false;
+
+        safeAttackOpportunitySteps = safeAttackTakenCount = safeAttackMissedCount = safeAttackHitCount = 0;
+        bossInRangeNoAttackCount = attackOutOfRangeCount = attackWhenDangerNearbyCount = 0;
+        dangerNearbySteps = movedIntoWarningCount = movedIntoDamageCount = 0;
+        movedIntoRecentWarningCount = movedIntoRecentDamageCount = 0;
+        waitWhileDangerNearbyCount = hitWhileSafeMoveAvailableCount = avoidableHitCount = 0;
+        hitOnWarningTileCount = hitOnDamageTileCount = hitOnRecentWarningTileCount = 0;
+        hitAfterMovingIntoDangerCount = warningToHitStepSum = warningToHitStepCount = 0;
+        oppInternalStep = 0;
+        oppLastStepOnWarning = oppLastMoveIntoDanger = false;
+        oppLastWarningEntryStep = -1;
     }
 
     // ── Escape/wait state recording ───────────────────────────────────────────
@@ -177,6 +217,78 @@ public class BossRLDebugLogger : MonoBehaviour
         if (dueToGeometry) waitOnlyDueToGeometryCount++;
         if (dueToDamage)   waitOnlyDueToDamageCount++;
         // busy and boss_cell are no longer mask criteria → always 0, never incremented
+    }
+
+    // ── Opportunity metric recording (called from OnActionReceived) ───────────
+
+    public void RecordOpportunityMetrics(
+        bool isAttack, bool safeOpportunity, bool attackHit, bool bossInRange, bool attackReady,
+        bool dangerNearby, int safeMoveCount, bool onWarning, bool onDamage,
+        bool onRecentWarn, bool onRecentDmg,
+        bool isMove, bool moveWillSucceed,
+        bool moveIntoWarn, bool moveIntoDmg, bool moveIntoRecentWarn, bool moveIntoRecentDmg,
+        bool gotHit, bool isWait)
+    {
+        oppInternalStep++;
+
+        // ── Attack opportunity tracking ───────────────────────────────────────
+        if (safeOpportunity)  safeAttackOpportunitySteps++;
+        if (isAttack)
+        {
+            if (safeOpportunity)
+            {
+                safeAttackTakenCount++;
+                if (attackHit)  safeAttackHitCount++;
+                else            safeAttackMissedCount++;
+            }
+            if (!bossInRange)   attackOutOfRangeCount++;
+            if (dangerNearby)   attackWhenDangerNearbyCount++;
+        }
+        if (bossInRange && attackReady && !isAttack) bossInRangeNoAttackCount++;
+
+        // ── Danger nearby tracking ────────────────────────────────────────────
+        if (dangerNearby) dangerNearbySteps++;
+        if (isWait && dangerNearby) waitWhileDangerNearbyCount++;
+
+        // ── Move into danger tracking ─────────────────────────────────────────
+        bool movedIntoDangerThisStep = false;
+        if (isMove && moveWillSucceed)
+        {
+            if (moveIntoWarn)      { movedIntoWarningCount++;       movedIntoDangerThisStep = true; }
+            if (moveIntoDmg)       { movedIntoDamageCount++;        movedIntoDangerThisStep = true; }
+            if (moveIntoRecentWarn){ movedIntoRecentWarningCount++; movedIntoDangerThisStep = true; }
+            if (moveIntoRecentDmg) { movedIntoRecentDamageCount++;  movedIntoDangerThisStep = true; }
+        }
+
+        // ── Hit analysis ──────────────────────────────────────────────────────
+        if (gotHit)
+        {
+            if (onWarning)            hitOnWarningTileCount++;
+            if (onDamage)             hitOnDamageTileCount++;
+            if (onRecentWarn)         hitOnRecentWarningTileCount++;
+            if (safeMoveCount > 0)    hitWhileSafeMoveAvailableCount++;
+            if ((onWarning || onDamage) && safeMoveCount > 0) avoidableHitCount++;
+            if (oppLastMoveIntoDanger) hitAfterMovingIntoDangerCount++;
+
+            // time from warning entry to hit
+            if (oppLastWarningEntryStep >= 0)
+            {
+                warningToHitStepSum += oppInternalStep - oppLastWarningEntryStep;
+                warningToHitStepCount++;
+                oppLastWarningEntryStep = -1;
+            }
+        }
+
+        // ── Cross-step state update ───────────────────────────────────────────
+        // warning entry/exit tracking
+        bool enteredWarning = !oppLastStepOnWarning && onWarning;
+        bool exitedWarning  = oppLastStepOnWarning  && !onWarning;
+        if (enteredWarning) oppLastWarningEntryStep = oppInternalStep;
+        if (exitedWarning)  oppLastWarningEntryStep = -1;
+        oppLastStepOnWarning = onWarning;
+
+        // move-into-danger flag (1 step lookback)
+        oppLastMoveIntoDanger = movedIntoDangerThisStep;
     }
 
     // ── Mask decision recording ───────────────────────────────────────────────
@@ -402,6 +514,18 @@ public class BossRLDebugLogger : MonoBehaviour
             $"recent_warn_cells_now={recentWarnCellsNow} recent_dmg_cells_now={recentDmgCellsNow}\n" +
             $"  warn_reentry: reentry={recentWarningReentryCount} dmg_soon={damageSoonAfterWarning} " +
             $"hit_soon={warningToDamageHitCount} hit_after_avoid={hitAfterWarningAvoidCount}\n" +
+            $"  opportunity: safe_opp_steps={safeAttackOpportunitySteps} " +
+            $"safe_taken={safeAttackTakenCount} safe_hit={safeAttackHitCount} safe_missed={safeAttackMissedCount} " +
+            $"in_range_no_attack={bossInRangeNoAttackCount} atk_out_of_range={attackOutOfRangeCount} " +
+            $"atk_danger_nearby={attackWhenDangerNearbyCount}\n" +
+            $"  danger: nearby_steps={dangerNearbySteps} wait_while_danger={waitWhileDangerNearbyCount} " +
+            $"move_into_warn={movedIntoWarningCount} move_into_dmg={movedIntoDamageCount} " +
+            $"move_into_recent_warn={movedIntoRecentWarningCount} move_into_recent_dmg={movedIntoRecentDamageCount}\n" +
+            $"  hit_analysis: hit_on_warn={hitOnWarningTileCount} hit_on_dmg={hitOnDamageTileCount} " +
+            $"hit_on_recent_warn={hitOnRecentWarningTileCount} " +
+            $"hit_safe_move_avail={hitWhileSafeMoveAvailableCount} avoidable={avoidableHitCount} " +
+            $"hit_after_move_danger={hitAfterMovingIntoDangerCount} " +
+            $"warn_to_hit_avg_steps={(warningToHitStepCount > 0 ? (float)warningToHitStepSum / warningToHitStepCount : -1f):F1}\n" +
             $"  player: hits={playerHitCount} first_hit_step={firstHitStep} " +
             $"first_hit_time={firstHitTime:F1}s death_time={deathTime:F1}s\n" +
             $"  move: actions={movementActionCount} success={successfulMoveCount} " +

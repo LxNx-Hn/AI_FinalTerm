@@ -172,25 +172,47 @@ public class BossPlayerAgent : Agent
         int singleAction = actions.DiscreteActions.Length > 0 ? actions.DiscreteActions[0] : 0;
         bool isMoveAct   = BossRLInputBridge.IsMoveAction(singleAction);
         bool isAttackAct = BossRLInputBridge.IsAttackAction(singleAction);
+        bool isWaitAct   = BossRLInputBridge.IsWaitAction(singleAction);
         Vector2Int moveDir = BossRLInputBridge.SingleActionToMoveDir(singleAction);
 
         // Predict move outcome BEFORE applying
         BossRLInputBridge.MoveOutcome moveOutcome = isMoveAct
             ? inputBridge.PredictMoveOutcomeDir(moveDir)
             : BossRLInputBridge.MoveOutcome.None;
-        bool isWallBlocked = moveOutcome == BossRLInputBridge.MoveOutcome.WallBlocked;
+        bool isWallBlocked   = moveOutcome == BossRLInputBridge.MoveOutcome.WallBlocked;
+        bool moveWillSucceed = moveOutcome == BossRLInputBridge.MoveOutcome.WillMove;
 
-        // Capture attack readiness BEFORE applying
+        // Capture attack readiness and opportunity state BEFORE applying
         bool attackWasReady = stateExtractor != null && stateExtractor.AttackReady;
+
+        bool safeOpportunity = false, dangerNearby = false, onAnyDanger = false;
+        bool onWarning = false, onDamage = false, onRecentWarn = false, onRecentDmg = false;
+        bool nextCellWarn = false, nextCellDmg = false, nextCellRecentWarn = false, nextCellRecentDmg = false;
+        int  safeMoveCount = 0;
+        if (stateExtractor != null && stateExtractor.IsReady)
+        {
+            safeOpportunity = stateExtractor.IsSafeAttackOpportunity();
+            dangerNearby    = stateExtractor.IsDangerNearby();
+            safeMoveCount   = stateExtractor.SafeMoveDirectionCount();
+            onAnyDanger     = stateExtractor.IsPlayerOnAnyDanger();
+            stateExtractor.GetCachedHazardAndRecentState(out onWarning, out onDamage, out onRecentWarn, out onRecentDmg);
+            if (isMoveAct && moveWillSucceed)
+            {
+                nextCellWarn       = stateExtractor.IsNextCellWarning(moveDir);
+                nextCellDmg        = stateExtractor.IsNextCellDamage(moveDir);
+                nextCellRecentWarn = stateExtractor.IsNextCellRecentWarning(moveDir);
+                nextCellRecentDmg  = stateExtractor.IsNextCellRecentDamage(moveDir);
+            }
+        }
 
         inputBridge.ApplySingleAction(singleAction);
 
         bool bossInRange    = stateExtractor != null && stateExtractor.IsBossInAttackRange();
         float manhattanDist = stateExtractor != null ? stateExtractor.ManhattanDistanceToBoss() : 99f;
 
-        // Get full danger state for attack quality metrics
-        bool onRecentWarning = false, onRecentDamage = false;
-        if (stateExtractor != null && isAttackAct)
+        // Get full danger state for attack quality metrics (only on attack steps)
+        bool onRecentWarning = onRecentWarn, onRecentDamage = onRecentDmg;
+        if (stateExtractor != null && isAttackAct && !stateExtractor.IsReady)
             stateExtractor.GetFullDangerState(out _, out _, out onRecentWarning, out onRecentDamage);
 
         int attackActionInt = isAttackAct ? 1 : 0;
@@ -201,9 +223,19 @@ public class BossPlayerAgent : Agent
         AddReward(stepResult.reward);
         cumulativeReward += stepResult.reward;
 
+        bool gotHit   = stepResult.playerHitDelta > 0;
+        bool attackHit = stepResult.bossDamageDelta > 0;
+
         debugLogger?.RecordStep(StepCount, Time.time, singleAction, isAttackAct, attackActionInt,
             moveOutcome, moveDir, stepResult, bossInRange, manhattanDist,
             onRecentWarning, onRecentDamage);
+
+        debugLogger?.RecordOpportunityMetrics(
+            isAttackAct, safeOpportunity, attackHit, bossInRange, attackWasReady,
+            dangerNearby, safeMoveCount, onWarning, onDamage, onRecentWarn, onRecentDmg,
+            isMoveAct, moveWillSucceed,
+            nextCellWarn, nextCellDmg, nextCellRecentWarn, nextCellRecentDmg,
+            gotHit, isWaitAct);
 
         if (stepResult.bossDead || stepResult.playerDead || stepResult.timedOut)
         {
