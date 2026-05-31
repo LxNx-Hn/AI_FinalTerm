@@ -5,6 +5,7 @@ param(
 )
 $ErrorActionPreference = "Stop"
 $env:PYTHONUTF8 = "1"
+$env:PYTHONIOENCODING = "utf-8"  # prevent cp949 UnicodeEncodeError on Korean Windows when torch.onnx prints emoji
 $ProjectRoot   = Split-Path -Parent $PSScriptRoot
 $MlagentsLearn = Join-Path $ProjectRoot ".venv-mlagents\Scripts\mlagents-learn.exe"
 $Config        = Join-Path $ProjectRoot "ml-agents-config\boss_ppo_train_stable_20k_v1.yaml"
