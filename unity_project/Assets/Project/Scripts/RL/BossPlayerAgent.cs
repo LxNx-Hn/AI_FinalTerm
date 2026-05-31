@@ -215,10 +215,16 @@ public class BossPlayerAgent : Agent
         if (stateExtractor != null && isAttackAct && !stateExtractor.IsReady)
             stateExtractor.GetFullDangerState(out _, out _, out onRecentWarning, out onRecentDamage);
 
-        int attackActionInt = isAttackAct ? 1 : 0;
+        int attackActionInt    = isAttackAct ? 1 : 0;
+        bool safeAttackAttempt = isAttackAct && safeOpportunity;
+
         BossRLReward.StepResult stepResult = rewardTracker.Evaluate(
             stateExtractor, GetElapsedSeconds(), maxEpisodeSeconds,
-            isWallBlocked, attackActionInt, attackWasReady, bossInRange);
+            isWallBlocked, attackActionInt, attackWasReady, bossInRange,
+            isMoveAct && moveWillSucceed && nextCellWarn,
+            isMoveAct && moveWillSucceed && nextCellRecentWarn,
+            isMoveAct && moveWillSucceed && nextCellDmg,
+            safeAttackAttempt);
 
         AddReward(stepResult.reward);
         cumulativeReward += stepResult.reward;
@@ -235,7 +241,8 @@ public class BossPlayerAgent : Agent
             dangerNearby, safeMoveCount, onWarning, onDamage, onRecentWarn, onRecentDmg,
             isMoveAct, moveWillSucceed,
             nextCellWarn, nextCellDmg, nextCellRecentWarn, nextCellRecentDmg,
-            gotHit, isWaitAct);
+            gotHit, isWaitAct,
+            Time.time, stepResult.bossDamageDelta);
 
         if (stepResult.bossDead || stepResult.playerDead || stepResult.timedOut)
         {

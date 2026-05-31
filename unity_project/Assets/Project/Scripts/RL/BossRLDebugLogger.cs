@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -15,6 +16,7 @@ public class BossRLDebugLogger : MonoBehaviour
     private float rewardTotal, rewardBossDamage, rewardHitPenalty, rewardDeathPenalty;
     private float rewardWarningTile, rewardDamageTile, rewardWallBlocked;
     private float rewardApproach, rewardMissedAttack, rewardAttackOnCooldown;
+    private float rewardMovedIntoDanger, rewardSafeAttack;
 
     // ── Tile / hazard stats ───────────────────────────────────────────────────
     private int warningTileSteps;
@@ -134,6 +136,20 @@ public class BossRLDebugLogger : MonoBehaviour
     private int  oppLastWarningEntryStep;
     private bool oppLastMoveIntoDanger;
 
+    // ── Delayed hit attribution ───────────────────────────────────────────────
+    private struct PendingAttackRecord
+    {
+        public float timestamp;
+        public bool  isSafe;
+        public bool  isOutOfRange;
+    }
+    private readonly List<PendingAttackRecord> pendingAttacks = new List<PendingAttackRecord>();
+    private int safeAttackHitSameStep;
+    private int safeAttackHitWithin03s;
+    private int safeAttackHitWithin05s;
+    private int outOfRangeAttackHitWithin05s;
+    private int unsafeAttackHitWithin05s;
+
     // ── Episode reset ─────────────────────────────────────────────────────────
     public void ResetEpisode(int bossHpStart, float startTime)
     {
@@ -143,6 +159,7 @@ public class BossRLDebugLogger : MonoBehaviour
         rewardTotal = rewardBossDamage = rewardHitPenalty = rewardDeathPenalty = 0f;
         rewardWarningTile = rewardDamageTile = rewardWallBlocked = 0f;
         rewardApproach = rewardMissedAttack = rewardAttackOnCooldown = 0f;
+        rewardMovedIntoDanger = rewardSafeAttack = 0f;
 
         warningTileSteps = damageTileSteps = 0;
         playerHitCount   = 0;
@@ -203,6 +220,9 @@ public class BossRLDebugLogger : MonoBehaviour
         oppInternalStep = 0;
         oppLastStepOnWarning = oppLastMoveIntoDanger = false;
         oppLastWarningEntryStep = -1;
+        pendingAttacks.Clear();
+        safeAttackHitSameStep = safeAttackHitWithin03s = safeAttackHitWithin05s = 0;
+        outOfRangeAttackHitWithin05s = unsafeAttackHitWithin05s = 0;
     }
 
     // ── Escape/wait state recording ───────────────────────────────────────────
@@ -227,7 +247,8 @@ public class BossRLDebugLogger : MonoBehaviour
         bool onRecentWarn, bool onRecentDmg,
         bool isMove, bool moveWillSucceed,
         bool moveIntoWarn, bool moveIntoDmg, bool moveIntoRecentWarn, bool moveIntoRecentDmg,
-        bool gotHit, bool isWait)
+        bool gotHit, bool isWait,
+        float currentTime = 0f, int bossDamageDelta = 0)
     {
         oppInternalStep++;
 
@@ -289,6 +310,50 @@ public class BossRLDebugLogger : MonoBehaviour
 
         // move-into-danger flag (1 step lookback)
         oppLastMoveIntoDanger = movedIntoDangerThisStep;
+
+        // ── Delayed hit attribution ───────────────────────────────────────────
+        // Register new attack in pending list
+        if (isAttack && attackReady)
+        {
+            pendingAttacks.Add(new PendingAttackRecord
+            {
+                timestamp   = currentTime,
+                isSafe      = safeOpportunity,
+                isOutOfRange = !bossInRange
+            });
+        }
+
+        // Attribute boss damage to oldest pending attack within 0.55s window
+        if (bossDamageDelta > 0 && pendingAttacks.Count > 0)
+        {
+            for (int i = 0; i < pendingAttacks.Count; i++)
+            {
+                float elapsed = currentTime - pendingAttacks[i].timestamp;
+                if (elapsed > 0.55f) continue; // outside window
+                var pa = pendingAttacks[i];
+                if (pa.isSafe)
+                {
+                    if (elapsed < 0.02f) safeAttackHitSameStep++;
+                    if (elapsed <= 0.30f) safeAttackHitWithin03s++;
+                    if (elapsed <= 0.50f) safeAttackHitWithin05s++;
+                }
+                else if (pa.isOutOfRange)
+                {
+                    if (elapsed <= 0.50f) outOfRangeAttackHitWithin05s++;
+                }
+                else
+                {
+                    if (elapsed <= 0.50f) unsafeAttackHitWithin05s++;
+                }
+                pendingAttacks.RemoveAt(i);
+                break; // attribute to oldest only
+            }
+        }
+
+        // Prune stale pending attacks older than 0.6s
+        for (int i = pendingAttacks.Count - 1; i >= 0; i--)
+            if (currentTime - pendingAttacks[i].timestamp > 0.6f)
+                pendingAttacks.RemoveAt(i);
     }
 
     // ── Mask decision recording ───────────────────────────────────────────────
@@ -353,6 +418,8 @@ public class BossRLDebugLogger : MonoBehaviour
         rewardApproach         += result.rewardApproach;
         rewardMissedAttack     += result.rewardMissedAttack;
         rewardAttackOnCooldown += result.rewardAttackOnCooldown;
+        rewardMovedIntoDanger  += result.rewardMovedIntoDanger;
+        rewardSafeAttack       += result.rewardSafeAttack;
 
         // Boss damage
         if (!firstHitRecorded) bossDamageBeforeFirstHit += result.bossDamageDelta;
@@ -480,7 +547,8 @@ public class BossRLDebugLogger : MonoBehaviour
             $"  reward: total={rewardTotal:F3} boss={rewardBossDamage:F3} hit={rewardHitPenalty:F3} " +
             $"death={rewardDeathPenalty:F3} warn_tile={rewardWarningTile:F3} dmg_tile={rewardDamageTile:F3} " +
             $"wall={rewardWallBlocked:F3} approach={rewardApproach:F3} " +
-            $"missed_atk={rewardMissedAttack:F3} cooldown_atk={rewardAttackOnCooldown:F3}\n" +
+            $"missed_atk={rewardMissedAttack:F3} cooldown_atk={rewardAttackOnCooldown:F3} " +
+            $"moved_into_danger={rewardMovedIntoDanger:F3} safe_atk={rewardSafeAttack:F3}\n" +
             $"  boss: hp_start={episodeBossHpStart} hp_left={bossHpLeft} dmg_dealt={bossDamageTotal} " +
             $"dmg_before_first_hit={bossDamageBeforeFirstHit}\n" +
             $"  move_mask: wall(geometry)={moveMaskedWallCount} warn={moveMaskedWarningCount}(should=0) " +
@@ -518,6 +586,9 @@ public class BossRLDebugLogger : MonoBehaviour
             $"safe_taken={safeAttackTakenCount} safe_hit={safeAttackHitCount} safe_missed={safeAttackMissedCount} " +
             $"in_range_no_attack={bossInRangeNoAttackCount} atk_out_of_range={attackOutOfRangeCount} " +
             $"atk_danger_nearby={attackWhenDangerNearbyCount}\n" +
+            $"  delayed_hit: safe_same_step={safeAttackHitSameStep} safe_0.3s={safeAttackHitWithin03s} " +
+            $"safe_0.5s={safeAttackHitWithin05s} out_of_range_0.5s={outOfRangeAttackHitWithin05s} " +
+            $"unsafe_0.5s={unsafeAttackHitWithin05s}\n" +
             $"  danger: nearby_steps={dangerNearbySteps} wait_while_danger={waitWhileDangerNearbyCount} " +
             $"move_into_warn={movedIntoWarningCount} move_into_dmg={movedIntoDamageCount} " +
             $"move_into_recent_warn={movedIntoRecentWarningCount} move_into_recent_dmg={movedIntoRecentDamageCount}\n" +

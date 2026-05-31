@@ -8,17 +8,23 @@ public class BossRLReward : MonoBehaviour
     // missed_attack (-0.05): attack-ready + boss out of range → penalizes random swinging.
     // attack_on_cooldown (-0.01): spamming attack while reloading → small deterrent.
     // approach (+0.01/cell): gradient toward boss before first hit is discovered.
-    public const float BossDamagePerHp        =  0.10f;  // per HP dealt (0.20 had no effect; back to mid value)
-    public const float BossKillReward         =  5.0f;
-    public const float MissedAttackPenalty    = -0.05f;   // ready + out-of-range attack
-    public const float AttackOnCooldownPenalty = -0.02f;  // cooldown spam deterrent (-0.01 too weak, 0 had no effect, -0.05 may over-suppress)
-    public const float PlayerHitPenalty       = -2.0f;
-    public const float PlayerDeathPenalty     = -8.0f;
-    public const float StepPenalty            = -0.001f;
-    public const float WarningTilePenalty     = -0.05f;
-    public const float DamageTilePenalty      = -0.20f;
-    public const float WallBlockedMovePenalty = -0.05f;
-    public const float ApproachRewardScale    =  0.01f;
+    public const float BossDamagePerHp               =  0.10f;
+    public const float BossKillReward                =  5.0f;
+    public const float MissedAttackPenalty           = -0.08f;  // was -0.05; ready + out-of-range attack (84.9% of attacks out of range)
+    public const float AttackOnCooldownPenalty       = -0.02f;
+    public const float PlayerHitPenalty              = -2.0f;
+    public const float PlayerDeathPenalty            = -8.0f;
+    public const float StepPenalty                   = -0.001f;
+    public const float WarningTilePenalty            = -0.10f;  // was -0.05; 95.5% of hits on warning tile
+    public const float DamageTilePenalty             = -0.20f;
+    public const float WallBlockedMovePenalty        = -0.05f;
+    public const float ApproachRewardScale           =  0f;
+    // New: penalize moving INTO hazard tiles; priority: damage > recent_warn > warn
+    public const float MovedIntoWarningPenalty       = -0.08f;
+    public const float MovedIntoRecentWarningPenalty = -0.10f;
+    public const float MovedIntoDamagePenalty        = -0.30f;
+    // New: small reward for attacking while safe (attack_ready + in_range + no danger)
+    public const float SafeInRangeAttackAttemptReward =  0.02f;
 
     public struct StepResult
     {
@@ -33,6 +39,8 @@ public class BossRLReward : MonoBehaviour
         public float rewardApproach;
         public float rewardMissedAttack;
         public float rewardAttackOnCooldown;
+        public float rewardMovedIntoDanger; // combined move-into-danger penalty
+        public float rewardSafeAttack;      // safe in-range attack attempt reward
         // episode control
         public bool bossDead;
         public bool playerDead;
@@ -69,10 +77,14 @@ public class BossRLReward : MonoBehaviour
         BossRLStateExtractor extractor,
         float elapsedSeconds,
         float maxEpisodeSeconds,
-        bool  isWallBlocked   = false,
-        int   attackAction    = 0,
-        bool  attackWasReady  = false,
-        bool  bossInRange     = false)
+        bool  isWallBlocked          = false,
+        int   attackAction           = 0,
+        bool  attackWasReady         = false,
+        bool  bossInRange            = false,
+        bool  movedIntoWarning       = false,
+        bool  movedIntoRecentWarning = false,
+        bool  movedIntoDamage        = false,
+        bool  safeAttackAttempt      = false)
     {
         Prime(extractor);
 
@@ -91,6 +103,8 @@ public class BossRLReward : MonoBehaviour
         float approachR        = 0f;
         float missedAttackR    = 0f;
         float cooldownAttackR  = 0f;
+        float movedIntoDangerR = 0f;
+        float safeAttackR      = 0f;
 
         int bossDelta   = Mathf.Max(0, lastBossHp   - bossHp);
         int playerDelta = Mathf.Max(0, lastPlayerHp - playerHp);
@@ -137,6 +151,18 @@ public class BossRLReward : MonoBehaviour
             // attackWasReady && bossInRange → potential real hit; no extra penalty
         }
 
+        // Move-into-danger penalties: apply highest-severity one only
+        if (movedIntoDamage)
+            movedIntoDangerR = MovedIntoDamagePenalty;
+        else if (movedIntoRecentWarning)
+            movedIntoDangerR = MovedIntoRecentWarningPenalty;
+        else if (movedIntoWarning)
+            movedIntoDangerR = MovedIntoWarningPenalty;
+
+        // Safe in-range attack attempt: small reward for attacking in safe conditions
+        if (safeAttackAttempt)
+            safeAttackR = SafeInRangeAttackAttemptReward;
+
         bool bossDead   = extractor.BossIsDead;
         bool playerDead = extractor.PlayerIsDead;
         bool timedOut   = maxEpisodeSeconds > 0f && elapsedSeconds >= maxEpisodeSeconds;
@@ -146,7 +172,8 @@ public class BossRLReward : MonoBehaviour
 
         float total = StepPenalty + bossDamageR + hitPenaltyR + deathPenaltyR
                       + warningTileR + damageTileR + wallBlockedR
-                      + approachR + missedAttackR + cooldownAttackR;
+                      + approachR + missedAttackR + cooldownAttackR
+                      + movedIntoDangerR + safeAttackR;
 
         lastBossHp   = bossHp;
         lastPlayerHp = playerHp;
@@ -163,6 +190,8 @@ public class BossRLReward : MonoBehaviour
             rewardApproach        = approachR,
             rewardMissedAttack    = missedAttackR,
             rewardAttackOnCooldown = cooldownAttackR,
+            rewardMovedIntoDanger = movedIntoDangerR,
+            rewardSafeAttack      = safeAttackR,
             bossDead              = bossDead,
             playerDead            = playerDead,
             timedOut              = timedOut,
