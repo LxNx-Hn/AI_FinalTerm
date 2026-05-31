@@ -10,13 +10,28 @@ public class BossRLEpisodeResetter : MonoBehaviour
     private BossHealth bossHealth;
     private BossPlayerAgent agent;
 
+    private static int reloadCount = 0;
+    private float queueTime = -1f;
+
     public bool ReloadQueued => reloadQueued;
 
     private void Awake()
     {
+        // Log when the scene has finished loading (after a reload)
+        if (reloadCount > 0)
+        {
+            Debug.Log($"[BossRLReset] after_scene_loaded reload_count={reloadCount} time={Time.realtimeSinceStartup:F3}");
+        }
+    }
+
+    private void Start()
+    {
         agent = GetComponent<BossPlayerAgent>();
         playerHealth = GetComponent<PlayerHealth>();
         bossHealth = FindFirstObjectByType<BossHealth>();
+        // Re-subscribe after scene reload (SubscribeEvents is called in OnEnable before Start,
+        // but references may not be resolved yet; ensure they are resolved here)
+        SubscribeEvents();
     }
 
     private void OnEnable()
@@ -37,6 +52,8 @@ public class BossRLEpisodeResetter : MonoBehaviour
         }
 
         reloadQueued = true;
+        queueTime = Time.realtimeSinceStartup;
+        Debug.Log($"[BossRLReset] queue_reload reload_count={reloadCount} time={queueTime:F3}");
         StartCoroutine(ReloadSceneRoutine());
     }
 
@@ -109,6 +126,16 @@ public class BossRLEpisodeResetter : MonoBehaviour
         yield return null;
         CutsceneFreezeManager.ForceUnlock();
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        float beforeTime = Time.realtimeSinceStartup;
+        float elapsed = beforeTime - (queueTime >= 0f ? queueTime : beforeTime);
+        Debug.Log($"[BossRLReset] before_load_scene reload_count={reloadCount} time={beforeTime:F3} elapsed_since_queue={elapsed:F3}s");
+        reloadCount++;
+        // LoadSceneAsync keeps the game loop responsive during load (no blocking main thread),
+        // so ML-Agents communicator stays alive and avoids environment timeout.
+        string sceneName = SceneManager.GetActiveScene().name;
+        var op = SceneManager.LoadSceneAsync(sceneName);
+        op.allowSceneActivation = true;
+        while (op != null && !op.isDone)
+            yield return null;
     }
 }
