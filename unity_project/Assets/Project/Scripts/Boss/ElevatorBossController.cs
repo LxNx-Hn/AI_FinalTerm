@@ -351,6 +351,13 @@ public class ElevatorBossController : MonoBehaviour
 
     // 디버그/패턴 확인용 내부 좌표입니다.
     public Vector2Int BossArenaCell => bossCell;
+    public Transform DiagnosticBossVisualRoot => bossSpriteTransform;
+    public bool DiagnosticIsDashInProgress => diagnosticDashInProgress;
+    public bool DiagnosticIsMarkDashInProgress => diagnosticMarkDashInProgress;
+    public Vector2Int DiagnosticDashStartCell => diagnosticDashStartCell;
+    public Vector2Int DiagnosticDashEndCell => diagnosticDashEndCell;
+    public Vector2Int DiagnosticDashCurrentCell => diagnosticDashCurrentCell;
+    public IReadOnlyList<Vector2Int> DiagnosticDashLaneCells => diagnosticDashLaneCells;
 
     private enum BossPhase
     {
@@ -389,6 +396,12 @@ public class ElevatorBossController : MonoBehaviour
     private bool phase2FirstDone = false;
     private bool phase3FirstDone = false;
     private bool hasSkippedFirstMarkDashInFakePhase = false;
+    private bool diagnosticDashInProgress = false;
+    private bool diagnosticMarkDashInProgress = false;
+    private Vector2Int diagnosticDashStartCell = Vector2Int.zero;
+    private Vector2Int diagnosticDashEndCell = Vector2Int.zero;
+    private Vector2Int diagnosticDashCurrentCell = Vector2Int.zero;
+    private readonly List<Vector2Int> diagnosticDashLaneCells = new List<Vector2Int>();
 
 
     private GridOccupant playerOccupant;
@@ -1465,6 +1478,7 @@ public class ElevatorBossController : MonoBehaviour
 
     private IEnumerator MarkDash(bool forceNormal = false)
     {
+        diagnosticMarkDashInProgress = true;
         Vector2Int playerCell = GetPlayerOffsetCell();
         MarkDashVariant variant = PickMarkDashVariant(forceNormal);
         bool displayHorizontal = IsMarkDashDisplayHorizontal(variant);
@@ -1519,6 +1533,7 @@ public class ElevatorBossController : MonoBehaviour
         Vector2Int dashDir = PickMarkDashDirection(actualHorizontal);
 
         yield return CastDashDamageOnly(damageCells, dashDir, markDamageTime, hideAfter: true);
+        diagnosticMarkDashInProgress = false;
     }
 
     private MarkDashVariant PickMarkDashVariant(bool forceNormal = false)
@@ -1740,6 +1755,7 @@ public class ElevatorBossController : MonoBehaviour
             ? explicitEnd.Value
             : caster.GetPatternDashEnd(damageCells, normalizedDir);
 
+        SetDiagnosticDashContext(start, end, damageCells);
         yield return caster.CastCellsWithBeforeDamage(
             damageCells,
             warningTime,
@@ -1762,6 +1778,7 @@ public class ElevatorBossController : MonoBehaviour
             hideDamageTileVisual: true,
             fillDirection: normalizedDir
         );
+        ClearDiagnosticDashContext();
 
         bossCell = ClampCell(end);
 
@@ -1781,6 +1798,7 @@ public class ElevatorBossController : MonoBehaviour
         Vector2Int start = caster.GetPatternDashStart(damageCells, normalizedDir);
         Vector2Int end = caster.GetPatternDashEnd(damageCells, normalizedDir);
 
+        SetDiagnosticDashContext(start, end, damageCells);
         if (playDashVisualOnPatternDamage)
         {
             StartCoroutine(DashBossAlongArenaLine(
@@ -1794,6 +1812,7 @@ public class ElevatorBossController : MonoBehaviour
         ApplyDashVisuals(damageCells, start, end, profile);
 
         yield return caster.CastDamageOnly(damageCells, damageTime, hideDamageTileVisual: true);
+        ClearDiagnosticDashContext();
 
         bossCell = ClampCell(end);
 
@@ -1809,6 +1828,10 @@ public class ElevatorBossController : MonoBehaviour
         bool hideAfter
     )
     {
+        diagnosticDashInProgress = true;
+        diagnosticDashStartCell = startCell;
+        diagnosticDashEndCell = endCell;
+        diagnosticDashCurrentCell = startCell;
         duration = Mathf.Max(0.01f, duration);
 
         bossCell = ClampCell(startCell);
@@ -1838,6 +1861,8 @@ public class ElevatorBossController : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
             transform.position = Vector3.Lerp(start, end, t);
+            if (GridManager.Instance != null)
+                diagnosticDashCurrentCell = GridManager.Instance.WorldToCell(transform.position);
 
             if (bossSpriteTransform != null)
                 bossSpriteTransform.localPosition = BossSpriteRestPos;
@@ -1847,6 +1872,7 @@ public class ElevatorBossController : MonoBehaviour
 
         transform.position = end;
         bossCell = ClampCell(endCell);
+        diagnosticDashCurrentCell = endCell;
 
         if (bossSpriteTransform != null)
             bossSpriteTransform.localPosition = BossSpriteRestPos;
@@ -1856,6 +1882,31 @@ public class ElevatorBossController : MonoBehaviour
 
         if (hideAfter)
             SetBossVisible(false);
+        diagnosticDashInProgress = false;
+        diagnosticDashLaneCells.Clear();
+    }
+
+    private void SetDiagnosticDashContext(Vector2Int startCell, Vector2Int endCell, List<Vector2Int> laneCells)
+    {
+        diagnosticDashStartCell = startCell;
+        diagnosticDashEndCell = endCell;
+        diagnosticDashCurrentCell = startCell;
+        diagnosticDashLaneCells.Clear();
+
+        if (laneCells == null)
+            return;
+
+        foreach (Vector2Int cell in laneCells)
+        {
+            if (!diagnosticDashLaneCells.Contains(cell))
+                diagnosticDashLaneCells.Add(cell);
+        }
+    }
+
+    private void ClearDiagnosticDashContext()
+    {
+        if (!diagnosticDashInProgress)
+            diagnosticDashLaneCells.Clear();
     }
 
     private float GetDiagonalExtraRotation(Vector2Int dir)
@@ -2978,6 +3029,7 @@ public class ElevatorBossController : MonoBehaviour
         FaceDashDirection(normalizedDir);
         List<Vector2Int> damageCells = caster.ForwardStripe3FromCell(slamTarget, normalizedDir);
         Vector2Int dashEnd = caster.GetDirectionalEdgeCell(slamTarget, normalizedDir);
+        SetDiagnosticDashContext(slamTarget, dashEnd, damageCells);
 
         // 경고장판 없이 즉시 시각·판정 동시 시작
         if (playDashVisualOnPatternDamage)
@@ -2994,6 +3046,7 @@ public class ElevatorBossController : MonoBehaviour
         ApplyDashVisuals(damageCells, slamTarget, dashEnd, DashVisualProfile.InternalQuiet);
 
         yield return caster.CastDamageOnly(damageCells, finalDamageTime, hideDamageTileVisual: true);
+        ClearDiagnosticDashContext();
 
         bossCell = ClampCell(dashEnd);
     }

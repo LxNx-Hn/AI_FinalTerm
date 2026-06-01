@@ -179,7 +179,22 @@ public class PlayerCombat : MonoBehaviour
         {
             if (cells.Contains(cachedBossCtrl.BossCell))
             {
+                int bossHpBefore = cachedBossHealth.currentHp;
                 cachedBossHealth.TakeDamage(damage);
+                int bossDamageDelta = Mathf.Max(0, bossHpBefore - cachedBossHealth.currentHp);
+                if (bossDamageDelta > 0)
+                {
+                    BossRLTargetAlignmentDiagnostics.RecordSuccessfulBossHit(
+                        this,
+                        cachedBossCtrl,
+                        cachedBossHealth,
+                        cells,
+                        origin,
+                        direction,
+                        bossHpBefore,
+                        cachedBossHealth.currentHp,
+                        bossDamageDelta);
+                }
                 hitAny = true;
             }
         }

@@ -10,6 +10,7 @@ public class BossRLDebugLogger : MonoBehaviour
     private static int globalSafeOppMoveTraceSamples;
 
     private string lastWarningKey;
+    public int CurrentEpisodeIndex => episodeIndex;
 
     // ── Episode bookkeeping ───────────────────────────────────────────────────
     private float episodeStartTime;
@@ -79,6 +80,34 @@ public class BossRLDebugLogger : MonoBehaviour
     private int   attackWhenRecentDamage;
     private int   bossDamageTotal;
     private int   bossDamageBeforeFirstHit;
+
+    // BossCell vs visible boss sprite diagnostic metrics.
+    private int bossSpriteVisibleHitCount;
+    private int bossSpriteInvisibleHitCount;
+    private int bossSpriteOffButBossCellHitCount;
+    private int bossVisualRootInactiveHitCount;
+    private int bossRendererDisabledHitCount;
+    private int bossAlphaZeroHitCount;
+    private int bossCellInAttackRangeButSpriteNotVisibleCount;
+    private int bossCellInAttackRangeButSpriteCellOutOfRangeCount;
+    private int spriteVisibleCellInAttackRangeCount;
+    private int spriteVisibleCellOutOfAttackRangeCount;
+    private int hiddenBossAttackRewardCount;
+    private int targetAlignmentLogCount;
+    private int hitClassNormalVisibleCount;
+    private int hitClassDashCurrentOverlapCount;
+    private int hitClassStaleBossCellCount;
+    private int hitClassHiddenTargetCount;
+    private int hitClassOffLaneEmptyCount;
+    private int hitClassUnknownCount;
+    private int dashHitAllowedCandidateCount;
+    private int dashHitCurrentVisualOverlapCount;
+    private int dashHitBossCellOnlyCount;
+    private int dashHitPreviousPositionSuspectCount;
+    private int dashHitFutureEndCellSuspectCount;
+    private int dashHitOutsideActiveLaneCount;
+    private int dashHitInsideActiveDamageLaneCount;
+    private int dashHitInsideActiveWarningLaneCount;
 
     // ── Attack range metrics ──────────────────────────────────────────────────
     private int   bossInAttackRangeSteps;
@@ -294,6 +323,20 @@ public class BossRLDebugLogger : MonoBehaviour
         attackWhenOnWarning  = attackWhenOnDamage   = 0;
         attackWhenRecentWarning = attackWhenRecentDamage = 0;
         bossDamageTotal      = bossDamageBeforeFirstHit = 0;
+        bossSpriteVisibleHitCount = bossSpriteInvisibleHitCount = 0;
+        bossSpriteOffButBossCellHitCount = bossVisualRootInactiveHitCount = 0;
+        bossRendererDisabledHitCount = bossAlphaZeroHitCount = 0;
+        bossCellInAttackRangeButSpriteNotVisibleCount = 0;
+        bossCellInAttackRangeButSpriteCellOutOfRangeCount = 0;
+        spriteVisibleCellInAttackRangeCount = spriteVisibleCellOutOfAttackRangeCount = 0;
+        hiddenBossAttackRewardCount = targetAlignmentLogCount = 0;
+        hitClassNormalVisibleCount = hitClassDashCurrentOverlapCount = 0;
+        hitClassStaleBossCellCount = hitClassHiddenTargetCount = 0;
+        hitClassOffLaneEmptyCount = hitClassUnknownCount = 0;
+        dashHitAllowedCandidateCount = dashHitCurrentVisualOverlapCount = 0;
+        dashHitBossCellOnlyCount = dashHitPreviousPositionSuspectCount = 0;
+        dashHitFutureEndCellSuspectCount = dashHitOutsideActiveLaneCount = 0;
+        dashHitInsideActiveDamageLaneCount = dashHitInsideActiveWarningLaneCount = 0;
 
         bossInAttackRangeSteps   = attackWhenBossInRange    = attackWhenBossOutOfRange = 0;
         bossDistanceSumAtAttack  = 0f;
@@ -807,6 +850,179 @@ public class BossRLDebugLogger : MonoBehaviour
         }
     }
 
+    public void RecordTargetAlignmentHit(BossRLTargetAlignmentDiagnostics.BossHitRecord record)
+    {
+        BossRLTargetAlignmentDiagnostics.BossVisualDiagnosticState visual = record.visualState;
+        targetAlignmentLogCount++;
+        bool visibleBodyOverlap = visual.spriteVisible &&
+                                  (visual.visualCellInsideAttackCells ||
+                                   visual.spriteBoundsCenterCellInsideAttackCells);
+        bool currentVisualOverlap = visual.rootCurrentCellInsideAttackCells ||
+                                    visibleBodyOverlap ||
+                                    (visual.currentlyDashing && visual.dashCurrentCellInsideAttackCells);
+
+        switch (visual.hitClass)
+        {
+            case BossRLTargetAlignmentDiagnostics.HitClass.NormalVisible:
+                hitClassNormalVisibleCount++;
+                break;
+            case BossRLTargetAlignmentDiagnostics.HitClass.DashCurrentOverlap:
+                hitClassDashCurrentOverlapCount++;
+                dashHitAllowedCandidateCount++;
+                break;
+            case BossRLTargetAlignmentDiagnostics.HitClass.StaleBossCell:
+                hitClassStaleBossCellCount++;
+                break;
+            case BossRLTargetAlignmentDiagnostics.HitClass.HiddenTarget:
+                hitClassHiddenTargetCount++;
+                break;
+            case BossRLTargetAlignmentDiagnostics.HitClass.OffLaneEmpty:
+                hitClassOffLaneEmptyCount++;
+                break;
+            default:
+                hitClassUnknownCount++;
+                break;
+        }
+
+        if (visual.spriteVisible) bossSpriteVisibleHitCount++;
+        else bossSpriteInvisibleHitCount++;
+
+        if (visual.bossCellInsideAttackCells && !visual.spriteVisible)
+        {
+            bossSpriteOffButBossCellHitCount++;
+            bossCellInAttackRangeButSpriteNotVisibleCount++;
+        }
+
+        if (visual.visualRootExists &&
+            (!visual.visualRootActiveSelf || !visual.visualRootActiveInHierarchy))
+        {
+            bossVisualRootInactiveHitCount++;
+        }
+
+        if (!visual.primarySpriteRendererEnabled)
+        {
+            bossRendererDisabledHitCount++;
+        }
+
+        if (visual.anyRendererAlphaZero)
+        {
+            bossAlphaZeroHitCount++;
+        }
+
+        if (visual.bossCellInsideAttackCells &&
+            visual.spriteVisible &&
+            !visual.visualCellInsideAttackCells)
+        {
+            bossCellInAttackRangeButSpriteCellOutOfRangeCount++;
+        }
+
+        if (visual.spriteVisible && visual.visualCellInsideAttackCells)
+        {
+            spriteVisibleCellInAttackRangeCount++;
+        }
+        else if (visual.spriteVisible)
+        {
+            spriteVisibleCellOutOfAttackRangeCount++;
+        }
+
+        if (visual.currentlyHidden || !visual.spriteVisible)
+        {
+            hiddenBossAttackRewardCount++;
+        }
+
+        if (visual.currentlyDashing && currentVisualOverlap)
+        {
+            dashHitCurrentVisualOverlapCount++;
+        }
+
+        if (visual.bossCellInsideAttackCells && !currentVisualOverlap)
+        {
+            dashHitBossCellOnlyCount++;
+        }
+
+        if (visual.currentlyDashing &&
+            attackCellContains(record.attackCells, visual.dashStartCell) &&
+            !visual.dashCurrentCellInsideAttackCells)
+        {
+            dashHitPreviousPositionSuspectCount++;
+        }
+
+        if (visual.currentlyDashing &&
+            attackCellContains(record.attackCells, visual.dashEndCell) &&
+            !visual.dashCurrentCellInsideAttackCells)
+        {
+            dashHitFutureEndCellSuspectCount++;
+        }
+
+        if (!visual.attackCellsOverlapAnyActiveLane)
+        {
+            dashHitOutsideActiveLaneCount++;
+        }
+
+        if (visual.activeDamageCellsOverlapAttackCells)
+        {
+            dashHitInsideActiveDamageLaneCount++;
+        }
+
+        if (visual.activeWarningCellsOverlapAttackCells)
+        {
+            dashHitInsideActiveWarningLaneCount++;
+        }
+
+        string rendererBoundsCenter = visual.hasRendererBoundsCenter
+            ? visual.rendererBoundsCenter.ToString()
+            : "<none>";
+        string gridOccupantCell = visual.hasBossGridOccupant
+            ? $"({visual.bossGridOccupantCell.x},{visual.bossGridOccupantCell.y})"
+            : "<none>";
+
+        Debug.Log(
+            $"[BossRL] target_alignment_hit episode={record.episode} step={record.step} " +
+            $"hit_class={BossRLTargetAlignmentDiagnostics.FormatHitClass(visual.hitClass)} " +
+            $"time={record.time:F3} player_cell=({record.playerCell.x},{record.playerCell.y}) " +
+            $"player_facing=({record.playerFacing.x},{record.playerFacing.y}) " +
+            $"attack_cells={BossRLTargetAlignmentDiagnostics.FormatCells(record.attackCells)} " +
+            $"boss_cell=({record.bossCell.x},{record.bossCell.y}) " +
+            $"bosscell_in_attack={visual.bossCellInsideAttackCells} " +
+            $"sprite_visible={visual.spriteVisible} visual_root_active_self={visual.visualRootActiveSelf} " +
+            $"visual_root_active_hierarchy={visual.visualRootActiveInHierarchy} " +
+            $"sprite_renderer_enabled={visual.primarySpriteRendererEnabled} " +
+            $"sprite_alpha={visual.primarySpriteAlpha:F3} sprite_object={visual.primarySpriteObjectName} " +
+            $"boss_visual_pos={visual.visualTransformPosition} visual_cell=({visual.visualEstimatedCell.x},{visual.visualEstimatedCell.y}) " +
+            $"visual_cell_in_attack={visual.visualCellInsideAttackCells} " +
+            $"sprite_bounds_cell=({visual.spriteBoundsCenterCell.x},{visual.spriteBoundsCenterCell.y}) " +
+            $"sprite_bounds_cell_in_attack={visual.spriteBoundsCenterCellInsideAttackCells} " +
+            $"boss_health_pos={record.bossHealthPosition} " +
+            $"boss_root_pos={visual.rootTransformPosition} renderer_bounds_center={rendererBoundsCenter} " +
+            $"root_cell=({visual.rootCurrentCell.x},{visual.rootCurrentCell.y}) root_cell_in_attack={visual.rootCurrentCellInsideAttackCells} " +
+            $"grid_occupant_cell={gridOccupantCell} " +
+            $"hidden={visual.currentlyHidden} dashing={visual.currentlyDashing} markdash={visual.currentlyMarkDash} " +
+            $"dash_start=({visual.dashStartCell.x},{visual.dashStartCell.y}) dash_end=({visual.dashEndCell.x},{visual.dashEndCell.y}) " +
+            $"dash_current=({visual.dashCurrentCell.x},{visual.dashCurrentCell.y}) dash_current_in_attack={visual.dashCurrentCellInsideAttackCells} " +
+            $"dash_line_overlap_attack={visual.dashLineCellsOverlapAttackCells} " +
+            $"active_damage_overlap_attack={visual.activeDamageCellsOverlapAttackCells} " +
+            $"active_warning_overlap_attack={visual.activeWarningCellsOverlapAttackCells} " +
+            $"boss_hp_before={record.bossHpBefore} boss_hp_after={record.bossHpAfter} damage={record.damageAmount}");
+    }
+
+    private static bool attackCellContains(IReadOnlyList<Vector2Int> attackCells, Vector2Int cell)
+    {
+        if (attackCells == null)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < attackCells.Count; i++)
+        {
+            if (attackCells[i] == cell)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void RecordAttackMaskDecision(bool masked, bool survivalStage,
         bool notReady, bool outOfRange, bool onWarning, bool onDamage,
         bool onRecentWarning, bool onRecentDamage)
@@ -1036,6 +1252,32 @@ public class BossRLDebugLogger : MonoBehaviour
             $"  attack_quality: actions={attackActionCount} hits={successfulHitSteps} " +
             $"missed={missedAttackCount} cooldown={attackOnCooldownCount} " +
             $"hit_rate={hitRate:P1} dmg_per_atk={bossHpPerAtk:F3}\n" +
+            $"  target_alignment: logs={targetAlignmentLogCount} " +
+            $"boss_sprite_visible_hit_count={bossSpriteVisibleHitCount} " +
+            $"boss_sprite_invisible_hit_count={bossSpriteInvisibleHitCount} " +
+            $"boss_sprite_off_but_bosscell_hit_count={bossSpriteOffButBossCellHitCount} " +
+            $"boss_visual_root_inactive_hit_count={bossVisualRootInactiveHitCount} " +
+            $"boss_renderer_disabled_hit_count={bossRendererDisabledHitCount} " +
+            $"boss_alpha_zero_hit_count={bossAlphaZeroHitCount} " +
+            $"bosscell_in_attack_range_but_sprite_not_visible_count={bossCellInAttackRangeButSpriteNotVisibleCount} " +
+            $"bosscell_in_attack_range_but_sprite_cell_out_of_range_count={bossCellInAttackRangeButSpriteCellOutOfRangeCount} " +
+            $"sprite_visible_cell_in_attack_range_count={spriteVisibleCellInAttackRangeCount} " +
+            $"sprite_visible_cell_out_of_attack_range_count={spriteVisibleCellOutOfAttackRangeCount} " +
+            $"hidden_boss_attack_reward_count={hiddenBossAttackRewardCount}\n" +
+            $"  dash_target_alignment: hit_class_normal_visible_count={hitClassNormalVisibleCount} " +
+            $"hit_class_dash_current_overlap_count={hitClassDashCurrentOverlapCount} " +
+            $"hit_class_stale_bosscell_count={hitClassStaleBossCellCount} " +
+            $"hit_class_hidden_target_count={hitClassHiddenTargetCount} " +
+            $"hit_class_off_lane_empty_count={hitClassOffLaneEmptyCount} " +
+            $"hit_class_unknown_count={hitClassUnknownCount} " +
+            $"dash_hit_allowed_candidate_count={dashHitAllowedCandidateCount} " +
+            $"dash_hit_current_visual_overlap_count={dashHitCurrentVisualOverlapCount} " +
+            $"dash_hit_bosscell_only_count={dashHitBossCellOnlyCount} " +
+            $"dash_hit_previous_position_suspect_count={dashHitPreviousPositionSuspectCount} " +
+            $"dash_hit_future_endcell_suspect_count={dashHitFutureEndCellSuspectCount} " +
+            $"dash_hit_outside_active_lane_count={dashHitOutsideActiveLaneCount} " +
+            $"dash_hit_inside_active_damage_lane_count={dashHitInsideActiveDamageLaneCount} " +
+            $"dash_hit_inside_active_warning_lane_count={dashHitInsideActiveWarningLaneCount}\n" +
             $"  action_histogram: wait={actionWaitCount} move_up={actionMoveUpCount} " +
             $"move_down={actionMoveDownCount} move_left={actionMoveLeftCount} " +
             $"move_right={actionMoveRightCount} attack={actionAttackCount}\n" +
