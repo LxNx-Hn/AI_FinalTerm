@@ -5,6 +5,9 @@ using UnityEngine;
 public class BossRLDebugLogger : MonoBehaviour
 {
     [SerializeField] private int logEveryNSteps = 100;
+    private const int MaxTraceSamplesPerEpisode = 5;
+    private const int MaxTraceSamplesPerRun = 50;
+    private static int globalSafeOppMoveTraceSamples;
 
     private string lastWarningKey;
 
@@ -16,7 +19,7 @@ public class BossRLDebugLogger : MonoBehaviour
     private float rewardTotal, rewardBossDamage, rewardHitPenalty, rewardDeathPenalty;
     private float rewardWarningTile, rewardDamageTile, rewardWallBlocked;
     private float rewardApproach, rewardMissedAttack, rewardAttackOnCooldown;
-    private float rewardMovedIntoDanger, rewardSafeAttack;
+    private float rewardMovedIntoDanger, rewardSafeAttack, rewardMissedSafeAttackOpportunity;
 
     // ── Tile / hazard stats ───────────────────────────────────────────────────
     private int warningTileSteps;
@@ -47,6 +50,12 @@ public class BossRLDebugLogger : MonoBehaviour
     private int bossCellMoveAllowedCount;      // boss cell correctly allowed (tracks fix working)
     private int moveBusyStateCount;            // times IsMoving=true at mask call (informational)
     private int waitActionCount;               // times action=0 (WAIT) was selected
+    private int actionWaitCount;
+    private int actionMoveUpCount;
+    private int actionMoveDownCount;
+    private int actionMoveLeftCount;
+    private int actionMoveRightCount;
+    private int actionAttackCount;
 
     // ── Attack mask metrics ───────────────────────────────────────────────────
     private int attackMaskedNotReadyCount;
@@ -112,10 +121,17 @@ public class BossRLDebugLogger : MonoBehaviour
     private int safeAttackTakenCount;
     private int safeAttackMissedCount;
     private int safeAttackHitCount;
+    private int safeOppWaitCount;
+    private int safeOppMoveCount;
+    private int safeOppMoveTowardBossCount;
+    private int safeOppMoveAwayFromBossCount;
+    private int safeOppMoveLateralCount;
     private int bossInRangeNoAttackCount;
     private int attackOutOfRangeCount;
     private int attackWhenDangerNearbyCount;
     private int dangerNearbySteps;
+    private int dangerNearbySafeMoveCount;
+    private int dangerNearbyDangerMoveCount;
     private int movedIntoWarningCount;
     private int movedIntoDamageCount;
     private int movedIntoRecentWarningCount;
@@ -129,6 +145,87 @@ public class BossRLDebugLogger : MonoBehaviour
     private int hitAfterMovingIntoDangerCount;
     private int warningToHitStepSum;
     private int warningToHitStepCount;
+
+    // ── Distance / positioning metrics ───────────────────────────────────────
+    private float distanceToBossSum;
+    private int   distanceToBossSampleCount;
+    private int   minDistanceToBoss;
+    private int   maxDistanceToBoss;
+    private int   timeInAttackRangeSteps;
+    private int   timeOutOfAttackRangeSteps;
+    private int   enteredAttackRangeCount;
+    private int   leftAttackRangeCount;
+    private bool  hasPreviousAttackRangeState;
+    private bool  previousAttackRangeState;
+
+    // ── Per-action attack-allowed metrics ────────────────────────────────────
+    private int attackAllowedActionStepCount;
+    private int chosenAttackWhenAllowedCount;
+    private int missedAllowedAttackCount;
+
+    // ── Safe opportunity MOVE trace ──────────────────────────────────────────
+    private struct SafeOppMoveTrace
+    {
+        public int episodeIndex;
+        public int step;
+        public string actionName;
+        public Vector2Int playerCell;
+        public Vector2Int bossCell;
+        public int distanceBefore;
+        public int distanceAfter;
+        public bool remainedInAttackRangeAfterMove;
+        public bool leftAttackRangeAfterMove;
+        public bool movedTowardBoss;
+        public bool movedAwayFromBoss;
+        public bool movedLateral;
+        public bool dangerNearby;
+        public bool nextWarning;
+        public bool nextDamage;
+        public bool nextRecentWarning;
+        public bool nextRecentDamage;
+        public int safeMoveAlternatives;
+        public bool attackAllowed;
+        public int bossHpBefore;
+        public float timestamp;
+        public bool hitWithin1s;
+        public bool hitWithin2s;
+        public bool bossHpAfter05Recorded;
+        public int bossHpAfter05;
+    }
+    private readonly List<SafeOppMoveTrace> pendingSafeOppMoveTraces = new List<SafeOppMoveTrace>();
+    private int episodeIndex;
+    private int safeOppMoveTraceSampleCount;
+    private int safeOppMoveTraceTotalCount;
+    private int safeOppMoveUsefulEscapeCount;
+    private int safeOppMoveKeptAttackRangeCount;
+    private int safeOppMoveLeftAttackRangeCount;
+    private int safeOppMoveAwayWithoutDangerCount;
+    private int safeOppMoveThenHitWithin2sCount;
+    private int safeOppMoveThenNoHitNoDamageCount;
+    private int safeOppAttackWouldHaveBeenAllowedCount;
+
+    // ── Warning-on-player / boss-facing diagnostics ─────────────────────────
+    private int warningSpawnOnPlayerCount;
+    private int warningSpawnOnPlayerSafeMoveAvailableCount;
+    private int warningSpawnOnPlayerEscapeSuccessCount;
+    private int warningSpawnOnPlayerEscapeFailCount;
+    private int warningSpawnOnPlayerHitCount;
+    private int warningSpawnOnPlayerChosenWaitCount;
+    private int warningSpawnOnPlayerChosenAttackCount;
+    private int warningSpawnOnPlayerChosenMoveCount;
+    private int warningSpawnToDamageFrameSum;
+    private int warningSpawnToDamageFrameCount;
+    private int decisionAvailableBeforeDamageCount;
+    private int noDecisionBeforeDamageCount;
+    private int bossFacingChangedBetweenWarningAndDamageCount;
+    private int hitWhenBossFacingChangedCount;
+    private int hitByOriginalWarningDirectionCount;
+    private int hitByRotatedDamageDirectionCount;
+    private int patternHitUnknownCount;
+    private bool pendingWarningOnPlayer;
+    private int pendingWarningFrame;
+    private int pendingWarningDecisionStep;
+    private Vector2Int pendingWarningBossFacing;
 
     // cross-step state for opportunity tracking
     private int  oppInternalStep;
@@ -163,13 +260,14 @@ public class BossRLDebugLogger : MonoBehaviour
     // ── Episode reset ─────────────────────────────────────────────────────────
     public void ResetEpisode(int bossHpStart, float startTime)
     {
+        episodeIndex++;
         episodeStartTime   = startTime;
         episodeBossHpStart = bossHpStart;
 
         rewardTotal = rewardBossDamage = rewardHitPenalty = rewardDeathPenalty = 0f;
         rewardWarningTile = rewardDamageTile = rewardWallBlocked = 0f;
         rewardApproach = rewardMissedAttack = rewardAttackOnCooldown = 0f;
-        rewardMovedIntoDanger = rewardSafeAttack = 0f;
+        rewardMovedIntoDanger = rewardSafeAttack = rewardMissedSafeAttackOpportunity = 0f;
 
         warningTileSteps = damageTileSteps = 0;
         playerHitCount   = 0;
@@ -183,6 +281,8 @@ public class BossRLDebugLogger : MonoBehaviour
         waitOnlyDueToBusyCount = waitOnlyDueToBossCellCount = 0;
         bossCellMoveAllowedCount = moveBusyStateCount = 0;
         waitActionCount = 0;
+        actionWaitCount = actionMoveUpCount = actionMoveDownCount = 0;
+        actionMoveLeftCount = actionMoveRightCount = actionAttackCount = 0;
 
         attackMaskedNotReadyCount = attackMaskedOutOfRangeCount = 0;
         attackMaskedOnWarningCount = attackMaskedOnDamageCount = 0;
@@ -221,7 +321,10 @@ public class BossRLDebugLogger : MonoBehaviour
         survived10s = survived20s = false;
 
         safeAttackOpportunitySteps = safeAttackTakenCount = safeAttackMissedCount = safeAttackHitCount = 0;
+        safeOppWaitCount = safeOppMoveCount = 0;
+        safeOppMoveTowardBossCount = safeOppMoveAwayFromBossCount = safeOppMoveLateralCount = 0;
         bossInRangeNoAttackCount = attackOutOfRangeCount = attackWhenDangerNearbyCount = 0;
+        dangerNearbySafeMoveCount = dangerNearbyDangerMoveCount = 0;
         dangerNearbySteps = movedIntoWarningCount = movedIntoDamageCount = 0;
         movedIntoRecentWarningCount = movedIntoRecentDamageCount = 0;
         waitWhileDangerNearbyCount = hitWhileSafeMoveAvailableCount = avoidableHitCount = 0;
@@ -230,6 +333,46 @@ public class BossRLDebugLogger : MonoBehaviour
         oppInternalStep = 0;
         oppLastStepOnWarning = oppLastMoveIntoDanger = false;
         oppLastWarningEntryStep = -1;
+        distanceToBossSum = 0f;
+        distanceToBossSampleCount = 0;
+        minDistanceToBoss = int.MaxValue;
+        maxDistanceToBoss = int.MinValue;
+        timeInAttackRangeSteps = timeOutOfAttackRangeSteps = 0;
+        enteredAttackRangeCount = leftAttackRangeCount = 0;
+        hasPreviousAttackRangeState = false;
+        previousAttackRangeState = false;
+        attackAllowedActionStepCount = chosenAttackWhenAllowedCount = missedAllowedAttackCount = 0;
+        pendingSafeOppMoveTraces.Clear();
+        safeOppMoveTraceSampleCount = 0;
+        safeOppMoveTraceTotalCount = 0;
+        safeOppMoveUsefulEscapeCount = 0;
+        safeOppMoveKeptAttackRangeCount = 0;
+        safeOppMoveLeftAttackRangeCount = 0;
+        safeOppMoveAwayWithoutDangerCount = 0;
+        safeOppMoveThenHitWithin2sCount = 0;
+        safeOppMoveThenNoHitNoDamageCount = 0;
+        safeOppAttackWouldHaveBeenAllowedCount = 0;
+        warningSpawnOnPlayerCount = 0;
+        warningSpawnOnPlayerSafeMoveAvailableCount = 0;
+        warningSpawnOnPlayerEscapeSuccessCount = 0;
+        warningSpawnOnPlayerEscapeFailCount = 0;
+        warningSpawnOnPlayerHitCount = 0;
+        warningSpawnOnPlayerChosenWaitCount = 0;
+        warningSpawnOnPlayerChosenAttackCount = 0;
+        warningSpawnOnPlayerChosenMoveCount = 0;
+        warningSpawnToDamageFrameSum = 0;
+        warningSpawnToDamageFrameCount = 0;
+        decisionAvailableBeforeDamageCount = 0;
+        noDecisionBeforeDamageCount = 0;
+        bossFacingChangedBetweenWarningAndDamageCount = 0;
+        hitWhenBossFacingChangedCount = 0;
+        hitByOriginalWarningDirectionCount = 0;
+        hitByRotatedDamageDirectionCount = 0;
+        patternHitUnknownCount = 0;
+        pendingWarningOnPlayer = false;
+        pendingWarningFrame = -1;
+        pendingWarningDecisionStep = -1;
+        pendingWarningBossFacing = Vector2Int.zero;
         pendingAttacks.Clear();
         safeAttackHitSameStep = safeAttackHitWithin03s = safeAttackHitWithin05s = 0;
         outOfRangeAttackHitWithin05s = unsafeAttackHitWithin05s = 0;
@@ -267,6 +410,7 @@ public class BossRLDebugLogger : MonoBehaviour
     // ── Opportunity metric recording (called from OnActionReceived) ───────────
 
     public void RecordOpportunityMetrics(
+        int singleAction,
         bool isAttack, bool safeOpportunity, bool attackHit, bool bossInRange, bool attackReady,
         bool dangerNearby, int safeMoveCount, bool onWarning, bool onDamage,
         bool onRecentWarn, bool onRecentDmg,
@@ -274,9 +418,39 @@ public class BossRLDebugLogger : MonoBehaviour
         bool moveIntoWarn, bool moveIntoDmg, bool moveIntoRecentWarn, bool moveIntoRecentDmg,
         bool gotHit, bool isWait,
         float currentTime = 0f, int bossDamageDelta = 0,
-        bool choseSafeMove = false, bool choseDangerMove = false)
+        bool choseSafeMove = false, bool choseDangerMove = false,
+        int currentDistanceToBoss = 99, int moveDistanceDelta = 0,
+        Vector2Int playerCell = default(Vector2Int), Vector2Int bossCell = default(Vector2Int),
+        bool remainedInAttackRangeAfterMove = false, int bossHpBefore = 0, int currentBossHp = 0,
+        Vector2Int bossFacing = default(Vector2Int))
     {
         oppInternalStep++;
+        UpdatePendingSafeOppMoveTraces(currentTime, gotHit, currentBossHp);
+        UpdateWarningOnPlayerDiagnostics(singleAction, safeMoveCount, onWarning, onDamage, gotHit, bossFacing);
+
+        if (singleAction == 0) actionWaitCount++;
+        else if (singleAction == 1) actionMoveUpCount++;
+        else if (singleAction == 2) actionMoveDownCount++;
+        else if (singleAction == 3) actionMoveLeftCount++;
+        else if (singleAction == 4) actionMoveRightCount++;
+        else if (singleAction == 5) actionAttackCount++;
+
+        int clampedDistance = Mathf.Max(0, currentDistanceToBoss);
+        distanceToBossSum += clampedDistance;
+        distanceToBossSampleCount++;
+        minDistanceToBoss = Mathf.Min(minDistanceToBoss, clampedDistance);
+        maxDistanceToBoss = Mathf.Max(maxDistanceToBoss, clampedDistance);
+
+        if (bossInRange) timeInAttackRangeSteps++;
+        else             timeOutOfAttackRangeSteps++;
+
+        if (hasPreviousAttackRangeState)
+        {
+            if (!previousAttackRangeState && bossInRange) enteredAttackRangeCount++;
+            if (previousAttackRangeState && !bossInRange) leftAttackRangeCount++;
+        }
+        hasPreviousAttackRangeState = true;
+        previousAttackRangeState = bossInRange;
 
         // ── Attack opportunity tracking ───────────────────────────────────────
         if (safeOpportunity)  safeAttackOpportunitySteps++;
@@ -291,11 +465,36 @@ public class BossRLDebugLogger : MonoBehaviour
             if (!bossInRange)   attackOutOfRangeCount++;
             if (dangerNearby)   attackWhenDangerNearbyCount++;
         }
+        if (safeOpportunity)
+        {
+            if (isWait) safeOppWaitCount++;
+            if (isMove)
+            {
+                safeOppMoveCount++;
+                if (moveDistanceDelta < 0)      safeOppMoveTowardBossCount++;
+                else if (moveDistanceDelta > 0) safeOppMoveAwayFromBossCount++;
+                else                            safeOppMoveLateralCount++;
+            }
+            if (isAttack) chosenAttackWhenAllowedCount++;
+            else          missedAllowedAttackCount++;
+            attackAllowedActionStepCount++;
+        }
         if (bossInRange && attackReady && !isAttack) bossInRangeNoAttackCount++;
 
         // ── Danger nearby tracking ────────────────────────────────────────────
         if (dangerNearby) dangerNearbySteps++;
         if (isWait && dangerNearby) waitWhileDangerNearbyCount++;
+        if (dangerNearby && choseSafeMove) dangerNearbySafeMoveCount++;
+        if (dangerNearby && choseDangerMove) dangerNearbyDangerMoveCount++;
+
+        if (safeOpportunity && isMove)
+        {
+            RecordSafeOppMoveTrace(singleAction, currentTime, playerCell, bossCell,
+                currentDistanceToBoss, currentDistanceToBoss + moveDistanceDelta,
+                bossInRange, remainedInAttackRangeAfterMove, moveDistanceDelta,
+                dangerNearby, moveIntoWarn, moveIntoDmg, moveIntoRecentWarn, moveIntoRecentDmg,
+                safeMoveCount, bossHpBefore);
+        }
 
         // ── Move into danger tracking ─────────────────────────────────────────
         bool movedIntoDangerThisStep = false;
@@ -386,6 +585,208 @@ public class BossRLDebugLogger : MonoBehaviour
                 pendingAttacks.RemoveAt(i);
     }
 
+    private void RecordSafeOppMoveTrace(
+        int singleAction, float currentTime, Vector2Int playerCell, Vector2Int bossCell,
+        int distanceBefore, int distanceAfter, bool wasInAttackRangeBeforeMove,
+        bool remainedInAttackRangeAfterMove, int moveDistanceDelta,
+        bool dangerNearby, bool nextWarning, bool nextDamage,
+        bool nextRecentWarning, bool nextRecentDamage,
+        int safeMoveAlternatives, int bossHpBefore)
+    {
+        safeOppMoveTraceTotalCount++;
+        if (remainedInAttackRangeAfterMove) safeOppMoveKeptAttackRangeCount++;
+        if (wasInAttackRangeBeforeMove && !remainedInAttackRangeAfterMove) safeOppMoveLeftAttackRangeCount++;
+        if (moveDistanceDelta > 0 && !dangerNearby && !nextWarning && !nextDamage && !nextRecentWarning && !nextRecentDamage)
+            safeOppMoveAwayWithoutDangerCount++;
+        safeOppAttackWouldHaveBeenAllowedCount++;
+
+        if (safeOppMoveTraceSampleCount >= MaxTraceSamplesPerEpisode ||
+            globalSafeOppMoveTraceSamples >= MaxTraceSamplesPerRun)
+            return;
+
+        var trace = new SafeOppMoveTrace
+        {
+            episodeIndex = episodeIndex,
+            step = oppInternalStep,
+            actionName = ActionName(singleAction),
+            playerCell = playerCell,
+            bossCell = bossCell,
+            distanceBefore = distanceBefore,
+            distanceAfter = distanceAfter,
+            remainedInAttackRangeAfterMove = remainedInAttackRangeAfterMove,
+            leftAttackRangeAfterMove = wasInAttackRangeBeforeMove && !remainedInAttackRangeAfterMove,
+            movedTowardBoss = moveDistanceDelta < 0,
+            movedAwayFromBoss = moveDistanceDelta > 0,
+            movedLateral = moveDistanceDelta == 0,
+            dangerNearby = dangerNearby,
+            nextWarning = nextWarning,
+            nextDamage = nextDamage,
+            nextRecentWarning = nextRecentWarning,
+            nextRecentDamage = nextRecentDamage,
+            safeMoveAlternatives = safeMoveAlternatives,
+            attackAllowed = true,
+            bossHpBefore = bossHpBefore,
+            timestamp = currentTime,
+            bossHpAfter05Recorded = false,
+            bossHpAfter05 = bossHpBefore
+        };
+
+        pendingSafeOppMoveTraces.Add(trace);
+        safeOppMoveTraceSampleCount++;
+        globalSafeOppMoveTraceSamples++;
+
+        Debug.Log(
+            $"[BossRL] safe_opp_move_trace episode={trace.episodeIndex} step={trace.step} " +
+            $"action={trace.actionName} player_cell={trace.playerCell} boss_cell={trace.bossCell} " +
+            $"dist_before={trace.distanceBefore} dist_after={trace.distanceAfter} " +
+            $"remained_in_attack_range_after_move={trace.remainedInAttackRangeAfterMove} " +
+            $"left_attack_range_after_move={trace.leftAttackRangeAfterMove} " +
+            $"toward={trace.movedTowardBoss} away={trace.movedAwayFromBoss} lateral={trace.movedLateral} " +
+            $"danger_nearby={trace.dangerNearby} next_warn={trace.nextWarning} next_dmg={trace.nextDamage} " +
+            $"next_recent_warn={trace.nextRecentWarning} next_recent_dmg={trace.nextRecentDamage} " +
+            $"safe_move_alternatives={trace.safeMoveAlternatives} attack_allowed={trace.attackAllowed} " +
+            $"boss_hp_before={trace.bossHpBefore}");
+    }
+
+    private void UpdatePendingSafeOppMoveTraces(float currentTime, bool gotHit, int currentBossHp)
+    {
+        for (int i = pendingSafeOppMoveTraces.Count - 1; i >= 0; i--)
+        {
+            SafeOppMoveTrace trace = pendingSafeOppMoveTraces[i];
+            float elapsed = currentTime - trace.timestamp;
+            if (gotHit && elapsed <= 1.0f) trace.hitWithin1s = true;
+            if (gotHit && elapsed <= 2.0f) trace.hitWithin2s = true;
+            if (!trace.bossHpAfter05Recorded && elapsed >= 0.5f)
+            {
+                trace.bossHpAfter05Recorded = true;
+                trace.bossHpAfter05 = currentBossHp;
+            }
+
+            if (elapsed >= 2.0f)
+            {
+                FinalizeSafeOppMoveTrace(trace);
+                pendingSafeOppMoveTraces.RemoveAt(i);
+            }
+            else
+            {
+                pendingSafeOppMoveTraces[i] = trace;
+            }
+        }
+    }
+
+    private void FinalizePendingSafeOppMoveTracesAtEpisodeEnd(float currentTime, int currentBossHp)
+    {
+        UpdatePendingSafeOppMoveTraces(currentTime + 2.1f, false, currentBossHp);
+        for (int i = pendingSafeOppMoveTraces.Count - 1; i >= 0; i--)
+        {
+            SafeOppMoveTrace trace = pendingSafeOppMoveTraces[i];
+            if (!trace.bossHpAfter05Recorded)
+            {
+                trace.bossHpAfter05Recorded = true;
+                trace.bossHpAfter05 = currentBossHp;
+            }
+            FinalizeSafeOppMoveTrace(trace);
+            pendingSafeOppMoveTraces.RemoveAt(i);
+        }
+    }
+
+    private void FinalizeSafeOppMoveTrace(SafeOppMoveTrace trace)
+    {
+        bool tookDangerCell = trace.nextWarning || trace.nextDamage || trace.nextRecentWarning || trace.nextRecentDamage;
+        int damageAfter05 = trace.bossHpBefore - trace.bossHpAfter05;
+        bool noHitNoDamage = !trace.hitWithin2s && damageAfter05 <= 0;
+
+        if (trace.dangerNearby && !trace.hitWithin2s && !tookDangerCell)
+            safeOppMoveUsefulEscapeCount++;
+        if (trace.hitWithin2s)
+            safeOppMoveThenHitWithin2sCount++;
+        if (noHitNoDamage)
+            safeOppMoveThenNoHitNoDamageCount++;
+
+        Debug.Log(
+            $"[BossRL] safe_opp_move_trace_result episode={trace.episodeIndex} step={trace.step} " +
+            $"boss_hp_before={trace.bossHpBefore} boss_hp_after_0.5s={trace.bossHpAfter05} " +
+            $"boss_damage_after_0.5s={damageAfter05} hit_within_1s={trace.hitWithin1s} " +
+            $"hit_within_2s={trace.hitWithin2s} useful_escape={trace.dangerNearby && !trace.hitWithin2s && !tookDangerCell} " +
+            $"no_hit_no_damage={noHitNoDamage}");
+    }
+
+    private static string ActionName(int action)
+    {
+        switch (action)
+        {
+            case 1: return "MOVE_UP";
+            case 2: return "MOVE_DOWN";
+            case 3: return "MOVE_LEFT";
+            case 4: return "MOVE_RIGHT";
+            case 5: return "ATTACK";
+            default: return "WAIT";
+        }
+    }
+
+    private void UpdateWarningOnPlayerDiagnostics(
+        int singleAction, int safeMoveCount,
+        bool onWarning, bool onDamage, bool gotHit, Vector2Int bossFacing)
+    {
+        int frame = Time.frameCount;
+        bool warningSpawnObserved = !pendingWarningOnPlayer && !oppLastStepOnWarning && onWarning;
+        if (warningSpawnObserved)
+        {
+            pendingWarningOnPlayer = true;
+            pendingWarningFrame = frame;
+            pendingWarningDecisionStep = oppInternalStep;
+            pendingWarningBossFacing = bossFacing;
+            warningSpawnOnPlayerCount++;
+            if (safeMoveCount > 0) warningSpawnOnPlayerSafeMoveAvailableCount++;
+            if (BossRLInputBridge.IsWaitAction(singleAction)) warningSpawnOnPlayerChosenWaitCount++;
+            if (BossRLInputBridge.IsAttackAction(singleAction)) warningSpawnOnPlayerChosenAttackCount++;
+            if (BossRLInputBridge.IsMoveAction(singleAction)) warningSpawnOnPlayerChosenMoveCount++;
+        }
+
+        if (!pendingWarningOnPlayer) return;
+
+        if (onDamage || gotHit)
+        {
+            int frameDelta = Mathf.Max(0, frame - pendingWarningFrame);
+            warningSpawnToDamageFrameSum += frameDelta;
+            warningSpawnToDamageFrameCount++;
+            if (oppInternalStep == pendingWarningDecisionStep) noDecisionBeforeDamageCount++;
+            else decisionAvailableBeforeDamageCount++;
+
+            bool facingChanged = bossFacing != pendingWarningBossFacing;
+            if (facingChanged) bossFacingChangedBetweenWarningAndDamageCount++;
+
+            if (gotHit)
+            {
+                warningSpawnOnPlayerHitCount++;
+                warningSpawnOnPlayerEscapeFailCount++;
+                patternHitUnknownCount++;
+                if (facingChanged)
+                {
+                    hitWhenBossFacingChangedCount++;
+                    hitByRotatedDamageDirectionCount++;
+                }
+                else
+                {
+                    hitByOriginalWarningDirectionCount++;
+                }
+            }
+            else if (!onWarning)
+            {
+                warningSpawnOnPlayerEscapeSuccessCount++;
+            }
+
+            pendingWarningOnPlayer = false;
+            return;
+        }
+
+        if (!onWarning)
+        {
+            warningSpawnOnPlayerEscapeSuccessCount++;
+            pendingWarningOnPlayer = false;
+        }
+    }
+
     // ── Mask decision recording ───────────────────────────────────────────────
 
     public void RecordMoveMaskDecision(int action, bool masked,
@@ -450,6 +851,7 @@ public class BossRLDebugLogger : MonoBehaviour
         rewardAttackOnCooldown += result.rewardAttackOnCooldown;
         rewardMovedIntoDanger  += result.rewardMovedIntoDanger;
         rewardSafeAttack       += result.rewardSafeAttack;
+        rewardMissedSafeAttackOpportunity += result.rewardMissedSafeAttackOpportunity;
 
         // Boss damage
         if (!firstHitRecorded) bossDamageBeforeFirstHit += result.bossDamageDelta;
@@ -557,6 +959,27 @@ public class BossRLDebugLogger : MonoBehaviour
         }
     }
 
+    public void RecordTerminalReward(string reason, float reward)
+    {
+        rewardTotal += reward;
+        if (reason == "player_dead")
+        {
+            rewardDeathPenalty += reward;
+        }
+        else if (reason == "boss_dead")
+        {
+            rewardBossDamage += reward;
+        }
+
+        Debug.Log($"[BossRL] terminal_reward reason={reason} value={reward:F3}");
+    }
+
+    public void RecordDelayedMissedSafeOpportunityPenalty(float penalty)
+    {
+        rewardTotal += penalty;
+        rewardMissedSafeAttackOpportunity += penalty;
+    }
+
     // ── Episode summary ───────────────────────────────────────────────────────
     public void LogEpisodeEnd(string reason, int stepCount, float currentTime, BossRLStateExtractor extractor)
     {
@@ -565,11 +988,21 @@ public class BossRLDebugLogger : MonoBehaviour
         int   recentWarnCellsNow = extractor != null ? extractor.RecentWarningCellCount : 0;
         int   recentDmgCellsNow  = extractor != null ? extractor.RecentDamageCellCount  : 0;
         if (reason == "player_dead") deathTime = survivalTime;
+        FinalizePendingSafeOppMoveTracesAtEpisodeEnd(currentTime, bossHpLeft);
 
         float wallRatio   = totalMoveAttempts > 0 ? (float)wallBlockedMoves / totalMoveAttempts : 0f;
         float avgBossDist = bossDistanceSampleCount > 0 ? bossDistanceSumAtAttack / bossDistanceSampleCount : -1f;
+        float avgDistanceToBoss = distanceToBossSampleCount > 0 ? distanceToBossSum / distanceToBossSampleCount : -1f;
+        int minDist = distanceToBossSampleCount > 0 ? minDistanceToBoss : -1;
+        int maxDist = distanceToBossSampleCount > 0 ? maxDistanceToBoss : -1;
         float hitRate     = attackActionCount > 0 ? (float)successfulHitSteps / attackActionCount : 0f;
         float bossHpPerAtk= attackActionCount > 0 ? (float)bossDamageTotal    / attackActionCount : 0f;
+        float safeOppAttackRatio = safeAttackOpportunitySteps > 0 ? (float)safeAttackTakenCount / safeAttackOpportunitySteps : 0f;
+        float safeOppWaitRatio   = safeAttackOpportunitySteps > 0 ? (float)safeOppWaitCount / safeAttackOpportunitySteps : 0f;
+        float safeOppMoveRatio   = safeAttackOpportunitySteps > 0 ? (float)safeOppMoveCount / safeAttackOpportunitySteps : 0f;
+        float warningToDamageFramesAvg = warningSpawnToDamageFrameCount > 0
+            ? (float)warningSpawnToDamageFrameSum / warningSpawnToDamageFrameCount
+            : -1f;
 
         Debug.Log(
             $"[BossRL] EPISODE_END reason={reason} steps={stepCount} survival={survivalTime:F1}s " +
@@ -578,7 +1011,8 @@ public class BossRLDebugLogger : MonoBehaviour
             $"death={rewardDeathPenalty:F3} warn_tile={rewardWarningTile:F3} dmg_tile={rewardDamageTile:F3} " +
             $"wall={rewardWallBlocked:F3} approach={rewardApproach:F3} " +
             $"missed_atk={rewardMissedAttack:F3} cooldown_atk={rewardAttackOnCooldown:F3} " +
-            $"moved_into_danger={rewardMovedIntoDanger:F3} safe_atk={rewardSafeAttack:F3}\n" +
+            $"moved_into_danger={rewardMovedIntoDanger:F3} safe_atk={rewardSafeAttack:F3} " +
+            $"missed_safe_opp={rewardMissedSafeAttackOpportunity:F3}\n" +
             $"  boss: hp_start={episodeBossHpStart} hp_left={bossHpLeft} dmg_dealt={bossDamageTotal} " +
             $"dmg_before_first_hit={bossDamageBeforeFirstHit}\n" +
             $"  move_mask: wall(geometry)={moveMaskedWallCount} warn={moveMaskedWarningCount}(should=0) " +
@@ -602,9 +1036,18 @@ public class BossRLDebugLogger : MonoBehaviour
             $"  attack_quality: actions={attackActionCount} hits={successfulHitSteps} " +
             $"missed={missedAttackCount} cooldown={attackOnCooldownCount} " +
             $"hit_rate={hitRate:P1} dmg_per_atk={bossHpPerAtk:F3}\n" +
+            $"  action_histogram: wait={actionWaitCount} move_up={actionMoveUpCount} " +
+            $"move_down={actionMoveDownCount} move_left={actionMoveLeftCount} " +
+            $"move_right={actionMoveRightCount} attack={actionAttackCount}\n" +
             $"  attack_range: in_range_steps={bossInAttackRangeSteps} atk_in_range={attackWhenBossInRange} " +
             $"atk_out_range={attackWhenBossOutOfRange} avg_dist={avgBossDist:F2} " +
             $"first_atk_dist={bossDistanceAtFirstAttack:F2}\n" +
+            $"  distance_position: avg_distance_to_boss={avgDistanceToBoss:F2} " +
+            $"min_distance_to_boss={minDist} max_distance_to_boss={maxDist} " +
+            $"time_in_attack_range_steps={timeInAttackRangeSteps} " +
+            $"time_out_of_attack_range_steps={timeOutOfAttackRangeSteps} " +
+            $"entered_attack_range_count={enteredAttackRangeCount} " +
+            $"left_attack_range_count={leftAttackRangeCount}\n" +
             $"  hazard: warn_steps={warningTileSteps} dmg_steps={damageTileSteps} " +
             $"atk_on_warn={attackWhenOnWarning} atk_on_dmg={attackWhenOnDamage} " +
             $"atk_on_recent_warn={attackWhenRecentWarning} atk_on_recent_dmg={attackWhenRecentDamage}\n" +
@@ -617,6 +1060,32 @@ public class BossRLDebugLogger : MonoBehaviour
             $"safe_taken={safeAttackTakenCount} safe_hit={safeAttackHitCount} safe_missed={safeAttackMissedCount} " +
             $"in_range_no_attack={bossInRangeNoAttackCount} atk_out_of_range={attackOutOfRangeCount} " +
             $"atk_danger_nearby={attackWhenDangerNearbyCount}\n" +
+            $"  safe_opp_action: total={safeAttackOpportunitySteps} attack={safeAttackTakenCount} " +
+            $"wait={safeOppWaitCount} move={safeOppMoveCount} missed={missedAllowedAttackCount} " +
+            $"attack_ratio={safeOppAttackRatio:P1} wait_ratio={safeOppWaitRatio:P1} move_ratio={safeOppMoveRatio:P1} " +
+            $"move_toward_boss={safeOppMoveTowardBossCount} move_away_from_boss={safeOppMoveAwayFromBossCount} " +
+            $"move_lateral={safeOppMoveLateralCount}\n" +
+            $"  safe_opp_move_trace_summary: samples={safeOppMoveTraceSampleCount} total_moves={safeOppMoveTraceTotalCount} " +
+            $"useful_escape={safeOppMoveUsefulEscapeCount} kept_attack_range={safeOppMoveKeptAttackRangeCount} " +
+            $"left_attack_range={safeOppMoveLeftAttackRangeCount} away_without_danger={safeOppMoveAwayWithoutDangerCount} " +
+            $"hit_within_2s={safeOppMoveThenHitWithin2sCount} no_hit_no_damage={safeOppMoveThenNoHitNoDamageCount} " +
+            $"attack_would_have_been_allowed={safeOppAttackWouldHaveBeenAllowedCount}\n" +
+            $"  warning_on_player: spawn_count={warningSpawnOnPlayerCount} " +
+            $"safe_move_available={warningSpawnOnPlayerSafeMoveAvailableCount} " +
+            $"escape_success={warningSpawnOnPlayerEscapeSuccessCount} escape_fail={warningSpawnOnPlayerEscapeFailCount} " +
+            $"hit={warningSpawnOnPlayerHitCount} chosen_wait={warningSpawnOnPlayerChosenWaitCount} " +
+            $"chosen_attack={warningSpawnOnPlayerChosenAttackCount} chosen_move={warningSpawnOnPlayerChosenMoveCount} " +
+            $"spawn_to_damage_frames_avg={warningToDamageFramesAvg:F1} " +
+            $"decision_before_damage={decisionAvailableBeforeDamageCount} " +
+            $"no_decision_before_damage={noDecisionBeforeDamageCount}\n" +
+            $"  boss_facing_diag: facing_changed_warning_to_damage={bossFacingChangedBetweenWarningAndDamageCount} " +
+            $"hit_when_facing_changed={hitWhenBossFacingChangedCount} " +
+            $"hit_by_original_warning_direction={hitByOriginalWarningDirectionCount} " +
+            $"hit_by_rotated_damage_direction={hitByRotatedDamageDirectionCount} " +
+            $"pattern_hit_unknown={patternHitUnknownCount}\n" +
+            $"  attack_allowed_action: allowed_steps={attackAllowedActionStepCount} " +
+            $"chosen_attack_when_allowed={chosenAttackWhenAllowedCount} " +
+            $"missed_allowed_attack={missedAllowedAttackCount}\n" +
             $"  delayed_hit: safe_same_step={safeAttackHitSameStep} safe_0.3s={safeAttackHitWithin03s} " +
             $"safe_0.5s={safeAttackHitWithin05s} out_of_range_0.5s={outOfRangeAttackHitWithin05s} " +
             $"unsafe_0.5s={unsafeAttackHitWithin05s}\n" +
@@ -625,6 +1094,8 @@ public class BossRLDebugLogger : MonoBehaviour
             $"wait_masked={waitMaskedDueToDangerCount} safe_avail_steps={safeMoveAvailableStepCount} " +
             $"chose_safe={choseSafeMoveCount} chose_danger={choseDangerMoveCount}\n" +
             $"  danger: nearby_steps={dangerNearbySteps} wait_while_danger={waitWhileDangerNearbyCount} " +
+            $"safe_move={dangerNearbySafeMoveCount} danger_move={dangerNearbyDangerMoveCount} " +
+            $"attack={attackWhenDangerNearbyCount} " +
             $"move_into_warn={movedIntoWarningCount} move_into_dmg={movedIntoDamageCount} " +
             $"move_into_recent_warn={movedIntoRecentWarningCount} move_into_recent_dmg={movedIntoRecentDamageCount}\n" +
             $"  hit_analysis: hit_on_warn={hitOnWarningTileCount} hit_on_dmg={hitOnDamageTileCount} " +

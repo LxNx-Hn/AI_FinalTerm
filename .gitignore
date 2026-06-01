@@ -6,6 +6,7 @@ unity_project/Logs/
 unity_project/.vs/
 unity_project/*.csproj
 unity_project/*.sln
+unity_project/UserSettings/
 
 # EXE 빌드 결과물
 builds/
@@ -18,6 +19,8 @@ results/
 
 # 빌드 로그
 logs/
+build_rl_log*.txt
+37580
 
 # 기타
 *.pyc

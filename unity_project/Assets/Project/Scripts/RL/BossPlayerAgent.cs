@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -19,7 +20,7 @@ public class BossPlayerAgent : Agent
     //   0=WAIT  1=UP  2=DOWN  3=LEFT  4=RIGHT  5=ATTACK
     // One intent per decision: move OR attack OR wait, never simultaneous.
 
-    [SerializeField] private float maxEpisodeSeconds = 90f;
+    [SerializeField] private float maxEpisodeSeconds = 210f;
 
     private BossRLInputBridge     inputBridge;
     private BossRLStateExtractor  stateExtractor;
@@ -31,6 +32,8 @@ public class BossPlayerAgent : Agent
     private float episodeStartTime;
     private float cumulativeReward;
     private bool  terminalHandled;
+    private bool  terminalRewardApplied;
+    private readonly List<float> pendingMissedSafeOpportunityTimes = new List<float>();
 
     public override void Initialize()
     {
@@ -212,12 +215,24 @@ public class BossPlayerAgent : Agent
         bool onWarning = false, onDamage = false, onRecentWarn = false, onRecentDmg = false;
         bool nextCellWarn = false, nextCellDmg = false, nextCellRecentWarn = false, nextCellRecentDmg = false;
         int  safeMoveCount = 0;
+        int  distanceToBossBeforeAction = 99;
+        int  moveDistanceDelta = 0;
+        int  bossHpBeforeAction = 0;
+        bool remainedInAttackRangeAfterMove = false;
+        Vector2Int playerCellBeforeAction = Vector2Int.zero;
+        Vector2Int bossCellBeforeAction = Vector2Int.zero;
+        Vector2Int bossFacingBeforeAction = Vector2Int.down;
         if (stateExtractor != null && stateExtractor.IsReady)
         {
             safeOpportunity = stateExtractor.IsSafeAttackOpportunity();
             dangerNearby    = stateExtractor.IsDangerNearby();
             safeMoveCount   = stateExtractor.SafeMoveDirectionCount();
             onAnyDanger     = stateExtractor.IsPlayerOnAnyDanger();
+            distanceToBossBeforeAction = stateExtractor.ManhattanDistanceToBoss();
+            bossHpBeforeAction = stateExtractor.BossCurrentHp;
+            playerCellBeforeAction = stateExtractor.PlayerWorldCell;
+            bossCellBeforeAction = stateExtractor.BossWorldCell;
+            bossFacingBeforeAction = stateExtractor.BossFacing;
             stateExtractor.GetCachedHazardAndRecentState(out onWarning, out onDamage, out onRecentWarn, out onRecentDmg);
             if (isMoveAct && moveWillSucceed)
             {
@@ -225,10 +240,18 @@ public class BossPlayerAgent : Agent
                 nextCellDmg        = stateExtractor.IsNextCellDamage(moveDir);
                 nextCellRecentWarn = stateExtractor.IsNextCellRecentWarning(moveDir);
                 nextCellRecentDmg  = stateExtractor.IsNextCellRecentDamage(moveDir);
+                moveDistanceDelta  = stateExtractor.ManhattanDistanceToBossAfterMove(moveDir) - distanceToBossBeforeAction;
+                remainedInAttackRangeAfterMove = stateExtractor.IsBossInAttackRangeAfterMove(moveDir);
             }
         }
 
         inputBridge.ApplySingleAction(singleAction);
+
+        if (terminalHandled || (episodeResetter != null && episodeResetter.ReloadQueued))
+        {
+            inputBridge?.ResetInput();
+            return;
+        }
 
         bool bossInRange    = stateExtractor != null && stateExtractor.IsBossInAttackRange();
         float manhattanDist = stateExtractor != null ? stateExtractor.ManhattanDistanceToBoss() : 99f;
@@ -240,6 +263,7 @@ public class BossPlayerAgent : Agent
 
         int attackActionInt    = isAttackAct ? 1 : 0;
         bool safeAttackAttempt = isAttackAct && safeOpportunity;
+        bool missedSafeAttackOpportunity = safeOpportunity && !isAttackAct && !dangerNearby;
 
         BossRLReward.StepResult stepResult = rewardTracker.Evaluate(
             stateExtractor, GetElapsedSeconds(), maxEpisodeSeconds,
@@ -247,13 +271,17 @@ public class BossPlayerAgent : Agent
             isMoveAct && moveWillSucceed && nextCellWarn,
             isMoveAct && moveWillSucceed && nextCellRecentWarn,
             isMoveAct && moveWillSucceed && nextCellDmg,
-            safeAttackAttempt);
+            safeAttackAttempt,
+            false);
 
         AddReward(stepResult.reward);
         cumulativeReward += stepResult.reward;
 
         bool gotHit   = stepResult.playerHitDelta > 0;
         bool attackHit = stepResult.bossDamageDelta > 0;
+        ProcessPendingMissedSafeOpportunityPenalties(Time.time, gotHit);
+        if (missedSafeAttackOpportunity)
+            pendingMissedSafeOpportunityTimes.Add(Time.time);
 
         debugLogger?.RecordStep(StepCount, Time.time, singleAction, isAttackAct, attackActionInt,
             moveOutcome, moveDir, stepResult, bossInRange, manhattanDist,
@@ -265,19 +293,25 @@ public class BossPlayerAgent : Agent
                               (nextCellWarn || nextCellDmg || nextCellRecentWarn || nextCellRecentDmg);
 
         debugLogger?.RecordOpportunityMetrics(
+            singleAction,
             isAttackAct, safeOpportunity, attackHit, bossInRange, attackWasReady,
             dangerNearby, safeMoveCount, onWarning, onDamage, onRecentWarn, onRecentDmg,
             isMoveAct, moveWillSucceed,
             nextCellWarn, nextCellDmg, nextCellRecentWarn, nextCellRecentDmg,
             gotHit, isWaitAct,
             Time.time, stepResult.bossDamageDelta,
-            choseSafeMove, choseDangerMove);
+            choseSafeMove, choseDangerMove,
+            distanceToBossBeforeAction, moveDistanceDelta,
+            playerCellBeforeAction, bossCellBeforeAction,
+            remainedInAttackRangeAfterMove, bossHpBeforeAction, stateExtractor != null ? stateExtractor.BossCurrentHp : 0,
+            bossFacingBeforeAction);
 
         if (stepResult.bossDead || stepResult.playerDead || stepResult.timedOut)
         {
             string reason = stepResult.bossDead ? "boss_dead"
                           : stepResult.playerDead ? "player_dead" : "timeout";
-            HandleTerminalEvent(reason);
+            bool terminalRewardAlreadyApplied = stepResult.bossDead || stepResult.playerDead;
+            HandleTerminalEvent(reason, terminalRewardAlreadyApplied);
         }
     }
 
@@ -285,6 +319,9 @@ public class BossPlayerAgent : Agent
     {
         var d = actionsOut.DiscreteActions;
         d.Clear();  // 0 = WAIT by default
+        if (TryWriteHeuristicOracleAction(d))
+            return;
+
         if      (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))    d[0] = 1;
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))  d[0] = 2;
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))  d[0] = 3;
@@ -292,10 +329,104 @@ public class BossPlayerAgent : Agent
         else if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space))      d[0] = 5;
     }
 
-    public void HandleTerminalEvent(string reason)
+    private bool TryWriteHeuristicOracleAction(ActionSegment<int> discreteActions)
+    {
+        if (stateExtractor == null || !stateExtractor.IsReady) return false;
+
+        stateExtractor.GetCachedHazardAndRecentState(
+            out bool onWarning, out bool onDamage, out bool onRecentWarn, out bool onRecentDmg);
+        bool onAnyDanger = onWarning || onDamage || onRecentWarn || onRecentDmg;
+
+        if (onAnyDanger)
+        {
+            discreteActions[0] = SelectSafestMoveAction(allowLeastDanger: true);
+            return true;
+        }
+
+        if (stateExtractor.AttackReady && stateExtractor.IsBossInAttackRange())
+        {
+            discreteActions[0] = BossRLInputBridge.ACTION_ATTACK;
+            return true;
+        }
+
+        discreteActions[0] = SelectApproachOrSafestMoveAction();
+        return true;
+    }
+
+    private int SelectApproachOrSafestMoveAction()
+    {
+        int bestAction = BossRLInputBridge.ACTION_WAIT;
+        int bestScore = int.MinValue;
+        int currentDistance = stateExtractor.ManhattanDistanceToBoss();
+
+        for (int action = BossRLInputBridge.ACTION_UP; action <= BossRLInputBridge.ACTION_RIGHT; action++)
+        {
+            Vector2Int dir = BossRLInputBridge.SingleActionToMoveDir(action);
+            int danger = stateExtractor.GetDirectionDangerLevel(dir);
+            if (danger != 0) continue;
+            if (inputBridge.PredictMoveOutcomeDir(dir) != BossRLInputBridge.MoveOutcome.WillMove) continue;
+
+            bool inRangeAfter = stateExtractor.IsBossInAttackRangeAfterMove(dir);
+            int distanceAfter = stateExtractor.ManhattanDistanceToBossAfterMove(dir);
+            int score = 0;
+            if (inRangeAfter) score += 1000;
+            score += Mathf.Clamp(currentDistance - distanceAfter, -5, 5) * 20;
+            score -= distanceAfter;
+
+            if (score > bestScore)
+            {
+                bestScore = score;
+                bestAction = action;
+            }
+        }
+
+        if (bestAction != BossRLInputBridge.ACTION_WAIT)
+            return bestAction;
+
+        return SelectSafestMoveAction(allowLeastDanger: true);
+    }
+
+    private int SelectSafestMoveAction(bool allowLeastDanger)
+    {
+        int bestAction = BossRLInputBridge.ACTION_WAIT;
+        int bestDanger = int.MaxValue;
+        int bestDistance = int.MaxValue;
+
+        for (int action = BossRLInputBridge.ACTION_UP; action <= BossRLInputBridge.ACTION_RIGHT; action++)
+        {
+            Vector2Int dir = BossRLInputBridge.SingleActionToMoveDir(action);
+            int danger = stateExtractor.GetDirectionDangerLevel(dir);
+            if (!allowLeastDanger && danger != 0) continue;
+            if (danger >= 999) continue;
+            if (inputBridge.PredictMoveOutcomeDir(dir) != BossRLInputBridge.MoveOutcome.WillMove) continue;
+
+            int distanceAfter = stateExtractor.ManhattanDistanceToBossAfterMove(dir);
+            bool better = danger < bestDanger || (danger == bestDanger && distanceAfter < bestDistance);
+            if (better)
+            {
+                bestDanger = danger;
+                bestDistance = distanceAfter;
+                bestAction = action;
+            }
+        }
+
+        return bestAction;
+    }
+
+    public void HandleTerminalEvent(string reason, bool terminalRewardAlreadyApplied = false)
     {
         if (terminalHandled) return;
         terminalHandled = true;
+
+        if (terminalRewardAlreadyApplied)
+        {
+            terminalRewardApplied = true;
+        }
+        else
+        {
+            ApplyTerminalReward(reason);
+        }
+
         debugLogger?.LogEpisodeEnd(reason, StepCount, Time.time, stateExtractor);
         EndEpisode();
         episodeResetter?.QueueSceneReload();
@@ -306,7 +437,42 @@ public class BossPlayerAgent : Agent
         episodeStartTime = Time.time;
         cumulativeReward = 0f;
         terminalHandled  = false;
+        terminalRewardApplied = false;
+        pendingMissedSafeOpportunityTimes.Clear();
         debugLogger?.ResetEpisode(stateExtractor != null ? stateExtractor.BossCurrentHp : 0, episodeStartTime);
+    }
+
+    private void ApplyTerminalReward(string reason)
+    {
+        if (terminalRewardApplied) return;
+
+        terminalRewardApplied = true;
+        float terminalReward = BossRLReward.TerminalRewardForReason(reason);
+        AddReward(terminalReward);
+        cumulativeReward += terminalReward;
+        debugLogger?.RecordTerminalReward(reason, terminalReward);
+    }
+
+    private void ProcessPendingMissedSafeOpportunityPenalties(float currentTime, bool gotHit)
+    {
+        for (int i = pendingMissedSafeOpportunityTimes.Count - 1; i >= 0; i--)
+        {
+            float elapsed = currentTime - pendingMissedSafeOpportunityTimes[i];
+            if (gotHit && elapsed <= 1.0f)
+            {
+                pendingMissedSafeOpportunityTimes.RemoveAt(i);
+                continue;
+            }
+
+            if (elapsed >= 1.0f)
+            {
+                float penalty = BossRLReward.MissedSafeAttackOpportunityPenalty;
+                AddReward(penalty);
+                cumulativeReward += penalty;
+                debugLogger?.RecordDelayedMissedSafeOpportunityPenalty(penalty);
+                pendingMissedSafeOpportunityTimes.RemoveAt(i);
+            }
+        }
     }
 
     private float GetElapsedSeconds() => Mathf.Max(0f, Time.time - episodeStartTime);

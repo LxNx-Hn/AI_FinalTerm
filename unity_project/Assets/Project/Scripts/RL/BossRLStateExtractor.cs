@@ -20,6 +20,8 @@ public class BossRLStateExtractor : MonoBehaviour
 
     private static readonly FieldInfo MergedWarningCellsField =
         typeof(MergedPatternWarningVisual).GetField("cells", BindingFlags.Instance | BindingFlags.NonPublic);
+    private static readonly FieldInfo BossFacingField =
+        typeof(ElevatorBossController).GetField("bossFacing", BindingFlags.Instance | BindingFlags.NonPublic);
 
     private static readonly Vector2Int[] CardinalDirs =
         { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
@@ -348,6 +350,41 @@ public class BossRLStateExtractor : MonoBehaviour
         Vector2Int p = playerOccupant.CurrentCell;
         Vector2Int b = bossController.BossCell;
         return Mathf.Abs(p.x - b.x) + Mathf.Abs(p.y - b.y);
+    }
+
+    public Vector2Int PlayerWorldCell =>
+        playerOccupant != null ? playerOccupant.CurrentCell : Vector2Int.zero;
+
+    public Vector2Int BossWorldCell =>
+        bossController != null ? bossController.BossCell : Vector2Int.zero;
+
+    public Vector2Int BossFacing
+    {
+        get
+        {
+            if (bossController == null || BossFacingField == null) return Vector2Int.down;
+            object value = BossFacingField.GetValue(bossController);
+            return value is Vector2Int facing ? facing : Vector2Int.down;
+        }
+    }
+
+    public int ManhattanDistanceToBossAfterMove(Vector2Int dir)
+    {
+        if (!EnsureReady(logWarning: false) || playerOccupant == null || bossController == null)
+            return 99;
+        Vector2Int p = playerOccupant.CurrentCell + dir;
+        Vector2Int b = bossController.BossCell;
+        return Mathf.Abs(p.x - b.x) + Mathf.Abs(p.y - b.y);
+    }
+
+    public bool IsBossInAttackRangeAfterMove(Vector2Int dir)
+    {
+        if (!EnsureReady(logWarning: false) || playerCombat == null || playerOccupant == null || bossController == null)
+            return false;
+        Vector2Int nextWorldCell = playerOccupant.CurrentCell + dir;
+        Vector2Int facing = playerController != null ? playerController.Facing : Vector2Int.down;
+        List<Vector2Int> cells = playerCombat.GetAttackCells(nextWorldCell, facing);
+        return cells.Contains(bossController.BossCell);
     }
 
     // ── Private helpers ───────────────────────────────────────────────────────

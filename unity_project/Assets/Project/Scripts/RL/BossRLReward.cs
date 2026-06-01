@@ -24,7 +24,15 @@ public class BossRLReward : MonoBehaviour
     public const float MovedIntoRecentWarningPenalty = -0.10f;
     public const float MovedIntoDamagePenalty        = -0.30f;
     // New: small reward for attacking while safe (attack_ready + in_range + no danger)
-    public const float SafeInRangeAttackAttemptReward =  0.02f;
+    public const float SafeInRangeAttackAttemptReward =  0.08f;
+    public const float MissedSafeAttackOpportunityPenalty = -0.003f;
+
+    public static float TerminalRewardForReason(string reason)
+    {
+        if (reason == "player_dead") return PlayerDeathPenalty;
+        if (reason == "boss_dead")   return BossKillReward;
+        return 0f;
+    }
 
     public struct StepResult
     {
@@ -41,6 +49,7 @@ public class BossRLReward : MonoBehaviour
         public float rewardAttackOnCooldown;
         public float rewardMovedIntoDanger; // combined move-into-danger penalty
         public float rewardSafeAttack;      // safe in-range attack attempt reward
+        public float rewardMissedSafeAttackOpportunity;
         // episode control
         public bool bossDead;
         public bool playerDead;
@@ -84,7 +93,8 @@ public class BossRLReward : MonoBehaviour
         bool  movedIntoWarning       = false,
         bool  movedIntoRecentWarning = false,
         bool  movedIntoDamage        = false,
-        bool  safeAttackAttempt      = false)
+        bool  safeAttackAttempt      = false,
+        bool  missedSafeAttackOpportunity = false)
     {
         Prime(extractor);
 
@@ -105,6 +115,7 @@ public class BossRLReward : MonoBehaviour
         float cooldownAttackR  = 0f;
         float movedIntoDangerR = 0f;
         float safeAttackR      = 0f;
+        float missedSafeOpportunityR = 0f;
 
         int bossDelta   = Mathf.Max(0, lastBossHp   - bossHp);
         int playerDelta = Mathf.Max(0, lastPlayerHp - playerHp);
@@ -163,6 +174,9 @@ public class BossRLReward : MonoBehaviour
         if (safeAttackAttempt)
             safeAttackR = SafeInRangeAttackAttemptReward;
 
+        // Missed-safe-opportunity penalty is applied by BossPlayerAgent after a
+        // 1s no-hit grace window, so valid evasive moves are not punished here.
+
         bool bossDead   = extractor.BossIsDead;
         bool playerDead = extractor.PlayerIsDead;
         bool timedOut   = maxEpisodeSeconds > 0f && elapsedSeconds >= maxEpisodeSeconds;
@@ -173,7 +187,7 @@ public class BossRLReward : MonoBehaviour
         float total = StepPenalty + bossDamageR + hitPenaltyR + deathPenaltyR
                       + warningTileR + damageTileR + wallBlockedR
                       + approachR + missedAttackR + cooldownAttackR
-                      + movedIntoDangerR + safeAttackR;
+                      + movedIntoDangerR + safeAttackR + missedSafeOpportunityR;
 
         lastBossHp   = bossHp;
         lastPlayerHp = playerHp;
@@ -192,6 +206,7 @@ public class BossRLReward : MonoBehaviour
             rewardAttackOnCooldown = cooldownAttackR,
             rewardMovedIntoDanger = movedIntoDangerR,
             rewardSafeAttack      = safeAttackR,
+            rewardMissedSafeAttackOpportunity = missedSafeOpportunityR,
             bossDead              = bossDead,
             playerDead            = playerDead,
             timedOut              = timedOut,
