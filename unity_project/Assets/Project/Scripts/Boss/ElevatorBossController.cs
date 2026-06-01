@@ -1512,7 +1512,7 @@ public class ElevatorBossController : MonoBehaviour
         }
 
         // MarkATK VFX 스폰 (판정 없음, markFlashTime 후 자동 Destroy)
-        SpawnMarkDashVfx(playerCell, displayHorizontal, isFake);
+        SpawnMarkDashVfx(playerCell, displayHorizontal, isFake, markCells);
 
         SetBossVisible(false);
         PlaySfx(bossMarkWarningSfx);
@@ -1592,7 +1592,7 @@ public class ElevatorBossController : MonoBehaviour
         return Random.value < 0.5f ? Vector2Int.up : Vector2Int.down;
     }
 
-    private void SpawnMarkDashVfx(Vector2Int playerCell, bool displayHorizontal, bool isFake)
+    private void SpawnMarkDashVfx(Vector2Int playerCell, bool displayHorizontal, bool isFake, IReadOnlyList<Vector2Int> visibleCells)
     {
         GameObject markVfxPrefab = ResolveMarkDashVfxPrefab(isFake);
         if (markVfxPrefab == null)
@@ -1605,6 +1605,8 @@ public class ElevatorBossController : MonoBehaviour
             Quaternion.Euler(0f, 0f, rot)
         );
         ConfigureMarkAtkVfx(vfxGo);
+        BossRLMarkAtkTelegraphRegistry.Register(vfxGo, visibleCells, isFake, markFlashTime);
+        FindFirstObjectByType<BossRLDebugLogger>()?.RecordMarkAtkSpawn(isFake);
         Destroy(vfxGo, markFlashTime);
     }
 

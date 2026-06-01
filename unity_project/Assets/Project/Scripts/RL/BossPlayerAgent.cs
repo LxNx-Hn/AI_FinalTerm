@@ -168,8 +168,16 @@ public class BossPlayerAgent : Agent
         bool maskedByDmg       = !survivalStageActive && attackReady && bossInRangeMask && !playerOnWarn && playerOnDmg;
         bool maskedByRWarn     = !survivalStageActive && attackReady && bossInRangeMask && !playerOnWarn && !playerOnDmg && playerOnRWarn;
         bool maskedByRDmg      = !survivalStageActive && attackReady && bossInRangeMask && !playerOnWarn && !playerOnDmg && !playerOnRWarn && playerOnRDmg;
+        bool rlTargetAllowed = true;
+        BossRLTargetAlignmentDiagnostics.HitClass maskTargetClass =
+            BossRLTargetAlignmentDiagnostics.HitClass.UnknownRemaining;
+        if (!survivalStageActive && attackReady && bossInRangeMask && !playerOnAnyDanger)
+        {
+            rlTargetAllowed = stateExtractor.IsCurrentRLAttackTargetAllowed(out maskTargetClass);
+            debugLogger?.RecordRLAttackTargetGate(maskTargetClass, rlTargetAllowed, blockedAtExternalRequest: false);
+        }
 
-        bool maskAttack = survivalStageActive || !attackReady || !bossInRangeMask || playerOnAnyDanger;
+        bool maskAttack = survivalStageActive || !attackReady || !bossInRangeMask || playerOnAnyDanger || !rlTargetAllowed;
         if (maskAttack)
             actionMask.SetActionEnabled(0, 5, false);
 
@@ -245,7 +253,17 @@ public class BossPlayerAgent : Agent
             }
         }
 
-        inputBridge.ApplySingleAction(singleAction);
+        bool allowExternalAttack = true;
+        BossRLTargetAlignmentDiagnostics.HitClass actionTargetClass =
+            BossRLTargetAlignmentDiagnostics.HitClass.UnknownRemaining;
+        if (isAttackAct && stateExtractor != null && stateExtractor.IsReady)
+        {
+            allowExternalAttack = stateExtractor.IsCurrentRLAttackTargetAllowed(out actionTargetClass);
+            if (!allowExternalAttack)
+                debugLogger?.RecordRLAttackTargetGate(actionTargetClass, allowed: false, blockedAtExternalRequest: true);
+        }
+
+        inputBridge.ApplySingleAction(singleAction, allowExternalAttack);
 
         if (terminalHandled || (episodeResetter != null && episodeResetter.ReloadQueued))
         {
@@ -261,9 +279,10 @@ public class BossPlayerAgent : Agent
         if (stateExtractor != null && isAttackAct && !stateExtractor.IsReady)
             stateExtractor.GetFullDangerState(out _, out _, out onRecentWarning, out onRecentDamage);
 
-        int attackActionInt    = isAttackAct ? 1 : 0;
-        bool safeAttackAttempt = isAttackAct && safeOpportunity;
-        bool missedSafeAttackOpportunity = safeOpportunity && !isAttackAct && !dangerNearby;
+        bool appliedAttackAct = isAttackAct && allowExternalAttack;
+        int attackActionInt    = appliedAttackAct ? 1 : 0;
+        bool safeAttackAttempt = appliedAttackAct && safeOpportunity;
+        bool missedSafeAttackOpportunity = safeOpportunity && !appliedAttackAct && !dangerNearby;
 
         BossRLReward.StepResult stepResult = rewardTracker.Evaluate(
             stateExtractor, GetElapsedSeconds(), maxEpisodeSeconds,

@@ -265,6 +265,13 @@ public static class BossRLTargetAlignmentDiagnostics
         }
     }
 
+    public static bool IsRLAttackAllowed(HitClass hitClass)
+    {
+        return hitClass == HitClass.NormalVisible ||
+               hitClass == HitClass.RootVisibleOverlap ||
+               hitClass == HitClass.DashCurrentOverlap;
+    }
+
     private static HitClass ClassifyHit(BossVisualDiagnosticState state)
     {
         bool spriteBoundsInside = state.spriteVisible && state.spriteBoundsCenterCellInsideAttackCells;

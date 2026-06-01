@@ -80,7 +80,7 @@ public class BossRLInputBridge : MonoBehaviour
     /// Apply a single discrete action [0-5].
     /// Move actions only move (no attack). ATTACK only attacks (no move). WAIT does nothing.
     /// </summary>
-    public void ApplySingleAction(int action)
+    public void ApplySingleAction(int action, bool allowAttack = true)
     {
         if (IsMoveAction(action))
         {
@@ -89,7 +89,8 @@ public class BossRLInputBridge : MonoBehaviour
         else if (IsAttackAction(action))
         {
             controller?.ClearExternalInput();
-            combat?.RequestExternalAttack();
+            if (allowAttack)
+                combat?.RequestExternalAttack();
         }
         else  // WAIT
         {

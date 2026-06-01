@@ -15,7 +15,8 @@ public class BossRLStateExtractor : MonoBehaviour
     //             + warningMask(49) + damageMask(49) + ready×2+elapsed(3)
     //             + prevWarningMask(49) + bossInRange+manhattan(2)
     //   New  30:  recent_danger(2) + directional 4×7(28)
-    public const int VectorObservationSize = 193;
+    // 193 base + MarkATK real/fake visible masks (+98) + visible history stack (+147).
+    public const int VectorObservationSize = 438;
     private static readonly float[] ZeroObservations = new float[VectorObservationSize];
 
     private static readonly FieldInfo MergedWarningCellsField =
@@ -32,14 +33,21 @@ public class BossRLStateExtractor : MonoBehaviour
     private readonly float[] warningMask = new float[MaskObservationSize];
     private readonly float[] damageMask  = new float[MaskObservationSize];
     private readonly float[] prevWarningMask = new float[MaskObservationSize];
+    private readonly float[] prevWarningMask2 = new float[MaskObservationSize];
+    private readonly float[] prevDamageMask = new float[MaskObservationSize];
+    private readonly float[] recentSweepHistoryMask = new float[MaskObservationSize];
+    private readonly float[] markAtkRealVisibleMask = new float[MaskObservationSize];
+    private readonly float[] markAtkFakeVisibleMask = new float[MaskObservationSize];
 
     // ── Recent danger memory (Time.time TTL-based) ────────────────────────────
     // warning TTL 0.65s: covers full warning→damage window so agent remembers danger zone
     // damage TTL 0.30s: brief memory to avoid stepping back in immediately
     private const float RecentWarningTTL = 0.65f;
     private const float RecentDamageTTL  = 0.30f;
+    private const float VisibleHistoryTTL = 1.60f;
     private readonly Dictionary<Vector2Int, float> recentWarningExpireTime = new Dictionary<Vector2Int, float>();
     private readonly Dictionary<Vector2Int, float> recentDamageExpireTime  = new Dictionary<Vector2Int, float>();
+    private readonly Dictionary<Vector2Int, float> visibleHistoryExpireTime = new Dictionary<Vector2Int, float>();
     private readonly HashSet<Vector2Int> recentWarningCells = new HashSet<Vector2Int>();
     private readonly HashSet<Vector2Int> recentDamageCells  = new HashSet<Vector2Int>();
     // Frame guard to avoid double-updating in the same frame
@@ -93,10 +101,17 @@ public class BossRLStateExtractor : MonoBehaviour
     public void ResetTemporalState()
     {
         System.Array.Clear(prevWarningMask, 0, prevWarningMask.Length);
+        System.Array.Clear(prevWarningMask2, 0, prevWarningMask2.Length);
+        System.Array.Clear(prevDamageMask, 0, prevDamageMask.Length);
+        System.Array.Clear(recentSweepHistoryMask, 0, recentSweepHistoryMask.Length);
+        System.Array.Clear(markAtkRealVisibleMask, 0, markAtkRealVisibleMask.Length);
+        System.Array.Clear(markAtkFakeVisibleMask, 0, markAtkFakeVisibleMask.Length);
         recentWarningExpireTime.Clear();
         recentDamageExpireTime.Clear();
+        visibleHistoryExpireTime.Clear();
         recentWarningCells.Clear();
         recentDamageCells.Clear();
+        BossRLMarkAtkTelegraphRegistry.Clear();
         lastRecentDangerFrame = -1;
     }
 
@@ -123,9 +138,14 @@ public class BossRLStateExtractor : MonoBehaviour
         sensor.AddObservation(bossVisible ? NormalizeArenaCoord(bossArenaCell.x) : 0f); // 1 → 10
         sensor.AddObservation(bossVisible ? NormalizeArenaCoord(bossArenaCell.y) : 0f); // 1 → 11
 
+        System.Array.Copy(prevWarningMask, prevWarningMask2, MaskObservationSize);
         System.Array.Copy(warningMask, prevWarningMask, MaskObservationSize);
+        System.Array.Copy(damageMask, prevDamageMask, MaskObservationSize);
         RefreshHazardMasks();
         TryUpdateRecentDanger();
+        UpdateVisibleHistoryMask();
+        BossRLMarkAtkTelegraphRegistry.Snapshot markAtkSnapshot =
+            BossRLMarkAtkTelegraphRegistry.BuildSnapshot(markAtkRealVisibleMask, markAtkFakeVisibleMask);
 
         sensor.AddObservation(warningMask);   // 49 → 60
         sensor.AddObservation(damageMask);    // 49 → 109
@@ -146,6 +166,24 @@ public class BossRLStateExtractor : MonoBehaviour
 
         // ── Directional observations 4×7 (+28 = 193) ─────────────────────────
         AddDirectionalObservations(sensor, playerArenaCell, bossArenaCell);
+
+        sensor.AddObservation(markAtkRealVisibleMask);
+        sensor.AddObservation(markAtkFakeVisibleMask);
+        sensor.AddObservation(prevWarningMask2);
+        sensor.AddObservation(prevDamageMask);
+        sensor.AddObservation(recentSweepHistoryMask);
+
+        debugLogger?.RecordObservationChannels(
+            markAtkSnapshot.realVisibleCount,
+            markAtkSnapshot.fakeVisibleCount,
+            markAtkSnapshot.realVisibleCellCount,
+            markAtkSnapshot.fakeVisibleCellCount,
+            markAtkSnapshot.activeCount,
+            markAtkSnapshot.staleCount,
+            CountNonZero(prevWarningMask2),
+            CountNonZero(prevDamageMask),
+            CountNonZero(recentSweepHistoryMask),
+            bossController != null && bossController.DiagnosticIsMarkDashInProgress);
     }
 
     // ── Public hazard / masking helpers ───────────────────────────────────────
@@ -343,6 +381,24 @@ public class BossRLStateExtractor : MonoBehaviour
         return IsBossInAttackRangeInternal(GetPlayerArenaCell());
     }
 
+    public BossRLTargetAlignmentDiagnostics.HitClass GetCurrentRLAttackTargetClass()
+    {
+        if (!EnsureReady(logWarning: false) || playerOccupant == null ||
+            playerController == null || playerCombat == null || bossController == null)
+        {
+            return BossRLTargetAlignmentDiagnostics.HitClass.OffLaneEmpty;
+        }
+
+        List<Vector2Int> cells = playerCombat.GetAttackCells(playerOccupant.CurrentCell, playerController.Facing);
+        return BossRLTargetAlignmentDiagnostics.CaptureVisualState(bossController, cells).hitClass;
+    }
+
+    public bool IsCurrentRLAttackTargetAllowed(out BossRLTargetAlignmentDiagnostics.HitClass hitClass)
+    {
+        hitClass = GetCurrentRLAttackTargetClass();
+        return BossRLTargetAlignmentDiagnostics.IsRLAttackAllowed(hitClass);
+    }
+
     public int ManhattanDistanceToBoss()
     {
         if (!EnsureReady(logWarning: false) || playerOccupant == null || bossController == null)
@@ -455,6 +511,45 @@ public class BossRLStateExtractor : MonoBehaviour
         foreach (var k in recentWarningExpireTime.Keys) recentWarningCells.Add(k);
         recentDamageCells.Clear();
         foreach (var k in recentDamageExpireTime.Keys)  recentDamageCells.Add(k);
+    }
+
+    private void UpdateVisibleHistoryMask()
+    {
+        float now = Time.time;
+
+        foreach (Vector2Int cell in warningCells)
+            visibleHistoryExpireTime[cell] = now + VisibleHistoryTTL;
+        foreach (Vector2Int cell in damageCells)
+            visibleHistoryExpireTime[cell] = now + VisibleHistoryTTL;
+
+        var keys = new List<Vector2Int>(visibleHistoryExpireTime.Keys);
+        foreach (Vector2Int key in keys)
+        {
+            if (now >= visibleHistoryExpireTime[key])
+                visibleHistoryExpireTime.Remove(key);
+        }
+
+        System.Array.Clear(recentSweepHistoryMask, 0, recentSweepHistoryMask.Length);
+        foreach (Vector2Int cell in visibleHistoryExpireTime.Keys)
+        {
+            if (IsInsideArena(cell))
+                recentSweepHistoryMask[ToMaskIndex(cell)] = 1f;
+        }
+    }
+
+    private static int CountNonZero(float[] values)
+    {
+        if (values == null)
+            return 0;
+
+        int count = 0;
+        for (int i = 0; i < values.Length; i++)
+        {
+            if (values[i] > 0.5f)
+                count++;
+        }
+
+        return count;
     }
 
     private bool IsBossInAttackRangeInternal(Vector2Int playerArenaCell)
@@ -595,9 +690,13 @@ public class BossRLStateExtractor : MonoBehaviour
     private static float NormalizeArenaCoord(int value) =>
         Mathf.Clamp(value / (float)ArenaHalfExtent, -1f, 1f);
 
-    private static bool IsInsideArena(Vector2Int cell) =>
+    public static bool IsArenaCell(Vector2Int cell) =>
         cell.x >= -ArenaHalfExtent && cell.x <= ArenaHalfExtent &&
         cell.y >= -ArenaHalfExtent && cell.y <= ArenaHalfExtent;
+
+    private static bool IsInsideArena(Vector2Int cell) => IsArenaCell(cell);
+
+    public static int ToArenaMaskIndex(Vector2Int cell) => ToMaskIndex(cell);
 
     private static int ToMaskIndex(Vector2Int cell)
     {

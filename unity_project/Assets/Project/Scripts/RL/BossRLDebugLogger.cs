@@ -120,6 +120,36 @@ public class BossRLDebugLogger : MonoBehaviour
     private int dashHitOutsideActiveLaneCount;
     private int dashHitInsideActiveDamageLaneCount;
     private int dashHitInsideActiveWarningLaneCount;
+    private int rlAttackAllowedNormalVisibleCount;
+    private int rlAttackAllowedRootVisibleOverlapCount;
+    private int rlAttackAllowedDashCurrentOverlapCount;
+    private int rlAttackBlockedHiddenTargetCount;
+    private int rlAttackBlockedStaleBossCellCount;
+    private int rlAttackBlockedOffLaneEmptyCount;
+    private int externalAttackBlockedTargetHiddenCount;
+    private int hiddenTargetSuccessfulHitAfterGateCount;
+    private int rootVisibleOverlapSuccessfulHitAfterGateCount;
+    private int dashCurrentOverlapSuccessfulHitAfterGateCount;
+    private int markAtkRealSpawnCount;
+    private int markAtkFakeSpawnCount;
+    private int markAtkRealObservedCount;
+    private int markAtkFakeObservedCount;
+    private int markAtkRealObservedCellCount;
+    private int markAtkFakeObservedCellCount;
+    private int markAtkRegistryActiveCount;
+    private int markAtkRegistryStaleCount;
+    private int markAtkVisibleDuringMarkDashCount;
+    private int markAtkFakeUsedByDangerMaskCount;
+    private int markAtkFakeUsedByAttackMaskCount;
+    private int fakeMarkerInDangerMaskCount;
+    private int previousWarning2NonzeroSteps;
+    private int previousDamage1NonzeroSteps;
+    private int recentSweepHistoryNonzeroSteps;
+    private int sweepVisibleHistoryStackNonzeroSteps;
+    private int sweepHistoryChannelNonzeroCount;
+    private int sweepHistoryChannelsAddedCount;
+    private int nextBandDirectObservationCount;
+    private int sweepSequenceIndexObservationCount;
 
     // Diagonal blindspot wiggle diagnostic metrics. These are logging-only and
     // do not feed reward, action masking, or observations.
@@ -389,6 +419,24 @@ public class BossRLDebugLogger : MonoBehaviour
         dashHitBossCellOnlyCount = dashHitPreviousPositionSuspectCount = 0;
         dashHitFutureEndCellSuspectCount = dashHitOutsideActiveLaneCount = 0;
         dashHitInsideActiveDamageLaneCount = dashHitInsideActiveWarningLaneCount = 0;
+        rlAttackAllowedNormalVisibleCount = rlAttackAllowedRootVisibleOverlapCount = 0;
+        rlAttackAllowedDashCurrentOverlapCount = 0;
+        rlAttackBlockedHiddenTargetCount = rlAttackBlockedStaleBossCellCount = 0;
+        rlAttackBlockedOffLaneEmptyCount = externalAttackBlockedTargetHiddenCount = 0;
+        hiddenTargetSuccessfulHitAfterGateCount = rootVisibleOverlapSuccessfulHitAfterGateCount = 0;
+        dashCurrentOverlapSuccessfulHitAfterGateCount = 0;
+        markAtkRealSpawnCount = markAtkFakeSpawnCount = 0;
+        markAtkRealObservedCount = markAtkFakeObservedCount = 0;
+        markAtkRealObservedCellCount = markAtkFakeObservedCellCount = 0;
+        markAtkRegistryActiveCount = markAtkRegistryStaleCount = 0;
+        markAtkVisibleDuringMarkDashCount = 0;
+        markAtkFakeUsedByDangerMaskCount = markAtkFakeUsedByAttackMaskCount = 0;
+        fakeMarkerInDangerMaskCount = 0;
+        previousWarning2NonzeroSteps = previousDamage1NonzeroSteps = 0;
+        recentSweepHistoryNonzeroSteps = sweepVisibleHistoryStackNonzeroSteps = 0;
+        sweepHistoryChannelNonzeroCount = 0;
+        sweepHistoryChannelsAddedCount = 3;
+        nextBandDirectObservationCount = sweepSequenceIndexObservationCount = 0;
         diagonalBlindspotBossCellSteps = diagonalBlindspotRootSteps = diagonalBlindspotVisualSteps = 0;
         diagonalBlindspotAttackCount = diagonalBlindspotAttackHitCount = diagonalBlindspotMoveCount = 0;
         diagonalBlindspotBackAndForthCount = diagonalBlindspotAxisExitCount = 0;
@@ -1209,6 +1257,75 @@ public class BossRLDebugLogger : MonoBehaviour
         }
     }
 
+    public void RecordRLAttackTargetGate(
+        BossRLTargetAlignmentDiagnostics.HitClass hitClass,
+        bool allowed,
+        bool blockedAtExternalRequest)
+    {
+        if (allowed)
+        {
+            if (hitClass == BossRLTargetAlignmentDiagnostics.HitClass.NormalVisible)
+                rlAttackAllowedNormalVisibleCount++;
+            else if (hitClass == BossRLTargetAlignmentDiagnostics.HitClass.RootVisibleOverlap)
+                rlAttackAllowedRootVisibleOverlapCount++;
+            else if (hitClass == BossRLTargetAlignmentDiagnostics.HitClass.DashCurrentOverlap)
+                rlAttackAllowedDashCurrentOverlapCount++;
+            return;
+        }
+
+        if (hitClass == BossRLTargetAlignmentDiagnostics.HitClass.HiddenTarget)
+        {
+            rlAttackBlockedHiddenTargetCount++;
+            if (blockedAtExternalRequest)
+                externalAttackBlockedTargetHiddenCount++;
+        }
+        else if (hitClass == BossRLTargetAlignmentDiagnostics.HitClass.StaleBossCell)
+        {
+            rlAttackBlockedStaleBossCellCount++;
+        }
+        else if (hitClass == BossRLTargetAlignmentDiagnostics.HitClass.OffLaneEmpty)
+        {
+            rlAttackBlockedOffLaneEmptyCount++;
+        }
+    }
+
+    public void RecordMarkAtkSpawn(bool isFake)
+    {
+        if (isFake) markAtkFakeSpawnCount++;
+        else markAtkRealSpawnCount++;
+    }
+
+    public void RecordObservationChannels(
+        int markAtkRealVisibleCount,
+        int markAtkFakeVisibleCount,
+        int markAtkRealVisibleCellCount,
+        int markAtkFakeVisibleCellCount,
+        int markAtkActiveCount,
+        int markAtkStaleCount,
+        int previousWarning2CellCount,
+        int previousDamage1CellCount,
+        int recentSweepHistoryCellCount,
+        bool markDashInProgress)
+    {
+        if (markAtkRealVisibleCount > 0) markAtkRealObservedCount++;
+        if (markAtkFakeVisibleCount > 0) markAtkFakeObservedCount++;
+        markAtkRealObservedCellCount += markAtkRealVisibleCellCount;
+        markAtkFakeObservedCellCount += markAtkFakeVisibleCellCount;
+        markAtkRegistryActiveCount += markAtkActiveCount;
+        markAtkRegistryStaleCount += markAtkStaleCount;
+        if (markDashInProgress && markAtkActiveCount > 0)
+            markAtkVisibleDuringMarkDashCount++;
+
+        if (previousWarning2CellCount > 0) previousWarning2NonzeroSteps++;
+        if (previousDamage1CellCount > 0) previousDamage1NonzeroSteps++;
+        if (recentSweepHistoryCellCount > 0)
+        {
+            recentSweepHistoryNonzeroSteps++;
+            sweepVisibleHistoryStackNonzeroSteps++;
+            sweepHistoryChannelNonzeroCount += recentSweepHistoryCellCount;
+        }
+    }
+
     public void RecordTargetAlignmentHit(BossRLTargetAlignmentDiagnostics.BossHitRecord record)
     {
         BossRLTargetAlignmentDiagnostics.BossVisualDiagnosticState visual = record.visualState;
@@ -1231,9 +1348,11 @@ public class BossRLDebugLogger : MonoBehaviour
                 break;
             case BossRLTargetAlignmentDiagnostics.HitClass.RootVisibleOverlap:
                 hitClassRootVisibleOverlapCount++;
+                rootVisibleOverlapSuccessfulHitAfterGateCount++;
                 break;
             case BossRLTargetAlignmentDiagnostics.HitClass.DashCurrentOverlap:
                 hitClassDashCurrentOverlapCount++;
+                dashCurrentOverlapSuccessfulHitAfterGateCount++;
                 dashAllowedCandidateCount++;
                 dashHitAllowedCandidateCount++;
                 break;
@@ -1243,6 +1362,7 @@ public class BossRLDebugLogger : MonoBehaviour
                 break;
             case BossRLTargetAlignmentDiagnostics.HitClass.HiddenTarget:
                 hitClassHiddenTargetCount++;
+                hiddenTargetSuccessfulHitAfterGateCount++;
                 break;
             case BossRLTargetAlignmentDiagnostics.HitClass.OffLaneEmpty:
                 hitClassOffLaneEmptyCount++;
@@ -1674,6 +1794,37 @@ public class BossRLDebugLogger : MonoBehaviour
             $"dash_hit_outside_active_lane_count={dashHitOutsideActiveLaneCount} " +
             $"dash_hit_inside_active_damage_lane_count={dashHitInsideActiveDamageLaneCount} " +
             $"dash_hit_inside_active_warning_lane_count={dashHitInsideActiveWarningLaneCount}\n" +
+            $"  rl_target_gate: rl_attack_allowed_normal_visible_count={rlAttackAllowedNormalVisibleCount} " +
+            $"rl_attack_allowed_root_visible_overlap_count={rlAttackAllowedRootVisibleOverlapCount} " +
+            $"rl_attack_allowed_dash_current_overlap_count={rlAttackAllowedDashCurrentOverlapCount} " +
+            $"rl_attack_blocked_hidden_target_count={rlAttackBlockedHiddenTargetCount} " +
+            $"rl_attack_blocked_stale_bosscell_count={rlAttackBlockedStaleBossCellCount} " +
+            $"rl_attack_blocked_off_lane_empty_count={rlAttackBlockedOffLaneEmptyCount} " +
+            $"external_attack_blocked_target_hidden_count={externalAttackBlockedTargetHiddenCount} " +
+            $"hidden_target_successful_hit_after_gate_count={hiddenTargetSuccessfulHitAfterGateCount} " +
+            $"root_visible_overlap_successful_hit_after_gate_count={rootVisibleOverlapSuccessfulHitAfterGateCount} " +
+            $"dash_current_overlap_successful_hit_after_gate_count={dashCurrentOverlapSuccessfulHitAfterGateCount}\n" +
+            $"  markatk_observation: markatk_real_spawn_count={markAtkRealSpawnCount} " +
+            $"markatk_fake_spawn_count={markAtkFakeSpawnCount} " +
+            $"markatk_real_observed_count={markAtkRealObservedCount} " +
+            $"markatk_fake_observed_count={markAtkFakeObservedCount} " +
+            $"markatk_real_visible_cell_count={markAtkRealObservedCellCount} " +
+            $"markatk_fake_visible_cell_count={markAtkFakeObservedCellCount} " +
+            $"markatk_registry_active_count={markAtkRegistryActiveCount} " +
+            $"markatk_registry_stale_count={markAtkRegistryStaleCount} " +
+            $"markatk_visible_during_markdash_count={markAtkVisibleDuringMarkDashCount} " +
+            $"markatk_fake_used_by_danger_mask_count={markAtkFakeUsedByDangerMaskCount} " +
+            $"markatk_fake_used_by_attack_mask_count={markAtkFakeUsedByAttackMaskCount} " +
+            $"fake_marker_in_danger_mask_count={fakeMarkerInDangerMaskCount}\n" +
+            $"  sweep_history_observation: phase2_sweep_history_active_steps={recentSweepHistoryNonzeroSteps} " +
+            $"previous_warning_2_nonzero_steps={previousWarning2NonzeroSteps} " +
+            $"previous_damage_1_nonzero_steps={previousDamage1NonzeroSteps} " +
+            $"recent_sweep_history_nonzero_steps={recentSweepHistoryNonzeroSteps} " +
+            $"sweep_visible_history_stack_nonzero_steps={sweepVisibleHistoryStackNonzeroSteps} " +
+            $"sweep_history_channel_nonzero_count={sweepHistoryChannelNonzeroCount} " +
+            $"sweep_history_channels_added_count={sweepHistoryChannelsAddedCount} " +
+            $"next_band_direct_observation_count={nextBandDirectObservationCount} " +
+            $"sweep_sequence_index_observation_count={sweepSequenceIndexObservationCount}\n" +
             $"  diagonal_blindspot_wiggle_diag: diagonal_blindspot_bosscell_steps={diagonalBlindspotBossCellSteps} " +
             $"diagonal_blindspot_root_steps={diagonalBlindspotRootSteps} " +
             $"diagonal_blindspot_visual_steps={diagonalBlindspotVisualSteps} " +
