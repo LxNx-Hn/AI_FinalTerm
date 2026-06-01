@@ -7,11 +7,12 @@ public static class BossRLTargetAlignmentDiagnostics
     public enum HitClass
     {
         NormalVisible,
+        RootVisibleOverlap,
         DashCurrentOverlap,
         StaleBossCell,
         HiddenTarget,
         OffLaneEmpty,
-        Unknown
+        UnknownRemaining
     }
 
     public struct BossVisualDiagnosticState
@@ -127,7 +128,7 @@ public static class BossRLTargetAlignmentDiagnostics
             dashStartCell = Vector2Int.zero,
             dashEndCell = Vector2Int.zero,
             dashCurrentCell = Vector2Int.zero,
-            hitClass = HitClass.Unknown
+            hitClass = HitClass.UnknownRemaining
         };
 
         if (bossController == null)
@@ -249,6 +250,8 @@ public static class BossRLTargetAlignmentDiagnostics
         {
             case HitClass.NormalVisible:
                 return "normal_visible";
+            case HitClass.RootVisibleOverlap:
+                return "root_visible_overlap";
             case HitClass.DashCurrentOverlap:
                 return "dash_current_overlap";
             case HitClass.StaleBossCell:
@@ -258,39 +261,57 @@ public static class BossRLTargetAlignmentDiagnostics
             case HitClass.OffLaneEmpty:
                 return "off_lane_empty";
             default:
-                return "unknown";
+                return "unknown_remaining";
         }
     }
 
     private static HitClass ClassifyHit(BossVisualDiagnosticState state)
     {
-        bool visibleBodyInside = state.spriteVisible &&
-                                 (state.visualCellInsideAttackCells ||
-                                  state.spriteBoundsCenterCellInsideAttackCells);
+        bool spriteBoundsInside = state.spriteVisible && state.spriteBoundsCenterCellInsideAttackCells;
+        bool visualCellInside = state.spriteVisible && state.visualCellInsideAttackCells;
+        bool visibleBodyInside = visualCellInside || spriteBoundsInside;
+        bool dashBodyInside = state.currentlyDashing &&
+                              (state.dashCurrentCellInsideAttackCells ||
+                               state.rootCurrentCellInsideAttackCells ||
+                               visibleBodyInside);
+        bool dashLaneRelated = state.dashLineCellsOverlapAttackCells ||
+                               state.activeDamageCellsOverlapAttackCells ||
+                               state.activeWarningCellsOverlapAttackCells;
         bool currentBodyInside = state.rootCurrentCellInsideAttackCells ||
                                  visibleBodyInside ||
-                                 (state.currentlyDashing && state.dashCurrentCellInsideAttackCells);
+                                 dashBodyInside;
 
         if (state.spriteVisible &&
-            state.visualCellInsideAttackCells &&
+            state.spriteBoundsCenterCellInsideAttackCells &&
             state.bossCellInsideAttackCells)
         {
             return HitClass.NormalVisible;
         }
 
-        if (state.currentlyDashing &&
-            (currentBodyInside ||
-             (state.dashLineCellsOverlapAttackCells && state.activeDamageCellsOverlapAttackCells)))
+        if (dashBodyInside && dashLaneRelated)
         {
             return HitClass.DashCurrentOverlap;
         }
 
-        if (state.currentlyHidden && !state.currentlyDashing)
+        if (state.spriteVisible &&
+            state.rootCurrentCellInsideAttackCells &&
+            state.bossCellInsideAttackCells &&
+            !state.spriteBoundsCenterCellInsideAttackCells)
+        {
+            return HitClass.RootVisibleOverlap;
+        }
+
+        if (state.currentlyHidden && !dashBodyInside && state.bossCellInsideAttackCells)
         {
             return HitClass.HiddenTarget;
         }
 
-        if (!currentBodyInside && !state.attackCellsOverlapAnyActiveLane)
+        if (state.bossCellInsideAttackCells && !currentBodyInside && !state.attackCellsOverlapAnyActiveLane)
+        {
+            return HitClass.StaleBossCell;
+        }
+
+        if (!state.attackCellsOverlapAnyActiveLane && !currentBodyInside)
         {
             return HitClass.OffLaneEmpty;
         }
@@ -300,7 +321,7 @@ public static class BossRLTargetAlignmentDiagnostics
             return HitClass.StaleBossCell;
         }
 
-        return HitClass.Unknown;
+        return HitClass.UnknownRemaining;
     }
 
     private static bool HasOverlap(HashSet<Vector2Int> attackCellSet, IReadOnlyList<Vector2Int> cells)

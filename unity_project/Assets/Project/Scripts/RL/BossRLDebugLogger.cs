@@ -95,11 +95,23 @@ public class BossRLDebugLogger : MonoBehaviour
     private int hiddenBossAttackRewardCount;
     private int targetAlignmentLogCount;
     private int hitClassNormalVisibleCount;
+    private int hitClassRootVisibleOverlapCount;
     private int hitClassDashCurrentOverlapCount;
     private int hitClassStaleBossCellCount;
     private int hitClassHiddenTargetCount;
     private int hitClassOffLaneEmptyCount;
-    private int hitClassUnknownCount;
+    private int hitClassUnknownRemainingCount;
+    private int rootCellInAttackRangeCount;
+    private int spriteBoundsCellInAttackRangeCount;
+    private int bossCellInAttackRangeCount;
+    private int rootInRangeSpriteBoundsOutCount;
+    private int rootInRangeSpriteInvisibleCount;
+    private int spriteBoundsOutButRootVisibleOverlapCount;
+    private int dashCurrentRootOverlapCount;
+    private int dashCurrentVisualOverlapCount;
+    private int dashAllowedCandidateCount;
+    private int dashStaleBossCellOnlyCount;
+    private int dashOffLaneEmptyCount;
     private int dashHitAllowedCandidateCount;
     private int dashHitCurrentVisualOverlapCount;
     private int dashHitBossCellOnlyCount;
@@ -108,6 +120,40 @@ public class BossRLDebugLogger : MonoBehaviour
     private int dashHitOutsideActiveLaneCount;
     private int dashHitInsideActiveDamageLaneCount;
     private int dashHitInsideActiveWarningLaneCount;
+
+    // Diagonal blindspot wiggle diagnostic metrics. These are logging-only and
+    // do not feed reward, action masking, or observations.
+    private int diagonalBlindspotBossCellSteps;
+    private int diagonalBlindspotRootSteps;
+    private int diagonalBlindspotVisualSteps;
+    private int diagonalBlindspotAttackCount;
+    private int diagonalBlindspotAttackHitCount;
+    private int diagonalBlindspotMoveCount;
+    private int diagonalBlindspotBackAndForthCount;
+    private int diagonalBlindspotAxisExitCount;
+    private int diagonalBlindspotKeptSafeCount;
+    private int diagonalBlindspotThenPlayerHitCount;
+    private int diagonalBlindspotBossMeleeWhiffCandidateCount;
+    private int attackAfterDiagonalWiggleCount;
+    private int axisPositionStepCount;
+    private int axisPositionPlayerHitCount;
+    private int axisPositionBossMeleeHitCount;
+    private int diagonalBlindspotPlayerHitCount;
+    private int diagonalBlindspotBossMeleeHitCount;
+    private int playerInBossFrontAxisCount;
+    private int playerInBossBackAxisCount;
+    private int playerInBossLeftAxisCount;
+    private int playerInBossRightAxisCount;
+    private int playerInBossDiagonalBlindspotCount;
+    private int diagonalWiggleStreak;
+    private float lastDiagonalWiggleWindowTime = -999f;
+    private bool hasLastDiagonalMove;
+    private Vector2Int lastDiagonalMoveFrom;
+    private Vector2Int lastDiagonalMoveTo;
+    private bool hasLastBossPoseForWiggle;
+    private Vector2Int lastBossCellForWiggle;
+    private Vector2Int lastBossFacingForWiggle;
+    private ElevatorBossController cachedBossControllerForWiggle;
 
     // ── Attack range metrics ──────────────────────────────────────────────────
     private int   bossInAttackRangeSteps;
@@ -330,13 +376,33 @@ public class BossRLDebugLogger : MonoBehaviour
         bossCellInAttackRangeButSpriteCellOutOfRangeCount = 0;
         spriteVisibleCellInAttackRangeCount = spriteVisibleCellOutOfAttackRangeCount = 0;
         hiddenBossAttackRewardCount = targetAlignmentLogCount = 0;
-        hitClassNormalVisibleCount = hitClassDashCurrentOverlapCount = 0;
+        hitClassNormalVisibleCount = hitClassRootVisibleOverlapCount = 0;
+        hitClassDashCurrentOverlapCount = 0;
         hitClassStaleBossCellCount = hitClassHiddenTargetCount = 0;
-        hitClassOffLaneEmptyCount = hitClassUnknownCount = 0;
+        hitClassOffLaneEmptyCount = hitClassUnknownRemainingCount = 0;
+        rootCellInAttackRangeCount = spriteBoundsCellInAttackRangeCount = 0;
+        bossCellInAttackRangeCount = rootInRangeSpriteBoundsOutCount = 0;
+        rootInRangeSpriteInvisibleCount = spriteBoundsOutButRootVisibleOverlapCount = 0;
+        dashCurrentRootOverlapCount = dashCurrentVisualOverlapCount = 0;
+        dashAllowedCandidateCount = dashStaleBossCellOnlyCount = dashOffLaneEmptyCount = 0;
         dashHitAllowedCandidateCount = dashHitCurrentVisualOverlapCount = 0;
         dashHitBossCellOnlyCount = dashHitPreviousPositionSuspectCount = 0;
         dashHitFutureEndCellSuspectCount = dashHitOutsideActiveLaneCount = 0;
         dashHitInsideActiveDamageLaneCount = dashHitInsideActiveWarningLaneCount = 0;
+        diagonalBlindspotBossCellSteps = diagonalBlindspotRootSteps = diagonalBlindspotVisualSteps = 0;
+        diagonalBlindspotAttackCount = diagonalBlindspotAttackHitCount = diagonalBlindspotMoveCount = 0;
+        diagonalBlindspotBackAndForthCount = diagonalBlindspotAxisExitCount = 0;
+        diagonalBlindspotKeptSafeCount = diagonalBlindspotThenPlayerHitCount = 0;
+        diagonalBlindspotBossMeleeWhiffCandidateCount = attackAfterDiagonalWiggleCount = 0;
+        axisPositionStepCount = axisPositionPlayerHitCount = axisPositionBossMeleeHitCount = 0;
+        diagonalBlindspotPlayerHitCount = diagonalBlindspotBossMeleeHitCount = 0;
+        playerInBossFrontAxisCount = playerInBossBackAxisCount = 0;
+        playerInBossLeftAxisCount = playerInBossRightAxisCount = 0;
+        playerInBossDiagonalBlindspotCount = 0;
+        diagonalWiggleStreak = 0;
+        lastDiagonalWiggleWindowTime = -999f;
+        hasLastDiagonalMove = false;
+        hasLastBossPoseForWiggle = false;
 
         bossInAttackRangeSteps   = attackWhenBossInRange    = attackWhenBossOutOfRange = 0;
         bossDistanceSumAtAttack  = 0f;
@@ -484,6 +550,28 @@ public class BossRLDebugLogger : MonoBehaviour
         minDistanceToBoss = Mathf.Min(minDistanceToBoss, clampedDistance);
         maxDistanceToBoss = Mathf.Max(maxDistanceToBoss, clampedDistance);
 
+        UpdateMeleeWiggleDiagnostics(
+            singleAction,
+            isAttack,
+            attackHit,
+            isMove,
+            moveWillSucceed,
+            moveDistanceDelta,
+            gotHit,
+            currentTime,
+            clampedDistance,
+            playerCell,
+            bossCell,
+            bossFacing,
+            onWarning,
+            onDamage,
+            onRecentWarn,
+            onRecentDmg,
+            moveIntoWarn,
+            moveIntoDmg,
+            moveIntoRecentWarn,
+            moveIntoRecentDmg);
+
         if (bossInRange) timeInAttackRangeSteps++;
         else             timeOutOfAttackRangeSteps++;
 
@@ -626,6 +714,277 @@ public class BossRLDebugLogger : MonoBehaviour
         for (int i = pendingAttacks.Count - 1; i >= 0; i--)
             if (currentTime - pendingAttacks[i].timestamp > 0.6f)
                 pendingAttacks.RemoveAt(i);
+    }
+
+    private void UpdateMeleeWiggleDiagnostics(
+        int singleAction,
+        bool isAttack,
+        bool attackHit,
+        bool isMove,
+        bool moveWillSucceed,
+        int moveDistanceDelta,
+        bool gotHit,
+        float currentTime,
+        int currentDistanceToBoss,
+        Vector2Int playerCell,
+        Vector2Int bossCell,
+        Vector2Int bossFacing,
+        bool onWarning,
+        bool onDamage,
+        bool onRecentWarn,
+        bool onRecentDmg,
+        bool moveIntoWarn,
+        bool moveIntoDmg,
+        bool moveIntoRecentWarn,
+        bool moveIntoRecentDmg)
+    {
+        GetBossReferenceCells(bossCell, out Vector2Int bossCellRef, out Vector2Int rootCellRef, out Vector2Int visualCellRef);
+        bool diagonalBossCell = IsDiagonalBlindspot1(playerCell, bossCellRef);
+        bool diagonalRoot = IsDiagonalBlindspot1(playerCell, rootCellRef);
+        bool diagonalVisual = IsDiagonalBlindspot1(playerCell, visualCellRef);
+        bool diagonalAny = diagonalBossCell || diagonalRoot || diagonalVisual;
+        bool axisPosition = IsAxisPosition(playerCell, bossCellRef);
+        bool currentSafe = !onWarning && !onDamage && !onRecentWarn && !onRecentDmg;
+        bool bossPoseChanged = hasLastBossPoseForWiggle &&
+                               (bossCell != lastBossCellForWiggle ||
+                                bossFacing != lastBossFacingForWiggle);
+
+        if (diagonalBossCell) diagonalBlindspotBossCellSteps++;
+        if (diagonalRoot) diagonalBlindspotRootSteps++;
+        if (diagonalVisual) diagonalBlindspotVisualSteps++;
+
+        if (axisPosition)
+        {
+            axisPositionStepCount++;
+            if (gotHit) axisPositionPlayerHitCount++;
+        }
+        RecordBossFacingAxisPosition(playerCell, bossCellRef, bossFacing, diagonalAny);
+
+        if (diagonalAny)
+        {
+            if (gotHit) diagonalBlindspotPlayerHitCount++;
+            else if (currentSafe) diagonalBlindspotKeptSafeCount++;
+        }
+
+        if (diagonalAny && isAttack)
+        {
+            diagonalBlindspotAttackCount++;
+            if (attackHit) diagonalBlindspotAttackHitCount++;
+        }
+
+        if (diagonalAny && !gotHit && bossPoseChanged && currentDistanceToBoss <= 2)
+        {
+            diagonalBlindspotBossMeleeWhiffCandidateCount++;
+        }
+
+        if (gotHit && currentDistanceToBoss <= 2)
+        {
+            if (axisPosition) axisPositionBossMeleeHitCount++;
+            if (diagonalAny) diagonalBlindspotBossMeleeHitCount++;
+        }
+
+        if (diagonalAny && currentTime - lastDiagonalWiggleWindowTime <= 2.0f && gotHit)
+        {
+            diagonalBlindspotThenPlayerHitCount++;
+            lastDiagonalWiggleWindowTime = -999f;
+        }
+
+        bool diagonalWiggleMove = false;
+        if (diagonalAny && isMove && moveWillSucceed)
+        {
+            Vector2Int moveDir = BossRLInputBridge.SingleActionToMoveDir(singleAction);
+            Vector2Int nextPlayerCell = playerCell + moveDir;
+            bool nextSafe = !moveIntoWarn && !moveIntoDmg && !moveIntoRecentWarn && !moveIntoRecentDmg;
+            bool nextDiagonalAny = IsDiagonalBlindspotAny(nextPlayerCell, bossCellRef, rootCellRef, visualCellRef);
+            bool nextAxisPosition = IsAxisPosition(nextPlayerCell, bossCellRef);
+            bool nextAdjacentSafe = nextSafe &&
+                                    !nextAxisPosition &&
+                                    MinManhattanDistance(nextPlayerCell, bossCellRef, rootCellRef, visualCellRef) <= 2;
+            bool backAndForth = hasLastDiagonalMove &&
+                                lastDiagonalMoveFrom == nextPlayerCell &&
+                                lastDiagonalMoveTo == playerCell &&
+                                (nextDiagonalAny || nextAdjacentSafe);
+
+            diagonalBlindspotMoveCount++;
+
+            if (backAndForth)
+            {
+                diagonalBlindspotBackAndForthCount++;
+                diagonalWiggleMove = true;
+            }
+
+            if (nextAxisPosition)
+            {
+                diagonalBlindspotAxisExitCount++;
+            }
+
+            if (diagonalWiggleMove || (nextDiagonalAny && Mathf.Abs(moveDistanceDelta) <= 1))
+            {
+                diagonalWiggleStreak++;
+                if (diagonalWiggleStreak >= 2)
+                    lastDiagonalWiggleWindowTime = currentTime;
+            }
+            else diagonalWiggleStreak = 0;
+
+            lastDiagonalMoveFrom = playerCell;
+            lastDiagonalMoveTo = nextPlayerCell;
+            hasLastDiagonalMove = true;
+        }
+        else if (!diagonalAny)
+        {
+            diagonalWiggleStreak = 0;
+            hasLastDiagonalMove = false;
+        }
+
+        if (isAttack && attackHit && currentTime - lastDiagonalWiggleWindowTime <= 1.0f)
+        {
+            attackAfterDiagonalWiggleCount++;
+            lastDiagonalWiggleWindowTime = -999f;
+        }
+
+        lastBossCellForWiggle = bossCell;
+        lastBossFacingForWiggle = bossFacing;
+        hasLastBossPoseForWiggle = true;
+    }
+
+    private void GetBossReferenceCells(
+        Vector2Int fallbackBossCell,
+        out Vector2Int bossCellRef,
+        out Vector2Int rootCellRef,
+        out Vector2Int visualCellRef)
+    {
+        bossCellRef = fallbackBossCell;
+        rootCellRef = fallbackBossCell;
+        visualCellRef = fallbackBossCell;
+
+        ElevatorBossController bossController = GetBossControllerForWiggle();
+        if (bossController == null || GridManager.Instance == null)
+            return;
+
+        bossCellRef = bossController.BossCell;
+        rootCellRef = GridManager.Instance.WorldToCell(bossController.transform.position);
+
+        Transform visualRoot = bossController.DiagnosticBossVisualRoot;
+        if (visualRoot == null)
+        {
+            visualCellRef = rootCellRef;
+            return;
+        }
+
+        Vector3 visualPosition = visualRoot.position;
+        foreach (SpriteRenderer renderer in visualRoot.GetComponentsInChildren<SpriteRenderer>(true))
+        {
+            if (renderer != null &&
+                renderer.enabled &&
+                renderer.gameObject.activeInHierarchy &&
+                renderer.sprite != null &&
+                renderer.color.a > 0.01f)
+            {
+                visualPosition = renderer.bounds.center;
+                break;
+            }
+        }
+
+        visualCellRef = GridManager.Instance.WorldToCell(visualPosition);
+    }
+
+    private ElevatorBossController GetBossControllerForWiggle()
+    {
+        if (cachedBossControllerForWiggle != null)
+            return cachedBossControllerForWiggle;
+
+        cachedBossControllerForWiggle = UnityEngine.Object.FindFirstObjectByType<ElevatorBossController>();
+        return cachedBossControllerForWiggle;
+    }
+
+    private void RecordBossFacingAxisPosition(
+        Vector2Int playerCell,
+        Vector2Int bossRefCell,
+        Vector2Int bossFacing,
+        bool diagonalBlindspot)
+    {
+        Vector2Int facing = NormalizeAxisFacing(bossFacing);
+        Vector2Int delta = playerCell - bossRefCell;
+        if (delta == Vector2Int.zero)
+            return;
+
+        Vector2Int left = new Vector2Int(-facing.y, facing.x);
+        int frontBack = delta.x * facing.x + delta.y * facing.y;
+        int leftRight = delta.x * left.x + delta.y * left.y;
+
+        if (leftRight == 0)
+        {
+            if (frontBack > 0) playerInBossFrontAxisCount++;
+            else if (frontBack < 0) playerInBossBackAxisCount++;
+        }
+
+        if (frontBack == 0)
+        {
+            if (leftRight > 0) playerInBossLeftAxisCount++;
+            else if (leftRight < 0) playerInBossRightAxisCount++;
+        }
+
+        if (diagonalBlindspot)
+            playerInBossDiagonalBlindspotCount++;
+    }
+
+    private static Vector2Int NormalizeAxisFacing(Vector2Int facing)
+    {
+        if (Mathf.Abs(facing.x) >= Mathf.Abs(facing.y) && facing.x != 0)
+            return new Vector2Int(facing.x > 0 ? 1 : -1, 0);
+        if (facing.y != 0)
+            return new Vector2Int(0, facing.y > 0 ? 1 : -1);
+        return Vector2Int.down;
+    }
+
+    private static bool IsDiagonalBlindspotAny(
+        Vector2Int playerCell,
+        Vector2Int bossCellRef,
+        Vector2Int rootCellRef,
+        Vector2Int visualCellRef)
+    {
+        return IsDiagonalBlindspot1(playerCell, bossCellRef) ||
+               IsDiagonalBlindspot1(playerCell, rootCellRef) ||
+               IsDiagonalBlindspot1(playerCell, visualCellRef);
+    }
+
+    private static bool IsDiagonalBlindspot1(Vector2Int playerCell, Vector2Int bossRefCell)
+    {
+        int dx = playerCell.x - bossRefCell.x;
+        int dy = playerCell.y - bossRefCell.y;
+        return Mathf.Abs(dx) == 1 && Mathf.Abs(dy) == 1;
+    }
+
+    private static bool IsAxisPosition(Vector2Int playerCell, Vector2Int bossRefCell)
+    {
+        int dx = playerCell.x - bossRefCell.x;
+        int dy = playerCell.y - bossRefCell.y;
+        return dx == 0 || dy == 0;
+    }
+
+    private static int MinManhattanDistance(
+        Vector2Int playerCell,
+        Vector2Int bossCellRef,
+        Vector2Int rootCellRef,
+        Vector2Int visualCellRef)
+    {
+        int d0 = Mathf.Abs(playerCell.x - bossCellRef.x) + Mathf.Abs(playerCell.y - bossCellRef.y);
+        int d1 = Mathf.Abs(playerCell.x - rootCellRef.x) + Mathf.Abs(playerCell.y - rootCellRef.y);
+        int d2 = Mathf.Abs(playerCell.x - visualCellRef.x) + Mathf.Abs(playerCell.y - visualCellRef.y);
+        return Mathf.Min(d0, Mathf.Min(d1, d2));
+    }
+
+    private float AxisVsDiagonalHitRateDelta()
+    {
+        float axisHitRate = axisPositionStepCount > 0
+            ? (float)axisPositionPlayerHitCount / axisPositionStepCount
+            : 0f;
+        int diagonalSteps = Mathf.Max(diagonalBlindspotBossCellSteps,
+            Mathf.Max(diagonalBlindspotRootSteps, diagonalBlindspotVisualSteps));
+        float diagonalHitRate = diagonalSteps > 0
+            ? (float)diagonalBlindspotPlayerHitCount / diagonalSteps
+            : 0f;
+        return axisHitRate - diagonalHitRate;
     }
 
     private void RecordSafeOppMoveTrace(
@@ -860,29 +1219,53 @@ public class BossRLDebugLogger : MonoBehaviour
         bool currentVisualOverlap = visual.rootCurrentCellInsideAttackCells ||
                                     visibleBodyOverlap ||
                                     (visual.currentlyDashing && visual.dashCurrentCellInsideAttackCells);
+        bool dashVisualOverlap = visual.currentlyDashing &&
+                                 (visual.dashCurrentCellInsideAttackCells ||
+                                  visual.rootCurrentCellInsideAttackCells ||
+                                  visibleBodyOverlap);
 
         switch (visual.hitClass)
         {
             case BossRLTargetAlignmentDiagnostics.HitClass.NormalVisible:
                 hitClassNormalVisibleCount++;
                 break;
+            case BossRLTargetAlignmentDiagnostics.HitClass.RootVisibleOverlap:
+                hitClassRootVisibleOverlapCount++;
+                break;
             case BossRLTargetAlignmentDiagnostics.HitClass.DashCurrentOverlap:
                 hitClassDashCurrentOverlapCount++;
+                dashAllowedCandidateCount++;
                 dashHitAllowedCandidateCount++;
                 break;
             case BossRLTargetAlignmentDiagnostics.HitClass.StaleBossCell:
                 hitClassStaleBossCellCount++;
+                if (visual.currentlyDashing) dashStaleBossCellOnlyCount++;
                 break;
             case BossRLTargetAlignmentDiagnostics.HitClass.HiddenTarget:
                 hitClassHiddenTargetCount++;
                 break;
             case BossRLTargetAlignmentDiagnostics.HitClass.OffLaneEmpty:
                 hitClassOffLaneEmptyCount++;
+                if (visual.currentlyDashing) dashOffLaneEmptyCount++;
                 break;
             default:
-                hitClassUnknownCount++;
+                hitClassUnknownRemainingCount++;
                 break;
         }
+
+        if (visual.rootCurrentCellInsideAttackCells) rootCellInAttackRangeCount++;
+        if (visual.spriteBoundsCenterCellInsideAttackCells) spriteBoundsCellInAttackRangeCount++;
+        if (visual.bossCellInsideAttackCells) bossCellInAttackRangeCount++;
+        if (visual.rootCurrentCellInsideAttackCells && !visual.spriteBoundsCenterCellInsideAttackCells)
+            rootInRangeSpriteBoundsOutCount++;
+        if (visual.rootCurrentCellInsideAttackCells && !visual.spriteVisible)
+            rootInRangeSpriteInvisibleCount++;
+        if (visual.hitClass == BossRLTargetAlignmentDiagnostics.HitClass.RootVisibleOverlap)
+            spriteBoundsOutButRootVisibleOverlapCount++;
+        if (visual.currentlyDashing && visual.rootCurrentCellInsideAttackCells)
+            dashCurrentRootOverlapCount++;
+        if (dashVisualOverlap)
+            dashCurrentVisualOverlapCount++;
 
         if (visual.spriteVisible) bossSpriteVisibleHitCount++;
         else bossSpriteInvisibleHitCount++;
@@ -1002,6 +1385,7 @@ public class BossRLDebugLogger : MonoBehaviour
             $"dash_line_overlap_attack={visual.dashLineCellsOverlapAttackCells} " +
             $"active_damage_overlap_attack={visual.activeDamageCellsOverlapAttackCells} " +
             $"active_warning_overlap_attack={visual.activeWarningCellsOverlapAttackCells} " +
+            $"attack_cells_overlap_any_active_lane={visual.attackCellsOverlapAnyActiveLane} " +
             $"boss_hp_before={record.bossHpBefore} boss_hp_after={record.bossHpAfter} damage={record.damageAmount}");
     }
 
@@ -1265,11 +1649,23 @@ public class BossRLDebugLogger : MonoBehaviour
             $"sprite_visible_cell_out_of_attack_range_count={spriteVisibleCellOutOfAttackRangeCount} " +
             $"hidden_boss_attack_reward_count={hiddenBossAttackRewardCount}\n" +
             $"  dash_target_alignment: hit_class_normal_visible_count={hitClassNormalVisibleCount} " +
+            $"hit_class_root_visible_overlap_count={hitClassRootVisibleOverlapCount} " +
             $"hit_class_dash_current_overlap_count={hitClassDashCurrentOverlapCount} " +
             $"hit_class_stale_bosscell_count={hitClassStaleBossCellCount} " +
             $"hit_class_hidden_target_count={hitClassHiddenTargetCount} " +
             $"hit_class_off_lane_empty_count={hitClassOffLaneEmptyCount} " +
-            $"hit_class_unknown_count={hitClassUnknownCount} " +
+            $"hit_class_unknown_remaining_count={hitClassUnknownRemainingCount} " +
+            $"root_cell_in_attack_range_count={rootCellInAttackRangeCount} " +
+            $"sprite_bounds_cell_in_attack_range_count={spriteBoundsCellInAttackRangeCount} " +
+            $"boss_cell_in_attack_range_count={bossCellInAttackRangeCount} " +
+            $"root_in_range_sprite_bounds_out_count={rootInRangeSpriteBoundsOutCount} " +
+            $"root_in_range_sprite_invisible_count={rootInRangeSpriteInvisibleCount} " +
+            $"sprite_bounds_out_but_root_visible_overlap_count={spriteBoundsOutButRootVisibleOverlapCount} " +
+            $"dash_current_root_overlap_count={dashCurrentRootOverlapCount} " +
+            $"dash_current_visual_overlap_count={dashCurrentVisualOverlapCount} " +
+            $"dash_allowed_candidate_count={dashAllowedCandidateCount} " +
+            $"dash_stale_bosscell_only_count={dashStaleBossCellOnlyCount} " +
+            $"dash_off_lane_empty_count={dashOffLaneEmptyCount} " +
             $"dash_hit_allowed_candidate_count={dashHitAllowedCandidateCount} " +
             $"dash_hit_current_visual_overlap_count={dashHitCurrentVisualOverlapCount} " +
             $"dash_hit_bosscell_only_count={dashHitBossCellOnlyCount} " +
@@ -1278,6 +1674,29 @@ public class BossRLDebugLogger : MonoBehaviour
             $"dash_hit_outside_active_lane_count={dashHitOutsideActiveLaneCount} " +
             $"dash_hit_inside_active_damage_lane_count={dashHitInsideActiveDamageLaneCount} " +
             $"dash_hit_inside_active_warning_lane_count={dashHitInsideActiveWarningLaneCount}\n" +
+            $"  diagonal_blindspot_wiggle_diag: diagonal_blindspot_bosscell_steps={diagonalBlindspotBossCellSteps} " +
+            $"diagonal_blindspot_root_steps={diagonalBlindspotRootSteps} " +
+            $"diagonal_blindspot_visual_steps={diagonalBlindspotVisualSteps} " +
+            $"diagonal_blindspot_attack_count={diagonalBlindspotAttackCount} " +
+            $"diagonal_blindspot_attack_hit_count={diagonalBlindspotAttackHitCount} " +
+            $"diagonal_blindspot_move_count={diagonalBlindspotMoveCount} " +
+            $"diagonal_blindspot_back_and_forth_count={diagonalBlindspotBackAndForthCount} " +
+            $"diagonal_blindspot_axis_exit_count={diagonalBlindspotAxisExitCount} " +
+            $"diagonal_blindspot_kept_safe_count={diagonalBlindspotKeptSafeCount} " +
+            $"diagonal_blindspot_then_player_hit_count={diagonalBlindspotThenPlayerHitCount} " +
+            $"diagonal_blindspot_boss_melee_whiff_candidate_count={diagonalBlindspotBossMeleeWhiffCandidateCount} " +
+            $"attack_after_diagonal_wiggle_count={attackAfterDiagonalWiggleCount} " +
+            $"axis_position_step_count={axisPositionStepCount} " +
+            $"axis_position_player_hit_count={axisPositionPlayerHitCount} " +
+            $"axis_position_boss_melee_hit_count={axisPositionBossMeleeHitCount} " +
+            $"diagonal_blindspot_player_hit_count={diagonalBlindspotPlayerHitCount} " +
+            $"diagonal_blindspot_boss_melee_hit_count={diagonalBlindspotBossMeleeHitCount} " +
+            $"axis_vs_diagonal_hit_rate_delta={AxisVsDiagonalHitRateDelta():F3} " +
+            $"player_in_boss_front_axis={playerInBossFrontAxisCount} " +
+            $"player_in_boss_back_axis={playerInBossBackAxisCount} " +
+            $"player_in_boss_left_axis={playerInBossLeftAxisCount} " +
+            $"player_in_boss_right_axis={playerInBossRightAxisCount} " +
+            $"player_in_boss_diagonal_blindspot={playerInBossDiagonalBlindspotCount}\n" +
             $"  action_histogram: wait={actionWaitCount} move_up={actionMoveUpCount} " +
             $"move_down={actionMoveDownCount} move_left={actionMoveLeftCount} " +
             $"move_right={actionMoveRightCount} attack={actionAttackCount}\n" +
