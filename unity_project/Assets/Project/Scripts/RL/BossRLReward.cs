@@ -23,8 +23,12 @@ public class BossRLReward : MonoBehaviour
     public const float MovedIntoWarningPenalty       = -0.08f;
     public const float MovedIntoRecentWarningPenalty = -0.10f;
     public const float MovedIntoDamagePenalty        = -0.30f;
-    // New: small reward for attacking while safe (attack_ready + in_range + no danger)
-    public const float SafeInRangeAttackAttemptReward =  0.08f;
+    // Attack reward is paid ONLY on a confirmed boss HP decrease (a landed, gate-allowed,
+    // visible hit). Pressing or whiffing attack earns nothing — this removes the attack-attempt
+    // farming that MultiDiscrete [5,2] exposed (Fresh50K v1: 1300 attempts at 39% hit-rate,
+    // +104 attempt-reward vs +51 damage-reward, so the policy spammed inaccurate attacks).
+    public const float SafeInRangeAttackAttemptReward =  0f;     // was +0.08; attempt no longer rewarded
+    public const float SuccessfulHitBonusReward       =  0.08f;  // +0.08 moved here: only on boss HP decrease
     public const float MissedSafeAttackOpportunityPenalty = -0.003f;
 
     public static float TerminalRewardForReason(string reason)
@@ -170,9 +174,12 @@ public class BossRLReward : MonoBehaviour
         else if (movedIntoWarning)
             movedIntoDangerR = MovedIntoWarningPenalty;
 
-        // Safe in-range attack attempt: small reward for attacking in safe conditions
-        if (safeAttackAttempt)
-            safeAttackR = SafeInRangeAttackAttemptReward;
+        // Successful-hit bonus: paid ONLY when the boss actually lost HP this step. The attack
+        // mask already blocks out-of-range / on-danger / hidden / off-lane attacks, so any HP
+        // decrease is a legitimate safe visible hit. Whiffs and mere attempts earn nothing.
+        // (safeAttackAttempt is retained in the signature but no longer drives reward.)
+        if (bossDelta > 0)
+            safeAttackR = SuccessfulHitBonusReward;
 
         // Missed-safe-opportunity penalty is applied by BossPlayerAgent after a
         // 1s no-hit grace window, so valid evasive moves are not punished here.

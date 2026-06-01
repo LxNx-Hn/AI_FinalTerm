@@ -104,3 +104,41 @@ logging-only; not in obs/reward.)
   attacks into damage by paying for aim.
 - The action-space change is **validated and should stay**: it removed the structural barrier and
   cleanly isolated the remaining lever.
+
+---
+
+## Follow-up: hit-bonus reward (`BossPPO_RewardHitBonus_MD52_Fresh50K_v1`)
+
+Applied the recommended reward edit: `SafeInRangeAttackAttemptReward +0.08 → 0`, moved to a
+`SuccessfulHitBonusReward +0.08` paid **only on a confirmed boss-HP decrease**. `BossDamagePerHp`
+unchanged, missed-opp penalty kept. Fresh PPO 50K, headless. Result:
+
+| metric | [6] base | [5,2] | **[5,2]+hitReward** |
+|---|---|---|---|
+| boss_dmg avg / max | 10.0 / 24 | 7.6 / 22 | **7.4 / 18** |
+| min boss HP | 36 | 38 | **42** |
+| attacks / hit_rate | 691 / 100%* | 1300 / 39% | **1320 / 38%** |
+| attack reward | — | +104 (attempt) | **+40 (hit-gated)** |
+| Phase 3 (≤24 HP) | no | no | **no** |
+| in attack range | 10.7% | — | **9.7%** |
+
+**The reward edit did exactly its job — farming is gone** (the +0.08 now follows hits, total +40
+vs the old +104 attempt-based; integrity all clean: hidden/atk_out_range/off-lane/fake/leak = 0).
+**But damage / hit-rate / Phase did not improve.** Honest read: the attempt-reward was a real but
+*secondary* issue. The **binding constraint is the warn-tile dwell penalty**, untouched in all three
+runs:
+
+- per-ep reward: **−warn_tile = −9.61** vs **+damage(all) = +1.34** — the safety term is ~7× the
+  entire damage incentive.
+- the agent is in attack range only **9.7%** of the time; even when *safe and in range* it moves
+  **away (30%) more than toward (28%)** the boss.
+
+Because warning tiles spawn *around the boss*, a −0.10/step dwell penalty makes "stay near the boss
+and trade hits" reward-negative regardless of how attacking is rewarded. The action-space fix
+(necessary) and the attempt→hit fix (correct) both addressed *attack mechanics*; neither touched the
+term that keeps the agent **away from the boss in the first place**.
+
+**Next lever (the audit's #1 reward finding, now triple-confirmed):** reduce or per-episode-cap the
+warn-tile dwell penalty so proximity to the boss stops being over-punished — without rewarding danger
+attacks, hidden targets, or adding any internal-pattern / diagonal-blindspot signal. Gate not met
+(max 18 < 35, no Phase 3) → **do not run 100K.**
