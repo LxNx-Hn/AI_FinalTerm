@@ -165,6 +165,7 @@ public class BossRLDebugLogger : MonoBehaviour
     private int diagonalBlindspotThenPlayerHitCount;
     private int diagonalBlindspotBossMeleeWhiffCandidateCount;
     private int attackAfterDiagonalWiggleCount;
+    private int diagonalBlindspotMoveAttackCount;  // [5,2] move+attack while in the diagonal blindspot
     private int axisPositionStepCount;
     private int axisPositionPlayerHitCount;
     private int axisPositionBossMeleeHitCount;
@@ -267,6 +268,21 @@ public class BossRLDebugLogger : MonoBehaviour
     private int attackAllowedActionStepCount;
     private int chosenAttackWhenAllowedCount;
     private int missedAllowedAttackCount;
+
+    // ── Action-space (MultiDiscrete [5,2]) simultaneity metrics ───────────────
+    // move branch active (1-4) and attack branch active (1) can co-occur, mirroring
+    // the human's two independent input channels. Logging-only.
+    private int moveBranchActionCount;                  // steps the move branch chose a direction (1-4)
+    private int attackBranchIntentCount;                // steps the attack branch chose ATTACK (1), pre-gate
+    private int simultaneousMoveAttackCount;            // move dir + applied attack in the same decision
+    private int simultaneousMoveAttackAllowedCount;     // move dir + attack intent + gate allowed
+    private int simultaneousMoveAttackBlockedCount;     // move dir + attack intent + gate blocked
+    private int simultaneousMoveAttackSuccessfulHitCount; // simultaneous move+attack that dealt boss damage
+    private int attackWhileMovingCount;                 // applied attack while the player was mid-move (IsMoving)
+    private int dashCurrentOverlapMoveAttackCount;      // simultaneous move+attack hit classed dash_current_overlap
+    // correlation context: the most recent applied attack's "was simultaneous with a move"
+    private bool  lastAppliedAttackWithMove;
+    private float lastAppliedAttackTime = -999f;
 
     // ── Safe opportunity MOVE trace ──────────────────────────────────────────
     private struct SafeOppMoveTrace
@@ -442,6 +458,7 @@ public class BossRLDebugLogger : MonoBehaviour
         diagonalBlindspotBackAndForthCount = diagonalBlindspotAxisExitCount = 0;
         diagonalBlindspotKeptSafeCount = diagonalBlindspotThenPlayerHitCount = 0;
         diagonalBlindspotBossMeleeWhiffCandidateCount = attackAfterDiagonalWiggleCount = 0;
+        diagonalBlindspotMoveAttackCount = 0;
         axisPositionStepCount = axisPositionPlayerHitCount = axisPositionBossMeleeHitCount = 0;
         diagonalBlindspotPlayerHitCount = diagonalBlindspotBossMeleeHitCount = 0;
         playerInBossFrontAxisCount = playerInBossBackAxisCount = 0;
@@ -499,6 +516,11 @@ public class BossRLDebugLogger : MonoBehaviour
         hasPreviousAttackRangeState = false;
         previousAttackRangeState = false;
         attackAllowedActionStepCount = chosenAttackWhenAllowedCount = missedAllowedAttackCount = 0;
+        moveBranchActionCount = attackBranchIntentCount = 0;
+        simultaneousMoveAttackCount = simultaneousMoveAttackAllowedCount = simultaneousMoveAttackBlockedCount = 0;
+        simultaneousMoveAttackSuccessfulHitCount = attackWhileMovingCount = dashCurrentOverlapMoveAttackCount = 0;
+        lastAppliedAttackWithMove = false;
+        lastAppliedAttackTime = -999f;
         pendingSafeOppMoveTraces.Clear();
         safeOppMoveTraceSampleCount = 0;
         safeOppMoveTraceTotalCount = 0;
@@ -564,6 +586,28 @@ public class BossRLDebugLogger : MonoBehaviour
         // busy and boss_cell are no longer mask criteria → always 0, never incremented
     }
 
+    // ── Action-space (MultiDiscrete [5,2]) simultaneity recording ────────────
+    public void RecordActionSpaceStep(
+        bool moveBranchActive, bool attackIntent, bool appliedAttack,
+        bool attackGateAllowed, bool playerWasMoving)
+    {
+        if (moveBranchActive) moveBranchActionCount++;
+        if (attackIntent)     attackBranchIntentCount++;
+
+        if (moveBranchActive && appliedAttack)                      simultaneousMoveAttackCount++;
+        if (moveBranchActive && attackIntent && attackGateAllowed)  simultaneousMoveAttackAllowedCount++;
+        if (moveBranchActive && attackIntent && !attackGateAllowed) simultaneousMoveAttackBlockedCount++;
+        if (appliedAttack && playerWasMoving)                       attackWhileMovingCount++;
+
+        // Remember context so RecordTargetAlignmentHit can attribute the resulting
+        // boss hit (which resolves a frame or two later) to a simultaneous move+attack.
+        if (appliedAttack)
+        {
+            lastAppliedAttackWithMove = moveBranchActive;
+            lastAppliedAttackTime = Time.time;
+        }
+    }
+
     // ── Opportunity metric recording (called from OnActionReceived) ───────────
 
     public void RecordOpportunityMetrics(
@@ -583,14 +627,17 @@ public class BossRLDebugLogger : MonoBehaviour
     {
         oppInternalStep++;
         UpdatePendingSafeOppMoveTraces(currentTime, gotHit, currentBossHp);
-        UpdateWarningOnPlayerDiagnostics(singleAction, safeMoveCount, onWarning, onDamage, gotHit, bossFacing);
+        UpdateWarningOnPlayerDiagnostics(singleAction, isAttack, safeMoveCount, onWarning, onDamage, gotHit, bossFacing);
 
-        if (singleAction == 0) actionWaitCount++;
-        else if (singleAction == 1) actionMoveUpCount++;
-        else if (singleAction == 2) actionMoveDownCount++;
-        else if (singleAction == 3) actionMoveLeftCount++;
-        else if (singleAction == 4) actionMoveRightCount++;
-        else if (singleAction == 5) actionAttackCount++;
+        // MultiDiscrete [5,2] histogram: `singleAction` is the MOVE branch (0-4) and
+        // `isAttack` is the APPLIED attack branch. Move and attack can co-occur, so the
+        // histogram buckets may sum to more than the step count (see action_space line).
+        if      (singleAction == BossRLInputBridge.MOVE_UP)    actionMoveUpCount++;
+        else if (singleAction == BossRLInputBridge.MOVE_DOWN)  actionMoveDownCount++;
+        else if (singleAction == BossRLInputBridge.MOVE_LEFT)  actionMoveLeftCount++;
+        else if (singleAction == BossRLInputBridge.MOVE_RIGHT) actionMoveRightCount++;
+        if (isAttack)                                                 actionAttackCount++;
+        if (singleAction == BossRLInputBridge.MOVE_NONE && !isAttack) actionWaitCount++;
 
         int clampedDistance = Mathf.Max(0, currentDistanceToBoss);
         distanceToBossSum += clampedDistance;
@@ -819,6 +866,10 @@ public class BossRLDebugLogger : MonoBehaviour
             diagonalBlindspotAttackCount++;
             if (attackHit) diagonalBlindspotAttackHitCount++;
         }
+
+        // [5,2]: attacking AND moving in the same decision while in the blindspot.
+        if (diagonalAny && isMove && isAttack)
+            diagonalBlindspotMoveAttackCount++;
 
         if (diagonalAny && !gotHit && bossPoseChanged && currentDistanceToBoss <= 2)
         {
@@ -1175,7 +1226,7 @@ public class BossRLDebugLogger : MonoBehaviour
     }
 
     private void UpdateWarningOnPlayerDiagnostics(
-        int singleAction, int safeMoveCount,
+        int moveAction, bool appliedAttack, int safeMoveCount,
         bool onWarning, bool onDamage, bool gotHit, Vector2Int bossFacing)
     {
         int frame = Time.frameCount;
@@ -1188,9 +1239,11 @@ public class BossRLDebugLogger : MonoBehaviour
             pendingWarningBossFacing = bossFacing;
             warningSpawnOnPlayerCount++;
             if (safeMoveCount > 0) warningSpawnOnPlayerSafeMoveAvailableCount++;
-            if (BossRLInputBridge.IsWaitAction(singleAction)) warningSpawnOnPlayerChosenWaitCount++;
-            if (BossRLInputBridge.IsAttackAction(singleAction)) warningSpawnOnPlayerChosenAttackCount++;
-            if (BossRLInputBridge.IsMoveAction(singleAction)) warningSpawnOnPlayerChosenMoveCount++;
+            // MultiDiscrete [5,2]: move and attack are independent branches.
+            bool moveActive = BossRLInputBridge.IsMoveBranchActive(moveAction);
+            if (!moveActive && !appliedAttack) warningSpawnOnPlayerChosenWaitCount++;
+            if (appliedAttack)                 warningSpawnOnPlayerChosenAttackCount++;
+            if (moveActive)                    warningSpawnOnPlayerChosenMoveCount++;
         }
 
         if (!pendingWarningOnPlayer) return;
@@ -1330,6 +1383,16 @@ public class BossRLDebugLogger : MonoBehaviour
     {
         BossRLTargetAlignmentDiagnostics.BossVisualDiagnosticState visual = record.visualState;
         targetAlignmentLogCount++;
+
+        // [5,2] attribution: a boss hit resolves a frame or two after the attack request.
+        // If the most recent applied attack was simultaneous with a move, credit it here.
+        if (lastAppliedAttackWithMove && record.time - lastAppliedAttackTime <= 0.6f)
+        {
+            simultaneousMoveAttackSuccessfulHitCount++;
+            if (visual.hitClass == BossRLTargetAlignmentDiagnostics.HitClass.DashCurrentOverlap)
+                dashCurrentOverlapMoveAttackCount++;
+            lastAppliedAttackWithMove = false;  // consume: one attack credits at most one hit
+        }
         bool visibleBodyOverlap = visual.spriteVisible &&
                                   (visual.visualCellInsideAttackCells ||
                                    visual.spriteBoundsCenterCellInsideAttackCells);
@@ -1851,6 +1914,15 @@ public class BossRLDebugLogger : MonoBehaviour
             $"  action_histogram: wait={actionWaitCount} move_up={actionMoveUpCount} " +
             $"move_down={actionMoveDownCount} move_left={actionMoveLeftCount} " +
             $"move_right={actionMoveRightCount} attack={actionAttackCount}\n" +
+            $"  action_space: move_branch={moveBranchActionCount} attack_branch_intent={attackBranchIntentCount} " +
+            $"attack_applied={actionAttackCount} simultaneous_move_attack={simultaneousMoveAttackCount} " +
+            $"simultaneous_move_attack_allowed={simultaneousMoveAttackAllowedCount} " +
+            $"simultaneous_move_attack_blocked={simultaneousMoveAttackBlockedCount} " +
+            $"simultaneous_move_attack_successful_hit={simultaneousMoveAttackSuccessfulHitCount} " +
+            $"attack_while_moving={attackWhileMovingCount} " +
+            $"diagonal_blindspot_move_attack={diagonalBlindspotMoveAttackCount} " +
+            $"dash_current_overlap_move_attack={dashCurrentOverlapMoveAttackCount} " +
+            $"safe_opp_attack_ratio={safeOppAttackRatio:P1}\n" +
             $"  attack_range: in_range_steps={bossInAttackRangeSteps} atk_in_range={attackWhenBossInRange} " +
             $"atk_out_range={attackWhenBossOutOfRange} avg_dist={avgBossDist:F2} " +
             $"first_atk_dist={bossDistanceAtFirstAttack:F2}\n" +

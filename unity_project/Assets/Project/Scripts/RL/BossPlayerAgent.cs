@@ -64,12 +64,18 @@ public class BossPlayerAgent : Agent
         ResetEpisodeState();
     }
 
-    // ── Action masking (WriteDiscreteActionMask) ──────────────────────────────
+    // ── Action masking (WriteDiscreteActionMask) — MultiDiscrete [5,2] ─────────
     // SAFE ACTION MASK POLICY:
-    //   WAIT (0)     : masked if player on danger + safe move exists (force escape)
-    //   MOVE (1-4)   : danger-level based; safer alternative → mask higher-danger dirs
-    //                  always keeps ≥1 direction open (lowest-danger escape)
-    //   ATTACK (5)   : AttackReady + boss_in_range + player NOT on any danger tile
+    //   Branch 0 MOVE:
+    //     none (0)   : masked if player on danger + safe move exists (force escape)
+    //     dir  (1-4) : danger-level based; safer alternative → mask higher-danger dirs
+    //                  always keeps ≥1 branch-0 action open (lowest-danger escape / none)
+    //   Branch 1 ATTACK:
+    //     no-attack (0): never masked
+    //     attack    (1): AttackReady + boss_in_range + player NOT on any danger tile
+    //                    + RL target gate (visible-overlap only)
+    // Move and attack masks are independent, so the agent can be forced to dodge
+    // (branch 0) while still being free to attack (branch 1) in the same step.
     public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask)
     {
         if (terminalHandled || (episodeResetter != null && episodeResetter.ReloadQueued))
@@ -179,7 +185,7 @@ public class BossPlayerAgent : Agent
 
         bool maskAttack = survivalStageActive || !attackReady || !bossInRangeMask || playerOnAnyDanger || !rlTargetAllowed;
         if (maskAttack)
-            actionMask.SetActionEnabled(0, 5, false);
+            actionMask.SetActionEnabled(1, BossRLInputBridge.ATTACK_FIRE, false);  // branch 1, action 1
 
         debugLogger?.RecordAttackMaskDecision(maskAttack, survivalStageActive,
             maskedByNotReady, maskedByOOR, maskedByWarn, maskedByDmg, maskedByRWarn, maskedByRDmg);
@@ -203,11 +209,12 @@ public class BossPlayerAgent : Agent
             return;
         }
 
-        int singleAction = actions.DiscreteActions.Length > 0 ? actions.DiscreteActions[0] : 0;
-        bool isMoveAct   = BossRLInputBridge.IsMoveAction(singleAction);
-        bool isAttackAct = BossRLInputBridge.IsAttackAction(singleAction);
-        bool isWaitAct   = BossRLInputBridge.IsWaitAction(singleAction);
-        Vector2Int moveDir = BossRLInputBridge.SingleActionToMoveDir(singleAction);
+        // MultiDiscrete [5,2]: branch 0 = move intent, branch 1 = attack intent.
+        int moveAction   = actions.DiscreteActions.Length > 0 ? actions.DiscreteActions[0] : 0;
+        int attackBranch = actions.DiscreteActions.Length > 1 ? actions.DiscreteActions[1] : 0;
+        bool isMoveAct      = BossRLInputBridge.IsMoveBranchActive(moveAction);
+        bool isAttackIntent = attackBranch == BossRLInputBridge.ATTACK_FIRE;
+        Vector2Int moveDir  = BossRLInputBridge.MoveBranchToDir(moveAction);
 
         // Predict move outcome BEFORE applying
         BossRLInputBridge.MoveOutcome moveOutcome = isMoveAct
@@ -256,14 +263,17 @@ public class BossPlayerAgent : Agent
         bool allowExternalAttack = true;
         BossRLTargetAlignmentDiagnostics.HitClass actionTargetClass =
             BossRLTargetAlignmentDiagnostics.HitClass.UnknownRemaining;
-        if (isAttackAct && stateExtractor != null && stateExtractor.IsReady)
+        if (isAttackIntent && stateExtractor != null && stateExtractor.IsReady)
         {
             allowExternalAttack = stateExtractor.IsCurrentRLAttackTargetAllowed(out actionTargetClass);
             if (!allowExternalAttack)
                 debugLogger?.RecordRLAttackTargetGate(actionTargetClass, allowed: false, blockedAtExternalRequest: true);
         }
 
-        inputBridge.ApplySingleAction(singleAction, allowExternalAttack);
+        // Capture "was mid-move" before applying, for the attack-while-moving metric.
+        bool playerWasMoving = stateExtractor != null && stateExtractor.IsPlayerMoving;
+
+        inputBridge.ApplyMultiAction(moveAction, attackBranch, allowExternalAttack);
 
         if (terminalHandled || (episodeResetter != null && episodeResetter.ReloadQueued))
         {
@@ -276,10 +286,11 @@ public class BossPlayerAgent : Agent
 
         // Get full danger state for attack quality metrics (only on attack steps)
         bool onRecentWarning = onRecentWarn, onRecentDamage = onRecentDmg;
-        if (stateExtractor != null && isAttackAct && !stateExtractor.IsReady)
+        if (stateExtractor != null && isAttackIntent && !stateExtractor.IsReady)
             stateExtractor.GetFullDangerState(out _, out _, out onRecentWarning, out onRecentDamage);
 
-        bool appliedAttackAct = isAttackAct && allowExternalAttack;
+        bool appliedAttackAct = isAttackIntent && allowExternalAttack;
+        bool isWaitAct         = !isMoveAct && !appliedAttackAct;  // no move + no attack
         int attackActionInt    = appliedAttackAct ? 1 : 0;
         bool safeAttackAttempt = appliedAttackAct && safeOpportunity;
         bool missedSafeAttackOpportunity = safeOpportunity && !appliedAttackAct && !dangerNearby;
@@ -302,9 +313,15 @@ public class BossPlayerAgent : Agent
         if (missedSafeAttackOpportunity)
             pendingMissedSafeOpportunityTimes.Add(Time.time);
 
-        debugLogger?.RecordStep(StepCount, Time.time, singleAction, isAttackAct, attackActionInt,
+        // Per-step recording: pass the move-branch index for move/wait histogram
+        // and the APPLIED attack (gate-allowed) for attack tracking.
+        debugLogger?.RecordStep(StepCount, Time.time, moveAction, appliedAttackAct, attackActionInt,
             moveOutcome, moveDir, stepResult, bossInRange, manhattanDist,
             onRecentWarning, onRecentDamage);
+
+        // MultiDiscrete simultaneity metrics (move+attack in one decision).
+        debugLogger?.RecordActionSpaceStep(
+            isMoveAct, isAttackIntent, appliedAttackAct, allowExternalAttack, playerWasMoving);
 
         bool choseSafeMove   = isMoveAct && moveWillSucceed &&
                               !nextCellWarn && !nextCellDmg && !nextCellRecentWarn && !nextCellRecentDmg;
@@ -312,8 +329,8 @@ public class BossPlayerAgent : Agent
                               (nextCellWarn || nextCellDmg || nextCellRecentWarn || nextCellRecentDmg);
 
         debugLogger?.RecordOpportunityMetrics(
-            singleAction,
-            isAttackAct, safeOpportunity, attackHit, bossInRange, attackWasReady,
+            moveAction,
+            appliedAttackAct, safeOpportunity, attackHit, bossInRange, attackWasReady,
             dangerNearby, safeMoveCount, onWarning, onDamage, onRecentWarn, onRecentDmg,
             isMoveAct, moveWillSucceed,
             nextCellWarn, nextCellDmg, nextCellRecentWarn, nextCellRecentDmg,
@@ -337,19 +354,44 @@ public class BossPlayerAgent : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var d = actionsOut.DiscreteActions;
-        d.Clear();  // 0 = WAIT by default
-        if (TryWriteHeuristicOracleAction(d))
-            return;
+        d.Clear();  // (move=none, attack=no) by default
 
-        if      (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))    d[0] = 1;
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))  d[0] = 2;
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))  d[0] = 3;
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) d[0] = 4;
-        else if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space))      d[0] = 5;
+        int intent;
+        if (!TryGetHeuristicOracleIntent(out intent))
+        {
+            intent = BossRLInputBridge.ACTION_WAIT;
+            if      (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))    intent = BossRLInputBridge.ACTION_UP;
+            else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))  intent = BossRLInputBridge.ACTION_DOWN;
+            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))  intent = BossRLInputBridge.ACTION_LEFT;
+            else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) intent = BossRLInputBridge.ACTION_RIGHT;
+            else if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space))      intent = BossRLInputBridge.ACTION_ATTACK;
+        }
+        WriteIntentToBranches(d, intent);
     }
 
-    private bool TryWriteHeuristicOracleAction(ActionSegment<int> discreteActions)
+    /// <summary>Translate a legacy single-action intent (0-5) into MultiDiscrete [5,2] branches.</summary>
+    private static void WriteIntentToBranches(ActionSegment<int> d, int intent)
     {
+        if (BossRLInputBridge.IsAttackAction(intent))
+        {
+            d[0] = BossRLInputBridge.MOVE_NONE;
+            d[1] = BossRLInputBridge.ATTACK_FIRE;
+        }
+        else if (BossRLInputBridge.IsMoveAction(intent))
+        {
+            d[0] = intent;                            // ACTION_UP..ACTION_RIGHT == MOVE_UP..MOVE_RIGHT
+            d[1] = BossRLInputBridge.ATTACK_NONE;
+        }
+        else
+        {
+            d[0] = BossRLInputBridge.MOVE_NONE;
+            d[1] = BossRLInputBridge.ATTACK_NONE;
+        }
+    }
+
+    private bool TryGetHeuristicOracleIntent(out int intent)
+    {
+        intent = BossRLInputBridge.ACTION_WAIT;
         if (stateExtractor == null || !stateExtractor.IsReady) return false;
 
         stateExtractor.GetCachedHazardAndRecentState(
@@ -358,17 +400,17 @@ public class BossPlayerAgent : Agent
 
         if (onAnyDanger)
         {
-            discreteActions[0] = SelectSafestMoveAction(allowLeastDanger: true);
+            intent = SelectSafestMoveAction(allowLeastDanger: true);
             return true;
         }
 
         if (stateExtractor.AttackReady && stateExtractor.IsBossInAttackRange())
         {
-            discreteActions[0] = BossRLInputBridge.ACTION_ATTACK;
+            intent = BossRLInputBridge.ACTION_ATTACK;
             return true;
         }
 
-        discreteActions[0] = SelectApproachOrSafestMoveAction();
+        intent = SelectApproachOrSafestMoveAction();
         return true;
     }
 
