@@ -1,0 +1,30 @@
+# 영상 2 학습 진행
+
+- 상태: 생성 완료
+- 파일명: videos/02_learning_progression.mp4
+- 형식: checkpoint reward 및 그래프 기반 분석형 보조 영상
+- 실제 gameplay montage: 아님
+- 대체 라벨링 금지
+- 최종 정책 클리어 영상 모음을 학습 진행 영상으로 사용하지 않음
+- 생성 근거
+- training_status checkpoint reward 사용
+- 99K reward -18.1
+- 499K reward -11.6
+- 799K reward -4.6
+- 1M reward 7.5
+- boss_damage_by_step 그래프 사용
+- clear_rate_by_step 그래프 사용
+- hit_rate_by_step 그래프 사용
+- in_range_by_step 그래프 사용
+- 사용 ONNX/checkpoint: 99K부터 1M checkpoint 기록
+- step: 99K 199K 299K 399K 499K 599K 699K 799K 899K 999K 1M
+- boss_dead 여부: 전체 run boss_dead 199회
+- boss_damage: 전체 평균 40.8, max 59
+- survival/clear time: 평균 클리어 시간 70.0초, 최속 42.6초
+- MarkATK observed: 15,309회
+- hidden/empty/stale/off-lane leak: run 전체 0
+- attack_out_of_range: run 전체 0
+- fake marker leak: run 전체 0
+- 영상 용도: 정책 변화와 long-run 효과 설명
+- 추가 개선 후보
+- checkpoint별 rendered inference gameplay montage

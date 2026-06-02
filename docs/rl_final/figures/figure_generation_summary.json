@@ -1,0 +1,16 @@
+{
+  "run_id": "BossPPO_TargetGate_MarkATKObs_SweepHistory_1M_c84b1a4_v1",
+  "episodes_parsed": 892,
+  "boss_dead_parsed": 199,
+  "figures": [
+    "boss_damage_by_step.png",
+    "clear_rate_by_step.png",
+    "clear_time_distribution.png",
+    "hit_rate_by_step.png",
+    "in_range_by_step.png",
+    "integrity_leak_table.png",
+    "phase_milestone_timeline.png",
+    "reward_by_step.png"
+  ],
+  "note": "그래프는 Player log episode summary와 training_status checkpoint reward에서 생성"
+}

@@ -1,0 +1,23 @@
+# 영상 5 이상 행동 사례
+
+- 상태: 후보 파일 생성 완료
+- 파일명: videos/05_bug_or_abnormal_case_excluded.mp4
+- 원본 파일: video_captures/clips_final/05_SOME_patterns_quick_clear_43s.mp4
+- 사용 ONNX/checkpoint: BossPlayer 1M final 후보
+- step: 1,000,001 후보
+- episode id: 영상 대응 log 미확정
+- boss_dead 여부: true 후보
+- boss_damage: 60 후보
+- survival/clear time: 43초 후보
+- phase 도달 여부: 일부 패턴 포함 후보
+- MarkATK observed 여부: run 전체 15,309회
+- hidden/empty/stale/off-lane leak: run 전체 0
+- attack_out_of_range: run 전체 0
+- fake marker leak: run 전체 0
+- 영상 용도: 성공 근거가 아닌 한계 및 제외 사례
+- 명명 기준
+- 실제 leak 확인 시 bug case
+- leak 0이면 abnormal-looking but valid
+- final success를 bug clear로 부르지 않음
+- 현재 명명: abnormal-looking but valid 후보
+- 제한: 개별 clip과 episode log 직접 매핑은 미확정

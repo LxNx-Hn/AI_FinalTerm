@@ -1,0 +1,27 @@
+# 영상 1 초기 정책
+
+- 상태: 생성 완료
+- 파일명: videos/01_initial_policy.mp4
+- 형식: 로그 기반 분석형 보조 영상
+- 실제 gameplay 렌더: 아님
+- 대체 라벨링 금지
+- 최종 정책 클리어 영상을 초기 정책으로 사용하지 않음
+- 생성 근거
+- 1M run 초반 episode 로그 사용
+- 첫 3 episode 모두 player_dead
+- 첫 3 episode boss_damage 5, 3, 4
+- 첫 3 episode hit_rate 62.5퍼센트, 37.5퍼센트, 26.7퍼센트
+- 사용 ONNX/checkpoint: final run 로그 분석 기준
+- step: training log 초반 episode 기준
+- episode id: 초반 3개 episode
+- boss_dead 여부: false
+- boss_damage: 낮은 damage 사례
+- survival: 22.8초, 49.6초, 47.1초
+- phase 도달 여부: 초반 실패 사례
+- MarkATK observed 여부: 초반 3개 episode 기준 0
+- hidden/empty/stale/off-lane leak: run 전체 0
+- attack_out_of_range: run 전체 0
+- fake marker leak: run 전체 0
+- 영상 용도: 학습 초반 실패 사례
+- 추가 개선 후보
+- 실제 초기 checkpoint rendered inference gameplay 녹화
