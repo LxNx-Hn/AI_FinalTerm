@@ -11,7 +11,7 @@ Play Mode 진입 전 반드시 gate 절차를 통과해야 합니다.
 
 ## Before Play
 
-- Unity project 경로 확인: `C:/Users/KiKi/Documents/Ql/AI_FinalTerm_MLAgents_PPO_NEW/unity_project`
+- Unity project 경로 확인: `C:/Users/Guest0000/Desktop/AI_FinalTerm0602/unity_project`
 - Unity MCP 연결 확인 (coplay-mcp)
 - Active scene: `Assets/Project/Scenes/Boss01_Elevator_RLTrain.unity`
 - Console에 compile error 없음 확인
@@ -51,9 +51,19 @@ Missing Script나 null reference가 있으면 즉시 중단.
 | Behavior Name            | `BossPlayer`  |
 | Behavior Type            | `Default`     |
 | Space Type (Observation) | `Discrete`    |
-| Vector Observation Size  | `112`         |
-| Discrete Branch 0 Size   | `5`           |
-| Discrete Branch 1 Size   | `2`           |
+| Vector Observation Size  | `193`         |
+| Discrete Branch 0 Size   | `6`           |
+
+현재 action space는 단일 Discrete branch입니다.
+
+```text
+0 WAIT
+1 UP
+2 DOWN
+3 LEFT
+4 RIGHT
+5 ATTACK
+```
 
 ---
 
@@ -62,7 +72,7 @@ Missing Script나 null reference가 있으면 즉시 중단.
 | 항목                         | 요구 값 |
 |------------------------------|---------|
 | Decision Period              | `5`     |
-| Take Actions Between Decisions | `true`  |
+| Take Actions Between Decisions | `false` |
 
 ---
 
@@ -114,7 +124,7 @@ Missing Script나 null reference가 있으면 즉시 중단.
 
 - Compile error 발생
 - Missing Script 발견
-- `Behavior Parameters` action spec 불일치 (5, 2가 아님)
+- `Behavior Parameters` action spec 불일치 (단일 Discrete branch size 6이 아님)
 - RLTrain scene이 active scene이 아님
 - `skipIntroForTraining`이 false이고 인트로 cutscene이 실행됨
 - `Academy.InitializeEnvironment NullReferenceException` 반복 발생

@@ -833,7 +833,7 @@ public class ElevatorBossController : MonoBehaviour
         }
 
         RunRouteTracker.SetDeathContext(DeathRouteContext.BossPacifistFinalHit);
-        playerHealth.TakeDamage(1);
+        playerHealth.TakeDamage(1, "PacifistFinalHit", "pacifist_final");
         yield return null;
 
         if (playerHealth.IsDead || playerHealth.currentHp <= 0)
@@ -946,6 +946,15 @@ public class ElevatorBossController : MonoBehaviour
         return Mathf.Max(0.05f, warningTime);
     }
 
+    private static string DirectionLabel(Vector2Int dir)
+    {
+        if (dir == Vector2Int.up) return "Up";
+        if (dir == Vector2Int.down) return "Down";
+        if (dir == Vector2Int.left) return "Left";
+        if (dir == Vector2Int.right) return "Right";
+        return $"{dir.x}_{dir.y}";
+    }
+
     private float GetFinalDashWarningTime()
     {
         return Mathf.Max(0.05f, finalDashWarningTime - finalDashWarningReduction);
@@ -992,7 +1001,9 @@ public class ElevatorBossController : MonoBehaviour
                     animDriver?.PlayAttack(bossFacing);
                     PlaySfx(bossAttackSfx);
                 },
-                fillOriginCell: bossCell
+                fillOriginCell: bossCell,
+                damageSource: enhanced ? "BasicScratch_EnhancedPhase" : "BasicScratch",
+                damageSourceGroup: "scratch"
             );
 
             SetBossSpritePoseOffset(0f);
@@ -1107,7 +1118,9 @@ public class ElevatorBossController : MonoBehaviour
                 animDriver?.PlayEnhancedAttack(bossFacing);
                 PlaySfx(bossEnhancedAttackSfx);
             },
-            fillOriginCell: bossCell
+            fillOriginCell: bossCell,
+            damageSource: "EnhancedScratchDash",
+            damageSourceGroup: "scratch"
         );
     }
 
@@ -1645,7 +1658,13 @@ public class ElevatorBossController : MonoBehaviour
         yield return DropBossSprite(slamDropHeight, slamDropDuration);
 
         // 3단계: 착지 순간 DamageTile 생성(시각 숨김) + SlamVFX 동시
-        StartCoroutine(caster.SpawnDamageCells(cells, landingDamageTime, hideVisual: true));
+        StartCoroutine(caster.SpawnDamageCells(
+            cells,
+            landingDamageTime,
+            hideVisual: true,
+            damageSource: big ? "LandingSlam_Big" : "LandingSlam",
+            damageSourceGroup: "slam"
+        ));
         if (slamVFXPrefab != null)
             SpawnSlamVfx(target);
 
@@ -1688,7 +1707,9 @@ public class ElevatorBossController : MonoBehaviour
                         SpawnSlamVfx(slamTarget);
                 },
                 fillOriginCell: slamTarget,
-                hideDamageTileVisual: true
+                hideDamageTileVisual: true,
+                damageSource: "FinalSlam",
+                damageSourceGroup: "slam"
             );
 
             yield return new WaitForSeconds(GetFinalSlamToDashDelay());
@@ -1712,7 +1733,8 @@ public class ElevatorBossController : MonoBehaviour
         Vector2Int dashDir,
         float warningTime = -1f,
         float damageTime = -1f,
-        bool hideAfter = true
+        bool hideAfter = true,
+        string damageSource = "DashPattern"
     )
     {
         Vector2Int normalizedDir = caster.NormalizeDirection(dashDir);
@@ -1726,7 +1748,8 @@ public class ElevatorBossController : MonoBehaviour
             damageTime,
             hideAfter,
             explicitStart: start,
-            explicitEnd: end
+            explicitEnd: end,
+            damageSource: damageSource
         );
     }
 
@@ -1738,7 +1761,8 @@ public class ElevatorBossController : MonoBehaviour
         bool hideAfter = true,
         Vector2Int? explicitStart = null,
         Vector2Int? explicitEnd = null,
-        DashVisualProfile profile = DashVisualProfile.Full
+        DashVisualProfile profile = DashVisualProfile.Full,
+        string damageSource = "DashPattern"
     )
     {
         warningTime = GetDashPatternWarningTime(warningTime);
@@ -1776,7 +1800,9 @@ public class ElevatorBossController : MonoBehaviour
             },
             fillOriginCell: start,
             hideDamageTileVisual: true,
-            fillDirection: normalizedDir
+            fillDirection: normalizedDir,
+            damageSource: $"{damageSource}_{DirectionLabel(normalizedDir)}",
+            damageSourceGroup: "dash_line"
         );
         ClearDiagnosticDashContext();
 
@@ -1791,7 +1817,8 @@ public class ElevatorBossController : MonoBehaviour
         Vector2Int dashDir,
         float damageTime,
         bool hideAfter = true,
-        DashVisualProfile profile = DashVisualProfile.Full
+        DashVisualProfile profile = DashVisualProfile.Full,
+        string damageSource = "DashDamageOnly"
     )
     {
         Vector2Int normalizedDir = caster.NormalizeDirection(dashDir);
@@ -1811,7 +1838,13 @@ public class ElevatorBossController : MonoBehaviour
         }
         ApplyDashVisuals(damageCells, start, end, profile);
 
-        yield return caster.CastDamageOnly(damageCells, damageTime, hideDamageTileVisual: true);
+        yield return caster.CastDamageOnly(
+            damageCells,
+            damageTime,
+            hideDamageTileVisual: true,
+            damageSource: $"{damageSource}_{DirectionLabel(normalizedDir)}",
+            damageSourceGroup: "dash_line"
+        );
         ClearDiagnosticDashContext();
 
         bossCell = ClampCell(end);
@@ -3006,7 +3039,8 @@ public class ElevatorBossController : MonoBehaviour
             hideAfter: false,
             explicitStart: slamTarget,
             explicitEnd: dashEnd,
-            profile: DashVisualProfile.InternalQuiet
+            profile: DashVisualProfile.InternalQuiet,
+            damageSource: "FinalDashAfterSlam"
         );
     }
 
@@ -3045,7 +3079,13 @@ public class ElevatorBossController : MonoBehaviour
 
         ApplyDashVisuals(damageCells, slamTarget, dashEnd, DashVisualProfile.InternalQuiet);
 
-        yield return caster.CastDamageOnly(damageCells, finalDamageTime, hideDamageTileVisual: true);
+        yield return caster.CastDamageOnly(
+            damageCells,
+            finalDamageTime,
+            hideDamageTileVisual: true,
+            damageSource: $"FinalRandomNoWarningDash_{DirectionLabel(normalizedDir)}",
+            damageSourceGroup: "dash_line"
+        );
         ClearDiagnosticDashContext();
 
         bossCell = ClampCell(dashEnd);

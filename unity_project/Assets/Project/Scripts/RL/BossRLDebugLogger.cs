@@ -4,7 +4,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class BossRLDebugLogger : MonoBehaviour
 {
-    [SerializeField] private int logEveryNSteps = 100;
+    [SerializeField] private int logEveryNSteps = 250;
     private const int MaxTraceSamplesPerEpisode = 5;
     private const int MaxTraceSamplesPerRun = 50;
     private static int globalSafeOppMoveTraceSamples;
@@ -17,7 +17,8 @@ public class BossRLDebugLogger : MonoBehaviour
     private int   episodeBossHpStart;
 
     // ── Reward breakdown ──────────────────────────────────────────────────────
-    private float rewardTotal, rewardBossDamage, rewardHitPenalty, rewardDeathPenalty;
+    private float rewardTotal, rewardBossDamage, rewardHitPenalty, rewardCriticalHealthPenalty, rewardDeathPenalty;
+    private float rewardFastClear;
     private float rewardWarningTile, rewardDamageTile, rewardWallBlocked;
     private float rewardApproach, rewardMissedAttack, rewardAttackOnCooldown;
     private float rewardMovedIntoDanger, rewardSafeAttack, rewardMissedSafeAttackOpportunity;
@@ -28,7 +29,12 @@ public class BossRLDebugLogger : MonoBehaviour
 
     // ── Player hit stats ──────────────────────────────────────────────────────
     private int   playerHitCount;
+    private int   playerDamageStepCount;
+    private int   maxPlayerHpLossInSingleStep;
     private float deathTime;
+    private PlayerHealth cachedPlayerHealth;
+    private readonly Dictionary<string, int> damageSourceHitCounts = new Dictionary<string, int>();
+    private readonly Dictionary<string, int> damageSourceGroupHitCounts = new Dictionary<string, int>();
 
     // ── Movement mask metrics ─────────────────────────────────────────────────
     private int moveMaskedWallCount;           // geometry wall masked (pure blockedCells check)
@@ -339,14 +345,20 @@ public class BossRLDebugLogger : MonoBehaviour
         episodeStartTime   = startTime;
         episodeBossHpStart = bossHpStart;
 
-        rewardTotal = rewardBossDamage = rewardHitPenalty = rewardDeathPenalty = 0f;
+        rewardTotal = rewardBossDamage = rewardHitPenalty = rewardCriticalHealthPenalty = rewardDeathPenalty = 0f;
+        rewardFastClear = 0f;
         rewardWarningTile = rewardDamageTile = rewardWallBlocked = 0f;
         rewardApproach = rewardMissedAttack = rewardAttackOnCooldown = 0f;
         rewardMovedIntoDanger = rewardSafeAttack = rewardMissedSafeAttackOpportunity = 0f;
 
         warningTileSteps = damageTileSteps = 0;
         playerHitCount   = 0;
+        playerDamageStepCount = 0;
+        maxPlayerHpLossInSingleStep = 0;
         deathTime        = -1f;
+        cachedPlayerHealth = FindFirstObjectByType<PlayerHealth>();
+        damageSourceHitCounts.Clear();
+        damageSourceGroupHitCounts.Clear();
 
         moveMaskedWallCount = moveMaskedWarningCount = moveMaskedDamageCount = 0;
         moveMaskedRecentWarningCount = moveMaskedRecentDamageCount = moveMaskedDueToBusyCount = 0;
@@ -1430,6 +1442,41 @@ public class BossRLDebugLogger : MonoBehaviour
 
     // ── Per-step recording ────────────────────────────────────────────────────
 
+    private PlayerHealth GetPlayerHealth()
+    {
+        if (cachedPlayerHealth == null)
+            cachedPlayerHealth = FindFirstObjectByType<PlayerHealth>();
+
+        return cachedPlayerHealth;
+    }
+
+    private static void AddCount(Dictionary<string, int> counts, string key, int amount)
+    {
+        if (amount <= 0)
+            return;
+
+        key = string.IsNullOrEmpty(key) ? "unknown" : key;
+        counts.TryGetValue(key, out int current);
+        counts[key] = current + amount;
+    }
+
+    private static string FormatCounts(Dictionary<string, int> counts)
+    {
+        if (counts == null || counts.Count == 0)
+            return "none";
+
+        string output = "";
+        foreach (KeyValuePair<string, int> kv in counts)
+        {
+            if (output.Length > 0)
+                output += ",";
+
+            output += $"{kv.Key}:{kv.Value}";
+        }
+
+        return output;
+    }
+
     public void RecordStep(
         int stepCount, float currentTime,
         int singleAction, bool isAttackAction, int attackActionInt,
@@ -1442,7 +1489,9 @@ public class BossRLDebugLogger : MonoBehaviour
         rewardTotal            += result.reward;
         rewardBossDamage       += result.rewardBossDamage;
         rewardHitPenalty       += result.rewardHitPenalty;
+        rewardCriticalHealthPenalty += result.rewardCriticalHealthPenalty;
         rewardDeathPenalty     += result.rewardDeathPenalty;
+        rewardFastClear        += result.rewardFastClear;
         rewardWarningTile      += result.rewardWarningTile;
         rewardDamageTile       += result.rewardDamageTile;
         rewardWallBlocked      += result.rewardWallBlocked;
@@ -1465,7 +1514,12 @@ public class BossRLDebugLogger : MonoBehaviour
         // Player hit
         if (result.playerHitDelta > 0)
         {
-            playerHitCount++;
+            playerHitCount += result.playerHitDelta;
+            playerDamageStepCount++;
+            maxPlayerHpLossInSingleStep = Mathf.Max(maxPlayerHpLossInSingleStep, result.playerHitDelta);
+            PlayerHealth playerHealth = GetPlayerHealth();
+            AddCount(damageSourceHitCounts, playerHealth?.LastDamageSource ?? "unknown", result.playerHitDelta);
+            AddCount(damageSourceGroupHitCounts, playerHealth?.LastDamageSourceGroup ?? "unknown", result.playerHitDelta);
             if (!firstHitRecorded)
             {
                 firstHitRecorded = true;
@@ -1587,6 +1641,11 @@ public class BossRLDebugLogger : MonoBehaviour
         int   bossHpLeft   = extractor != null ? extractor.BossCurrentHp : 0;
         int   recentWarnCellsNow = extractor != null ? extractor.RecentWarningCellCount : 0;
         int   recentDmgCellsNow  = extractor != null ? extractor.RecentDamageCellCount  : 0;
+        PlayerHealth playerHealth = GetPlayerHealth();
+        string lastDamageSource = playerHealth != null ? playerHealth.LastDamageSource : "unknown";
+        string lastDamageSourceGroup = playerHealth != null ? playerHealth.LastDamageSourceGroup : "unknown";
+        string deathSource = reason == "player_dead" ? lastDamageSource : "none";
+        string deathSourceGroup = reason == "player_dead" ? lastDamageSourceGroup : "none";
         if (reason == "player_dead") deathTime = survivalTime;
         FinalizePendingSafeOppMoveTracesAtEpisodeEnd(currentTime, bossHpLeft);
 
@@ -1608,7 +1667,8 @@ public class BossRLDebugLogger : MonoBehaviour
             $"[BossRL] EPISODE_END reason={reason} steps={stepCount} survival={survivalTime:F1}s " +
             $"survived10s={survived10s} survived20s={survived20s}\n" +
             $"  reward: total={rewardTotal:F3} boss={rewardBossDamage:F3} hit={rewardHitPenalty:F3} " +
-            $"death={rewardDeathPenalty:F3} warn_tile={rewardWarningTile:F3} dmg_tile={rewardDamageTile:F3} " +
+            $"critical_hp={rewardCriticalHealthPenalty:F3} death={rewardDeathPenalty:F3} " +
+            $"fast_clear={rewardFastClear:F3} warn_tile={rewardWarningTile:F3} dmg_tile={rewardDamageTile:F3} " +
             $"wall={rewardWallBlocked:F3} approach={rewardApproach:F3} " +
             $"missed_atk={rewardMissedAttack:F3} cooldown_atk={rewardAttackOnCooldown:F3} " +
             $"moved_into_danger={rewardMovedIntoDanger:F3} safe_atk={rewardSafeAttack:F3} " +
@@ -1765,7 +1825,12 @@ public class BossRLDebugLogger : MonoBehaviour
             $"hit_after_move_danger={hitAfterMovingIntoDangerCount} " +
             $"warn_to_hit_avg_steps={(warningToHitStepCount > 0 ? (float)warningToHitStepSum / warningToHitStepCount : -1f):F1}\n" +
             $"  player: hits={playerHitCount} first_hit_step={firstHitStep} " +
-            $"first_hit_time={firstHitTime:F1}s death_time={deathTime:F1}s\n" +
+            $"first_hit_time={firstHitTime:F1}s death_time={deathTime:F1}s " +
+            $"hp_after={extractor?.PlayerCurrentHp ?? -1} hits_remaining_est={Mathf.Max(0, extractor?.PlayerCurrentHp ?? 0)} " +
+            $"damage_steps={playerDamageStepCount} max_hp_loss_step={maxPlayerHpLossInSingleStep} " +
+            $"death_source={deathSource} death_source_group={deathSourceGroup} " +
+            $"damage_source_hits={FormatCounts(damageSourceHitCounts)} " +
+            $"damage_source_group_hits={FormatCounts(damageSourceGroupHitCounts)}\n" +
             $"  move: actions={movementActionCount} success={successfulMoveCount} " +
             $"wall_blocked={wallBlockedMoves} wall_ratio={wallRatio:P0} " +
             $"(U={wallBlockedUp} D={wallBlockedDown} L={wallBlockedLeft} R={wallBlockedRight}) " +

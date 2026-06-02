@@ -24,6 +24,8 @@ public class PlayerHealth : MonoBehaviour
 
     public bool IsInvincible { get; private set; }
     public bool IsDead { get; private set; }
+    public string LastDamageSource { get; private set; } = "none";
+    public string LastDamageSourceGroup { get; private set; } = "none";
 
     public UnityEvent<int, int> onHpChanged;
     public UnityEvent onDead;
@@ -55,6 +57,8 @@ public class PlayerHealth : MonoBehaviour
         IsDead = false;
         currentHp = maxHp;
         IsInvincible = false;
+        LastDamageSource = "none";
+        LastDamageSourceGroup = "none";
         if (spriteRenderer != null)
         {
             spriteRenderer.enabled = true;
@@ -65,10 +69,18 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        TakeDamage(damage, "unknown", "unknown");
+    }
+
+    public void TakeDamage(int damage, string source, string sourceGroup)
+    {
         if (IsInvincible || IsDead)
         {
             return;
         }
+
+        LastDamageSource = string.IsNullOrEmpty(source) ? "unknown" : source;
+        LastDamageSourceGroup = string.IsNullOrEmpty(sourceGroup) ? "unknown" : sourceGroup;
 
         currentHp = Mathf.Max(0, currentHp - damage);
         onHpChanged?.Invoke(currentHp, maxHp);

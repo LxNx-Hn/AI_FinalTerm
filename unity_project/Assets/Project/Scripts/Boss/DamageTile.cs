@@ -5,6 +5,8 @@ public class DamageTile : MonoBehaviour
 {
     public int damage = 1;
     public float lifeTime = 0.15f;
+    public string damageSource = "unknown";
+    public string damageSourceGroup = "unknown";
 
     /// <summary>
     /// true로 설정하면 SpriteRenderer(자식 포함)를 모두 비활성화한다.
@@ -53,7 +55,7 @@ public class DamageTile : MonoBehaviour
             return;
         }
 
-        player.TakeDamage(damage);
+        player.TakeDamage(damage, damageSource, damageSourceGroup);
         damagedPlayers.Add(player);
     }
 }

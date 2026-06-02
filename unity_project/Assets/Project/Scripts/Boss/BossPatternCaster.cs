@@ -173,7 +173,9 @@ public class BossPatternCaster : MonoBehaviour
         Vector2Int? fillOriginCell = null,
         bool hideDamageTileVisual = false,
         bool animateWarningFill = true,
-        Vector2Int? fillDirection = null
+        Vector2Int? fillDirection = null,
+        string damageSource = "Pattern",
+        string damageSourceGroup = "pattern"
     )
     {
         if (warningTime < 0f)
@@ -219,10 +221,12 @@ public class BossPatternCaster : MonoBehaviour
             {
                 damageTile.lifeTime = damageTime;
                 damageTile.hideVisual = hideIndividualDamageVisual;
+                damageTile.damageSource = damageSource;
+                damageTile.damageSourceGroup = damageSourceGroup;
             }
         }
 
-        yield return MonitorDirectPlayerDamageDuringDamageTime(cells, damageTime);
+        yield return MonitorDirectPlayerDamageDuringDamageTime(cells, damageTime, damageSource, damageSourceGroup);
     }
 
     /// <summary>
@@ -260,7 +264,9 @@ public class BossPatternCaster : MonoBehaviour
     public IEnumerator SpawnDamageCells(
         List<Vector2Int> cells,
         float damageTime = -1f,
-        bool hideVisual = false
+        bool hideVisual = false,
+        string damageSource = "SpawnDamageCells",
+        string damageSourceGroup = "pattern"
     )
     {
         if (damageTime < 0f)
@@ -284,10 +290,12 @@ public class BossPatternCaster : MonoBehaviour
             {
                 damageTile.lifeTime = damageTime;
                 damageTile.hideVisual = hideVisual;
+                damageTile.damageSource = damageSource;
+                damageTile.damageSourceGroup = damageSourceGroup;
             }
         }
 
-        yield return MonitorDirectPlayerDamageDuringDamageTime(cells, damageTime);
+        yield return MonitorDirectPlayerDamageDuringDamageTime(cells, damageTime, damageSource, damageSourceGroup);
     }
 
     // 8방향 이웃 벡터 (외곽 판정용)
@@ -422,7 +430,13 @@ public class BossPatternCaster : MonoBehaviour
         return Mathf.Clamp(defaultWarningFillTime, 0.05f, Mathf.Max(0.05f, warningTime));
     }
 
-    public IEnumerator CastDamageOnly(List<Vector2Int> cells, float damageTime = -1f, bool hideDamageTileVisual = false)
+    public IEnumerator CastDamageOnly(
+        List<Vector2Int> cells,
+        float damageTime = -1f,
+        bool hideDamageTileVisual = false,
+        string damageSource = "DamageOnly",
+        string damageSourceGroup = "pattern"
+    )
     {
         if (damageTime < 0f)
             damageTime = defaultDamageTime;
@@ -445,13 +459,20 @@ public class BossPatternCaster : MonoBehaviour
             {
                 damageTile.lifeTime = damageTime;
                 damageTile.hideVisual = hideDamageTileVisual;
+                damageTile.damageSource = damageSource;
+                damageTile.damageSourceGroup = damageSourceGroup;
             }
         }
 
-        yield return MonitorDirectPlayerDamageDuringDamageTime(cells, damageTime);
+        yield return MonitorDirectPlayerDamageDuringDamageTime(cells, damageTime, damageSource, damageSourceGroup);
     }
 
-    private IEnumerator MonitorDirectPlayerDamageDuringDamageTime(List<Vector2Int> arenaCells, float damageTime)
+    private IEnumerator MonitorDirectPlayerDamageDuringDamageTime(
+        List<Vector2Int> arenaCells,
+        float damageTime,
+        string damageSource,
+        string damageSourceGroup
+    )
     {
         if (!applyDirectPlayerDamage)
         {
@@ -466,7 +487,7 @@ public class BossPatternCaster : MonoBehaviour
         {
             if (!damaged && IsPlayerInArenaCells(arenaCells))
             {
-                DamagePlayerDirectly();
+                DamagePlayerDirectly(damageSource, damageSourceGroup);
                 damaged = true;
             }
 
@@ -497,13 +518,15 @@ public class BossPatternCaster : MonoBehaviour
         return arenaCells.Contains(playerArenaCell);
     }
 
-    private void DamagePlayerDirectly()
+    private void DamagePlayerDirectly(string damageSource, string damageSourceGroup)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null)
             return;
 
-        player.SendMessage("TakeDamage", directPlayerDamage, SendMessageOptions.DontRequireReceiver);
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+            playerHealth.TakeDamage(directPlayerDamage, damageSource, damageSourceGroup);
     }
 
     public List<Vector2Int> NormalScratch3(Vector2Int center)

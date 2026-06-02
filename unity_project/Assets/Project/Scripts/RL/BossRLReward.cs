@@ -8,24 +8,26 @@ public class BossRLReward : MonoBehaviour
     // missed_attack (-0.05): attack-ready + boss out of range → penalizes random swinging.
     // attack_on_cooldown (-0.01): spamming attack while reloading → small deterrent.
     // approach (+0.01/cell): gradient toward boss before first hit is discovered.
-    public const float BossDamagePerHp               =  0.10f;
-    public const float BossKillReward                =  5.0f;
+    public const float BossDamagePerHp               =  0.40f;
+    public const float BossKillReward                =  30.0f;
+    public const float BossFastClearRewardMax        =  20.0f;
     public const float MissedAttackPenalty           = -0.08f;  // was -0.05; ready + out-of-range attack (84.9% of attacks out of range)
     public const float AttackOnCooldownPenalty       = -0.02f;
-    public const float PlayerHitPenalty              = -2.0f;
-    public const float PlayerDeathPenalty            = -8.0f;
-    public const float StepPenalty                   = -0.001f;
+    public const float PlayerHitPenalty              = -2.5f;
+    public const float PlayerCriticalHealthPenalty   = -3.0f;
+    public const float PlayerDeathPenalty            = -10.0f;
+    public const float StepPenalty                   = -0.002f;
     public const float WarningTilePenalty            = -0.10f;  // was -0.05; 95.5% of hits on warning tile
     public const float DamageTilePenalty             = -0.20f;
     public const float WallBlockedMovePenalty        = -0.05f;
     public const float ApproachRewardScale           =  0f;
     // New: penalize moving INTO hazard tiles; priority: damage > recent_warn > warn
-    public const float MovedIntoWarningPenalty       = -0.08f;
-    public const float MovedIntoRecentWarningPenalty = -0.10f;
-    public const float MovedIntoDamagePenalty        = -0.30f;
+    public const float MovedIntoWarningPenalty       = -0.10f;
+    public const float MovedIntoRecentWarningPenalty = -0.12f;
+    public const float MovedIntoDamagePenalty        = -0.35f;
     // New: small reward for attacking while safe (attack_ready + in_range + no danger)
-    public const float SafeInRangeAttackAttemptReward =  0.08f;
-    public const float MissedSafeAttackOpportunityPenalty = -0.003f;
+    public const float SafeInRangeAttackAttemptReward =  0.18f;
+    public const float MissedSafeAttackOpportunityPenalty = -0.006f;
 
     public static float TerminalRewardForReason(string reason)
     {
@@ -40,7 +42,9 @@ public class BossRLReward : MonoBehaviour
         // per-component breakdown
         public float rewardBossDamage;
         public float rewardHitPenalty;
+        public float rewardCriticalHealthPenalty;
         public float rewardDeathPenalty;
+        public float rewardFastClear;
         public float rewardWarningTile;
         public float rewardDamageTile;
         public float rewardWallBlocked;
@@ -57,6 +61,7 @@ public class BossRLReward : MonoBehaviour
         // raw deltas / state for metrics
         public int  bossDamageDelta;
         public int  playerHitDelta;
+        public int  playerHpAfter;
         public bool onWarningTile;
         public bool onDamageTile;
         public bool wallBlockedMove;
@@ -106,7 +111,9 @@ public class BossRLReward : MonoBehaviour
 
         float bossDamageR      = 0f;
         float hitPenaltyR      = 0f;
+        float criticalHealthR  = 0f;
         float deathPenaltyR    = 0f;
+        float fastClearR       = 0f;
         float warningTileR     = 0f;
         float damageTileR      = 0f;
         float wallBlockedR     = 0f;
@@ -125,7 +132,11 @@ public class BossRLReward : MonoBehaviour
             bossDamageR = bossDelta * BossDamagePerHp;
 
         if (playerDelta > 0)
+        {
             hitPenaltyR = PlayerHitPenalty * playerDelta;
+            if (playerHp == 1)
+                criticalHealthR = PlayerCriticalHealthPenalty;
+        }
 
         extractor.GetHazardState(out bool onWarning, out bool onDamage);
         if (onWarning) warningTileR = WarningTilePenalty;
@@ -181,13 +192,19 @@ public class BossRLReward : MonoBehaviour
         bool playerDead = extractor.PlayerIsDead;
         bool timedOut   = maxEpisodeSeconds > 0f && elapsedSeconds >= maxEpisodeSeconds;
 
-        if (bossDead)   bossDamageR  += BossKillReward;
+        if (bossDead)
+        {
+            bossDamageR += BossKillReward;
+            float clearTime01 = maxEpisodeSeconds > 0f ? Mathf.Clamp01(elapsedSeconds / maxEpisodeSeconds) : 1f;
+            fastClearR = BossFastClearRewardMax * (1f - clearTime01);
+        }
         if (playerDead) deathPenaltyR = PlayerDeathPenalty;
 
         float total = StepPenalty + bossDamageR + hitPenaltyR + deathPenaltyR
                       + warningTileR + damageTileR + wallBlockedR
                       + approachR + missedAttackR + cooldownAttackR
-                      + movedIntoDangerR + safeAttackR + missedSafeOpportunityR;
+                      + movedIntoDangerR + safeAttackR + missedSafeOpportunityR
+                      + criticalHealthR + fastClearR;
 
         lastBossHp   = bossHp;
         lastPlayerHp = playerHp;
@@ -197,7 +214,9 @@ public class BossRLReward : MonoBehaviour
             reward                = total,
             rewardBossDamage      = bossDamageR,
             rewardHitPenalty      = hitPenaltyR,
+            rewardCriticalHealthPenalty = criticalHealthR,
             rewardDeathPenalty    = deathPenaltyR,
+            rewardFastClear       = fastClearR,
             rewardWarningTile     = warningTileR,
             rewardDamageTile      = damageTileR,
             rewardWallBlocked     = wallBlockedR,
@@ -212,6 +231,7 @@ public class BossRLReward : MonoBehaviour
             timedOut              = timedOut,
             bossDamageDelta       = bossDelta,
             playerHitDelta        = playerDelta,
+            playerHpAfter         = playerHp,
             onWarningTile         = onWarning,
             onDamageTile          = onDamage,
             wallBlockedMove       = isWallBlocked,

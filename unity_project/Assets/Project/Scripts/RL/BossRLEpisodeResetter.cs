@@ -117,6 +117,11 @@ public class BossRLEpisodeResetter : MonoBehaviour
             return;
         }
 
+        if (agent != null && agent.IsProcessingAction)
+        {
+            return;
+        }
+
         agent?.HandleTerminalEvent(reason);
         QueueSceneReload();
     }

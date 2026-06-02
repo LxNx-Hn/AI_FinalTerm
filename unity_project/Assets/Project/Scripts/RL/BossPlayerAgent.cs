@@ -3,6 +3,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(PlayerCombat))]
@@ -33,10 +34,15 @@ public class BossPlayerAgent : Agent
     private float cumulativeReward;
     private bool  terminalHandled;
     private bool  terminalRewardApplied;
+    private bool  processingAction;
     private readonly List<float> pendingMissedSafeOpportunityTimes = new List<float>();
+
+    public bool IsProcessingAction => processingAction;
 
     public override void Initialize()
     {
+        ApplyTrainingAudioMuteIfRequested();
+
         inputBridge     = GetComponent<BossRLInputBridge>();
         stateExtractor  = GetComponent<BossRLStateExtractor>();
         rewardTracker   = GetComponent<BossRLReward>();
@@ -54,6 +60,19 @@ public class BossPlayerAgent : Agent
 
         MaxStep = 0;
         ResetEpisodeState();
+    }
+
+    private static void ApplyTrainingAudioMuteIfRequested()
+    {
+        string[] args = Environment.GetCommandLineArgs();
+        for (int i = 0; i < args.Length; i++)
+        {
+            if (args[i] == "--rl-mute-audio")
+            {
+                AudioListener.volume = 0f;
+                return;
+            }
+        }
     }
 
     public override void OnEpisodeBegin()
@@ -245,7 +264,9 @@ public class BossPlayerAgent : Agent
             }
         }
 
+        processingAction = true;
         inputBridge.ApplySingleAction(singleAction);
+        processingAction = false;
 
         if (terminalHandled || (episodeResetter != null && episodeResetter.ReloadQueued))
         {
@@ -438,6 +459,7 @@ public class BossPlayerAgent : Agent
         cumulativeReward = 0f;
         terminalHandled  = false;
         terminalRewardApplied = false;
+        processingAction = false;
         pendingMissedSafeOpportunityTimes.Clear();
         debugLogger?.ResetEpisode(stateExtractor != null ? stateExtractor.BossCurrentHp : 0, episodeStartTime);
     }
