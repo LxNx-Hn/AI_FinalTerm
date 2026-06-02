@@ -1,0 +1,46 @@
+{
+  "run_id": "BossPPO_FastClear3HitFixed_1000k_0602_v1",
+  "episodes": 1943,
+  "clears": 852,
+  "deaths": 1091,
+  "timeouts": 0,
+  "last_30_clears": 30,
+  "last_30_deaths": 0,
+  "last_30_clear_rate": "100.0%",
+  "final_checkpoint_step": 1000040,
+  "cumulative_episode_action_steps": 4991371,
+  "checkpoint_steps": [
+    199879,
+    299963,
+    399915,
+    499986,
+    599962,
+    699999,
+    799886,
+    899917,
+    1000040
+  ],
+  "checkpoint_rewards": [
+    -3.6363324175278344,
+    -0.5974991321563721,
+    -0.9839189052581787,
+    -0.36578861035798726,
+    3.617779572804769,
+    19.620710132022698,
+    31.720835367838543,
+    30.025159986395586,
+    63.266005516052246
+  ],
+  "tensorboard_scalar_tags": [
+    "Environment/Cumulative Reward",
+    "Environment/Episode Length",
+    "Losses/Policy Loss",
+    "Losses/Value Loss",
+    "Policy/Beta",
+    "Policy/Entropy",
+    "Policy/Epsilon",
+    "Policy/Extrinsic Reward",
+    "Policy/Extrinsic Value Estimate",
+    "Policy/Learning Rate"
+  ]
+}
