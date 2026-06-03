@@ -206,8 +206,10 @@
 - 공격권 회복 실패
 - 용도: 단기 PPO 실패 사례
 - 파일: videos/01_initial_policy.mp4
-- 형식: 로그 기반 분석형 보조 영상
-- gameplay 재라벨링 없음
+- 형식: 99K checkpoint 실제 gameplay 녹화
+- 사용 checkpoint: BossPlayer-99957.onnx
+- 녹화 길이: 45초
+- 최종 클립 재사용 없음
 - 영상 2 학습 진행
 - step별 정책 변화
 - hit_rate 상승
@@ -215,7 +217,12 @@
 - boss damage 증가
 - 용도: 100K에서 1M까지 변화 설명
 - 파일: videos/02_learning_progression.mp4
-- 형식: checkpoint reward 및 그래프 기반 분석형 보조 영상
+- 형식: 99K 499K 799K 1M 실제 gameplay montage
+- 설명 슬라이드 사용 없음
+- source: videos/01_initial_policy.mp4
+- source: videos/progression_499K_mid.mp4
+- source: videos/progression_799K_late.mp4
+- source: videos/progression_1M_final.mp4
 - 영상 3 사람처럼 깨고 패턴이 다 나오는 클린 클리어
 - 발표 핵심 영상
 - Phase2 Phase3 Final 포함

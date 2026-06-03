@@ -194,12 +194,12 @@ const slides = [
   {
     kicker: "영상 1 초기 정책",
     claim: "초기 정책은 낮은 damage와 공격권 회복 실패를 보여줌",
-    body: ["파일 videos/01_initial_policy.mp4", "로그 기반 분석형 보조 영상", "학습 초반 정책", "낮은 boss damage", "피격 및 사망", "공격권 회복 실패", "gameplay 재라벨링 없음"],
+    body: ["파일 videos/01_initial_policy.mp4", "99K checkpoint 실제 gameplay", "BossPlayer-99957.onnx", "낮은 boss damage", "피격 위험 장면", "공격권 회복 실패", "설명 슬라이드 사용 없음"],
   },
   {
     kicker: "영상 2 학습 진행",
     claim: "checkpoint별 정책 변화로 long-run 효과를 제시",
-    body: ["파일 videos/02_learning_progression.mp4", "checkpoint reward 및 그래프 기반", "hit_rate 상승", "in_range 증가", "boss damage 증가", "최종 정책으로 수렴하는 흐름"],
+    body: ["파일 videos/02_learning_progression.mp4", "99K 499K 799K 1M 실제 gameplay montage", "checkpoint별 실제 플레이 비교", "hit_rate 상승", "in_range 증가", "boss damage 증가", "설명 슬라이드 사용 없음"],
   },
   {
     kicker: "영상 3 클린 클리어",

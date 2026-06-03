@@ -2,21 +2,33 @@
 
 - 상태: 생성 완료
 - 파일명: videos/02_learning_progression.mp4
-- 형식: checkpoint reward 및 그래프 기반 분석형 보조 영상
-- 실제 gameplay montage: 아님
+- 형식: checkpoint별 실제 gameplay montage
+- 실제 gameplay montage: 예
 - 대체 라벨링 금지
 - 최종 정책 클리어 영상 모음을 학습 진행 영상으로 사용하지 않음
 - 생성 근거
-- training_status checkpoint reward 사용
+- source clip: videos/01_initial_policy.mp4
+- source clip: videos/progression_499K_mid.mp4
+- source clip: videos/progression_799K_late.mp4
+- source clip: videos/progression_1M_final.mp4
+- 사용 ONNX/checkpoint: 99K, 499K, 799K, 1M rendered inference gameplay
+- build log: logs/build_eval_210_PPO99K_initial_rerecord.log
+- build log: logs/build_eval_210_PPO499K_mid_rerecord.log
+- build log: logs/build_eval_210_PPO799K_late_rerecord.log
+- build log: logs/build_eval_210_PPO1M_final_rerecord.log
+- gameplay log: results/VideoGameplay_PPO99K_initial_rerecord/run_logs/Player-0.log
+- gameplay log: results/VideoGameplay_PPO499K_mid_rerecord/run_logs/Player-0.log
+- gameplay log: results/VideoGameplay_PPO799K_late_rerecord/run_logs/Player-0.log
+- gameplay log: results/VideoGameplay_PPO1M_final_rerecord/run_logs/Player-0.log
+- 녹화 방식: Unity build inference gameplay
+- 영상 구성: 99K 20초, 499K 24초, 799K 24초, 1M 24초
+- checkpoint label: gameplay 위 최소 라벨
+- 설명 슬라이드 사용 여부: 없음
+- training_status checkpoint reward 참고 수치
 - 99K reward -18.1
 - 499K reward -11.6
 - 799K reward -4.6
 - 1M reward 7.5
-- boss_damage_by_step 그래프 사용
-- clear_rate_by_step 그래프 사용
-- hit_rate_by_step 그래프 사용
-- in_range_by_step 그래프 사용
-- 사용 ONNX/checkpoint: 99K부터 1M checkpoint 기록
 - step: 99K 199K 299K 399K 499K 599K 699K 799K 899K 999K 1M
 - boss_dead 여부: 전체 run boss_dead 199회
 - boss_damage: 전체 평균 40.8, max 59
@@ -25,6 +37,4 @@
 - hidden/empty/stale/off-lane leak: run 전체 0
 - attack_out_of_range: run 전체 0
 - fake marker leak: run 전체 0
-- 영상 용도: 정책 변화와 long-run 효과 설명
-- 추가 개선 후보
-- checkpoint별 rendered inference gameplay montage
+- 영상 용도: 정책 변화와 long-run 효과 비교
