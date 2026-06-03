@@ -62,11 +62,11 @@
 ## 영상 검토 상태
 
 - 영상 1 초기 정책: 99K checkpoint 실제 gameplay 녹화 완료
-- 영상 2 학습 진행: 99K 499K 799K 1M 실제 gameplay montage 완료
+- 영상 2 중기 정책: 499K checkpoint 실제 gameplay 녹화 완료
 - 영상 3 클린 클리어 후보: 03_ALL_patterns_long_clear_58s.mp4
-- 영상 4 유효한 특이 행동 후보: 04_SOME_patterns_quick_clear_42s.mp4
+- 영상 4 패턴 스킵처럼 보이는 버그성 유효 플레이 후보: 04_SOME_patterns_quick_clear_42s.mp4
 - 영상 5 이상 행동 후보: 05_SOME_patterns_quick_clear_43s.mp4
-- 초기 정책과 학습 진행 영상은 최종 클립을 재라벨링하지 않음
+- 초기 정책과 중기 정책 영상은 최종 클립을 재라벨링하지 않음
 - 영상 1과 영상 2는 Unity build inference gameplay 기반
 - 영상 1과 영상 2는 설명 슬라이드 기반 영상 아님
 

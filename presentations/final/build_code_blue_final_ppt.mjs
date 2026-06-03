@@ -197,9 +197,9 @@ const slides = [
     body: ["파일 videos/01_initial_policy.mp4", "99K checkpoint 실제 gameplay", "BossPlayer-99957.onnx", "낮은 boss damage", "피격 위험 장면", "공격권 회복 실패", "설명 슬라이드 사용 없음"],
   },
   {
-    kicker: "영상 2 학습 진행",
-    claim: "checkpoint별 정책 변화로 long-run 효과를 제시",
-    body: ["파일 videos/02_learning_progression.mp4", "99K 499K 799K 1M 실제 gameplay montage", "checkpoint별 실제 플레이 비교", "hit_rate 상승", "in_range 증가", "boss damage 증가", "설명 슬라이드 사용 없음"],
+    kicker: "영상 2 중기 정책",
+    claim: "중기 정책은 부분 hit 이후 player_dead로 종료",
+    body: ["파일 videos/02_learning_progression.mp4", "499K checkpoint 실제 gameplay", "BossPlayer-499996.onnx", "boss_damage 3", "survival 25.0초", "player_dead", "설명 슬라이드 사용 없음"],
   },
   {
     kicker: "영상 3 클린 클리어",
@@ -207,9 +207,9 @@ const slides = [
     body: ["파일 videos/03_clean_human_like_clear_all_patterns.mp4", "Phase2 Phase3 Final 포함", "visible target 기반 정상 타격", "exploit 없음", "attack_out_of_range 0", "hidden off-lane stale hit 0"],
   },
   {
-    kicker: "영상 4 유효한 특이 행동",
-    claim: "꼼수처럼 보여도 규칙상 정상인 edge behavior",
-    body: ["파일 videos/04_clever_valid_policy_behavior.mp4", "root_visible_overlap", "dash_current_overlap", "warning edge 운영", "현재 target gate 기준 정상 행동", "bug 또는 exploit로 명명 금지"],
+    kicker: "영상 4 패턴 스킵성 플레이",
+    claim: "패턴 스킵처럼 보이는 버그성 장면은 성공 근거와 분리",
+    body: ["파일 videos/04_clever_valid_policy_behavior.mp4", "일부 패턴 생략처럼 보이는 빠른 클리어", "root_visible_overlap", "dash_current_overlap", "현재 leak 0 근거상 exploit 확정 아님", "bug case 명명 금지"],
   },
   {
     kicker: "영상 5 이상 행동 사례",

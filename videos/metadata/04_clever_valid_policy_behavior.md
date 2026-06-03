@@ -1,4 +1,4 @@
-# 영상 4 유효한 특이 행동
+# 영상 4 패턴 스킵성 플레이
 
 - 상태: 후보 파일 생성 완료
 - 파일명: videos/04_clever_valid_policy_behavior.mp4
@@ -9,11 +9,13 @@
 - boss_dead 여부: true 후보
 - boss_damage: 60 후보
 - survival/clear time: 42초 후보
-- phase 도달 여부: 일부 패턴 포함 후보
+- phase 도달 여부: 일부 패턴 생략처럼 보이는 빠른 클리어 후보
 - MarkATK observed 여부: run 전체 15,309회
 - hidden/empty/stale/off-lane leak: run 전체 0
 - attack_out_of_range: run 전체 0
 - fake marker leak: run 전체 0
-- 영상 용도: root_visible_overlap dash_current_overlap warning edge 운영 설명
-- 사용 조건: exploit가 아닌 valid edge behavior로만 설명
+- 영상 용도: 패턴 스킵처럼 보이는 버그성 플레이 분리 제시
+- 사용 조건: exploit 확정 표현 금지
+- 명명 기준: 실제 leak 확인 전까지 bug case로 단정하지 않음
+- 근거 표현: abnormal-looking but valid 또는 bug-like behavior 후보
 - 제한: 개별 clip과 episode log 직접 매핑은 미확정

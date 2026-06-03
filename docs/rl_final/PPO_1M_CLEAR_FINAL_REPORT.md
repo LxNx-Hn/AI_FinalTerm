@@ -210,19 +210,15 @@
 - 사용 checkpoint: BossPlayer-99957.onnx
 - 녹화 길이: 45초
 - 최종 클립 재사용 없음
-- 영상 2 학습 진행
-- step별 정책 변화
-- hit_rate 상승
-- in_range 증가
-- boss damage 증가
-- 용도: 100K에서 1M까지 변화 설명
+- 영상 2 중기 정책
+- 499K checkpoint 실제 gameplay
+- boss_damage 3
+- player_dead
+- survival 25.0초
+- 용도: 중기 정책 실패 및 부분 hit 사례
 - 파일: videos/02_learning_progression.mp4
-- 형식: 99K 499K 799K 1M 실제 gameplay montage
+- 형식: 499K checkpoint 실제 gameplay 녹화
 - 설명 슬라이드 사용 없음
-- source: videos/01_initial_policy.mp4
-- source: videos/progression_499K_mid.mp4
-- source: videos/progression_799K_late.mp4
-- source: videos/progression_1M_final.mp4
 - 영상 3 사람처럼 깨고 패턴이 다 나오는 클린 클리어
 - 발표 핵심 영상
 - Phase2 Phase3 Final 포함
@@ -231,7 +227,7 @@
 - leak 0 근거와 함께 사용
 - 파일: videos/03_clean_human_like_clear_all_patterns.mp4
 - 원본: video_captures/clips_final/03_ALL_patterns_long_clear_58s.mp4
-- 영상 4 잘하고 꼼수처럼 보이는 유효 플레이
+- 영상 4 패턴 스킵처럼 보이는 버그성 유효 플레이
 - root_visible_overlap
 - dash_current_overlap
 - warning edge 운영
