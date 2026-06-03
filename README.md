@@ -1,16 +1,35 @@
-# AI_FinalTerm_MLAgents_PPO_NEW
+# CODE BLUE 보스전 PPO 강화학습
 
-- Working target is the `NEW` folder project only.
-- Do not modify `C:\Users\KiKi\CODE-BLUE`.
-- Do not push, reset, clean, or otherwise change the original CODE-BLUE remote.
-- Unity work should use official MCP tools.
-- Play Mode and training execution require explicit user approval.
-- Current goal is a smoke-ready ML-Agents MVP around `Boss01_Elevator_RLTrain`.
+## 최종 산출물
 
-## Current smoke-ready assets
+- 보고서: `docs/rl_final/PPO_1M_CLEAR_FINAL_REPORT.md`
+- 산출물 목록: `docs/rl_final/FINAL_ARTIFACT_MANIFEST.md`
+- PPT: `presentations/final/CODE_BLUE_RL_FINAL.pptx`
+- PPT 미리보기: `presentations/final/previews`
+- 학습 결과 그래프: `docs/rl_final/figures`
 
-- RL scripts: `Assets/Project/Scripts/RL/`
-- RL scene clone: `Assets/Project/Scenes/Boss01_Elevator_RLTrain.unity`
-- PPO config: `ml-agents-config/boss_player_ppo_smoke.yaml`
-- Manual checklist: `docs/MANUAL_UNITY_SETUP_CHECKLIST.md`
-- Scene cleanup notes: `docs/SCENE_CLEANUP_RLTRAIN.md`
+## 발표 영상
+
+- 영상 1 초기 정책: `videos/01_initial_policy.mp4`
+- 영상 2 중기 정책: `videos/02_learning_progression.mp4`
+- 영상 3 후기 정상패턴 클린 클리어: `videos/03_clean_human_like_clear_all_patterns.mp4`
+- 영상 4 패턴 스킵처럼 보이는 버그성 플레이 후보: `videos/04_clever_valid_policy_behavior.mp4`
+- 영상 5 이상 행동 제외 사례: `videos/05_bug_or_abnormal_case_excluded.mp4`
+
+## 기준 결과
+
+- run-id: `BossPPO_TargetGate_MarkATKObs_SweepHistory_1M_c84b1a4_v1`
+- algorithm: ML-Agents PPO
+- action spec: `[5,2]`
+- observation size: `438`
+- max steps: `1,000,000`
+- boss_dead: `199회`
+- 전체 클리어율: `22.3%`
+- 최근 100 episode 클리어율: `80%`
+- 무결성 leak: `0`
+
+## repo 정리 기준
+
+- 최종 제출 문서는 `docs/rl_final`에만 보관
+- 내부 작업 문서와 중간 진단 문서는 repo에서 제외
+- git 포함 영상은 `videos/01`부터 `videos/05`까지 5개만 사용

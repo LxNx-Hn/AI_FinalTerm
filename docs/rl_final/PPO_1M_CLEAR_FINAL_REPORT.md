@@ -42,18 +42,18 @@
 
 ## 3 마르코프 결정 과정
 
-- State
+- 플레이어 MDP
+- Player State
 - 플레이어 위치
-- 보스 위치
-- 보스 방향
+- 플레이어 방향
+- 플레이어 체력
 - 공격 가능 범위
-- warning tile
-- damage tile
-- MarkATK real visible cue
-- MarkATK fake visible cue
-- Phase2 sweep history
+- 주변 warning tile
+- 주변 damage tile
 - 최근 위험 타일 정보
-- Action
+- 보스 상대 위치
+- 보스 visible 여부
+- Player Action
 - Branch 0 move
 - none
 - up
@@ -63,14 +63,32 @@
 - Branch 1 attack
 - no attack
 - attack
-- Transition
+- Player Transition
 - 플레이어 이동
 - 플레이어 공격
+- 피격 및 사망
+- 불가능 이동은 action mask로 차단
+- hidden target 공격은 action mask로 차단
+- 보스 MDP
+- Boss State
+- 보스 위치
+- 보스 방향
+- 보스 HP
+- 현재 phase
+- 현재 pattern state
+- warning tile
+- damage tile
+- MarkATK real visible cue
+- MarkATK fake visible cue
+- Phase2 sweep history
+- Boss Transition
 - 보스 패턴 진행
 - warning tile에서 damage tile로 전환
-- 피격 및 사망
+- HP 기준 phase 전환
+- dash 중 현재 보스 위치 갱신
+- MarkATK real fake cue 생성 및 소멸
 - 보스 HP 감소
-- Reward
+- 통합 Reward
 - 보스 HP 감소 보상
 - 보스 처치 보상
 - 피격 패널티

@@ -153,8 +153,8 @@ const slides = [
   },
   {
     kicker: "MDP 정의",
-    claim: "위치와 위험 타일이 다음 의사결정을 구성",
-    body: ["State 플레이어 위치 보스 위치 보스 방향", "State warning tile damage tile", "State MarkATK real fake visible cue", "Action move branch와 attack branch", "Transition 이동 공격 패턴 진행 피격 HP 감소", "Termination 보스 사망 플레이어 사망 제한 시간"],
+    claim: "플레이어 MDP와 보스 MDP를 같은 decision step에서 결합",
+    body: ["플레이어 MDP", "보스 MDP"],
   },
   {
     kicker: "Observation",
@@ -257,7 +257,7 @@ for (let i = 0; i < slides.length; i += 1) {
       ["결론", "속도 레시피", "PPO-only 1M 성공"],
     ], 84, 166, [210, 390, 430], 50);
   } else if (i === 4) {
-    twoColumn(slide, "State", ["플레이어 위치", "보스 위치 및 방향", "warning damage tile", "MarkATK visible cue", "Phase2 sweep history"], "Action Reward Termination", ["move [5]", "attack [2]", "HP 감소 및 처치 보상", "피격 사망 위험 패널티", "boss_dead player_dead timeout"]);
+    twoColumn(slide, "플레이어 MDP", ["State 위치 방향 체력", "State 공격 가능 범위", "Action move [5]", "Action attack [2]", "Transition 이동 공격 피격", "Termination player_dead"], "보스 MDP", ["State 위치 방향 HP phase", "State pattern warning damage", "State MarkATK real fake cue", "Transition phase pattern 진행", "Transition HP 감소", "Termination boss_dead timeout"]);
   } else {
     bulletList(slide, spec.body, 80, 166, 1040, { size: spec.body.length > 6 ? 20 : 23, gap: spec.body.length > 6 ? 36 : 44 });
   }
