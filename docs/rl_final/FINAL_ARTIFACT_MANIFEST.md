@@ -50,14 +50,8 @@
 - videos/metadata/03_clean_human_like_clear_all_patterns.md
 - videos/metadata/04_clever_valid_policy_behavior.md
 - videos/metadata/05_bug_or_abnormal_case_excluded.md
-- video_captures/clips_final/01_BEST_fastest_clear_42s.mp4
-- video_captures/clips_final/02_ALL_patterns_longest_clear_84s.mp4
-- video_captures/clips_final/03_ALL_patterns_long_clear_58s.mp4
-- video_captures/clips_final/04_SOME_patterns_quick_clear_42s.mp4
-- video_captures/clips_final/05_SOME_patterns_quick_clear_43s.mp4
-- video_captures/clips_final/06_clear_50s.mp4
-- video_captures/clips_final/07_clear_56s.mp4
-- video_captures/clips_final/08_clear_47s.mp4
+- git 포함 영상은 01부터 05까지 5개만 사용
+- video_captures/clips_final은 local 원본 후보이며 최종 git 산출물 아님
 
 ## 영상 검토 상태
 
