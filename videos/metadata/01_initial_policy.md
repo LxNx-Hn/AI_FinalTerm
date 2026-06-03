@@ -18,7 +18,7 @@
 - boss_damage: 낮은 damage 사례
 - survival: 45초 구간 내 episode 종료 없음
 - phase 도달 여부: 초반 실패 사례
-- MarkATK observed 여부: clip log 기준 확인
+- MarkATK observed 여부: 45초 clip 내 episode summary 없음
 - hidden/empty/stale/off-lane leak: run 전체 0
 - attack_out_of_range: run 전체 0
 - fake marker leak: run 전체 0
