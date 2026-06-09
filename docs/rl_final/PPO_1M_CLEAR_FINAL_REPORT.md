@@ -228,40 +228,39 @@
 - 사용 checkpoint: BossPlayer-99957.onnx
 - 녹화 길이: 45초
 - 최종 클립 재사용 없음
-- 영상 2 중기 정책
+- 영상 2 중기 규칙 학습
 - 499K checkpoint 실제 gameplay
 - boss_damage 3
 - player_dead
 - survival 25.0초
-- 용도: 중기 정책 실패 및 부분 hit 사례
+- normal_visible 2회 dash_current_overlap 1회
+- 용도: 중기 규칙 학습과 부분 hit 사례
 - 파일: videos/02_learning_progression.mp4
 - 형식: 499K checkpoint 실제 gameplay 녹화
 - 설명 슬라이드 사용 없음
-- 영상 3 사람처럼 깨고 패턴이 다 나오는 클린 클리어
-- 발표 핵심 영상
+- 영상 3 중기 패턴 학습
+- 799K checkpoint 실제 gameplay 본캡처
+- boss_damage 8
+- player_dead
+- survival 69.5초
+- phase2 sweep history active steps 653
+- normal_visible hit 8회
+- 용도: 중기 패턴 회피와 공격권 회복 진행 사례
+- 파일: videos/03_mid_pattern_learning.mp4
+- 로그: results/VideoGameplay_PPO799K_mid_pattern_final_capture/run_logs/Player-0.log
+- 영상 4 후기 2 3 페이즈 클리어
+- 발표 핵심 영상 후보
 - Phase2 Phase3 Final 포함
 - visible target 기반 정상 타격
-- exploit 없음
 - leak 0 근거와 함께 사용
-- 파일: videos/03_clean_human_like_clear_all_patterns.mp4
-- 원본: video_captures/clips_final/03_ALL_patterns_long_clear_58s.mp4
-- 영상 4 패턴 스킵처럼 보이는 버그성 유효 플레이
+- 파일: videos/04_late_phase23_clear.mp4
+- 영상 5 후기 꼼수성 클리어 후보
 - root_visible_overlap
 - dash_current_overlap
 - warning edge 운영
-- 규칙상 정상 행동
-- exploit 아님
-- 파일: videos/04_clever_valid_policy_behavior.mp4
-- 원본: video_captures/clips_final/04_SOME_patterns_quick_clear_42s.mp4
-- 영상 5 버그 또는 이상 행동 사례
-- 성공 근거로 사용하지 않음
-- 한계 및 제외 사례
-- 실제 leak가 있으면 bug case
-- leak가 없으면 abnormal-looking but valid로 명명
-- 파일: videos/05_bug_or_abnormal_case_excluded.mp4
-- 원본: video_captures/clips_final/05_SOME_patterns_quick_clear_43s.mp4
-- 현재 명명: abnormal-looking but valid 후보
-- bug case 명명 금지
+- 패턴 스킵처럼 보이는 빠른 클리어 후보
+- exploit 확정 표현 금지
+- 파일: videos/05_late_clever_clear.mp4
 
 ## 9 LTS 브랜치와 main 비교
 

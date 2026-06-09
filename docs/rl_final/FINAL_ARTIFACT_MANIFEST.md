@@ -23,6 +23,15 @@
 - slide count 18
 - previews: presentations/final/previews
 - 생성 스크립트: presentations/final/build_code_blue_final_ppt.mjs
+- 게임 소개 이미지 포함: presentations/final/assets/source_images/game_warning_tile.png
+- 패턴 소개 이미지 포함: presentations/final/assets/source_images/boss_close_range.png
+- 영상 썸네일 포함: presentations/final/assets/video_thumbnails
+- 마침표 없는 개조식 본문으로 재생성
+- 게임 소개 및 패턴 소개 사진 포함
+- MDP 상태공간 정의 포함
+- PPO 기법 소개 포함
+- 보상 설계 및 학습 설계 포함
+- 학습 결과 그래프 포함
 
 ## 학습 추이 그래프
 
@@ -42,32 +51,35 @@
 
 - videos/01_initial_policy.mp4
 - videos/02_learning_progression.mp4
-- videos/03_clean_human_like_clear_all_patterns.mp4
-- videos/04_clever_valid_policy_behavior.mp4
-- videos/05_bug_or_abnormal_case_excluded.mp4
+- videos/03_mid_pattern_learning.mp4
+- videos/04_late_phase23_clear.mp4
+- videos/05_late_clever_clear.mp4
 - videos/metadata/01_initial_policy.md
 - videos/metadata/02_learning_progression.md
-- videos/metadata/03_clean_human_like_clear_all_patterns.md
-- videos/metadata/04_clever_valid_policy_behavior.md
-- videos/metadata/05_bug_or_abnormal_case_excluded.md
+- videos/metadata/03_mid_pattern_learning.md
+- videos/metadata/04_late_phase23_clear.md
+- videos/metadata/05_late_clever_clear.md
 - git 포함 영상은 01부터 05까지 5개만 사용
-- video_captures/clips_final은 local 원본 후보이며 최종 git 산출물 아님
 
 ## 영상 검토 상태
 
 - 영상 1 초기 정책: 99K checkpoint 실제 gameplay 녹화 완료
-- 영상 2 중기 정책: 499K checkpoint 실제 gameplay 녹화 완료
-- 영상 3 클린 클리어 후보: 03_ALL_patterns_long_clear_58s.mp4
-- 영상 4 패턴 스킵처럼 보이는 버그성 유효 플레이 후보: 04_SOME_patterns_quick_clear_42s.mp4
-- 영상 5 이상 행동 후보: 05_SOME_patterns_quick_clear_43s.mp4
+- 영상 2 중기 규칙 학습: 499K checkpoint 실제 gameplay 녹화 완료
+- 영상 3 중기 패턴 학습: 799K checkpoint 실제 gameplay 본캡처 완료
+- 영상 3 로그 근거: results/VideoGameplay_PPO799K_mid_pattern_final_capture/run_logs/Player-0.log
+- 영상 3 결과: player_dead, survival 69.5초, boss_damage 8, phase2 sweep history 653 step
+- 영상 4 후기 2 3 페이즈: 04_late_phase23_clear.mp4 사용
+- 영상 5 후기 꼼수성 클리어: 05_late_clever_clear.mp4 사용
 - 초기 정책과 중기 정책 영상은 최종 클립을 재라벨링하지 않음
-- 영상 1과 영상 2는 Unity build inference gameplay 기반
-- 영상 1과 영상 2는 설명 슬라이드 기반 영상 아님
+- 영상 1, 영상 2, 영상 3은 Unity build inference gameplay 기반
+- 영상 1, 영상 2, 영상 3은 설명 슬라이드 기반 영상 아님
+- 후기 clip과 episode log 직접 매핑은 미확정
+- 영상 4와 영상 5는 exploit 확정 표현 없이 후보로 설명
 
 ## 검증 상태
 
 - 보고서/PPT/그래프 범위 git diff --check 통과 필요
-- PPT slide count 18 확인 필요
+- PPT slide count 18 확인 완료
 - 50MB 이상 신규 산출물 없음 확인 필요
 - 기존 Unity meta trailing whitespace는 별도 확인 필요
 - legacy 삭제는 삭제 목록 확인 후 진행 필요

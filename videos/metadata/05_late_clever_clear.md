@@ -1,8 +1,7 @@
-# 영상 4 패턴 스킵성 플레이
+# 영상 5 후기 꼼수성 클리어 후보
 
 - 상태: 후보 파일 생성 완료
-- 파일명: videos/04_clever_valid_policy_behavior.mp4
-- 원본 파일: video_captures/clips_final/04_SOME_patterns_quick_clear_42s.mp4
+- 파일명: videos/05_late_clever_clear.mp4
 - 사용 ONNX/checkpoint: BossPlayer 1M final 후보
 - step: 1,000,001 후보
 - episode id: 영상 대응 log 미확정

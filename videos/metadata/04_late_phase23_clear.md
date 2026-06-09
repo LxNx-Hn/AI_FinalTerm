@@ -1,8 +1,7 @@
-# 영상 3 클린 클리어
+# 영상 4 후기 2 3 페이즈 클리어
 
 - 상태: 후보 파일 생성 완료
-- 파일명: videos/03_clean_human_like_clear_all_patterns.mp4
-- 원본 파일: video_captures/clips_final/03_ALL_patterns_long_clear_58s.mp4
+- 파일명: videos/04_late_phase23_clear.mp4
 - 사용 ONNX/checkpoint: BossPlayer 1M final 후보
 - step: 1,000,001 후보
 - episode id: 영상 대응 log 미확정

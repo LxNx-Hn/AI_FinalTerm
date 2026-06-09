@@ -2,5 +2,59 @@
   "pptx": "C:\\Users\\KiKi\\Documents\\Ql\\AI_FinalTerm_MLAgents_PPO_NEW\\presentations\\final\\CODE_BLUE_RL_FINAL.pptx",
   "slideCount": 18,
   "previewDir": "C:\\Users\\KiKi\\Documents\\Ql\\AI_FinalTerm_MLAgents_PPO_NEW\\presentations\\final\\previews",
-  "generatedAt": "2026-06-03T03:33:15.883Z"
+  "generatedAt": "2026-06-09T14:37:09.719Z",
+  "sourceImages": {
+    "gameWarning": "presentations/final/assets/source_images/game_warning_tile.png",
+    "bossClose": "presentations/final/assets/source_images/boss_close_range.png"
+  },
+  "videoSlots": [
+    {
+      "slot": "1",
+      "label": "학습 초기",
+      "file": "videos/01_initial_policy.mp4",
+      "basis": "99K checkpoint 실제 gameplay",
+      "status": "완료"
+    },
+    {
+      "slot": "2",
+      "label": "중기 규칙 학습",
+      "file": "videos/02_learning_progression.mp4",
+      "basis": "499K checkpoint 부분 hit 후 player_dead",
+      "status": "완료"
+    },
+    {
+      "slot": "3",
+      "label": "중기 패턴 학습",
+      "file": "videos/03_mid_pattern_learning.mp4",
+      "basis": "799K checkpoint phase2 sweep 대응 후 player_dead",
+      "status": "완료"
+    },
+    {
+      "slot": "4",
+      "label": "후기 2 3 페이즈",
+      "file": "videos/04_late_phase23_clear.mp4",
+      "basis": "Phase2 Phase3 Final 포함 후보",
+      "status": "완료"
+    },
+    {
+      "slot": "5",
+      "label": "후기 꼼수성 클리어",
+      "file": "videos/05_late_clever_clear.mp4",
+      "basis": "패턴 스킵처럼 보이는 빠른 클리어 후보",
+      "status": "완료"
+    }
+  ],
+  "figures": [
+    "docs/rl_final/figures/boss_damage_by_step.png",
+    "docs/rl_final/figures/clear_rate_by_step.png",
+    "docs/rl_final/figures/reward_by_step.png",
+    "docs/rl_final/figures/hit_rate_by_step.png",
+    "docs/rl_final/figures/in_range_by_step.png",
+    "docs/rl_final/figures/clear_time_distribution.png",
+    "docs/rl_final/figures/phase_milestone_timeline.png",
+    "docs/rl_final/figures/integrity_leak_table.png"
+  ],
+  "caveats": [
+    "후기 clip과 episode log 직접 매핑은 미확정"
+  ]
 }
