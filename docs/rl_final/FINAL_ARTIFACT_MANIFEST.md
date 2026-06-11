@@ -47,34 +47,34 @@
 - docs/rl_final/figures/figure_generation_summary.json
 - presentations/final/assets에 동일 PNG 복사 완료
 
-## 영상 후보
+## 영상 완성본
 
 - videos/01_initial_policy.mp4
 - videos/02_learning_progression.mp4
 - videos/03_mid_pattern_learning.mp4
-- videos/04_late_phase23_clear.mp4
+- videos/04_late_phase23_patterns.mp4
 - videos/05_late_clever_clear.mp4
 - videos/metadata/01_initial_policy.md
 - videos/metadata/02_learning_progression.md
 - videos/metadata/03_mid_pattern_learning.md
-- videos/metadata/04_late_phase23_clear.md
+- videos/metadata/04_late_phase23_patterns.md
 - videos/metadata/05_late_clever_clear.md
 - git 포함 영상은 01부터 05까지 5개만 사용
 
 ## 영상 검토 상태
 
-- 영상 1 초기 정책: 99K checkpoint 실제 gameplay 녹화 완료
-- 영상 2 중기 규칙 학습: 499K checkpoint 실제 gameplay 녹화 완료
+- 영상 1 초기 정책: 199K checkpoint 실제 gameplay 녹화 완료
+- 영상 2 중기 규칙 학습: 499K checkpoint warning tile 회피 gameplay 녹화 완료
 - 영상 3 중기 패턴 학습: 799K checkpoint 실제 gameplay 본캡처 완료
 - 영상 3 로그 근거: results/VideoGameplay_PPO799K_mid_pattern_final_capture/run_logs/Player-0.log
 - 영상 3 결과: player_dead, survival 69.5초, boss_damage 8, phase2 sweep history 653 step
-- 영상 4 후기 2 3 페이즈: 04_late_phase23_clear.mp4 사용
+- 영상 4 후기 2 3 페이즈 패턴 노출: 04_late_phase23_patterns.mp4 사용
 - 영상 5 후기 꼼수성 클리어: 05_late_clever_clear.mp4 사용
 - 초기 정책과 중기 정책 영상은 최종 클립을 재라벨링하지 않음
 - 영상 1, 영상 2, 영상 3은 Unity build inference gameplay 기반
 - 영상 1, 영상 2, 영상 3은 설명 슬라이드 기반 영상 아님
-- 후기 clip과 episode log 직접 매핑은 미확정
-- 영상 4와 영상 5는 exploit 확정 표현 없이 후보로 설명
+- 영상 4는 799K phase2 sweep 노출 구간이며 클리어 영상으로 표기하지 않음
+- 영상 5는 1M PPO inference에서 boss_dead가 확인된 실제 클리어 녹화
 
 ## 검증 상태
 

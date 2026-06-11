@@ -15,8 +15,8 @@
 - 영상 1 초기 정책: `videos/01_initial_policy.mp4`
 - 영상 2 중기 규칙 학습: `videos/02_learning_progression.mp4`
 - 영상 3 중기 패턴 학습: `videos/03_mid_pattern_learning.mp4`
-- 영상 4 후기 2 3 페이즈: `videos/04_late_phase23_clear.mp4`
-- 영상 5 후기 꼼수성 클리어 후보: `videos/05_late_clever_clear.mp4`
+- 영상 4 후기 2 3 페이즈 패턴 노출: `videos/04_late_phase23_patterns.mp4`
+- 영상 5 후기 꼼수성 클리어: `videos/05_late_clever_clear.mp4`
 
 ## 기준 결과
 

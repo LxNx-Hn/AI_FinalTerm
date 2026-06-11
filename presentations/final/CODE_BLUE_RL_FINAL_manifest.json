@@ -2,7 +2,7 @@
   "pptx": "C:\\Users\\KiKi\\Documents\\Ql\\AI_FinalTerm_MLAgents_PPO_NEW\\presentations\\final\\CODE_BLUE_RL_FINAL.pptx",
   "slideCount": 18,
   "previewDir": "C:\\Users\\KiKi\\Documents\\Ql\\AI_FinalTerm_MLAgents_PPO_NEW\\presentations\\final\\previews",
-  "generatedAt": "2026-06-09T14:37:09.719Z",
+  "generatedAt": "2026-06-11T02:36:13.913Z",
   "sourceImages": {
     "gameWarning": "presentations/final/assets/source_images/game_warning_tile.png",
     "bossClose": "presentations/final/assets/source_images/boss_close_range.png"
@@ -12,14 +12,14 @@
       "slot": "1",
       "label": "학습 초기",
       "file": "videos/01_initial_policy.mp4",
-      "basis": "99K checkpoint 실제 gameplay",
+      "basis": "199K checkpoint 실제 gameplay",
       "status": "완료"
     },
     {
       "slot": "2",
       "label": "중기 규칙 학습",
       "file": "videos/02_learning_progression.mp4",
-      "basis": "499K checkpoint 부분 hit 후 player_dead",
+      "basis": "499K checkpoint warning tile 회피",
       "status": "완료"
     },
     {
@@ -31,16 +31,16 @@
     },
     {
       "slot": "4",
-      "label": "후기 2 3 페이즈",
-      "file": "videos/04_late_phase23_clear.mp4",
-      "basis": "Phase2 Phase3 Final 포함 후보",
+      "label": "후기 2 3 페이즈 패턴",
+      "file": "videos/04_late_phase23_patterns.mp4",
+      "basis": "799K phase2 sweep 패턴 노출",
       "status": "완료"
     },
     {
       "slot": "5",
       "label": "후기 꼼수성 클리어",
       "file": "videos/05_late_clever_clear.mp4",
-      "basis": "패턴 스킵처럼 보이는 빠른 클리어 후보",
+      "basis": "1M PPO inference boss_dead",
       "status": "완료"
     }
   ],
@@ -55,6 +55,7 @@
     "docs/rl_final/figures/integrity_leak_table.png"
   ],
   "caveats": [
-    "후기 clip과 episode log 직접 매핑은 미확정"
+    "영상 4는 클리어 영상이 아니라 phase2 pattern exposure clip",
+    "영상 5는 exploit 확정이 아니라 abnormal-looking clear로 설명"
   ]
 }

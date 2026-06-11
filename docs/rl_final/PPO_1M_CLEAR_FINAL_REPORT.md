@@ -219,22 +219,21 @@
 
 - 영상 1 초기 정책
 - 학습 초반 정책
-- 낮은 boss damage
-- 피격 및 사망
-- 공격권 회복 실패
-- 용도: 단기 PPO 실패 사례
+- 이동과 회피가 불안정
+- warning tile 대응이 늦음
+- 일부 attack/dash 흐름만 관찰
+- 용도: 초기 PPO 정책의 불안정 행동 사례
 - 파일: videos/01_initial_policy.mp4
-- 형식: 99K checkpoint 실제 gameplay 녹화
-- 사용 checkpoint: BossPlayer-99957.onnx
+- 형식: 199K checkpoint 실제 gameplay 녹화
+- 사용 checkpoint: BossPlayer-199919.onnx
 - 녹화 길이: 45초
 - 최종 클립 재사용 없음
 - 영상 2 중기 규칙 학습
 - 499K checkpoint 실제 gameplay
-- boss_damage 3
-- player_dead
-- survival 25.0초
-- normal_visible 2회 dash_current_overlap 1회
-- 용도: 중기 규칙 학습과 부분 hit 사례
+- warning tile 회피 단서 관찰
+- safe opportunity 판단 로그 관찰
+- 일부 attack과 boss 이동 대응 관찰
+- 용도: 중기 규칙 학습과 위험 타일 회피 사례
 - 파일: videos/02_learning_progression.mp4
 - 형식: 499K checkpoint 실제 gameplay 녹화
 - 설명 슬라이드 사용 없음
@@ -248,17 +247,17 @@
 - 용도: 중기 패턴 회피와 공격권 회복 진행 사례
 - 파일: videos/03_mid_pattern_learning.mp4
 - 로그: results/VideoGameplay_PPO799K_mid_pattern_final_capture/run_logs/Player-0.log
-- 영상 4 후기 2 3 페이즈 클리어
-- 발표 핵심 영상 후보
-- Phase2 Phase3 Final 포함
-- visible target 기반 정상 타격
-- leak 0 근거와 함께 사용
-- 파일: videos/04_late_phase23_clear.mp4
-- 영상 5 후기 꼼수성 클리어 후보
-- root_visible_overlap
-- dash_current_overlap
-- warning edge 운영
-- 패턴 스킵처럼 보이는 빠른 클리어 후보
+- 영상 4 후기 2 3 페이즈 패턴 노출
+- 799K checkpoint 실제 gameplay에서 phase2 sweep warning tile과 smoke 패턴이 보이는 구간
+- episode 결과는 player_dead
+- survival 69.5초
+- boss_damage 8
+- 파일: videos/04_late_phase23_patterns.mp4
+- 영상 5 후기 꼼수성 클리어
+- 1M PPO inference 실제 gameplay 녹화
+- boss_dead
+- survival 61.2초
+- diagonal blindspot 활용처럼 보이는 근접 연속 공격
 - exploit 확정 표현 금지
 - 파일: videos/05_late_clever_clear.mp4
 

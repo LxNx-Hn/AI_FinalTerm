@@ -53,7 +53,7 @@ const assets = {
   v1: path.join(ROOT, "presentations", "final", "assets", "video_thumbnails", "01_initial_policy.png"),
   v2: path.join(ROOT, "presentations", "final", "assets", "video_thumbnails", "02_mid_rule_learning.png"),
   v3: path.join(ROOT, "presentations", "final", "assets", "video_thumbnails", "03_mid_pattern_learning.png"),
-  v4: path.join(ROOT, "presentations", "final", "assets", "video_thumbnails", "04_late_phase23_clean.png"),
+  v4: path.join(ROOT, "presentations", "final", "assets", "video_thumbnails", "04_late_phase23_patterns.png"),
   v5: path.join(ROOT, "presentations", "final", "assets", "video_thumbnails", "05_late_clever_clear.png"),
   bossDamage: path.join(ROOT, "docs", "rl_final", "figures", "boss_damage_by_step.png"),
   clearRate: path.join(ROOT, "docs", "rl_final", "figures", "clear_rate_by_step.png"),
@@ -186,11 +186,11 @@ function drawFlow(slide, steps, x, y, w) {
 }
 
 const videoRows = [
-  ["1", "학습 초기", "videos/01_initial_policy.mp4", "99K checkpoint 실제 gameplay", "완료"],
-  ["2", "중기 규칙 학습", "videos/02_learning_progression.mp4", "499K checkpoint 부분 hit 후 player_dead", "완료"],
+  ["1", "학습 초기", "videos/01_initial_policy.mp4", "199K checkpoint 실제 gameplay", "완료"],
+  ["2", "중기 규칙 학습", "videos/02_learning_progression.mp4", "499K checkpoint warning tile 회피", "완료"],
   ["3", "중기 패턴 학습", "videos/03_mid_pattern_learning.mp4", "799K checkpoint phase2 sweep 대응 후 player_dead", "완료"],
-  ["4", "후기 2 3 페이즈", "videos/04_late_phase23_clear.mp4", "Phase2 Phase3 Final 포함 후보", "완료"],
-  ["5", "후기 꼼수성 클리어", "videos/05_late_clever_clear.mp4", "패턴 스킵처럼 보이는 빠른 클리어 후보", "완료"],
+  ["4", "후기 2 3 페이즈 패턴", "videos/04_late_phase23_patterns.mp4", "799K phase2 sweep 패턴 노출", "완료"],
+  ["5", "후기 꼼수성 클리어", "videos/05_late_clever_clear.mp4", "1M PPO inference boss_dead", "완료"],
 ];
 
 const slides = [
@@ -258,12 +258,12 @@ const slides = [
   },
   {
     section: "학습 초기",
-    claim: "99K 정책은 공격권 회복 실패와 낮은 damage를 보임",
+    claim: "199K 정책은 이동과 회피가 불안정하지만 실제 행동이 보임",
     kind: "videoSingle",
     image: assets.v1,
     items: [
       "영상 1 학습 초기",
-      "99K checkpoint 실제 gameplay",
+      "199K checkpoint 실제 gameplay",
       "45초 구간 내 boss_dead 없음",
       "낮은 damage와 피격 위험 장면",
       "최종 정책 영상을 초기 정책으로 재라벨링하지 않음",
@@ -271,12 +271,12 @@ const slides = [
   },
   {
     section: "학습 중기",
-    claim: "499K는 부분 hit와 패턴 회피 단서가 보이지만 클리어 실패",
+    claim: "499K는 경고 타일 회피와 거리 규칙 단서가 보임",
     kind: "videoDouble",
   },
   {
     section: "학습 후기",
-    claim: "후기 영상은 정상 클리어와 꼼수성 후보를 분리",
+    claim: "후기 영상은 phase2 패턴 노출과 꼼수성 클리어를 분리",
     kind: "lateVideos",
   },
   {
@@ -291,7 +291,7 @@ const slides = [
   },
   {
     section: "검증과 한계",
-    claim: "leak 0 근거와 개별 clip 매핑 미확정을 같이 보고",
+    claim: "leak 0 근거와 영상별 검증 범위를 같이 보고",
     kind: "integrity",
   },
   {
@@ -450,8 +450,8 @@ for (let i = 0; i < slides.length; i += 1) {
     image(slide, assets.v3, 654, 154, 528, 297, "영상 3 중기 패턴 학습");
     bulletList(slide, [
       "영상 2는 499K checkpoint 실제 gameplay",
-      "normal_visible 2회 dash_current_overlap 1회",
-      "boss_damage 3 이후 player_dead",
+      "warning tile 회피와 safe opportunity 판단",
+      "일부 attack과 boss 이동 대응 확인",
       "영상 3은 799K checkpoint 실제 gameplay",
       "boss_damage 8 이후 player_dead",
       "phase2 sweep history 653 step 확인",
@@ -460,10 +460,10 @@ for (let i = 0; i < slides.length; i += 1) {
     image(slide, assets.v4, 70, 154, 528, 297, "영상 4 후기 2 3 페이즈");
     image(slide, assets.v5, 654, 154, 528, 297, "영상 5 꼼수성 클리어");
     bulletList(slide, [
-      "후기 정상 클리어는 Phase2 Phase3 Final 포함 후보",
-      "꼼수성 클리어는 패턴 스킵처럼 보이는 빠른 클리어 후보",
-      "run 전체 leak 0 근거와 함께만 사용",
-      "개별 clip과 episode log 직접 매핑은 미확정",
+      "후기 패턴 영상은 phase2 sweep warning tile과 smoke 노출",
+      "꼼수성 클리어는 diagonal blindspot처럼 보이는 근접 연속 공격",
+      "영상 4는 799K phase2 sweep 노출 구간",
+      "영상 5는 1M PPO inference boss_dead 로그 확인",
     ], 92, 486, 1040, { size: 19, gap: 34, dot: colors.red });
   } else if (spec.kind === "metrics") {
     metric(slide, "boss_dead", "199회", 76, 160, 200, colors.red);
@@ -501,9 +501,9 @@ for (let i = 0; i < slides.length; i += 1) {
     ], 590, 164, 560, { size: 21, gap: 36, dot: colors.green });
     text(slide, "한계", 86, 468, 160, 30, { size: 22, bold: true, color: colors.red });
     bulletList(slide, [
-      "후기 clip과 episode log 직접 매핑은 미확정",
-      "영상 3은 799K episode log와 직접 매핑",
-      "영상 4 5는 exploit 확정 표현 없이 후보로 설명",
+      "영상 3과 영상 4는 799K phase2 sweep 구간 기반",
+      "영상 5는 1M inference boss_dead 구간 기반",
+      "꼼수성 클리어는 exploit 확정 없이 현상으로 설명",
     ], 92, 512, 1020, { size: 20, gap: 34, dot: colors.red });
   } else if (spec.kind === "closing") {
     drawFlow(slide, ["게임 소개", "패턴 소개", "MDP", "PPO", "보상 설계", "학습 설계", "학습 결과"], 64, 174, 1120);
@@ -553,7 +553,8 @@ const manifest = {
     rel(assets.integrity),
   ],
   caveats: [
-    "후기 clip과 episode log 직접 매핑은 미확정",
+    "영상 4는 클리어 영상이 아니라 phase2 pattern exposure clip",
+    "영상 5는 exploit 확정이 아니라 abnormal-looking clear로 설명",
   ],
 };
 
