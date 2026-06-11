@@ -1,26 +1,12 @@
-# 영상 3 중기 패턴 학습
+# 영상 3 플레이 가능하지만 클리어 실패
 
-- 상태: 생성 완료
-- 파일명: videos/03_mid_pattern_learning.mp4
-- 형식: 799K checkpoint 실제 gameplay 녹화
-- 실제 gameplay 렌더: 예
-- 커서 표시: 없음
-- 설명 슬라이드 사용 없음
-- 사용 ONNX/checkpoint: BossPlayer-799922.onnx
-- build label: PPO799K_mid_pattern_video
-- build log: logs/build_eval_210_PPO799K_mid_pattern_video.log
-- gameplay log: results/VideoGameplay_PPO799K_mid_pattern_final_capture/run_logs/Player-0.log
-- 녹화 길이: 69.97초
-- 녹화 방식: Unity build inference gameplay
-- episode result: player_dead
-- survival: 69.5초
-- boss_damage: 8
-- hit_class: normal_visible 8회
-- phase2 sweep history active steps: 653
-- previous warning history nonzero steps: 281
-- previous damage history nonzero steps: 59
-- hidden target hit: 0
-- stale bosscell hit: 0
-- off-lane empty hit: 0
-- fake marker mask leak: 0
-- 영상 용도: 중기 패턴 대응과 공격권 회복 진행 사례
+- 파일: videos/03_mid_pattern_learning.mp4
+- 원본 후보: videos/candidates_20260611/03_499K_E06.mp4
+- 정책: PPO 499K checkpoint
+- 결과: player_dead
+- survival: 43.0초
+- boss_damage: 6
+- player_hits: 2
+- 목적: 공격과 회피를 함께 수행하지만 클리어에는 실패하는 중기 정책
+- 화면: 1920x1080, 30fps, BT.709, 커서 없음
+- 검증: 전체 디코딩 통과, 화면 잘림 및 에피소드 혼입 없음

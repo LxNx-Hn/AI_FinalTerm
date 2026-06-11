@@ -22,6 +22,9 @@ logs/
 build_rl_log*.txt
 37580
 
+# 로컬 캡처 원본 및 QA 작업물
+outputs/
+
 # 기타
 *.pyc
 __pycache__/
