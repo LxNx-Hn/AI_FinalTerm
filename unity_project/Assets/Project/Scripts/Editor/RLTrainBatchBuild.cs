@@ -20,7 +20,20 @@ public static class RLTrainBatchBuild
         // WorkRoot                = .../AI_FinalTerm_MLAgents_PPO_NEW
         string projectRoot = Path.GetDirectoryName(Application.dataPath);
         string workRoot    = Path.GetDirectoryName(projectRoot);
+#if UNITY_EDITOR_OSX
+        return Path.Combine(workRoot, "builds", "macos", "BossPPO_RLTrain.app");
+#else
         return Path.Combine(workRoot, "builds", "windows", "BossPPO_RLTrain", "BossPPO_RLTrain.exe");
+#endif
+    }
+
+    private static BuildTarget GetBuildTarget()
+    {
+#if UNITY_EDITOR_OSX
+        return BuildTarget.StandaloneOSX;
+#else
+        return BuildTarget.StandaloneWindows64;
+#endif
     }
 
     [MenuItem("Tools/Build RLTrain EXE (Windows x64)")]
@@ -60,7 +73,7 @@ public static class RLTrainBatchBuild
         {
             scenes          = new[] { ScenePath },
             locationPathName = outputExe,
-            target          = BuildTarget.StandaloneWindows64,
+            target          = GetBuildTarget(),
             options         = BuildOptions.None,
         };
 

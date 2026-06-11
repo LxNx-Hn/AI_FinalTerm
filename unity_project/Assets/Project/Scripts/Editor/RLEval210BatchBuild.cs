@@ -46,7 +46,20 @@ public static class RLEval210BatchBuild
 
     private static string GetOutputExePath()
     {
+#if UNITY_EDITOR_OSX
+        return Path.Combine(GetWorkRoot(), "builds", "macos", "BossPPO_RLTrain_Eval210.app");
+#else
         return Path.Combine(GetWorkRoot(), "builds", "windows", "BossPPO_RLTrain_Eval210", "BossPPO_RLTrain_Eval210.exe");
+#endif
+    }
+
+    private static BuildTarget GetBuildTarget()
+    {
+#if UNITY_EDITOR_OSX
+        return BuildTarget.StandaloneOSX;
+#else
+        return BuildTarget.StandaloneWindows64;
+#endif
     }
 
     private static void ConfigureEvalScene()
@@ -191,7 +204,7 @@ public static class RLEval210BatchBuild
             {
                 scenes = new[] { EvalScenePath },
                 locationPathName = outputExe,
-                target = BuildTarget.StandaloneWindows64,
+                target = GetBuildTarget(),
                 options = BuildOptions.None,
             };
 
