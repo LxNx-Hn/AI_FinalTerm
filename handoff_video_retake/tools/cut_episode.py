@@ -43,6 +43,8 @@ def main():
     ap.add_argument("--post", type=float, default=None)
     ap.add_argument("--crop", type=str, default=None)
     ap.add_argument("--scale", type=str, default="1920x1080")
+    ap.add_argument("--gamma", type=float, default=1.0,
+                    help="luma gamma correction (>1 brightens); 1.0 = off")
     ap.add_argument("--frames", action="store_true")
     args = ap.parse_args()
 
@@ -66,6 +68,8 @@ def main():
         filters.append(f"crop={args.crop}")
     width, height = args.scale.lower().split("x")
     filters.append(f"scale={width}:{height}:flags=lanczos")
+    if args.gamma != 1.0:
+        filters.append(f"eq=gamma={args.gamma:.3f}")
     filters.append("fps=60")
     filters.append("format=yuv420p")
 
