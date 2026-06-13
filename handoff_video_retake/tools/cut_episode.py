@@ -66,6 +66,7 @@ def main():
         filters.append(f"crop={args.crop}")
     width, height = args.scale.lower().split("x")
     filters.append(f"scale={width}:{height}:flags=lanczos")
+    filters.append("fps=60")
     filters.append("format=yuv420p")
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
@@ -76,7 +77,7 @@ def main():
         "-vf", ",".join(filters),
         "-c:v", "libx264", "-preset", "medium", "-crf", "18",
         "-pix_fmt", "yuv420p",
-        "-color_range", "tv", "-colorspace", "bt709",
+        "-color_range", "pc", "-colorspace", "bt709",
         "-color_primaries", "bt709", "-color_trc", "bt709",
         "-an",
         str(args.out),
