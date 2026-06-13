@@ -73,13 +73,12 @@ echo "[capture] build complete → $GAME_APP"
 # Step 2: Start ffmpeg
 echo "[capture] Starting ffmpeg → $RAW_VIDEO"
 FFMPEG_START_EPOCH=$(python3 -c "import time; print(time.time())")
+# h264_videotoolbox: M1 하드웨어 인코더 — x264 소프트웨어는 2880x1800@60을
+# 실시간 처리 못해 프레임을 드랍한다 (실측 ~3fps 사고의 원인)
 "$FFMPEG" -y -hide_banner -loglevel warning \
     -f avfoundation -capture_cursor 0 -framerate 60 \
     -i "${AVFOUNDATION_DEVICE}" \
-    -vf "format=yuv420p" \
-    -c:v libx264 -preset veryfast -crf 18 \
-    -color_range tv -colorspace bt709 \
-    -color_primaries bt709 -color_trc bt709 \
+    -c:v h264_videotoolbox -b:v 40000k \
     "$RAW_VIDEO" &
 FFMPEG_PID=$!
 sleep 2
